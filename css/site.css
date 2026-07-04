@@ -110,11 +110,11 @@ a.no-underline:hover { text-decoration: none; }
   .site-header:not(.scrolled) .brand-lockup { padding-left: 122px; }
 }
 
-.main-nav { display: flex; align-items: center; gap: 4px; }
-.nav-item { position: relative; }
+.main-nav { display: flex; align-items: center; gap: 4px; flex-wrap: nowrap; }
+.nav-item { position: relative; flex-shrink: 0; }
 .nav-link {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 12px 14px;
+  padding: 12px 14px; white-space: nowrap;
   font-size: var(--text-body-sm); font-weight: var(--weight-medium);
   color: var(--text-secondary);
   background: none; border: none; cursor: pointer;
@@ -606,13 +606,18 @@ a.no-underline:hover { text-decoration: none; }
   .utility-bar .container { justify-content: flex-end; gap: 16px; }
   .utility-link { font-size: 0; gap: 0; }
   .main-nav-bar .container { position: relative; }
+  .more-btn { display: inline-flex; }
+  .drawer-utility-section { display: none; }
+}
+
+/* Genug Platz für Logo + 3 Nav-Punkte + „Mehr" einzeilig (schmalere Tablets sonst:
+   „Mehr" zeigt dann alle 7 Punkte statt nur der 4 zusätzlichen). */
+@media (min-width: 860px) and (max-width: 1023px) {
   .main-nav.tablet-visible {
     display: flex; position: static; margin-left: auto; margin-right: 12px;
   }
   .main-nav.tablet-visible .drawer-only-4 { display: none; }
-  .more-btn { display: inline-flex; }
   .drawer-nav-item.core-item { display: none; }
-  .drawer-utility-section { display: none; }
 }
 
 /* --- Mobile only (<=599px) --- */
