@@ -501,18 +501,33 @@ a.no-underline:hover { text-decoration: none; }
 }
 
 /* =====================================================================
-   RABATT-ECKE — klickbares Eck-Ribbon + Modal (Vereinsmitglieds-Rabatt)
+   RABATT-ECKE — fixe Eck-Banderole unten rechts (bleibt beim Scrollen sichtbar)
+   + Modal (Vereinsmitglieds-Rabatt)
    ===================================================================== */
-.discount-corner-wrap { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
-.discount-ribbon {
-  position: absolute; top: 22px; right: -46px; z-index: 5;
-  background: var(--color-brand-orange); color: #fff;
-  padding: 7px 52px; transform: rotate(45deg);
-  font-size: 13px; font-weight: var(--weight-bold); letter-spacing: .02em;
-  cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(0,18,45,.2);
+.discount-corner-fixed {
+  position: fixed; bottom: 0; right: 0; z-index: 45;
+  width: 150px; height: 150px; overflow: hidden; pointer-events: none;
+}
+.discount-corner-fixed .ribbon-inner {
+  position: absolute; bottom: 40px; right: -42px; width: 200px;
+  padding: 9px 0; text-align: center;
+  background: var(--color-brand-orange); color: #fff; border: none;
+  transform: rotate(-45deg); font-family: var(--font-base);
+  font-weight: var(--weight-bold); font-size: 13px; letter-spacing: .02em;
+  cursor: pointer; box-shadow: 0 -2px 8px rgba(0,18,45,.2); pointer-events: auto;
   transition: background var(--dur-fast) var(--ease-out);
 }
-.discount-ribbon:hover { background: var(--action-primary-hover); }
+.discount-corner-fixed .ribbon-inner:hover { background: var(--action-primary-hover); }
+@media (max-width: 599px) {
+  .discount-corner-fixed { width: 110px; height: 110px; }
+  .discount-corner-fixed .ribbon-inner { bottom: 28px; right: -34px; width: 150px; font-size: 12px; padding: 7px 0; }
+}
+
+/* Sitzplan links / Kaufbox rechts auf der Ticket-Detailseite */
+.ticket-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+@media (max-width: 1023px) {
+  .ticket-detail-grid { grid-template-columns: 1fr; }
+}
 
 .modal-backdrop {
   position: fixed; inset: 0; background: rgba(0,18,45,.5); z-index: 90;
