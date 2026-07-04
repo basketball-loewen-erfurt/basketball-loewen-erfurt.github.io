@@ -523,6 +523,18 @@ a.no-underline:hover { text-decoration: none; }
   .discount-corner-fixed .ribbon-inner { bottom: 28px; right: -34px; width: 150px; font-size: 12px; padding: 7px 0; }
 }
 
+/* Variante: Banderole oben an einer einzelnen Box (z.B. Einzelpreise-Karte) */
+.discount-corner-wrap { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+.discount-ribbon {
+  position: absolute; top: 22px; right: -46px; z-index: 5;
+  background: var(--color-brand-orange); color: #fff;
+  padding: 7px 52px; transform: rotate(45deg);
+  font-size: 13px; font-weight: var(--weight-bold); letter-spacing: .02em;
+  cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(0,18,45,.2);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.discount-ribbon:hover { background: var(--action-primary-hover); }
+
 /* Sitzplan links / Kaufbox rechts auf der Ticket-Detailseite */
 .ticket-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 @media (max-width: 1023px) {

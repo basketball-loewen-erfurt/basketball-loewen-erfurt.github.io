@@ -54,22 +54,25 @@
         </div>
 
         <aside style="display:flex;flex-direction:column;gap:20px">
-          <div class="ticket-sidebar" style="position:static">
-            <span class="eyebrow">Einzeltickets</span>
-            <h3 class="t-h4" style="margin:6px 0 14px">Preise pro Spiel</h3>
-            <p class="t-body-sm" style="margin-bottom:12px">Bei Einzeltickets wählst du deine Kategorie, nicht mehr deinen festen Platz — den sicherst du dir mit der Dauerkarte.</p>
-            <div class="price-row"><span>VIP</span><strong>29 €</strong></div>
-            <div class="price-row"><span>VIP ermäßigt</span><strong>19 €</strong></div>
-            <div class="price-row"><span>Kategorie 1</span><strong>19 €</strong></div>
-            <div class="price-row"><span>Kategorie 1 ermäßigt</span><strong>12 €</strong></div>
-            <div class="price-row"><span>Kategorie 2</span><strong>15 €</strong></div>
-            <div class="price-row"><span>Kategorie 2 ermäßigt</span><strong>9 €</strong></div>
-            <div class="price-row"><span>Schwerbehindert</span><strong>9 €</strong></div>
-            <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Weitere Heimspiele folgen, sobald der Vorverkauf startet.</p>
+          <div class="discount-corner-wrap">
+            <button class="discount-ribbon" data-discount-ribbon>10% Rabatt</button>
+            <div class="ticket-sidebar" style="position:static">
+              <span class="eyebrow">Preis pro Spiel</span>
+              <h3 class="t-h4" style="margin:6px 0 14px">Einzelpreistickets</h3>
+              <p class="t-body-sm" style="margin-bottom:12px">Bei Einzeltickets wählst du deine Kategorie, nicht mehr deinen festen Platz — den sicherst du dir mit der Dauerkarte.</p>
+              <div class="price-row"><span>VIP</span><strong>29 €</strong></div>
+              <div class="price-row"><span>VIP ermäßigt</span><strong>19 €</strong></div>
+              <div class="price-row"><span>Kategorie 1</span><strong>19 €</strong></div>
+              <div class="price-row"><span>Kategorie 1 ermäßigt</span><strong>12 €</strong></div>
+              <div class="price-row"><span>Kategorie 2</span><strong>15 €</strong></div>
+              <div class="price-row"><span>Kategorie 2 ermäßigt</span><strong>9 €</strong></div>
+              <div class="price-row"><span>Schwerbehindert</span><strong>9 €</strong></div>
+              <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Weitere Heimspiele folgen, sobald der Vorverkauf startet.</p>
+            </div>
           </div>
           <div class="ticket-sidebar" style="position:static">
-            <span class="eyebrow">Dauerkarten 2026/ 27</span>
-            <h3 class="t-h4" style="margin:6px 0 14px">Preise im Überblick</h3>
+            <span class="eyebrow">Preise im Überblick</span>
+            <h3 class="t-h4" style="margin:6px 0 14px">Dauerkarten 2026/ 27</h3>
             <p class="t-body-sm" style="margin-bottom:12px">Mit der Dauerkarte sicherst du dir deinen festen Platz für die ganze Saison — Spiel für Spiel derselbe Blick aufs Parkett.</p>
             <div class="price-row"><span>VIP</span><strong>1.190 €</strong></div>
             <div class="price-row"><span>Kategorie 1</span><strong>189 €</strong></div>
@@ -86,7 +89,6 @@
 
 </main>
 <div id="site-footer-placeholder"></div>
-<div class="discount-corner-fixed"><button class="ribbon-inner" data-discount-ribbon>10% Rabatt</button></div>
 <script>
   // Restliche Heimspiele aus data/heimspiele.json rendern (noch nicht in pretix, daher ohne Kaufbutton).
   // Vorverkaufsstart = Spieltag minus 10 Tage.
