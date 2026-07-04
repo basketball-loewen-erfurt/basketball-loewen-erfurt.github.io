@@ -221,6 +221,7 @@ a.no-underline:hover { text-decoration: none; }
   color: var(--color-brand-orange);
 }
 .nav-actions .mobile-cta:hover { background: var(--color-orange-100); }
+body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* =====================================================================
    BUTTONS
