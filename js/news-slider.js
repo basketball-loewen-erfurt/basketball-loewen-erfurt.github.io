@@ -1,4 +1,4 @@
-/* Top-News-Slider im Homepage-Hero: wechselt alle 5 Sekunden zur nächsten News,
+/* Top-News-Slider im Homepage-Hero: wechselt alle 7 Sekunden zur nächsten News,
    neue Meldung scrollt von unten nach oben rein; Dots erlauben Direktsprung. */
 document.querySelectorAll('[data-news-slider]').forEach(function (slider) {
   var slides = slider.querySelectorAll('.news-slide');
@@ -25,7 +25,7 @@ document.querySelectorAll('[data-news-slider]').forEach(function (slider) {
 
   function restart() {
     clearInterval(timer);
-    timer = setInterval(function () { goTo((current + 1) % slides.length); }, 5000);
+    timer = setInterval(function () { goTo((current + 1) % slides.length); }, 7000);
   }
 
   dots.forEach(function (dot, i) {
