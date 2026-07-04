@@ -215,7 +215,12 @@ a.no-underline:hover { text-decoration: none; }
 }
 .drawer-utility-section a:hover { color: var(--color-brand-orange); text-decoration: none; }
 
-.nav-actions .mobile-cta { display: none; }
+.nav-actions .mobile-cta {
+  display: none; height: 40px; padding: 0 14px;
+  border: 1.5px solid var(--color-brand-orange); background: #fff;
+  color: var(--color-brand-orange);
+}
+.nav-actions .mobile-cta:hover { background: var(--color-orange-100); }
 
 /* =====================================================================
    BUTTONS
@@ -378,11 +383,28 @@ a.no-underline:hover { text-decoration: none; }
   background: rgba(255,255,255,.85); border: 1px solid rgba(0,18,45,.08);
   border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
 }
+.hero-side-card { position: relative; padding-right: 40px; }
 .hero-side-card h3 { margin: 8px 0 10px; }
 .hero-side-card .btn { margin-top: 14px; }
-.news-slides { display: grid; }
-.news-slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity var(--dur-med) var(--ease-out); }
-.news-slide.is-active { opacity: 1; visibility: visible; }
+.news-slides { display: grid; overflow: hidden; }
+.news-slide {
+  grid-area: 1 / 1; opacity: 0; transform: translateY(100%);
+  transition: transform .5s var(--ease-out), opacity .5s var(--ease-out);
+}
+.news-slide.is-active { opacity: 1; transform: translateY(0); }
+.news-slide.is-leaving { opacity: 0; transform: translateY(-100%); }
+.news-slide.no-anim { transition: none; }
+.news-dots {
+  position: absolute; top: 24px; right: 16px; bottom: 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+}
+.news-dot {
+  width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+  background: var(--dot-color, var(--border-strong)); opacity: .4;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.news-dot:hover { opacity: .7; }
+.news-dot.is-active { opacity: 1; transform: scale(1.3); }
 @media (max-width: 1023px) {
   .hero-lg-grid { grid-template-columns: 1fr; }
 }
