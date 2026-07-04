@@ -257,7 +257,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 .kw { position: relative; display: inline-block; color: var(--color-brand-orange); }
 .kw svg.swoosh {
-  position: absolute; left: -1%; bottom: -0.40em; width: 106%; height: .4em;
+  position: absolute; left: -1%; bottom: calc(-2px - 0.4em); width: 106%; height: .4em;
   overflow: visible;
 }
 .kw svg.swoosh path { fill: var(--color-brand-orange); }
