@@ -429,6 +429,17 @@ a.no-underline:hover { text-decoration: none; }
 .fixture-result { font-size: 22px; font-weight: var(--weight-black); }
 
 /* =====================================================================
+   PRETIX-TICKETSHOP-WIDGET — Wrapper gegen bekannten Body-Collapse-Bug
+   (siehe Ticketing-Briefing: <pretix-widget> nutzt kein Shadow-DOM und
+   kann ohne diesen Wrapper globale Breiten-Styles der Seite stören).
+   ===================================================================== */
+.pretix-embed-wrapper {
+  width: 100%; max-width: 100%; overflow-x: auto;
+  min-height: 120px;
+}
+.pretix-embed-wrapper pretix-widget { display: block; width: 100%; }
+
+/* =====================================================================
    FOOTER
    ===================================================================== */
 .site-footer { background: var(--color-brand-navy); color: rgba(255,255,255,.7); }

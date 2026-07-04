@@ -8,6 +8,9 @@
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css" />
 <link rel="stylesheet" href="/css/site.css" />
+<!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
+     vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
+<link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
 </head>
 <body data-nav-group="">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -29,9 +32,25 @@
       </div>
       <p class="t-body-sm" style="margin-top:16px">Schwerbehindert 99 € · Kinder bis 6 Jahre frei (ohne festen Platz). Ermäßigung für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder.</p>
       <div style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn btn-primary" href="#" onclick="return false;">Zum Ticketshop (folgt)</a>
         <a class="btn btn-ghost" href="mailto:info@basketball-loewen.com?subject=Ticket-Anfrage">Per E-Mail bestellen</a>
       </div>
+    </div>
+  </section>
+
+  <section class="section bg-subtle">
+    <div class="container container-mid">
+      <div class="section-head">
+        <div class="head-text">
+          <span class="eyebrow">Online-Ticketshop</span>
+          <h2 class="t-h2">Tickets direkt online sichern</h2>
+          <p class="t-body">Über unseren neuen Ticketshop kannst du Karten für Einzelspiele direkt online reservieren — Verfügbarkeit und Preise siehst du sofort, der Kauf läuft danach sicher über den Ticketanbieter.</p>
+        </div>
+      </div>
+      <span class="badge badge-orange" style="margin-bottom:16px">Testphase — hier läuft aktuell ein Test-Event, noch kein echter Kartenverkauf</span>
+      <div class="pretix-embed-wrapper">
+        <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
+      </div>
+      <p class="t-caption" style="margin-top:12px">Lädt der Shop hier nicht? <a href="https://pretix-production-4263.up.railway.app/blev/s9k7r/" target="_blank" rel="noopener">Direkt zum Ticketshop</a>.</p>
     </div>
   </section>
 </main>
@@ -39,5 +58,6 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/include.js"></script>
+<script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 </body>
 </html>
