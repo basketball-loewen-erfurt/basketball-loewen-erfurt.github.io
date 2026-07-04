@@ -26,20 +26,44 @@
 <div id="site-header-placeholder"></div>
 <main id="main">
 
-  <section class="page-hero container">
-    <a href="/tickets.html" class="t-body-sm" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:16px"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Zurück zur Übersicht</a>
-    <span class="eyebrow">Tickets</span>
-    <h1>Testspiel.</h1>
-    <p class="lead">Riethsporthalle · Fr, 10.07.2026 — dieses Event dient dem technischen Test unseres neuen Ticketshops.</p>
+  <!-- Großes Venue-Bild oben, Titel + Datum/Ort als Overlay — angelehnt an klassische Ticket-Produktseiten -->
+  <section class="hero-photo" style="min-height:320px">
+    <div class="container">
+      <a href="/tickets.html" class="t-body-sm" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;color:var(--text-primary)"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Zurück zur Übersicht</a>
+      <span class="eyebrow">Basketball Löwen Erfurt</span>
+      <h1 style="font-size:clamp(32px,5vw,56px)">Testspiel.</h1>
+      <p class="lead">Fr, 10.07.2026 · Riethsporthalle, Erfurt</p>
+    </div>
+    <span class="photo-note">Platzhalterbild — echtes Hallenfoto folgt</span>
   </section>
 
   <section class="section">
-    <div class="container container-mid">
+    <div class="container container-narrow">
       <span class="badge badge-orange" style="margin-bottom:16px">Testphase — noch kein echter Kartenverkauf</span>
-      <div class="pretix-embed-wrapper">
-        <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
+      <div class="card" style="padding:24px">
+        <div class="pretix-embed-wrapper">
+          <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
+        </div>
       </div>
       <p class="t-caption" style="margin-top:12px">Lädt der Shop hier nicht? <a href="https://pretix-production-4263.up.railway.app/blev/s9k7r/" target="_blank" rel="noopener">Direkt zum Ticketshop</a>.</p>
+
+      <div class="grid-3" style="margin-top:32px">
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="door-open"></i></div>
+          <h3 class="t-h4">Einlass</h3>
+          <p class="t-body-sm">Eine Stunde vor Spielbeginn öffnen sich die Türen der Riethsporthalle.</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="percent"></i></div>
+          <h3 class="t-h4">Ermäßigungen</h3>
+          <p class="t-body-sm">Für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder.</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="shield-check"></i></div>
+          <h3 class="t-h4">Sicher bezahlen</h3>
+          <p class="t-body-sm">Der Kauf läuft direkt und sicher über unseren Ticketanbieter pretix.</p>
+        </div>
+      </div>
     </div>
   </section>
 
