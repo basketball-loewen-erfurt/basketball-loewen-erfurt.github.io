@@ -216,11 +216,10 @@ a.no-underline:hover { text-decoration: none; }
 .drawer-utility-section a:hover { color: var(--color-brand-orange); text-decoration: none; }
 
 .nav-actions .mobile-cta {
-  display: none; height: 40px; padding: 0 14px;
-  border: 1.5px solid var(--color-brand-orange); background: #fff;
-  color: var(--color-brand-orange);
+  display: none;
+  border-color: var(--color-brand-orange); color: var(--color-brand-orange);
 }
-.nav-actions .mobile-cta:hover { background: var(--color-orange-100); }
+.nav-actions .mobile-cta:hover { background: var(--color-orange-100); border-color: var(--color-brand-orange); }
 body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* =====================================================================
