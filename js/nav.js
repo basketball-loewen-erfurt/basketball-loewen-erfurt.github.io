@@ -65,4 +65,18 @@ window.initNav = function initNav() {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+  /* Hero-Inhalt gleitet beim Runterscrollen nach oben aus und blendet aus,
+     das Hero-Bild dahinter bleibt stehen. */
+  var hero = document.querySelector('.hero-photo');
+  var heroInner = hero ? hero.querySelector('.container') : null;
+  if (hero && heroInner) {
+    var onHeroScroll = function () {
+      var progress = Math.min(window.scrollY / hero.offsetHeight, 1);
+      heroInner.style.transform = 'translateY(' + (progress * -50) + 'px)';
+      heroInner.style.opacity = String(1 - progress);
+    };
+    window.addEventListener('scroll', onHeroScroll, { passive: true });
+    onHeroScroll();
+  }
 };
