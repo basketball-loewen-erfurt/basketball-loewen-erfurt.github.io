@@ -357,6 +357,12 @@ a.no-underline:hover { text-decoration: none; }
   font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 12px; color: var(--text-primary);
 }
 .hero-photo p.lead { font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px; }
+.hero-location {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 15px; color: var(--text-secondary); text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.hero-location:hover { color: var(--color-brand-orange); text-decoration: underline; }
 @media (max-width: 599px) {
   .hero-photo h1 { white-space: normal; }
   .hero-photo { min-height: 170px; }
@@ -494,6 +500,8 @@ a.no-underline:hover { text-decoration: none; }
 .ticket-row-title strong { font-weight: var(--weight-bold); }
 .ticket-row-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); }
 .ticket-row-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.cal-link { display: inline-flex; align-items: center; color: var(--text-secondary); transition: color var(--dur-fast) var(--ease-out); }
+.cal-link:hover { color: var(--color-brand-orange); }
 .ticket-sidebar {
   position: sticky; top: 96px; background: #fff; border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 24px;
