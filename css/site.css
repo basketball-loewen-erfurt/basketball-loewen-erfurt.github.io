@@ -536,7 +536,7 @@ a.no-underline:hover { text-decoration: none; }
 .discount-ribbon:hover { background: var(--action-primary-hover); }
 
 /* Sitzplan links / Kaufbox rechts auf der Ticket-Detailseite */
-.ticket-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.ticket-detail-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 32px; align-items: start; }
 @media (max-width: 1023px) {
   .ticket-detail-grid { grid-template-columns: 1fr; }
 }
