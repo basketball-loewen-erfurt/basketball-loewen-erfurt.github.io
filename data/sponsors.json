@@ -1,0 +1,16 @@
+{
+  "hauptsponsor": "CATL",
+  "premium": ["JustOn", "Stadtwerke Erfurt"],
+  "sponsoren": ["Crestcom", "QUNDIS", "Kynast Elektroanlagen", "Urban AM GmbH"],
+  "kategorien": {
+    "Steuerberatung": ["Dipl. Kfm. Steuerberater Heiko Kühnst"],
+    "Recht": ["Bietmann Rechtsanwälte Steuerberater"],
+    "Finanzen": ["Sparkasse Mittelthüringen"],
+    "Marketing": ["dotflow", "Kallinich Media"],
+    "Medien": ["FUNKE Thüringen Verlag GmbH – TA", "FUNKE Thüringen Verlag GmbH – TLZ", "Radio Top 40", "Antenne Thüringen"],
+    "Gesundheit": ["AOK Plus", "Jüttner Orthopädie KG", "Avenida-Therme"],
+    "Mobilität": ["Glinicke Automobile GmbH & Co. KG", "Sternauto"]
+  },
+  "wirkungspartner": ["Kinnings Foundation", "BasKIDball", "Salus BKK", "Kommunale Wohnungsgesellschaft mbH Erfurt", "Sport Vernetzt"],
+  "sponsor_werden_kontakt": { "name": "André Grenzdörffer", "rolle": "Vertriebsleitung", "email": "andre.grenzdoerffer@basketball-loewen.com" }
+}

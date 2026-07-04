@@ -1,0 +1,250 @@
+/* =====================================================================
+   Basketball Löwen — colors_and_type.css
+   Single stylesheet: design tokens (CSS custom properties) + semantic
+   typography. Source of truth: brand_source/BRAND.md + tokens/tokens.json.
+   Hell-orientiert ("light first"): Navy is TEXT, not background.
+   Dark gradients are accents only (hero / values band / footer).
+   ===================================================================== */
+
+/* Hausschrift — Lexend, self-hosted (fonts/). Built for readability/access,
+   which mirrors the club's mission (Chancengerechtigkeit).
+   Paths assume this stylesheet sits at project root; from a subfolder, the
+   relative ../fonts path still resolves because the @font-face URLs below are
+   resolved relative to THIS file. */
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/lexend-v26-latin-300.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/lexend-v26-latin-regular.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/lexend-v26-latin-500.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/lexend-v26-latin-600.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/lexend-v26-latin-700.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/lexend-v26-latin-800.ttf') format('truetype'); }
+@font-face { font-family: 'Lexend'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/lexend-v26-latin-900.ttf') format('truetype'); }
+
+:root {
+  /* ---------- Brand primitives (styleguide-canonical) ---------- */
+  --color-brand-orange: #E5710B;
+  --color-brand-blue:   #0028AA;
+  --color-brand-violet: #1E2064;
+  --color-brand-navy:   #00122D;
+
+  /* ---------- Orange scale ---------- */
+  --color-orange-50:  #FDF1E6;
+  --color-orange-100: #FBDDC0;
+  --color-orange-200: #F6BE86;
+  --color-orange-300: #F09E4C;
+  --color-orange-400: #EB8524;
+  --color-orange-500: #E5710B;
+  --color-orange-600: #C25E09;
+  --color-orange-700: #964808;
+  --color-orange-800: #6B340A;
+  --color-orange-900: #41210A;
+
+  /* ---------- Blue scale ---------- */
+  --color-blue-50:  #E7ECFB;
+  --color-blue-100: #C3D0F4;
+  --color-blue-200: #8AA2E7;
+  --color-blue-300: #5174D7;
+  --color-blue-400: #1E4AC3;
+  --color-blue-500: #0028AA;
+  --color-blue-600: #00228E;
+  --color-blue-700: #001B70;
+  --color-blue-800: #001451;
+  --color-blue-900: #000C30;
+
+  /* ---------- Neutral scale (cool, biased toward navy) ---------- */
+  --color-white:       #FFFFFF;
+  --color-neutral-50:  #F6F7F9;
+  --color-neutral-100: #ECEEF2;
+  --color-neutral-200: #DDE1E9;
+  --color-neutral-300: #C2C8D5;
+  --color-neutral-400: #9AA3B5;
+  --color-neutral-500: #6B7488;
+  --color-neutral-600: #4B5468;
+  --color-neutral-700: #353C4D;
+  --color-neutral-800: #222838;
+  --color-neutral-900: #121726;
+
+  /* ---------- Status ---------- */
+  --color-success:    #168A52;  --color-success-bg: #E6F4EC;
+  --color-warning:    #E8A400;  --color-warning-bg: #FCF3D9;
+  --color-error:      #C62828;  --color-error-bg:   #FBEAEA;
+  --color-info:       #0028AA;  --color-info-bg:    #E7ECFB;
+
+  /* ---------- Semantic roles (light-oriented) ---------- */
+  --bg-page:        var(--color-white);
+  --bg-subtle:      var(--color-neutral-50);
+  --bg-muted:       var(--color-neutral-100);
+  --border:         var(--color-neutral-200);
+  --border-strong:  var(--color-neutral-300);
+  --text-primary:   var(--color-brand-navy);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted:     var(--color-neutral-500);
+  --text-on-dark:   var(--color-white);      /* ONLY on dark surfaces */
+  --action-primary: var(--color-orange-600); /* button fill w/ white text (AA) */
+  --action-primary-hover: #A04D07;
+  --link:           var(--color-brand-blue);
+  --focus-ring:     var(--color-brand-blue);
+
+  /* ---------- Gradients (accent surfaces, NOT page bg) ---------- */
+  --gradient-blue:   radial-gradient(110% 100% at 100% 0%, #0028AA 0%, #00122D 100%);
+  --gradient-violet: radial-gradient(110% 100% at 100% 0%, #1E2064 0%, #00122D 100%);
+
+  /* ---------- Type families ---------- */
+  --font-base:    'Lexend', system-ui, sans-serif;
+  --font-display: 'Lexend', system-ui, sans-serif; /* weight 900, sentence case */
+  --font-mono:    ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
+
+  /* ---------- Weights ---------- */
+  --weight-light: 300;     /* body copy */
+  --weight-regular: 400;
+  --weight-medium: 500;    /* UI / labels */
+  --weight-semibold: 600;  /* buttons / emphasis */
+  --weight-bold: 700;
+  --weight-extrabold: 800; /* section titles */
+  --weight-black: 900;     /* display / headlines */
+
+  /* ---------- Type scale ---------- */
+  --text-display: 4.5rem;   /* 72 */
+  --text-h1: 3rem;          /* 48 */
+  --text-h2: 2.25rem;       /* 36 */
+  --text-h3: 1.5rem;        /* 24 */
+  --text-h4: 1.25rem;       /* 20 */
+  --text-body-lg: 1.125rem; /* 18 */
+  --text-body: 1rem;        /* 16 */
+  --text-body-sm: 0.875rem; /* 14 */
+  --text-caption: 0.75rem;  /* 12 */
+
+  /* ---------- Tracking / leading ---------- */
+  --tracking-display: -0.025em;
+  --tracking-heading: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-label: 0.16em;   /* eyebrows / labels, UPPERCASE */
+  --leading-tight: 1.0;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+
+  /* ---------- Spacing (4px grid) ---------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-8: 32px;  --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ---------- Shadows (soft, navy-tinted, on light) ---------- */
+  --shadow-xs:   0 1px 2px rgba(0, 18, 45, 0.06);
+  --shadow-sm:   0 2px 8px rgba(0, 18, 45, 0.06);
+  --shadow-card: 0 12px 30px rgba(0, 18, 45, 0.10);
+  --shadow-lg:   0 24px 60px rgba(0, 18, 45, 0.14);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 0.15s;
+  --dur-med: 0.25s;
+}
+
+/* =====================================================================
+   Semantic typography — apply these classes (or copy the rules).
+   Headlines: Lexend Black, SENTENCE CASE WITH A PERIOD ("Hier wirst du groß.")
+   — that restraint IS the tone of voice. No all-caps shouting.
+   ===================================================================== */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-black);
+  font-size: var(--text-display);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+}
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-black);
+  font-size: var(--text-h1);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-extrabold);
+  font-size: var(--text-h2);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+.t-h3 {
+  font-family: var(--font-base);
+  font-weight: var(--weight-extrabold);
+  font-size: var(--text-h3);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+.t-h4 {
+  font-family: var(--font-base);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-h4);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+.t-body-lg {
+  font-family: var(--font-base);
+  font-weight: var(--weight-light);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+.t-body {
+  font-family: var(--font-base);
+  font-weight: var(--weight-light);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+.t-body-sm {
+  font-family: var(--font-base);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+/* Eyebrow / label — UPPERCASE, wide tracking, usually orange */
+.t-eyebrow {
+  font-family: var(--font-base);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-brand-orange);
+}
+.t-caption {
+  font-family: var(--font-base);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-caption);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-body-sm);
+}
+
+/* The signature: ONE keyword of a headline in orange (used sparingly). */
+.t-keyword { color: var(--color-brand-orange); }
+
+/* Links */
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Optional element defaults — opt in by importing this on a plain page. */
+.ds-defaults {
+  font-family: var(--font-base);
+  font-weight: var(--weight-light);
+  color: var(--text-primary);
+  background: var(--bg-page);
+  line-height: var(--leading-normal);
+}

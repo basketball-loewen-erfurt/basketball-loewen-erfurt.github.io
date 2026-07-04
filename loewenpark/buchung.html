@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Löwenpark: Projekt &amp; Buchung — Basketball Löwen Erfurt</title>
+<meta name="description" content="Der Löwenpark am Südpark entsteht: Zeitplan der Sanierung und ein Anfrageformular für eine spätere Hallenmiete." />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css" />
+<link rel="stylesheet" href="/css/site.css" />
+</head>
+<body data-nav-group="loewenpark">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+  <section class="page-hero container">
+    <span class="eyebrow">Löwenpark</span>
+    <h1>Der <span class="kw">Löwenpark<svg class="swoosh" viewBox="0 0 300 52" preserveAspectRatio="none"><path d="M8,46 C92,52 205,33 296,3 C214,24 112,38 18,33 C11,32 6,40 8,46 Z"/></svg></span> entsteht.</h1>
+    <p class="lead">Aus einer ehemaligen Sporthalle am Südpark entsteht ein moderner Ort für Training, Bewegung und offene Sportangebote für Kinder, Jugendliche und die ganze Stadt.</p>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="head-text">
+          <span class="eyebrow">Zeitplan</span>
+          <h2 class="t-h2">Vom Konzept zur Eröffnung</h2>
+          <p class="t-body">Ein Überblick über die wichtigsten Stationen des Projekts.</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">2020</span>
+            <h3>Konzept</h3>
+            <p>Die Idee für den Löwenpark als neuen Trainingsstandort am Südpark wird entwickelt.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">2022</span>
+            <h3>Bundesförderung bewilligt</h3>
+            <p>Das Projekt erhält eine Förderzusage aus dem Bundesprogramm „Sanierung kommunaler Einrichtungen in den Bereichen Sport, Jugend und Kultur".</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">September 2025</span>
+            <h3>Baustart</h3>
+            <p>Abriss und Kernsanierung beginnen. Investitionsvolumen: rund 2,5 Mio. Euro.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">24. April 2026</span>
+            <h3>Richtfest</h3>
+            <p>Oberbürgermeister Andreas Horn und Geschäftsführer Marko Fliege schlugen gemeinsam den symbolischen Nagel. Zimmermeister Peter Scholz hielt die Ansprache.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">19. Juni 2026</span>
+            <h3>Stadtrat sichert Finanzierung</h3>
+            <p>Der Stadtrat beschließt die Deckung einer Kostensteigerung im Bauprojekt.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <span class="card-label">Voraussichtlich Herbst/Winter 2026</span>
+            <h3>Eröffnung</h3>
+            <p>Ein genauer Eröffnungstermin steht noch nicht fest und wird rechtzeitig bekanntgegeben.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-subtle">
+    <div class="container container-mid">
+      <span class="eyebrow">Anfrage</span>
+      <h2 class="t-h2">Halle mieten im Löwenpark</h2>
+      <p class="t-body" style="margin-top:12px">Der Löwenpark kann erst nach Abschluss der Bauarbeiten für Training und Veranstaltungen geöffnet werden. Wenn du dir schon jetzt einen Zeitraum sichern möchtest, kannst du uns unverbindlich eine Anfrage schicken — wir melden uns bei dir, sobald konkrete Termine feststehen.</p>
+
+      <form class="form-panel" id="booking-form" style="margin-top:24px">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="zeitraum">Gewünschter Zeitraum</label>
+          <input type="text" id="zeitraum" name="zeitraum" placeholder="z. B. Frühjahr 2027, wochentags nachmittags" />
+        </div>
+        <div class="field">
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht" placeholder="Erzähl uns kurz, wofür du die Halle nutzen möchtest."></textarea>
+          <p class="hint">Der Löwenpark öffnet erst nach Fertigstellung der Bauarbeiten. Eine Anfrage ist bereits jetzt möglich.</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
+        <div class="form-status success" id="booking-status">Danke, wir melden uns bei dir.</div>
+      </form>
+    </div>
+  </section>
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/include.js"></script>
+<script>
+  document.getElementById('booking-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('booking-status').classList.add('visible');
+  });
+</script>
+</body>
+</html>

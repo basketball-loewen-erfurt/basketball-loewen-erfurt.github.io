@@ -1,0 +1,85 @@
+{
+  "profis": {
+    "name": "CATL Basketball Löwen",
+    "liga": "BARMER 2. Basketball Bundesliga ProB",
+    "tint": "blue",
+    "kurztext": "Unsere Profimannschaft — benannt nach Titelsponsor CATL. Ziel: bis zur Saison 2031/2032 in die 1. Liga.",
+    "trainer": [
+      { "name": "Florian Gut", "rolle": "Head Coach" },
+      { "name": "Wilhelm Sonnenberg", "rolle": "Assistant Coach" },
+      { "name": "Kemal Velishaev", "rolle": "Individualtrainer, Farmteam & U19-Bundesliga-Coach" },
+      { "name": "Lorenz Maximilian Schiller", "rolle": "Athletiktrainer" },
+      { "name": "Thomas Pfistner", "rolle": "Team-Manager" }
+    ],
+    "kader": [
+      { "nr": 3, "name": "Léonar Fliege", "position": "PF", "groesse": "2,04 m" },
+      { "nr": 5, "name": "Luca Förster", "position": "SG", "groesse": "1,84 m" },
+      { "nr": 10, "name": "Oliver Jentzsch", "position": "PG", "groesse": "1,97 m" },
+      { "nr": 11, "name": "Tobias Bode", "position": "C", "groesse": "2,06 m" },
+      { "nr": 13, "name": "Friedrich Radefeld", "position": "PF", "groesse": "2,01 m" },
+      { "nr": 14, "name": "Jeremie Fotso-Sighom", "position": "SF", "groesse": "1,80 m" },
+      { "nr": 21, "name": "Jasper Brand", "position": "PF", "groesse": "2,05 m" },
+      { "nr": 22, "name": "Luke-Johan Kiraly", "position": "SF", "groesse": "1,87 m" },
+      { "nr": 44, "name": "Samuel Elias Nellessen", "position": "SF", "groesse": "1,98 m" }
+    ]
+  },
+  "damen": {
+    "name": "Basketball Löwinnen Erfurt",
+    "liga": "Regionalliga Südost",
+    "tint": "orange",
+    "kurztext": "Unser Damenteam — Saison 25/26 in der Regionalliga Südost.",
+    "trainer": [
+      { "name": "Yaqub Mohammad", "rolle": "Head Coach" },
+      { "name": "Lilly Feistkorn", "rolle": "Co-Coach" },
+      { "name": "Patricia Polifka", "rolle": "Athletiktrainerin" }
+    ],
+    "kader": [
+      { "nr": 0, "name": "Nora Kirschstein", "position": "SF", "groesse": "173 cm" },
+      { "nr": 2, "name": "Jennifer Petry", "position": "PG", "groesse": "167 cm" },
+      { "nr": 3, "name": "Lilly Feistkorn", "position": "SF", "groesse": "179 cm" },
+      { "nr": 5, "name": "Josefine Kurz", "position": "PG", "groesse": "170 cm" },
+      { "nr": 6, "name": "Ina Elsner", "position": "PG/SF", "groesse": "169 cm" },
+      { "nr": 8, "name": "Miriam Haselmann", "position": "SF", "groesse": "173 cm" },
+      { "nr": 9, "name": "Ronja Klein", "position": "SF", "groesse": "171 cm" },
+      { "nr": 10, "name": "Theresia Piszczan", "position": "C", "groesse": "180 cm" },
+      { "nr": 11, "name": "Lilly Lukow", "position": "SF", "groesse": "179 cm" },
+      { "nr": 12, "name": "Antonieta Schönau", "position": "PF/C", "groesse": "180 cm" },
+      { "nr": 13, "name": "Anna-Sophie Metzdorf", "position": "PF/C", "groesse": "174 cm" },
+      { "nr": 14, "name": "Constanze Sakriß", "position": "C", "groesse": "178 cm" },
+      { "nr": 15, "name": "Johanna Baum", "position": "PF/C", "groesse": "180 cm" },
+      { "nr": 21, "name": "Jill Brand", "position": "SF/PF", "groesse": "186 cm" },
+      { "nr": 22, "name": "Victoria Baum", "position": "PF/C", "groesse": "180 cm" },
+      { "nr": 76, "name": "Amy Striehn", "position": "SF", "groesse": "173 cm" },
+      { "nr": 90, "name": "Juliane Krüger", "position": "SF", "groesse": "174 cm" }
+    ]
+  },
+  "u19": {
+    "name": "Basketball Löwen U19",
+    "liga": "U19 Bundesliga (NBBL)",
+    "tint": "violet",
+    "kurztext": "Unser Nachwuchs-Flaggschiff in der NBBL — die Brücke zwischen Jugend und Profikader.",
+    "trainer": [
+      { "name": "Kemal Velishaev", "rolle": "Individualtrainer, Farmteam & U19-Bundesliga" },
+      { "name": "Lorenz Maximilian Schiller", "rolle": "Athletiktrainer" },
+      { "name": "Wilhelm Sonnenberg", "rolle": "Co-Trainer" }
+    ],
+    "kader": [
+      { "nr": 1, "name": "Friedrich Sonnenberg", "position": "PG", "groesse": "1,78 m" },
+      { "nr": 2, "name": "Tim Michael Leepin", "position": "SG", "groesse": "1,80 m" },
+      { "nr": 3, "name": "Magnus Bauschke", "position": "C", "groesse": "1,93 m" },
+      { "nr": 4, "name": "Bastian Rehbein", "position": "SF", "groesse": "1,85 m" },
+      { "nr": 5, "name": "Lasse-Neo Kiraly", "position": "SF", "groesse": "1,85 m" },
+      { "nr": 6, "name": "Oliver Jentzsch", "position": "SF", "groesse": "1,73 m" },
+      { "nr": 7, "name": "Lennard Haida", "position": "PG", "groesse": "1,81 m" },
+      { "nr": 8, "name": "Charles Christopher Pappas", "position": "SG", "groesse": "1,90 m" },
+      { "nr": 9, "name": "Luke-Johan Kiraly", "position": "PF", "groesse": "1,89 m" },
+      { "nr": 10, "name": "Luca Förster", "position": "SG", "groesse": "1,84 m" },
+      { "nr": 11, "name": "Jeremie Fotso Sighom", "position": "PG", "groesse": "1,85 m" },
+      { "nr": 12, "name": "Ernst Möller", "position": "PG", "groesse": "1,82 m" },
+      { "nr": 13, "name": "Leonar Fliege", "position": "PF", "groesse": "2,04 m" },
+      { "nr": 14, "name": "Lenny Dittmar", "position": "SF", "groesse": "1,94 m" },
+      { "nr": 15, "name": "Emilian Nonn", "position": "SF", "groesse": "1,86 m" },
+      { "nr": 16, "name": "Constantin Kraus", "position": "C", "groesse": "2,05 m" }
+    ]
+  }
+}

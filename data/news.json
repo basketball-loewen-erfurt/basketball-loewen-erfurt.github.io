@@ -1,0 +1,42 @@
+[
+  {
+    "datum": "19.06.2026",
+    "kategorie": "Löwenpark",
+    "tint": "violet",
+    "titel": "Wichtige Meilensteine für den Löwenpark",
+    "kurztext": "Der Erfurter Stadtrat hat die Deckung der Kostensteigerung beschlossen. Am 24. April feierten Oberbürgermeister Andreas Horn und Geschäftsführer Marko Fliege gemeinsam Richtfest.",
+    "slug": "loewenpark-meilensteine"
+  },
+  {
+    "datum": "31.03.2026",
+    "kategorie": "Profis",
+    "tint": "blue",
+    "titel": "CATL Basketball Löwen beenden durchwachsene Saison",
+    "kurztext": "Mit 8:16 Siegen und Platz 12 verpassen die Löwen die Playoffs. Coach Florian Gut verweist auf den dünnen Kader — Kapitän Paul Albrecht und Spielmacher Musa Abra überzeugen dennoch.",
+    "slug": "durchwachsene-saison"
+  },
+  {
+    "datum": "30.10.2025",
+    "kategorie": "Profis",
+    "tint": "orange",
+    "titel": "Löwen-Saisonstart und Dauerkartenverkauf",
+    "kurztext": "Nach der 74:95-Testspielniederlage gegen Paderborn startet die Saison zu Hause gegen die BBC Coburg. Anwurf 18:30 Uhr, die Damen eröffnen bereits um 14:30 Uhr.",
+    "slug": "saisonstart-dauerkarten"
+  },
+  {
+    "datum": "26.08.2025",
+    "kategorie": "Partner",
+    "tint": "neutral",
+    "titel": "CATL und Basketball Löwen Erfurt verlängern erfolgreiche Partnerschaft",
+    "kurztext": "Der Batteriezellen-Hersteller CATL bleibt Namenssponsor der Profimannschaft — bereits die vierte gemeinsame Saison in der ProB.",
+    "slug": "catl-partnerschaft-verlaengert"
+  },
+  {
+    "datum": "2026",
+    "kategorie": "Interview",
+    "tint": "neutral",
+    "titel": "Sommerinterview mit Sportdirektor Florian Gut (Teil 1–3)",
+    "kurztext": "Florian Gut blickt im dreiteiligen Sommerinterview auf die vergangene Saison zurück und gibt einen Ausblick auf die kommende Spielzeit.",
+    "slug": "sommerinterview-florian-gut"
+  }
+]
