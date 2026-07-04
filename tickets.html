@@ -54,16 +54,24 @@
           </div>
         </div>
 
-        <aside class="ticket-sidebar">
-          <span class="eyebrow">Dauerkarten 2026/27</span>
-          <h3 class="t-h4" style="margin:6px 0 14px">Preise im Überblick</h3>
-          <div class="price-row"><span>VIP</span><strong>1.190 €</strong></div>
-          <div class="price-row"><span>Kategorie 1</span><strong>189 €</strong></div>
-          <div class="price-row"><span>Kategorie 2</span><strong>139 €</strong></div>
-          <div class="price-row"><span>Schwerbehindert</span><strong>99 €</strong></div>
-          <p class="t-caption" style="margin-top:12px">Ermäßigungen für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder. Familienkarten ab 319 €.</p>
-          <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Dauerkarten wandern demnächst mit in diesen Shop — bis dahin per E-Mail.</p>
-          <a class="btn btn-ghost btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="mailto:info@basketball-loewen.com?subject=Dauerkarte">Dauerkarte anfragen</a>
+        <aside style="display:flex;flex-direction:column;gap:20px">
+          <div class="ticket-sidebar" style="position:static">
+            <span class="eyebrow">Einzeltickets</span>
+            <h3 class="t-h4" style="margin:6px 0 14px">Preise pro Spiel</h3>
+            <p class="t-body-sm">Die Einzelpreise unterscheiden sich je nach Gegner und Kategorie und werden direkt im Ticketshop des jeweiligen Spiels angezeigt.</p>
+            <div class="price-row"><span>Testspiel · Standard</span><strong>ab 15 €</strong></div>
+            <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Weitere Heimspiele folgen, sobald der Vorverkauf startet.</p>
+          </div>
+          <div class="ticket-sidebar" style="position:static">
+            <span class="eyebrow">Dauerkarten 2026/27</span>
+            <h3 class="t-h4" style="margin:6px 0 14px">Preise im Überblick</h3>
+            <div class="price-row"><span>VIP</span><strong>1.190 €</strong></div>
+            <div class="price-row"><span>Kategorie 1</span><strong>189 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>139 €</strong></div>
+            <div class="price-row"><span>Schwerbehindert</span><strong>99 €</strong></div>
+            <p class="t-caption" style="margin-top:12px">Ermäßigungen für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder. Familienkarten ab 319 €.</p>
+            <a class="btn btn-primary btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="https://pretix-production-4263.up.railway.app/blev/" target="_blank" rel="noopener">Dauerkarte kaufen</a>
+          </div>
         </aside>
 
       </div>
@@ -82,11 +90,11 @@
       return `<div class="ticket-row">
         <div class="tdate"><span class="day">${day}.</span><span class="month">${monate[parseInt(month,10)-1]}</span></div>
         <div>
-          <div class="topp">CATL Basketball Löwen – ${s.gegner}</div>
+          <div class="topp">Basketball Löwen Erfurt – ${s.gegner}</div>
           <div class="tmeta">Riethsporthalle · ${s.zeit} Uhr</div>
         </div>
         <div class="tactions" style="text-align:right">
-          <span class="badge badge-info">Vorverkauf startet in Kürze</span>
+          <span class="badge badge-info">Vorverkauf ca. 10 Tage vor dem Spiel</span>
         </div>
       </div>`;
     }).join('');

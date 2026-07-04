@@ -1,9 +1,9 @@
 {
   "profis": {
-    "name": "CATL Basketball Löwen",
+    "name": "Basketball Löwen Erfurt",
     "liga": "BARMER 2. Basketball Bundesliga ProB",
     "tint": "blue",
-    "kurztext": "Unsere Profimannschaft — benannt nach Titelsponsor CATL. Ziel: bis zur Saison 2031/2032 in die 1. Liga.",
+    "kurztext": "Unsere Profimannschaft. Ziel: bis zur Saison 2031/2032 in die 1. Liga.",
     "trainer": [
       { "name": "Florian Gut", "rolle": "Head Coach" },
       { "name": "Wilhelm Sonnenberg", "rolle": "Assistant Coach" },
