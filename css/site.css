@@ -18,6 +18,9 @@ body {
 }
 img, svg { max-width: 100%; display: block; }
 button { font-family: inherit; }
+/* Partial-Wrapper dürfen keine eigene Box bilden — sonst bricht position:sticky im
+   Header, weil sein Containing Block exakt so hoch wie der Header selbst wäre. */
+#site-header-placeholder, #site-footer-placeholder { display: contents; }
 ul { list-style: none; margin: 0; padding: 0; }
 h1, h2, h3, h4, p { margin: 0; }
 a { color: var(--link); text-decoration: none; }
@@ -359,6 +362,24 @@ a.no-underline:hover { text-decoration: none; }
   .hero-photo { min-height: 170px; }
 }
 
+/* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
+.hero-photo.hero-lg { min-height: 460px; }
+.hero-photo.hero-lg .container { padding-top: 56px; padding-bottom: 56px; }
+.hero-lg-grid { display: grid; grid-template-columns: 1.3fr .8fr; gap: 40px; align-items: center; }
+.hero-photo.hero-lg h1 { white-space: normal; font-size: clamp(32px, 5vw, 60px); margin: 12px 0 16px; }
+.hero-photo.hero-lg p.lead { font-size: 17px; margin-bottom: 22px; }
+.hero-side-card {
+  background: rgba(255,255,255,.85); border: 1px solid rgba(0,18,45,.08);
+  border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
+}
+.hero-side-card h3 { margin: 8px 0 10px; }
+@media (max-width: 1023px) {
+  .hero-lg-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 599px) {
+  .hero-photo.hero-lg { min-height: 320px; }
+}
+
 /* Simple page hero (subpages) — lighter than homepage hero */
 .page-hero { padding: 56px 0 40px; }
 .page-hero h1 {
@@ -480,21 +501,18 @@ a.no-underline:hover { text-decoration: none; }
 }
 
 /* =====================================================================
-   RABATT-ECKE — schwebender Button unten rechts + Modal (Fanmitglieds-Rabatt)
+   RABATT-ECKE — klickbares Eck-Ribbon + Modal (Vereinsmitglieds-Rabatt)
    ===================================================================== */
-.discount-fab {
-  position: fixed; bottom: 20px; right: 20px; z-index: 40;
-  background: var(--color-brand-orange); color: #fff; border: none;
-  border-radius: var(--radius-full); padding: 14px 22px;
-  font-family: var(--font-base); font-weight: var(--weight-bold); font-size: 14px;
-  display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: var(--shadow-lg); cursor: pointer;
-  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+.discount-corner-wrap { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+.discount-ribbon {
+  position: absolute; top: 22px; right: -46px; z-index: 5;
+  background: var(--color-brand-orange); color: #fff;
+  padding: 7px 52px; transform: rotate(45deg);
+  font-size: 13px; font-weight: var(--weight-bold); letter-spacing: .02em;
+  cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(0,18,45,.2);
+  transition: background var(--dur-fast) var(--ease-out);
 }
-.discount-fab:hover { background: var(--action-primary-hover); transform: translateY(-2px); }
-@media (max-width: 599px) {
-  .discount-fab { padding: 12px 16px; font-size: 13px; bottom: 14px; right: 14px; }
-}
+.discount-ribbon:hover { background: var(--action-primary-hover); }
 
 .modal-backdrop {
   position: fixed; inset: 0; background: rgba(0,18,45,.5); z-index: 90;
