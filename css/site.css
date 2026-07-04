@@ -478,11 +478,12 @@ a.no-underline:hover { text-decoration: none; }
    TICKETING — Event-Übersicht (Liste + Preis-Sidebar)
    ===================================================================== */
 .ticket-layout { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; }
-.ticket-list { display: flex; flex-direction: column; gap: 12px; }
+.ticket-list { display: flex; flex-direction: column; }
 .ticket-row {
   display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
   padding: 16px 20px; border-radius: var(--radius-lg); background: #fff;
   border: 1.5px solid var(--border); transition: all var(--dur-fast) var(--ease-out);
+  margin-bottom: 16px;
 }
 .ticket-row.featured { border-color: var(--color-brand-orange); box-shadow: 0 0 0 3px var(--color-orange-100); }
 .ticket-row-title { font-size: 16px; font-weight: var(--weight-regular); color: var(--text-primary); margin-bottom: 6px; }
