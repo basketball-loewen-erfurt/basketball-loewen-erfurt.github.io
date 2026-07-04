@@ -53,4 +53,16 @@ window.initNav = function initNav() {
       if (!wasOpen) li.classList.add('open');
     });
   });
+
+  /* Großes Logo über Utility- + Hauptnav-Leiste im Ruhezustand; beim Scrollen
+     verschwindet die Utility-Leiste und das Logo schrumpft in die Nav-Zeile. */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () {
+      if (window.scrollY > 16) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 };

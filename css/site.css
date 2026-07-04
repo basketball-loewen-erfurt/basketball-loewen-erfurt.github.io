@@ -67,6 +67,11 @@ a.no-underline:hover { text-decoration: none; }
 /* -- Utility bar -- */
 .utility-bar {
   border-bottom: 1px solid var(--border);
+  max-height: 41px; opacity: 1; overflow: hidden;
+  transition: max-height var(--dur-med) var(--ease-out), opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.site-header.scrolled .utility-bar {
+  max-height: 0; opacity: 0; border-bottom-color: transparent;
 }
 .utility-bar .container {
   display: flex; justify-content: flex-end; align-items: center;
@@ -86,11 +91,20 @@ a.no-underline:hover { text-decoration: none; }
   display: flex; align-items: center; justify-content: space-between;
   height: 72px; gap: 24px;
 }
-.brand-lockup { display: flex; align-items: center; gap: 12px; }
-.brand-lockup img { height: 44px; width: auto; }
+.brand-lockup { display: flex; align-items: center; gap: 12px; position: relative; }
+.brand-logo { height: 44px; width: auto; transition: height var(--dur-med) var(--ease-out), top var(--dur-med) var(--ease-out); position: relative; z-index: 5; }
 .brand-lockup .brand-name {
   font-family: var(--font-base); font-weight: var(--weight-extrabold);
   font-size: 17px; letter-spacing: -.01em; color: var(--text-primary);
+  white-space: nowrap; transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+/* Logo spannt im Ruhezustand über Utility- und Hauptnav-Leiste, schrumpft beim Scrollen zurück */
+@media (min-width: 1024px) {
+  .site-header:not(.scrolled) .brand-logo {
+    position: absolute; height: 106px; top: -58px; left: 0;
+  }
+  .site-header:not(.scrolled) .brand-lockup { padding-left: 122px; }
 }
 
 .main-nav { display: flex; align-items: center; gap: 4px; }
@@ -326,23 +340,23 @@ a.no-underline:hover { text-decoration: none; }
     linear-gradient(120deg, rgba(253,241,230,.85) 0%, rgba(246,190,134,.6) 45%, rgba(236,238,242,.78) 100%),
     url('/assets/img/hero-basketball.jpg');
   background-size: cover; background-position: center;
-  min-height: 480px; display: flex; align-items: center;
+  min-height: 220px; display: flex; align-items: center;
 }
-.hero-photo .container { position: relative; z-index: 2; padding-top: 64px; padding-bottom: 64px; }
+.hero-photo .container { position: relative; z-index: 2; padding-top: 24px; padding-bottom: 24px; }
 .hero-photo .eyebrow { color: var(--color-brand-navy); }
 .hero-photo .photo-note {
-  position: absolute; right: clamp(20px,5vw,40px); bottom: 16px; z-index: 2;
+  position: absolute; right: clamp(20px,5vw,40px); bottom: 10px; z-index: 2;
   font-size: 11px; color: rgba(0,18,45,.4);
 }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
-  letter-spacing: var(--tracking-display); line-height: .98; white-space: nowrap;
-  font-size: clamp(34px, 6vw, 74px); margin: 14px 0 26px; color: var(--text-primary);
+  letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
+  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 12px; color: var(--text-primary);
 }
-.hero-photo p.lead { font-size: 18px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 28px; }
+.hero-photo p.lead { font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px; }
 @media (max-width: 599px) {
   .hero-photo h1 { white-space: normal; }
-  .hero-photo { min-height: 380px; }
+  .hero-photo { min-height: 170px; }
 }
 
 /* Simple page hero (subpages) — lighter than homepage hero */

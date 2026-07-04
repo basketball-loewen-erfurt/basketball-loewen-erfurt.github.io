@@ -4,7 +4,7 @@
   function include(selector, url) {
     var el = document.querySelector(selector);
     if (!el) return Promise.resolve();
-    return fetch(url)
+    return fetch(url, { cache: 'no-cache' })
       .then(function (res) { return res.text(); })
       .then(function (html) { el.innerHTML = html; });
   }
