@@ -3,7 +3,7 @@
     "name": "Basketball Löwen Erfurt",
     "liga": "BARMER 2. Basketball Bundesliga ProB",
     "tint": "blue",
-    "kurztext": "Unsere Profimannschaft. Ziel: bis zur Saison 2031/2032 in die 1. Liga.",
+    "kurztext": "Unsere Profimannschaft. Ziel: bis zur Saison 2031/ 2032 in die 1. Liga.",
     "trainer": [
       { "name": "Florian Gut", "rolle": "Head Coach" },
       { "name": "Wilhelm Sonnenberg", "rolle": "Assistant Coach" },
@@ -27,7 +27,7 @@
     "name": "Basketball Löwinnen Erfurt",
     "liga": "Regionalliga Südost",
     "tint": "orange",
-    "kurztext": "Unser Damenteam — Saison 25/26 in der Regionalliga Südost.",
+    "kurztext": "Unser Damenteam — Saison 25/ 26 in der Regionalliga Südost.",
     "trainer": [
       { "name": "Yaqub Mohammad", "rolle": "Head Coach" },
       { "name": "Lilly Feistkorn", "rolle": "Co-Coach" },

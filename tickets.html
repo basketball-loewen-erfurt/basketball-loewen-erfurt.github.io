@@ -18,7 +18,7 @@
     <div class="container">
       <span class="eyebrow">Tickets</span>
       <h1>Hol dir dein <span class="kw">Ticket<svg class="swoosh" viewBox="0 0 300 52" preserveAspectRatio="none"><path d="M8,46 C92,52 205,33 296,3 C214,24 112,38 18,33 C11,32 6,40 8,46 Z"/></svg></span>.</h1>
-      <p class="lead">Alle Heimspiele der Saison 2026/27 auf einen Blick — Riethsporthalle, Erfurt.</p>
+      <p class="lead">Alle Heimspiele der Saison 2026/ 27 auf einen Blick — Riethsporthalle, Erfurt.</p>
     </div>
     <span class="photo-note">Platzhalterbild — echtes Teamfoto folgt</span>
   </section>
@@ -30,32 +30,30 @@
         <div>
           <div class="section-head">
             <div class="head-text">
-              <span class="eyebrow">Heimspiele</span>
-              <h2 class="t-h2">Saison 2026/27</h2>
+              <h2 class="t-h2">Saison 26/ 27</h2>
             </div>
           </div>
 
           <div class="ticket-list">
             <!-- Test-Event aus pretix — einziges aktuell wirklich buchbares Event -->
             <div class="ticket-row featured">
-              <div class="tdate"><span class="day">10.</span><span class="month">Jul</span></div>
               <div>
-                <div class="topp">Testspiel <span class="badge badge-orange" style="margin-left:6px">Testphase</span></div>
-                <div class="tmeta">Riethsporthalle · zum Testen der neuen Ticket-Kaufstrecke</div>
+                <div class="ticket-row-title"><strong>10. Juli</strong> · Testspiel <span class="badge badge-orange" style="margin-left:6px">Testphase</span></div>
+                <div class="ticket-row-meta">
+                  <span><i data-lucide="map-pin" style="width:14px;height:14px"></i> Riethsporthalle</span>
+                </div>
               </div>
-              <div class="tactions" style="text-align:right">
-                <div class="tprice">ab 15,00 €</div>
+              <div class="tactions">
                 <a class="btn btn-primary btn-sm" href="/tickets/testspiel.html">Tickets <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
               </div>
             </div>
 
-            <!-- Reale Heimspieltermine aus dem Spielplan — Vorverkauf startet, sobald in pretix angelegt -->
+            <!-- Reale Heimspieltermine aus dem Spielplan — Vorverkauf startet 10 Tage vor dem Spiel, sobald in pretix angelegt -->
             <div id="heimspiele-liste"></div>
           </div>
         </div>
 
-        <aside class="discount-corner-wrap" style="display:flex;flex-direction:column;gap:20px">
-          <button class="discount-ribbon" data-discount-ribbon>10% Rabatt</button>
+        <aside style="display:flex;flex-direction:column;gap:20px">
           <div class="ticket-sidebar" style="position:static">
             <span class="eyebrow">Einzeltickets</span>
             <h3 class="t-h4" style="margin:6px 0 14px">Preise pro Spiel</h3>
@@ -70,7 +68,7 @@
             <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Weitere Heimspiele folgen, sobald der Vorverkauf startet.</p>
           </div>
           <div class="ticket-sidebar" style="position:static">
-            <span class="eyebrow">Dauerkarten 2026/27</span>
+            <span class="eyebrow">Dauerkarten 2026/ 27</span>
             <h3 class="t-h4" style="margin:6px 0 14px">Preise im Überblick</h3>
             <div class="price-row"><span>VIP</span><strong>1.190 €</strong></div>
             <div class="price-row"><span>Kategorie 1</span><strong>189 €</strong></div>
@@ -87,24 +85,41 @@
 
 </main>
 <div id="site-footer-placeholder"></div>
+<button class="discount-fab" data-discount-ribbon><i data-lucide="percent" style="width:16px;height:16px"></i> 10% Rabatt</button>
 <script>
   // Restliche Heimspiele aus data/heimspiele.json rendern (noch nicht in pretix, daher ohne Kaufbutton).
-  fetch('/data/heimspiele.json').then(r => r.json()).then(d => {
-    const el = document.getElementById('heimspiele-liste');
-    const monate = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
-    el.innerHTML = d.spiele.map(s => {
-      const [day, month] = s.datum.split('.');
-      return `<div class="ticket-row">
-        <div class="tdate"><span class="day">${day}.</span><span class="month">${monate[parseInt(month,10)-1]}</span></div>
-        <div>
-          <div class="topp">Basketball Löwen Erfurt – ${s.gegner}</div>
-          <div class="tmeta">Riethsporthalle · ${s.zeit} Uhr</div>
-        </div>
-        <div class="tactions" style="text-align:right">
-          <span class="badge badge-info">Vorverkauf ca. 10 Tage vor dem Spiel</span>
-        </div>
-      </div>`;
+  // Vorverkaufsstart = Spieltag minus 10 Tage.
+  var MONATE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  function parseDMY(str) {
+    var parts = str.split('.').map(Number);
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+  }
+  function formatLong(d) { return d.getDate() + '. ' + MONATE[d.getMonth()]; }
+  function formatShort(d) {
+    var dd = String(d.getDate()).padStart(2, '0');
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    return dd + '.' + mm + '.' + d.getFullYear();
+  }
+  fetch('/data/heimspiele.json').then(function (r) { return r.json(); }).then(function (d) {
+    var el = document.getElementById('heimspiele-liste');
+    el.innerHTML = d.spiele.map(function (s) {
+      var gameDate = parseDMY(s.datum);
+      var vvkDate = new Date(gameDate);
+      vvkDate.setDate(vvkDate.getDate() - 10);
+      return '<div class="ticket-row">' +
+        '<div>' +
+          '<div class="ticket-row-title"><strong>' + formatLong(gameDate) + '</strong> · Basketball Löwen – ' + s.gegner + '</div>' +
+          '<div class="ticket-row-meta">' +
+            '<span><i data-lucide="map-pin" style="width:14px;height:14px"></i> Riethsporthalle</span>' +
+            '<span><i data-lucide="clock" style="width:14px;height:14px"></i> ' + s.zeit + ' Uhr</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="tactions">' +
+          '<span class="badge badge-info">Vorverkaufsstart: ' + formatShort(vvkDate) + '</span>' +
+        '</div>' +
+      '</div>';
     }).join('');
+    if (window.lucide) window.lucide.createIcons();
   });
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
