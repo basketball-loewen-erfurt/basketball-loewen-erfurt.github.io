@@ -373,6 +373,10 @@ a.no-underline:hover { text-decoration: none; }
   border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
 }
 .hero-side-card h3 { margin: 8px 0 10px; }
+.hero-side-card .btn { margin-top: 14px; }
+.news-slides { display: grid; }
+.news-slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity var(--dur-med) var(--ease-out); }
+.news-slide.is-active { opacity: 1; visibility: visible; }
 @media (max-width: 1023px) {
   .hero-lg-grid { grid-template-columns: 1fr; }
 }
