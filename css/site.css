@@ -440,6 +440,36 @@ a.no-underline:hover { text-decoration: none; }
 .pretix-embed-wrapper pretix-widget { display: block; width: 100%; }
 
 /* =====================================================================
+   TICKETING — Event-Übersicht (Liste + Preis-Sidebar)
+   ===================================================================== */
+.ticket-layout { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; }
+.ticket-list { display: flex; flex-direction: column; gap: 12px; }
+.ticket-row {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 18px; align-items: center;
+  padding: 16px 20px; border-radius: var(--radius-lg); background: #fff;
+  border: 1.5px solid var(--border); transition: all var(--dur-fast) var(--ease-out);
+}
+.ticket-row.featured { border-color: var(--color-brand-orange); box-shadow: 0 0 0 3px var(--color-orange-100); }
+.ticket-row .tdate { text-align: center; }
+.ticket-row .tdate .day { font-size: 24px; font-weight: var(--weight-black); font-family: var(--font-display); color: var(--text-primary); line-height: 1; }
+.ticket-row .tdate .month { font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: .06em; }
+.ticket-row .topp { font-size: 16px; font-weight: var(--weight-bold); color: var(--text-primary); margin-bottom: 2px; }
+.ticket-row .tmeta { font-size: 13px; color: var(--text-secondary); }
+.ticket-row .tprice { font-size: 13px; color: var(--text-muted); text-align: right; margin-bottom: 8px; }
+.ticket-sidebar {
+  position: sticky; top: 96px; background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+}
+.ticket-sidebar .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--bg-muted); font-size: 14px; }
+.ticket-sidebar .price-row:last-of-type { border-bottom: none; }
+@media (max-width: 1023px) {
+  .ticket-layout { grid-template-columns: 1fr; }
+  .ticket-sidebar { position: static; }
+  .ticket-row { grid-template-columns: 48px 1fr; }
+  .ticket-row .tactions { grid-column: 1 / -1; margin-top: 8px; }
+}
+
+/* =====================================================================
    FOOTER
    ===================================================================== */
 .site-footer { background: var(--color-brand-navy); color: rgba(255,255,255,.7); }

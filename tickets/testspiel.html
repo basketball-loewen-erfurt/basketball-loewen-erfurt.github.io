@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
+<meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css" />
+<link rel="stylesheet" href="/css/site.css" />
+<!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
+     vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
+<link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
+<style>
+  /* Widget in Marken-Orange statt pretix-Standard-Lila — Variablen laufen nach
+     dem Widget-CSS ein und gewinnen dadurch die Kaskade. */
+  :root {
+    --pretix-brand-primary: #E5710B;
+    --pretix-brand-primary-darken-5: #C25E09;
+    --pretix-brand-primary-darken-15: #964808;
+  }
+</style>
+</head>
+<body data-nav-group="">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+
+  <section class="page-hero container">
+    <a href="/tickets.html" class="t-body-sm" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:16px"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Zurück zur Übersicht</a>
+    <span class="eyebrow">Tickets</span>
+    <h1>Testspiel.</h1>
+    <p class="lead">Riethsporthalle · Fr, 10.07.2026 — dieses Event dient dem technischen Test unseres neuen Ticketshops.</p>
+  </section>
+
+  <section class="section">
+    <div class="container container-mid">
+      <span class="badge badge-orange" style="margin-bottom:16px">Testphase — noch kein echter Kartenverkauf</span>
+      <div class="pretix-embed-wrapper">
+        <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
+      </div>
+      <p class="t-caption" style="margin-top:12px">Lädt der Shop hier nicht? <a href="https://pretix-production-4263.up.railway.app/blev/s9k7r/" target="_blank" rel="noopener">Direkt zum Ticketshop</a>.</p>
+    </div>
+  </section>
+
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/include.js"></script>
+<script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
+</body>
+</html>

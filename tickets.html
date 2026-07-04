@@ -4,60 +4,96 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tickets — Basketball Löwen Erfurt</title>
-<meta name="description" content="Tickets und Dauerkarten für Heimspiele der Basketball Löwen Erfurt." />
+<meta name="description" content="Tickets für Heimspiele der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css" />
 <link rel="stylesheet" href="/css/site.css" />
-<!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
-     vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
-<link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
 </head>
 <body data-nav-group="">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <div id="site-header-placeholder"></div>
 <main id="main">
-  <section class="page-hero container">
-    <span class="eyebrow">Tickets</span>
-    <h1>Live dabei sein.</h1>
-    <p class="lead">Nächstes Heimspiel: So, 11.10.2026 · 17:00 Uhr · Riethsporthalle gegen Porsche BBA Ludwigsburg.</p>
+
+  <section class="hero-photo">
+    <div class="container">
+      <span class="eyebrow">Tickets</span>
+      <h1>Hol dir dein <span class="kw">Ticket<svg class="swoosh" viewBox="0 0 300 52" preserveAspectRatio="none"><path d="M8,46 C92,52 205,33 296,3 C214,24 112,38 18,33 C11,32 6,40 8,46 Z"/></svg></span>.</h1>
+      <p class="lead">Alle Heimspiele der Saison 2026/27 auf einen Blick — Riethsporthalle, Erfurt.</p>
+    </div>
+    <span class="photo-note">Platzhalterbild — echtes Teamfoto folgt</span>
   </section>
+
   <section class="section">
     <div class="container">
-      <span class="eyebrow">Dauerkarten 2026/27</span>
-      <h2 class="t-h2" style="margin-bottom:20px">Preise im Überblick</h2>
-      <div class="grid-3">
-        <div class="card"><div class="card-body"><span class="card-label">VIP</span><h3 style="font-size:20px">1.190 €</h3><p>ermäßigt 495 €</p></div></div>
-        <div class="card"><div class="card-body"><span class="card-label">Kategorie 1</span><h3 style="font-size:20px">189 €</h3><p>ermäßigt 119 € · Familienkarte 399 €</p></div></div>
-        <div class="card"><div class="card-body"><span class="card-label">Kategorie 2</span><h3 style="font-size:20px">139 €</h3><p>ermäßigt 99 € · Familienkarte 319 €</p></div></div>
-      </div>
-      <p class="t-body-sm" style="margin-top:16px">Schwerbehindert 99 € · Kinder bis 6 Jahre frei (ohne festen Platz). Ermäßigung für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder.</p>
-      <div style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn btn-ghost" href="mailto:info@basketball-loewen.com?subject=Ticket-Anfrage">Per E-Mail bestellen</a>
+      <div class="ticket-layout">
+
+        <div>
+          <div class="section-head">
+            <div class="head-text">
+              <span class="eyebrow">Heimspiele</span>
+              <h2 class="t-h2">Saison 2026/27</h2>
+            </div>
+          </div>
+
+          <div class="ticket-list">
+            <!-- Test-Event aus pretix — einziges aktuell wirklich buchbares Event -->
+            <div class="ticket-row featured">
+              <div class="tdate"><span class="day">10.</span><span class="month">Jul</span></div>
+              <div>
+                <div class="topp">Testspiel <span class="badge badge-orange" style="margin-left:6px">Testphase</span></div>
+                <div class="tmeta">Riethsporthalle · zum Testen der neuen Ticket-Kaufstrecke</div>
+              </div>
+              <div class="tactions" style="text-align:right">
+                <div class="tprice">ab 15,00 €</div>
+                <a class="btn btn-primary btn-sm" href="/tickets/testspiel.html">Tickets <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+              </div>
+            </div>
+
+            <!-- Reale Heimspieltermine aus dem Spielplan — Vorverkauf startet, sobald in pretix angelegt -->
+            <div id="heimspiele-liste"></div>
+          </div>
+        </div>
+
+        <aside class="ticket-sidebar">
+          <span class="eyebrow">Dauerkarten 2026/27</span>
+          <h3 class="t-h4" style="margin:6px 0 14px">Preise im Überblick</h3>
+          <div class="price-row"><span>VIP</span><strong>1.190 €</strong></div>
+          <div class="price-row"><span>Kategorie 1</span><strong>189 €</strong></div>
+          <div class="price-row"><span>Kategorie 2</span><strong>139 €</strong></div>
+          <div class="price-row"><span>Schwerbehindert</span><strong>99 €</strong></div>
+          <p class="t-caption" style="margin-top:12px">Ermäßigungen für Studierende, Azubis, FSJ, unter 27, Rentner*innen und Vereinsmitglieder. Familienkarten ab 319 €.</p>
+          <p class="t-caption" style="margin-top:8px;color:var(--text-muted)">Dauerkarten wandern demnächst mit in diesen Shop — bis dahin per E-Mail.</p>
+          <a class="btn btn-ghost btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="mailto:info@basketball-loewen.com?subject=Dauerkarte">Dauerkarte anfragen</a>
+        </aside>
+
       </div>
     </div>
   </section>
 
-  <section class="section bg-subtle">
-    <div class="container container-mid">
-      <div class="section-head">
-        <div class="head-text">
-          <span class="eyebrow">Online-Ticketshop</span>
-          <h2 class="t-h2">Tickets direkt online sichern</h2>
-          <p class="t-body">Über unseren neuen Ticketshop kannst du Karten für Einzelspiele direkt online reservieren — Verfügbarkeit und Preise siehst du sofort, der Kauf läuft danach sicher über den Ticketanbieter.</p>
-        </div>
-      </div>
-      <span class="badge badge-orange" style="margin-bottom:16px">Testphase — hier läuft aktuell ein Test-Event, noch kein echter Kartenverkauf</span>
-      <div class="pretix-embed-wrapper">
-        <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
-      </div>
-      <p class="t-caption" style="margin-top:12px">Lädt der Shop hier nicht? <a href="https://pretix-production-4263.up.railway.app/blev/s9k7r/" target="_blank" rel="noopener">Direkt zum Ticketshop</a>.</p>
-    </div>
-  </section>
 </main>
 <div id="site-footer-placeholder"></div>
+<script>
+  // Restliche Heimspiele aus data/heimspiele.json rendern (noch nicht in pretix, daher ohne Kaufbutton).
+  fetch('/data/heimspiele.json').then(r => r.json()).then(d => {
+    const el = document.getElementById('heimspiele-liste');
+    const monate = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    el.innerHTML = d.spiele.map(s => {
+      const [day, month] = s.datum.split('.');
+      return `<div class="ticket-row">
+        <div class="tdate"><span class="day">${day}.</span><span class="month">${monate[parseInt(month,10)-1]}</span></div>
+        <div>
+          <div class="topp">CATL Basketball Löwen – ${s.gegner}</div>
+          <div class="tmeta">Riethsporthalle · ${s.zeit} Uhr</div>
+        </div>
+        <div class="tactions" style="text-align:right">
+          <span class="badge badge-info">Vorverkauf startet in Kürze</span>
+        </div>
+      </div>`;
+    }).join('');
+  });
+</script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/include.js"></script>
-<script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 </body>
 </html>
