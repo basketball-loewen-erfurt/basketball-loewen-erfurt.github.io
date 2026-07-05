@@ -624,6 +624,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-leagues-top .container {
   display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
 }
+.footer-leagues-split { justify-content: space-between; }
+.footer-leagues-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-leagues-right img { display: block; width: 100%; max-width: 320px; height: auto; border-radius: 4px; }
 .footer-leagues-label {
   font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55);
 }
@@ -647,12 +650,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-brand-mark { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
 .footer-brand-mark img { height: 64px; margin-bottom: 0; }
 .footer-brand-wordmark {
-  display: flex; flex-direction: column; align-items: flex-start; height: 64px; justify-content: space-between;
+  display: flex; flex-direction: column; align-items: flex-start; height: 60px; justify-content: space-between;
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); color: #fff; text-transform: uppercase;
 }
-.footer-brand-wordmark .line-1 { font-size: 28px; line-height: 1; display: block; }
-.footer-brand-wordmark .line-2 { font-size: 35.5px; line-height: 1; display: block; }
+.footer-brand-wordmark .line-1 { font-size: 26.25px; line-height: 1; display: block; }
+.footer-brand-wordmark .line-2 { font-size: 33.3px; line-height: 1; display: block; }
 .footer-col p { font-size: 14px; max-width: 34ch; line-height: 1.6; font-weight: var(--weight-light); }
 .footer-col h4 {
   color: #fff; font-weight: var(--weight-semibold); font-size: 14px;
@@ -660,8 +663,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .footer-col a { display: block; font-size: 14px; margin-bottom: 10px; color: rgba(255,255,255,.7); }
 .footer-col a:hover { color: var(--color-brand-orange); text-decoration: none; }
-.footer-col a.footer-donate-btn { display: inline-flex; align-items: center; margin-top: 14px; color: #fff; }
-.footer-col a.footer-donate-btn:hover { color: #fff; }
+.footer-donate-btn { display: inline-flex; align-items: center; color: #fff; }
+.footer-donate-btn:hover { color: #fff; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.12); padding: 32px 0;
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; align-items: start;
@@ -669,7 +672,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-bottom-col { display: flex; flex-direction: column; gap: 10px; }
 .footer-bottom-legal { grid-column: 1 / 3; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
-.footer-bottom-donate { grid-column: 3 / 5; flex-direction: row; align-items: center; justify-content: flex-start; gap: 20px; }
+.footer-bottom-account { grid-column: 3 / 4; }
+.footer-bottom-donate-btn { grid-column: 4 / 5; }
 .footer-donate-lines {
   display: flex; flex-direction: column; gap: 4px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
@@ -687,7 +691,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
   .footer-bottom-legal { grid-column: 1; }
-  .footer-bottom-donate { grid-column: 2; }
+  .footer-bottom-account { grid-column: 2; }
+  .footer-bottom-donate-btn { grid-column: 2; margin-top: 16px; }
   .form-row { grid-template-columns: 1fr; }
 
   /* main nav collapses; drawer trigger appears */
@@ -728,6 +733,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 28px; }
   .footer-bottom-col { align-items: center; }
   .footer-bottom-legal { grid-column: 1; }
-  .footer-bottom-donate { grid-column: 1; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .footer-bottom-account { grid-column: 1; }
+  .footer-bottom-donate-btn { grid-column: 1; margin-top: 6px; }
   .footer-donate-lines { text-align: center; }
 }
