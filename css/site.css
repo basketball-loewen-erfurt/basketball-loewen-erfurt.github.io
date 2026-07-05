@@ -671,7 +671,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   display: inline-flex; align-items: center; justify-content: center;
   height: 44px; padding: 6px 16px; border-radius: 8px;
   background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  transition: background var(--dur-fast) var(--ease-out);
 }
+a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; }
 .footer-leagues-logos-row img { height: 26px; width: auto; display: block; }
 .footer-social { display: flex; gap: 16px; margin-top: 21px; }
 .footer-social a { display: inline-flex; align-items: center; justify-content: center; color: #fff; }
