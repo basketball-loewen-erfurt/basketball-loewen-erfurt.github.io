@@ -613,24 +613,30 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* =====================================================================
    FOOTER
    ===================================================================== */
-.site-footer { background: var(--color-blue-700); color: rgba(255,255,255,.7); }
-.footer-leagues-label {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.45);
+.site-footer {
+  background: linear-gradient(180deg, var(--color-blue-500) 0%, var(--color-blue-900) 100%);
+  color: rgba(255,255,255,.7);
 }
-.footer-leagues-logos-stacked { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.footer-leagues-top {
+  border-bottom: 1px solid rgba(255,255,255,.14); padding: 20px 0;
+}
+.footer-leagues-top .container {
+  display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+}
+.footer-leagues-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55);
+}
+.footer-leagues-logos-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .league-chip {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 132px; height: 44px; padding: 6px 14px; border-radius: 8px;
+  height: 44px; padding: 6px 16px; border-radius: 8px;
   background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
 }
-.footer-leagues-logos-stacked img { height: 26px; width: auto; display: block; }
-.footer-social { display: flex; gap: 12px; margin-top: 16px; }
-.footer-social a {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: var(--radius-full);
-  border: 1.5px solid rgba(255,255,255,.25); color: #fff;
-}
-.footer-social a:hover { border-color: var(--color-brand-orange); color: var(--color-brand-orange); }
+.footer-leagues-logos-row img { height: 26px; width: auto; display: block; }
+.footer-social { display: flex; gap: 16px; margin-top: 16px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.footer-social a svg { width: 22px; height: 22px; }
+.footer-social a:hover { color: var(--color-brand-orange); }
 .footer-address { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
 .footer-grid {
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px;
@@ -653,12 +659,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-col a:hover { color: var(--color-brand-orange); text-decoration: none; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.12); padding: 32px 0;
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
 }
 .footer-bottom-col { display: flex; flex-direction: column; gap: 10px; }
 .footer-bottom-legal { font-size: 13px; color: rgba(255,255,255,.5); }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
-.footer-bottom-leagues { align-items: center; text-align: center; }
 .footer-bottom-donate { align-items: flex-end; text-align: right; }
 .footer-donate-title { font-size: 15px; color: #fff; font-weight: var(--weight-medium); }
 .footer-donate-account { font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5; }
