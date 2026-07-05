@@ -6,8 +6,8 @@
 <title>Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für Heimspiele der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783255408" />
-<link rel="stylesheet" href="/css/site.css?v=1783255408" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783258370" />
+<link rel="stylesheet" href="/css/site.css?v=1783258370" />
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -16,9 +16,14 @@
 
   <section class="hero-photo hero-tickets">
     <div class="container">
-      <span class="eyebrow">Saison 2026/ 2027</span>
-      <h1>Hol dir dein <span class="kw">Ticket<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
-      <a class="hero-location" href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Riethsporthalle, Essener Straße 20, 99089 Erfurt</a>
+      <div class="hero-lg-grid">
+        <div>
+          <span class="eyebrow">Saison 2026/ 2027</span>
+          <h1>Hol dir dein <span class="kw">Ticket<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+          <a class="hero-location" href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Riethsporthalle, Essener Straße 20, 99089 Erfurt</a>
+        </div>
+        <div><!-- reserviert für künftiges CTA/Element auf dem Herobild --></div>
+      </div>
     </div>
   </section>
 
@@ -31,11 +36,10 @@
             <!-- Test-Event aus pretix — einziges aktuell wirklich buchbares Event -->
             <div class="ticket-row featured">
               <div>
-                <div class="ticket-row-title"><strong>10. Juli</strong> · Basketball Löwen – TSV Gotha <span class="badge badge-orange" style="margin-left:6px">Testphase</span></div>
+                <div class="ticket-row-title"><strong>XX. September</strong> · Basketball Löwen – Ein toller Gegner</div>
                 <div class="ticket-row-meta">
                   <a href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:14px;height:14px"></i> Riethsporthalle</a>
                   <span><i data-lucide="clock" style="width:14px;height:14px"></i> 18:00 Uhr</span>
-                  <a class="cal-link" id="cal-link-testspiel" href="#" target="_blank" rel="noopener" title="Ins Kalender eintragen"><i data-lucide="calendar-plus" style="width:14px;height:14px"></i></a>
                 </div>
               </div>
               <div class="tactions">
@@ -112,7 +116,6 @@
     });
     return 'https://calendar.google.com/calendar/render?' + params.toString();
   }
-  document.getElementById('cal-link-testspiel').href = calendarLink(new Date(2026, 6, 10), '18:00', 'TSV Gotha');
   fetch('/data/heimspiele.json').then(function (r) { return r.json(); }).then(function (d) {
     var el = document.getElementById('heimspiele-liste');
     el.innerHTML = d.spiele.map(function (s) {
@@ -127,18 +130,17 @@
             '<span><i data-lucide="clock" style="width:14px;height:14px"></i> ' + s.zeit + ' Uhr</span>' +
             '<a class="cal-link" href="' + calendarLink(gameDate, s.zeit, s.gegner) + '" target="_blank" rel="noopener" title="Ins Kalender eintragen"><i data-lucide="calendar-plus" style="width:14px;height:14px"></i></a>' +
           '</div>' +
+          (s.ticketUrl ? '' : '<div class="ticket-row-vvk"><span class="badge badge-info">Vorverkaufsstart: ' + formatShort(vvkDate) + '</span></div>') +
         '</div>' +
-        '<div class="tactions">' +
-          '<span class="badge badge-info">Vorverkaufsstart: ' + formatShort(vvkDate) + '</span>' +
-        '</div>' +
+        (s.ticketUrl ? '<div class="tactions"><a class="btn btn-primary btn-sm" href="' + s.ticketUrl + '">Tickets <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a></div>' : '') +
       '</div>';
     }).join('');
     if (window.lucide) window.lucide.createIcons();
   });
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783255408"></script>
-<script src="/js/include.js?v=1783255408"></script>
-<script src="/js/discount-modal.js?v=1783255408"></script>
+<script src="/js/nav.js?v=1783258370"></script>
+<script src="/js/include.js?v=1783258370"></script>
+<script src="/js/discount-modal.js?v=1783258370"></script>
 </body>
 </html>
