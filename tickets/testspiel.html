@@ -6,8 +6,8 @@
 <title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783289342" />
-<link rel="stylesheet" href="/css/site.css?v=1783289342" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783289853" />
+<link rel="stylesheet" href="/css/site.css?v=1783289853" />
 <!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
      vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
 <link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
@@ -126,9 +126,9 @@
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783289342"></script>
-<script src="/js/include.js?v=1783289342"></script>
-<script src="/js/discount-modal.js?v=1783289342"></script>
+<script src="/js/nav.js?v=1783289853"></script>
+<script src="/js/include.js?v=1783289853"></script>
+<script src="/js/discount-modal.js?v=1783289853"></script>
 <script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 <script>
   (function () {
@@ -150,15 +150,38 @@
     var modalIframe = document.getElementById('blockplan-modal-iframe');
     var modalClose = document.getElementById('blockplan-modal-close');
 
-    // Der interaktive Plan hat eine feste Eigengröße (~1180x951px) und würde bei kleineren
-    // Popup-Größen beschnitten. Deshalb in Originalgröße rendern und gleichmäßig auf die
-    // verfügbare Fläche herunter-/hochskalieren statt den Container zu verzerren.
+    // Der interaktive Plan hat eine feste Eigengröße und würde bei kleineren Popup-Größen
+    // beschnitten. Deshalb in Originalgröße rendern und gleichmäßig auf die verfügbare
+    // Fläche herunter-/hochskalieren statt den Container zu verzerren. Die Eigengröße wird
+    // NICHT hart codiert (schwankt leicht je nach Browser/Schriftrendering), sondern beim
+    // Laden direkt im Browser der Besucher:innen gemessen — siehe measureNativeSize().
     var BLOCKPLAN_NATIVE_W = 1200, BLOCKPLAN_NATIVE_H = 979;
     function sizeModalIframe() {
       var scale = Math.min(modalFrameOuter.clientWidth / BLOCKPLAN_NATIVE_W, modalFrameOuter.clientHeight / BLOCKPLAN_NATIVE_H);
       modalIframe.style.transform = 'scale(' + scale + ')';
     }
     window.addEventListener('resize', function () { if (backdrop.classList.contains('open')) sizeModalIframe(); });
+
+    // Iframe erst winzig machen, damit die Mindestbreite/-höhe des Plans zum Überlaufen
+    // gezwungen wird (scrollWidth/-Height meldet dann die tatsächlich benötigte Größe),
+    // diese messen (inkl. kleinem Sicherheitsabstand) und als Referenzgröße übernehmen.
+    function measureNativeSize() {
+      try {
+        var doc = modalIframe.contentDocument;
+        modalIframe.style.transform = 'none';
+        modalIframe.style.width = '50px';
+        modalIframe.style.height = '50px';
+        var w = doc.documentElement.scrollWidth;
+        var h = doc.documentElement.scrollHeight;
+        if (w > 500 && h > 500) {
+          BLOCKPLAN_NATIVE_W = w + 8;
+          BLOCKPLAN_NATIVE_H = h + 8;
+        }
+      } catch (e) {}
+      modalIframe.style.width = BLOCKPLAN_NATIVE_W + 'px';
+      modalIframe.style.height = BLOCKPLAN_NATIVE_H + 'px';
+      sizeModalIframe();
+    }
 
     // Debug-Fehlerbox des Bundlers ist nicht für den Live-Betrieb gedacht — ausblenden.
     // Außerdem: die Hover-Infobox (data-dc-tpl 108/109/112-117) sitzt im Original immer
@@ -188,6 +211,7 @@
         modalIframe.src = '/assets/blockplan/riethsporthalle-blockplan.html';
         modalIframe.addEventListener('load', function () {
           hideBundlerError();
+          measureNativeSize();
           [500, 1000, 2000, 4000].forEach(function (t) { setTimeout(hideBundlerError, t); });
         });
       }
