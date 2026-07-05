@@ -92,9 +92,8 @@ a.no-underline:hover { text-decoration: none; }
 .utility-link .icon-label { display: inline; }
 /* Spenden-Herz bewusst in Neongrün statt Marken-Orange — Anspielung auf Thüringen
    als "das grüne Herz Deutschlands". */
-.utility-link.emphasis { color: var(--color-neon-green); }
-.utility-link.emphasis svg { fill: var(--color-neon-green); stroke: var(--color-neon-green); }
-.utility-link.emphasis:hover { color: var(--color-neon-green); opacity: .8; }
+.utility-link.emphasis { color: var(--color-heart-green); }
+.utility-link.emphasis:hover { color: var(--color-heart-green); opacity: .8; }
 
 /* -- Main nav -- */
 .main-nav-bar .container {
