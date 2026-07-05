@@ -6,8 +6,8 @@
 <title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783281924" />
-<link rel="stylesheet" href="/css/site.css?v=1783281924" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783284350" />
+<link rel="stylesheet" href="/css/site.css?v=1783284350" />
 <!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
      vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
 <link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
@@ -121,16 +121,16 @@
   <div class="modal-box modal-box-blockplan" role="dialog" aria-modal="true" aria-labelledby="blockplan-modal-title">
     <button class="modal-close" aria-label="Schließen" id="blockplan-modal-close"><i data-lucide="x"></i></button>
     <span class="eyebrow" id="blockplan-modal-title" style="display:block;margin-bottom:12px">Interaktiver Blockplan</span>
-    <div style="flex:1;min-height:0">
-      <iframe id="blockplan-modal-iframe" title="Interaktiver Blockplan der Riethsporthalle" style="width:100%;height:100%;border:0;border-radius:var(--radius-md)"></iframe>
+    <div id="blockplan-modal-frame-outer" style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <iframe id="blockplan-modal-iframe" title="Interaktiver Blockplan der Riethsporthalle" style="width:1180px;height:951px;flex:none;border:0;border-radius:var(--radius-md)"></iframe>
     </div>
   </div>
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783281924"></script>
-<script src="/js/include.js?v=1783281924"></script>
-<script src="/js/discount-modal.js?v=1783281924"></script>
+<script src="/js/nav.js?v=1783284350"></script>
+<script src="/js/include.js?v=1783284350"></script>
+<script src="/js/discount-modal.js?v=1783284350"></script>
 <script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 <script>
   (function () {
@@ -148,8 +148,19 @@
 
     var trigger = document.getElementById('blockplan-trigger');
     var backdrop = document.getElementById('blockplan-modal-backdrop');
+    var modalFrameOuter = document.getElementById('blockplan-modal-frame-outer');
     var modalIframe = document.getElementById('blockplan-modal-iframe');
     var modalClose = document.getElementById('blockplan-modal-close');
+
+    // Der interaktive Plan hat eine feste Eigengröße (~1180x951px) und würde bei kleineren
+    // Popup-Größen beschnitten. Deshalb in Originalgröße rendern und gleichmäßig auf die
+    // verfügbare Fläche herunter-/hochskalieren statt den Container zu verzerren.
+    var BLOCKPLAN_NATIVE_W = 1180, BLOCKPLAN_NATIVE_H = 951;
+    function sizeModalIframe() {
+      var scale = Math.min(modalFrameOuter.clientWidth / BLOCKPLAN_NATIVE_W, modalFrameOuter.clientHeight / BLOCKPLAN_NATIVE_H);
+      modalIframe.style.transform = 'scale(' + scale + ')';
+    }
+    window.addEventListener('resize', function () { if (backdrop.classList.contains('open')) sizeModalIframe(); });
 
     // Debug-Fehlerbox des Bundlers ist nicht für den Live-Betrieb gedacht — ausblenden.
     function hideBundlerError() {
@@ -172,6 +183,7 @@
         });
       }
       backdrop.classList.add('open');
+      sizeModalIframe();
     }
     function closeModal() { backdrop.classList.remove('open'); }
 
