@@ -6,8 +6,8 @@
 <title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783288318" />
-<link rel="stylesheet" href="/css/site.css?v=1783288318" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783288796" />
+<link rel="stylesheet" href="/css/site.css?v=1783288796" />
 <!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
      vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
 <link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
@@ -120,15 +120,15 @@
   <div class="modal-box modal-box-blockplan" role="dialog" aria-modal="true" aria-label="Interaktiver Blockplan">
     <button class="modal-close" aria-label="Schließen" id="blockplan-modal-close"><i data-lucide="x"></i></button>
     <div id="blockplan-modal-frame-outer" style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden">
-      <iframe id="blockplan-modal-iframe" title="Interaktiver Blockplan der Riethsporthalle" style="width:1180px;height:951px;flex:none;border:0;border-radius:var(--radius-md)"></iframe>
+      <iframe id="blockplan-modal-iframe" title="Interaktiver Blockplan der Riethsporthalle" style="width:1188px;height:959px;flex:none;border:0;border-radius:var(--radius-md)"></iframe>
     </div>
   </div>
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783288318"></script>
-<script src="/js/include.js?v=1783288318"></script>
-<script src="/js/discount-modal.js?v=1783288318"></script>
+<script src="/js/nav.js?v=1783288796"></script>
+<script src="/js/include.js?v=1783288796"></script>
+<script src="/js/discount-modal.js?v=1783288796"></script>
 <script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 <script>
   (function () {
@@ -153,7 +153,7 @@
     // Der interaktive Plan hat eine feste Eigengröße (~1180x951px) und würde bei kleineren
     // Popup-Größen beschnitten. Deshalb in Originalgröße rendern und gleichmäßig auf die
     // verfügbare Fläche herunter-/hochskalieren statt den Container zu verzerren.
-    var BLOCKPLAN_NATIVE_W = 1180, BLOCKPLAN_NATIVE_H = 951;
+    var BLOCKPLAN_NATIVE_W = 1188, BLOCKPLAN_NATIVE_H = 959;
     function sizeModalIframe() {
       var scale = Math.min(modalFrameOuter.clientWidth / BLOCKPLAN_NATIVE_W, modalFrameOuter.clientHeight / BLOCKPLAN_NATIVE_H);
       modalIframe.style.transform = 'scale(' + scale + ')';
