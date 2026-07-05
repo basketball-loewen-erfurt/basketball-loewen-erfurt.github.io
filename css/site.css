@@ -245,6 +245,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .btn-ghost { border-color: var(--border-strong); color: var(--text-primary); background: #fff; }
 .btn-ghost:hover { border-color: var(--text-primary); }
 .btn-ghost-dark { border-color: rgba(255,255,255,.5); color: #fff; background: transparent; }
+.btn-outline-orange { border-color: var(--color-brand-orange); color: var(--color-brand-orange); background: transparent; }
+.btn-outline-orange:hover { background: var(--color-orange-50); }
 .btn-ghost-dark:hover { background: rgba(255,255,255,.12); }
 .btn-link { background: none; border: none; color: var(--link); padding: 8px 0; }
 .btn-link:hover { text-decoration: underline; }
@@ -430,6 +432,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-side-card { position: relative; padding-right: 40px; }
 .hero-side-card h3 { margin: 8px 0 10px; }
 .hero-side-card .btn { margin-top: 14px; }
+/* Testhilfe: Umschalter zwischen den beiden Hero-Widget-Varianten (siehe
+   js/home-hero-widget-toggle.js) — vor der finalen Entscheidung wieder entfernen. */
+.hero-widget-toggle {
+  position: absolute; right: 10px; bottom: 10px; z-index: 3;
+  width: 26px; height: 26px; border-radius: 50%; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(0,18,45,.08); border: 1px solid rgba(0,18,45,.14);
+  color: var(--text-secondary); cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.hero-widget-toggle:hover { background: var(--color-brand-orange); color: #fff; border-color: var(--color-brand-orange); }
 .news-slides { display: grid; overflow: hidden; }
 .news-slide {
   grid-area: 1 / 1; opacity: 0; transform: translateY(100%);
@@ -449,6 +462,10 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .news-dot:hover { background: var(--color-orange-100); }
 .news-dot.is-active { background: var(--color-brand-orange); }
+/* Nächstes-Heimspiel-Widget: einfacher Klick-Umschalter (kein Auto-Wechsel), nutzt
+   dieselben Punkte (.news-dot) wie der Top-News-Slider. */
+.next-game-slide { display: none; }
+.next-game-slide.is-active { display: block; }
 @media (max-width: 1023px) {
   .hero-lg-grid { grid-template-columns: 1fr; }
 }

@@ -14,7 +14,7 @@ fetch('/data/news.json').then(function (r) { return r.json(); }).then(function (
     return '<div class="news-slide' + (i === 0 ? ' is-active' : '') + '">' +
       '<h3 class="t-h4">' + a.titel + '</h3>' +
       '<p class="t-body-sm">' + a.kurztext + '</p>' +
-      '<a class="btn btn-ghost btn-sm" href="' + a.url + '">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
+      '<a class="btn btn-outline-orange btn-sm" href="' + a.url + '">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
     '</div>';
   }).join('');
 

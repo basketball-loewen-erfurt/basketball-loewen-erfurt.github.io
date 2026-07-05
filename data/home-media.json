@@ -1,0 +1,6 @@
+{
+  "hinweis": "Steuert optionale Zusatzinhalte im News-Bereich der Startseite. 'video': Pfad zu einem MP4 (z.B. Highlight-Clip) oder null, wenn (noch) keins vorhanden ist. 'showInstagramFeed': erst auf true setzen, wenn data/instagram.json über den n8n-Workflow echte Beiträge liefert.",
+  "video": null,
+  "videoPoster": null,
+  "showInstagramFeed": false
+}

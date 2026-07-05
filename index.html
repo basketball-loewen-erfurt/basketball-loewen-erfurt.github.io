@@ -6,8 +6,8 @@
 <title>Basketball Löwen Erfurt — Gemeinsam wachsen.</title>
 <meta name="description" content="Basketball Löwen Erfurt e.V. — Profis, Damen und Nachwuchs aus Thüringen. Trainingszeiten, Spielplan, Tickets, Probetraining und Mitgliedschaft." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783260539" />
-<link rel="stylesheet" href="/css/site.css?v=1783260539" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783263552" />
+<link rel="stylesheet" href="/css/site.css?v=1783263552" />
 </head>
 <body data-nav-group="">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -32,10 +32,18 @@
             <a class="btn btn-ghost" href="/teams-saison/spielplan.html">Zum Spielplan</a>
           </div>
         </div>
-        <div class="hero-side-card" data-news-slider>
-          <span class="eyebrow">Top-News</span>
-          <div class="news-slides"></div>
-          <div class="news-dots"></div>
+        <div class="hero-side-card" data-hero-widget-wrap>
+          <div data-hero-widget id="next-game-card">
+            <span class="eyebrow">Nächstes Heimspiel</span>
+          </div>
+          <div data-hero-widget data-news-slider style="display:none">
+            <span class="eyebrow">Top-News</span>
+            <div class="news-slides"></div>
+            <div class="news-dots"></div>
+          </div>
+          <button type="button" class="hero-widget-toggle" data-hero-widget-toggle title="Anderes Widget testen" aria-label="Anderes Hero-Widget anzeigen">
+            <i data-lucide="repeat" style="width:14px;height:14px"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -62,6 +70,52 @@
         <p class="t-body-sm">Der neue Löwenpark entsteht — jede Spende bringt das Projekt näher zur Eröffnung.</p>
         <a class="card-link" href="/spenden.html">Jetzt spenden <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section bg-subtle">
+    <div class="container">
+      <div class="section-head">
+        <div class="head-text">
+          <span class="eyebrow">Aktuelles</span>
+          <h2 class="t-h2">Was bei den Löwen los ist</h2>
+        </div>
+        <a class="btn btn-ghost" href="/news/aktuelles.html">Alle News</a>
+      </div>
+      <div class="grid-3">
+        <div class="card hoverable">
+          <div class="card-media tint-violet"><i data-lucide="hammer" style="width:32px;height:32px"></i></div>
+          <div class="card-body">
+            <span class="card-label">19.06.2026 · Löwenpark</span>
+            <h3 style="font-size:18px">Wichtige Meilensteine für den Löwenpark</h3>
+            <p>Der Stadtrat hat die Kostensteigerung gedeckt — nach dem Richtfest im April ist die Eröffnung greifbar nah.</p>
+            <a class="card-link" href="/news/260619_loewenpark_meilenstein.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+        <div class="card hoverable">
+          <div class="card-media tint-blue"><i data-lucide="trophy" style="width:32px;height:32px"></i></div>
+          <div class="card-body">
+            <span class="card-label">31.03.2026 · Profis</span>
+            <h3 style="font-size:18px">CATL Basketball Löwen beenden durchwachsene Saison</h3>
+            <p>Platz 12 in der ProB — Coach Florian Gut zieht Bilanz und blickt nach vorn.</p>
+            <a class="card-link" href="/news/260331_spielbericht_saisonrueckblick-2025-26.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+        <div class="card hoverable">
+          <div class="card-media tint-orange"><i data-lucide="handshake" style="width:32px;height:32px"></i></div>
+          <div class="card-body">
+            <span class="card-label">26.08.2025 · Partner</span>
+            <h3 style="font-size:18px">CATL verlängert Partnerschaft</h3>
+            <p>Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.</p>
+            <a class="card-link" href="/news/250826_catl_verlaengert.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Video-Highlight — bleibt unsichtbar, solange kein Video in data/home-media.json hinterlegt ist -->
+      <div id="home-video-slot" style="display:none;margin-top:32px"></div>
+      <!-- Instagram-Feed — bleibt unsichtbar, bis der n8n-Workflow data/instagram.json befüllt und showInstagramFeed:true gesetzt ist -->
+      <div id="home-insta-slot" style="display:none;margin-top:32px"></div>
     </div>
   </section>
 
@@ -107,48 +161,6 @@
     </div>
   </section>
 
-  <!-- NEWS -->
-  <section class="section bg-subtle">
-    <div class="container">
-      <div class="section-head">
-        <div class="head-text">
-          <span class="eyebrow">Aktuelles</span>
-          <h2 class="t-h2">Was bei den Löwen los ist</h2>
-        </div>
-        <a class="btn btn-ghost" href="/news/aktuelles.html">Alle News</a>
-      </div>
-      <div class="grid-3">
-        <div class="card hoverable">
-          <div class="card-media tint-violet"><i data-lucide="hammer" style="width:32px;height:32px"></i></div>
-          <div class="card-body">
-            <span class="card-label">19.06.2026 · Löwenpark</span>
-            <h3 style="font-size:18px">Wichtige Meilensteine für den Löwenpark</h3>
-            <p>Der Stadtrat hat die Kostensteigerung gedeckt — nach dem Richtfest im April ist die Eröffnung greifbar nah.</p>
-            <a class="card-link" href="/news/260619_loewenpark_meilenstein.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-          </div>
-        </div>
-        <div class="card hoverable">
-          <div class="card-media tint-blue"><i data-lucide="trophy" style="width:32px;height:32px"></i></div>
-          <div class="card-body">
-            <span class="card-label">31.03.2026 · Profis</span>
-            <h3 style="font-size:18px">CATL Basketball Löwen beenden durchwachsene Saison</h3>
-            <p>Platz 12 in der ProB — Coach Florian Gut zieht Bilanz und blickt nach vorn.</p>
-            <a class="card-link" href="/news/260331_spielbericht_saisonrueckblick-2025-26.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-          </div>
-        </div>
-        <div class="card hoverable">
-          <div class="card-media tint-orange"><i data-lucide="handshake" style="width:32px;height:32px"></i></div>
-          <div class="card-body">
-            <span class="card-label">26.08.2025 · Partner</span>
-            <h3 style="font-size:18px">CATL verlängert Partnerschaft</h3>
-            <p>Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.</p>
-            <a class="card-link" href="/news/250826_catl_verlaengert.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- WERTE -->
   <section class="section bg-gradient-violet">
     <div class="container" style="text-align:center">
@@ -175,22 +187,24 @@
     </div>
   </section>
 
-  <!-- CTA PANEL -->
+  <!-- NEWSLETTER -->
   <section class="section">
-    <div class="container">
-      <div class="cta-panel">
-        <span class="eyebrow">Mitmachen</span>
-        <h2 class="t-h2">Werde Teil der <span class="kw">Löwen<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h2>
-        <p>Ob Fan-, Spiel-, Schul- oder Fördermitgliedschaft — schon ab 3 € im Monat bist du dabei.</p>
-        <a class="btn btn-primary" href="/mitglied-werden.html">Jetzt Mitglied werden</a>
-      </div>
+    <div class="container" style="max-width:600px;text-align:center">
+      <span class="eyebrow" style="display:block;margin-bottom:8px">Newsletter</span>
+      <h2 class="t-h2">Nichts mehr verpassen</h2>
+      <p class="t-body" style="margin:10px 0 24px">Ergebnisse, Ticketstarts und News der Löwen direkt ins Postfach.</p>
+      <form id="newsletter-form" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <input type="email" id="newsletter-email" name="email" placeholder="Deine E-Mail-Adresse" required style="flex:1;min-width:220px;padding:12px 16px;border-radius:var(--radius-md);border:1.5px solid var(--border);font-family:inherit;font-size:15px" />
+        <button type="submit" class="btn btn-primary">Anmelden</button>
+      </form>
+      <p class="form-status success" id="newsletter-status">Danke! Bitte bestätige deine Anmeldung über den Link, den wir dir gleich schicken.</p>
     </div>
   </section>
 
-  <!-- SPONSOREN -->
+  <!-- HAUPTPARTNER -->
   <section class="section-sm bg-subtle">
     <div class="container">
-      <span class="eyebrow" style="display:block;text-align:center;margin-bottom:20px">Unsere Partner</span>
+      <span class="eyebrow" style="display:block;text-align:center;margin-bottom:20px">Hauptpartner</span>
       <div class="grid-4">
         <div class="card" style="display:flex;align-items:center;justify-content:center;padding:20px;font-weight:700;color:var(--text-secondary)">JustOn</div>
         <div class="card" style="display:flex;align-items:center;justify-content:center;padding:20px;font-weight:700;color:var(--text-secondary)">AOK Plus</div>
@@ -223,10 +237,20 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783260539"></script>
-<script src="/js/include.js?v=1783260539"></script>
-<script src="/js/season-config.js?v=1783260539"></script>
-<script src="/js/news-slider.js?v=1783260539"></script>
-<script src="/js/home-news.js?v=1783260539"></script>
+<script src="/js/nav.js?v=1783263552"></script>
+<script src="/js/include.js?v=1783263552"></script>
+<script src="/js/season-config.js?v=1783263552"></script>
+<script src="/js/news-slider.js?v=1783263552"></script>
+<script src="/js/home-news.js?v=1783263552"></script>
+<script src="/js/home-next-game.js?v=1783263552"></script>
+<script src="/js/home-news-extras.js?v=1783263552"></script>
+<script src="/js/home-hero-widget-toggle.js?v=1783263552"></script>
+<script>
+  document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('newsletter-status').classList.add('visible');
+    this.reset();
+  });
+</script>
 </body>
 </html>

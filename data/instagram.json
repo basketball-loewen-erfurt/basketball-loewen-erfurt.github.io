@@ -1,0 +1,4 @@
+{
+  "hinweis": "Wird künftig automatisiert über einen n8n-Workflow + die Instagram Graph API befüllt. Format je Post: { \"imageUrl\": \"...\", \"permalink\": \"...\" }. Erst sichtbar, wenn data/home-media.json showInstagramFeed:true gesetzt hat.",
+  "posts": []
+}
