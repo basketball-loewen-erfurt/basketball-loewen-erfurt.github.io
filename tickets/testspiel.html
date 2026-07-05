@@ -6,8 +6,8 @@
 <title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783286150" />
-<link rel="stylesheet" href="/css/site.css?v=1783286150" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783288059" />
+<link rel="stylesheet" href="/css/site.css?v=1783288059" />
 <!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
      vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
 <link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
@@ -127,9 +127,9 @@
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783286150"></script>
-<script src="/js/include.js?v=1783286150"></script>
-<script src="/js/discount-modal.js?v=1783286150"></script>
+<script src="/js/nav.js?v=1783288059"></script>
+<script src="/js/include.js?v=1783288059"></script>
+<script src="/js/discount-modal.js?v=1783288059"></script>
 <script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
 <script>
   (function () {
@@ -162,13 +162,24 @@
     window.addEventListener('resize', function () { if (backdrop.classList.contains('open')) sizeModalIframe(); });
 
     // Debug-Fehlerbox des Bundlers ist nicht für den Live-Betrieb gedacht — ausblenden.
+    // Außerdem: die Hover-Infobox (data-dc-tpl 108/109/112-117) sitzt im Original immer
+    // fest oben links in der Plan-Canvas — hier stattdessen groß und mittig über dem
+    // Spielfeld zentriert, mit deutlich größerer Schrift.
     function hideBundlerError() {
       try {
         var doc = modalIframe.contentDocument;
         if (!doc || !doc.head || doc.getElementById('__bundler_err_hide')) return;
         var style = doc.createElement('style');
         style.id = '__bundler_err_hide';
-        style.textContent = '#__bundler_err{display:none!important}';
+        style.textContent =
+          '#__bundler_err{display:none!important}' +
+          '[data-dc-tpl="108"]{position:absolute!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:440px!important;max-width:80%!important;padding:28px 32px!important;border-radius:16px!important}' +
+          '[data-dc-tpl="109"]{font-size:32px!important;margin-bottom:8px!important}' +
+          '[data-dc-tpl="112"]{margin-top:14px!important;padding-top:14px!important}' +
+          '[data-dc-tpl="113"]{font-size:20px!important}' +
+          '[data-dc-tpl="114"]{font-size:36px!important}' +
+          '[data-dc-tpl="115"]{font-size:18px!important;margin-top:10px!important}' +
+          '[data-dc-tpl="117"]{font-size:16px!important;margin-top:12px!important}';
         doc.head.appendChild(style);
       } catch (e) {}
     }
