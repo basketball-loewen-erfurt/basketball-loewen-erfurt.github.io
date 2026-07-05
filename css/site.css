@@ -535,7 +535,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .ticket-row-title { font-size: 16px; font-weight: var(--weight-regular); color: var(--text-primary); margin-bottom: 6px; }
 .ticket-row-title strong { font-weight: var(--weight-bold); }
 .ticket-row-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); }
-.ticket-row-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.ticket-row-meta span, .ticket-row-meta a { display: inline-flex; align-items: center; gap: 5px; }
+.ticket-row-meta a { color: inherit; }
+.ticket-row-meta a:hover { color: var(--color-brand-orange); text-decoration: underline; }
 .cal-link { display: inline-flex; align-items: center; color: var(--text-secondary); transition: color var(--dur-fast) var(--ease-out); }
 .cal-link:hover { color: var(--color-brand-orange); }
 .ticket-sidebar {
@@ -624,7 +626,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-leagues-top .container {
   display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
 }
-.footer-leagues-split { justify-content: space-between; }
+.footer-leagues-top .container.footer-leagues-split { justify-content: space-between; }
 .footer-leagues-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .footer-leagues-right img { display: block; width: 100%; max-width: 320px; height: auto; border-radius: 4px; }
 .footer-leagues-label {
@@ -689,6 +691,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .grid-3, .werte-grid { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-leagues-top .container.footer-leagues-split { flex-direction: column; justify-content: center; align-items: center; }
+  .footer-leagues-left { justify-content: center; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
   .footer-bottom-legal { grid-column: 1; }
   .footer-bottom-account { grid-column: 2; }
