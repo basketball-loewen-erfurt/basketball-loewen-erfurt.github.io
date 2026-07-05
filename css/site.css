@@ -811,4 +811,5 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   .footer-bottom-account { grid-column: 1; }
   .footer-bottom-donate-btn { grid-column: 1; margin-top: 6px; }
   .footer-donate-lines { text-align: center; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
