@@ -373,6 +373,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .hero-photo { min-height: 170px; }
 }
 
+/* Hero-Variante für die Ticketseiten — Foto der vollen Halle */
+.hero-photo.hero-tickets {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/hero-tickets-halle.jpg');
+  background-size: cover; background-position: center 35%;
+}
+
 /* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
 .hero-photo.hero-lg {
   min-height: 460px;
@@ -605,7 +613,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* =====================================================================
    FOOTER
    ===================================================================== */
-.site-footer { background: var(--color-brand-navy); color: rgba(255,255,255,.7); }
+.site-footer { background: var(--color-blue-700); color: rgba(255,255,255,.7); }
 .footer-leagues {
   border-bottom: 1px solid rgba(255,255,255,.12);
   padding: 20px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
@@ -614,8 +622,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5);
   flex-shrink: 0;
 }
-.footer-leagues-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.footer-leagues-logos img { height: 28px; width: auto; }
+.footer-leagues-logos { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.league-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px; padding: 8px 16px; border-radius: 10px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+}
+.footer-leagues-logos img { height: 24px; width: auto; display: block; }
 .footer-social { display: flex; gap: 12px; margin-top: 16px; }
 .footer-social a {
   display: inline-flex; align-items: center; justify-content: center;
@@ -629,6 +642,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   padding: 64px 0 40px;
 }
 .footer-col img { height: 48px; margin-bottom: 16px; }
+.footer-col-brand img { height: 64px; }
 .footer-col p { font-size: 14px; max-width: 34ch; line-height: 1.6; font-weight: var(--weight-light); }
 .footer-col h4 {
   color: #fff; font-weight: var(--weight-semibold); font-size: 14px;
