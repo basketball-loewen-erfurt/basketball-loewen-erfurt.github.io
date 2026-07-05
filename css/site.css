@@ -646,6 +646,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .footer-col a { display: block; font-size: 14px; margin-bottom: 10px; color: rgba(255,255,255,.7); }
 .footer-col a:hover { color: var(--color-brand-orange); text-decoration: none; }
+.footer-donate {
+  border-top: 1px solid rgba(255,255,255,.12); padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  font-size: 15px; color: #fff; font-weight: var(--weight-medium);
+}
 .footer-bar {
   border-top: 1px solid rgba(255,255,255,.12); padding: 20px 0;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
@@ -703,4 +708,5 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .footer-grid { grid-template-columns: 1fr; padding: 48px 0 32px; }
   .footer-bar { flex-direction: column; text-align: center; }
   .footer-bar-legal, .footer-bar-leagues { justify-content: center; }
+  .footer-donate { flex-direction: column; text-align: center; }
 }
