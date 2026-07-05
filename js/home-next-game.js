@@ -50,6 +50,18 @@
 
     if (window.lucide) lucide.createIcons();
 
+    /* Beide Hero-Widgets sollen gleich hoch sein, damit die Box beim Umschalten
+       nicht springt — Referenzhöhe ist die des Heimspiel-Widgets. */
+    var wrap = card.closest('[data-hero-widget-wrap]');
+    if (wrap) {
+      var lockHeight = function () {
+        wrap.style.height = 'auto';
+        wrap.style.height = wrap.offsetHeight + 'px';
+      };
+      requestAnimationFrame(lockHeight);
+      window.addEventListener('resize', lockHeight);
+    }
+
     var slides = card.querySelectorAll('.next-game-slide');
     var dots = card.querySelectorAll('.news-dot');
     dots.forEach(function (dot, i) {

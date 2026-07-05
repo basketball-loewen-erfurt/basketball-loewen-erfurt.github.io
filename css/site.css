@@ -428,6 +428,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-side-card {
   background: rgba(255,255,255,.85); border: 1px solid rgba(0,18,45,.08);
   border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
+  overflow: hidden;
 }
 .hero-side-card { position: relative; padding-right: 40px; }
 .hero-side-card h3 { margin: 8px 0 10px; }
