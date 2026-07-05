@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kontakt — Basketball Löwen Erfurt</title>
+<meta name="description" content="Kontaktiere die Basketball Löwen Erfurt — Adresse, Telefon, E-Mail und Kontaktformular." />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783241972" />
+<link rel="stylesheet" href="/css/site.css?v=1783241972" />
+</head>
+<body data-nav-group="">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+  <section class="hero-photo">
+    <div class="container">
+    <span class="eyebrow">Kontakt</span>
+    <h1>Sprich uns an.</h1>
+    <p class="lead">Fragen, Anliegen oder einfach Hallo sagen — wir freuen uns von dir zu hören.</p>
+    </div>
+    <span class="photo-note">Platzhalterbild — echtes Vereinsfoto folgt</span>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Geschäftsstelle</span>
+          <h2 class="t-h2" style="margin-bottom:20px">So erreichst du uns</h2>
+          <div class="info-tile">
+            <div class="tile-icon"><i data-lucide="map-pin"></i></div>
+            <div>
+              <strong class="t-body">Adresse</strong>
+              <p class="t-body-sm" style="margin-top:4px">Basketball Löwen<br>Leipziger Straße 71<br>99085 Erfurt</p>
+            </div>
+          </div>
+          <div class="info-tile" style="margin-top:16px">
+            <div class="tile-icon"><i data-lucide="phone"></i></div>
+            <div>
+              <strong class="t-body">Telefon</strong>
+              <p class="t-body-sm" style="margin-top:4px"><a href="tel:+491756100411">+49 175 6100411</a></p>
+            </div>
+          </div>
+          <div class="info-tile" style="margin-top:16px">
+            <div class="tile-icon"><i data-lucide="mail"></i></div>
+            <div>
+              <strong class="t-body">E-Mail</strong>
+              <p class="t-body-sm" style="margin-top:4px"><a href="mailto:info@basketball-loewen.com">info@basketball-loewen.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:24px">
+          <span class="eyebrow">Nachricht senden</span>
+          <h3 class="t-h4" style="margin:6px 0 16px">Kontaktformular</h3>
+          <form class="form-panel" id="contact-form">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="betreff">Betreff</label>
+              <input type="text" id="betreff" name="betreff" placeholder="Worum geht's?" />
+            </div>
+            <div class="field">
+              <label for="nachricht">Nachricht</label>
+              <textarea id="nachricht" name="nachricht" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Nachricht senden</button>
+            <div class="form-status success" id="contact-status">Danke für deine Nachricht, wir melden uns bei dir.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js?v=1783241972"></script>
+<script src="/js/include.js?v=1783241972"></script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('contact-status').classList.add('visible');
+  });
+</script>
+</body>
+</html>
