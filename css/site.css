@@ -374,7 +374,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 
 /* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
-.hero-photo.hero-lg { min-height: 460px; }
+.hero-photo.hero-lg {
+  min-height: 460px;
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/hero-einlaufkind.jpg');
+  background-size: cover; background-position: center 30%;
+}
 .hero-photo.hero-lg .container { padding-top: 56px; padding-bottom: 56px; }
 .hero-lg-grid { display: grid; grid-template-columns: 1.3fr .8fr; gap: 40px; align-items: center; }
 .hero-photo.hero-lg h1 { white-space: normal; font-size: clamp(32px, 5vw, 60px); margin: 12px 0 16px; }
