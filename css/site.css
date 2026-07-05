@@ -616,15 +616,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .site-footer { background: var(--color-blue-700); color: rgba(255,255,255,.7); }
 .footer-leagues-label {
   font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.45);
-  flex-shrink: 0;
 }
-.footer-leagues-logos { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.footer-leagues-logos-stacked { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .league-chip {
   display: inline-flex; align-items: center; justify-content: center;
-  height: 26px; padding: 4px 10px; border-radius: 6px;
+  width: 132px; height: 44px; padding: 6px 14px; border-radius: 8px;
   background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
 }
-.footer-leagues-logos img { height: 14px; width: auto; display: block; }
+.footer-leagues-logos-stacked img { height: 26px; width: auto; display: block; }
 .footer-social { display: flex; gap: 12px; margin-top: 16px; }
 .footer-social a {
   display: inline-flex; align-items: center; justify-content: center;
@@ -646,20 +645,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .footer-col a { display: block; font-size: 14px; margin-bottom: 10px; color: rgba(255,255,255,.7); }
 .footer-col a:hover { color: var(--color-brand-orange); text-decoration: none; }
-.footer-donate {
-  border-top: 1px solid rgba(255,255,255,.12); padding: 24px 0;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.12); padding: 32px 0;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start;
 }
-.footer-donate-text { display: flex; flex-direction: column; gap: 4px; }
+.footer-bottom-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-bottom-legal { font-size: 13px; color: rgba(255,255,255,.5); }
+.footer-bottom-legal a, .footer-bottom-legal span { display: block; }
+.footer-bottom-leagues { align-items: center; text-align: center; }
+.footer-bottom-donate { align-items: flex-end; text-align: right; }
 .footer-donate-title { font-size: 15px; color: #fff; font-weight: var(--weight-medium); }
-.footer-donate-account { font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); }
-.footer-bar {
-  border-top: 1px solid rgba(255,255,255,.12); padding: 20px 0;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-  font-size: 13px; color: rgba(255,255,255,.5);
-}
-.footer-bar-legal { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
-.footer-bar-leagues { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.footer-donate-account { font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5; }
 
 /* =====================================================================
    RESPONSIVE — 3 breakpoints (Laptop >=1024 / Tablet 600-1023 / Mobile <=599)
@@ -708,8 +704,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .cta-panel { padding: 32px 20px; }
   .fixture-row { grid-template-columns: 1fr; text-align: left; }
   .footer-grid { grid-template-columns: 1fr; padding: 48px 0 32px; }
-  .footer-bar { flex-direction: column; text-align: center; }
-  .footer-bar-legal, .footer-bar-leagues { justify-content: center; }
-  .footer-donate { flex-direction: column; text-align: center; }
-  .footer-donate-text { align-items: center; }
+  .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 28px; }
+  .footer-bottom-col { align-items: center; }
+  .footer-bottom-donate { align-items: center; text-align: center; }
 }
