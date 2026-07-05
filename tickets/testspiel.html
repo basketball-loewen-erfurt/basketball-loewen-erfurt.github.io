@@ -6,8 +6,8 @@
 <title>Testspiel — Tickets — Basketball Löwen Erfurt</title>
 <meta name="description" content="Tickets für das Testspiel der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783269623" />
-<link rel="stylesheet" href="/css/site.css?v=1783269623" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783281924" />
+<link rel="stylesheet" href="/css/site.css?v=1783281924" />
 <!-- pretix-Ticketshop-Widget (aktuell Railway-Testinstanz/Test-Event blev/s9k7r —
      vor Livegang durch Produktiv-Domain + finale Organizer-/Event-Slugs ersetzen) -->
 <link rel="stylesheet" type="text/css" href="https://pretix-production-4263.up.railway.app/blev/s9k7r/widget/v2.css" />
@@ -44,11 +44,15 @@
   <section class="section">
     <div class="container">
       <div class="ticket-detail-grid">
-        <div class="card" style="padding:16px">
-          <img src="/assets/img/saalplan-riethsporthalle.jpg" alt="Saalplan der Riethsporthalle mit Blöcken A–F, Stehblock und Spielfeld" style="width:100%;height:auto;border-radius:var(--radius-md)" />
-          <p class="t-caption" style="margin-top:10px">Offizieller Saalplan der Riethsporthalle — die genaue Sitzplatzwahl erfolgt im Ticketshop.</p>
+        <div class="card ticket-blockplan-col" style="padding:16px">
+          <div id="blockplan-media" style="position:relative;overflow:hidden;border-radius:var(--radius-md)">
+            <button type="button" id="blockplan-trigger" style="display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in" aria-label="Blockplan vergrößern">
+              <img id="blockplan-img" src="/assets/img/riethsporthalle-blockplan.png" alt="Blockplan der Riethsporthalle mit Blöcken A–F, Kategorien und Spielfeld" style="width:100%;height:100%;object-fit:contain;display:block" />
+            </button>
+          </div>
+          <p class="t-caption" style="margin-top:10px">Offizieller Blockplan der Riethsporthalle — zum Vergrößern anklicken. Die genaue Sitzplatzwahl erfolgt im Ticketshop.</p>
         </div>
-        <div>
+        <div class="ticket-cart-col">
           <div class="card" style="padding:24px">
             <div class="pretix-embed-wrapper">
               <pretix-widget event="https://pretix-production-4263.up.railway.app/blev/s9k7r/"></pretix-widget>
@@ -110,10 +114,72 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <div class="discount-corner-fixed"><button class="ribbon-inner" data-discount-ribbon>10% Rabatt</button></div>
+
+<!-- Blockplan-Popup — Bild bleibt immer in Warenkorb-Höhe, Klick öffnet den interaktiven
+     Plan so groß, wie es der Bildschirm zulässt. Iframe lädt erst beim ersten Öffnen. -->
+<div class="modal-backdrop" id="blockplan-modal-backdrop">
+  <div class="modal-box modal-box-blockplan" role="dialog" aria-modal="true" aria-labelledby="blockplan-modal-title">
+    <button class="modal-close" aria-label="Schließen" id="blockplan-modal-close"><i data-lucide="x"></i></button>
+    <span class="eyebrow" id="blockplan-modal-title" style="display:block;margin-bottom:12px">Interaktiver Blockplan</span>
+    <div style="flex:1;min-height:0">
+      <iframe id="blockplan-modal-iframe" title="Interaktiver Blockplan der Riethsporthalle" style="width:100%;height:100%;border:0;border-radius:var(--radius-md)"></iframe>
+    </div>
+  </div>
+</div>
+
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783269623"></script>
-<script src="/js/include.js?v=1783269623"></script>
-<script src="/js/discount-modal.js?v=1783269623"></script>
+<script src="/js/nav.js?v=1783281924"></script>
+<script src="/js/include.js?v=1783281924"></script>
+<script src="/js/discount-modal.js?v=1783281924"></script>
 <script type="text/javascript" src="https://pretix-production-4263.up.railway.app/widget/v2.de.js" async></script>
+<script>
+  (function () {
+    var media = document.getElementById('blockplan-media');
+    var pretixCard = document.querySelector('.pretix-embed-wrapper').closest('.card');
+
+    function matchHeight() {
+      var h = pretixCard.getBoundingClientRect().height;
+      if (h > 0) media.style.height = h + 'px';
+    }
+    matchHeight();
+    window.addEventListener('resize', matchHeight);
+    // pretix-Widget lädt asynchron nach — Höhe mehrfach nachziehen, bis es fertig gerendert ist.
+    [500, 1000, 2000, 4000].forEach(function (t) { setTimeout(matchHeight, t); });
+
+    var trigger = document.getElementById('blockplan-trigger');
+    var backdrop = document.getElementById('blockplan-modal-backdrop');
+    var modalIframe = document.getElementById('blockplan-modal-iframe');
+    var modalClose = document.getElementById('blockplan-modal-close');
+
+    // Debug-Fehlerbox des Bundlers ist nicht für den Live-Betrieb gedacht — ausblenden.
+    function hideBundlerError() {
+      try {
+        var doc = modalIframe.contentDocument;
+        if (!doc || !doc.head || doc.getElementById('__bundler_err_hide')) return;
+        var style = doc.createElement('style');
+        style.id = '__bundler_err_hide';
+        style.textContent = '#__bundler_err{display:none!important}';
+        doc.head.appendChild(style);
+      } catch (e) {}
+    }
+
+    function openModal() {
+      if (!modalIframe.src) {
+        modalIframe.src = '/assets/blockplan/riethsporthalle-blockplan.html';
+        modalIframe.addEventListener('load', function () {
+          hideBundlerError();
+          [500, 1000, 2000, 4000].forEach(function (t) { setTimeout(hideBundlerError, t); });
+        });
+      }
+      backdrop.classList.add('open');
+    }
+    function closeModal() { backdrop.classList.remove('open'); }
+
+    trigger.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+  })();
+</script>
 </body>
 </html>

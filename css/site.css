@@ -473,6 +473,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 @media (max-width: 599px) {
   .hero-photo.hero-lg { min-height: 320px; }
+  /* Hero + Widget sollen auf dem Handy möglichst komplett ohne Scrollen passen —
+     Innenabstände hier gezielt gestaucht, Inhalt/Größen bleiben unverändert. */
+  .hero-photo.hero-lg .container { padding-top: 28px; padding-bottom: 28px; }
+  .hero-lg-grid { gap: 20px; }
+  .hero-photo.hero-lg h1 { margin: 8px 0 10px; }
+  .hero-photo.hero-lg p.lead { margin-bottom: 14px; }
+  .hero-side-card { padding: 18px; }
 }
 
 /* Simple page hero (subpages) — lighter than homepage hero */
@@ -640,6 +647,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .ticket-detail-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 32px; align-items: start; }
 @media (max-width: 1023px) {
   .ticket-detail-grid { grid-template-columns: 1fr; }
+  /* Auf schmalen Formfaktoren zuerst der Warenkorb, der Blockplan folgt darunter. */
+  .ticket-detail-grid .ticket-cart-col { order: 1; }
+  .ticket-detail-grid .ticket-blockplan-col { order: 2; }
 }
 
 .modal-backdrop {
@@ -660,6 +670,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   width: 56px; height: 56px; border-radius: var(--radius-full); margin: 0 auto 16px;
   background: var(--color-orange-50); color: var(--color-brand-orange);
   display: flex; align-items: center; justify-content: center;
+}
+/* Große Modal-Variante — z.B. Blockplan-Popup, so groß wie es der Bildschirm zulässt */
+.modal-box-blockplan {
+  max-width: min(95vw, 1100px); width: 100%; height: min(90vh, 900px);
+  display: flex; flex-direction: column; text-align: left; padding: 24px;
 }
 
 /* =====================================================================
