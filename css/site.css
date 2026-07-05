@@ -639,7 +639,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
 }
 .footer-leagues-logos-row img { height: 26px; width: auto; display: block; }
-.footer-social { display: flex; gap: 16px; margin-top: 16px; }
+.footer-social { display: flex; gap: 16px; margin-top: 21px; }
 .footer-social a { display: inline-flex; align-items: center; justify-content: center; color: #fff; }
 .footer-social a svg { width: 22px; height: 22px; }
 .footer-social a:hover { color: var(--color-brand-orange); }
