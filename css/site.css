@@ -666,7 +666,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
 .footer-bottom-donate { flex-direction: row; align-items: center; justify-content: flex-end; gap: 20px; }
 .footer-donate-lines {
-  display: flex; flex-direction: column; gap: 2px; text-align: right;
+  display: flex; flex-direction: column; gap: 2px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
 }
 
