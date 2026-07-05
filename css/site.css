@@ -626,8 +626,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-leagues-top .container {
   display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
 }
-.footer-leagues-top .container.footer-leagues-split { justify-content: space-between; }
-.footer-leagues-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-leagues-top .container.footer-leagues-split {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; align-items: center; gap: 32px;
+}
+.footer-leagues-left { grid-column: 1 / 3; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.footer-leagues-right { grid-column: 3 / 5; display: flex; justify-content: center; }
 .footer-leagues-right img { display: block; width: 100%; max-width: 320px; height: auto; border-radius: 4px; }
 .footer-leagues-label {
   font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55);
@@ -691,8 +694,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .grid-3, .werte-grid { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-leagues-top .container.footer-leagues-split { flex-direction: column; justify-content: center; align-items: center; }
-  .footer-leagues-left { justify-content: center; }
+  .footer-leagues-top .container.footer-leagues-split { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .footer-leagues-left, .footer-leagues-right { grid-column: auto; justify-content: center; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
   .footer-bottom-legal { grid-column: 1; }
   .footer-bottom-account { grid-column: 2; }
