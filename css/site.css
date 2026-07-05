@@ -283,6 +283,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 
 .card {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -744,6 +745,7 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 48px; }
   .grid-3, .werte-grid { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
+  .grid-5 { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-leagues-top .container.footer-leagues-split { display: flex; flex-direction: column; justify-content: center; align-items: center; }
   .footer-leagues-left, .footer-leagues-right { grid-column: auto; justify-content: center; }
