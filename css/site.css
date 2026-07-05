@@ -637,7 +637,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   padding: 64px 0 40px;
 }
 .footer-col img { height: 48px; margin-bottom: 16px; }
-.footer-col-brand img { height: 64px; }
+.footer-brand-mark { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.footer-brand-mark img { height: 64px; margin-bottom: 0; }
+.footer-brand-wordmark {
+  font-family: var(--font-display); font-weight: var(--weight-black);
+  font-size: 16px; line-height: 1.2; letter-spacing: var(--tracking-display);
+  color: #fff; text-transform: uppercase;
+}
 .footer-col p { font-size: 14px; max-width: 34ch; line-height: 1.6; font-weight: var(--weight-light); }
 .footer-col h4 {
   color: #fff; font-weight: var(--weight-semibold); font-size: 14px;
