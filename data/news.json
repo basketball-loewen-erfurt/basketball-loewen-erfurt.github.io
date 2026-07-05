@@ -1,42 +1,55 @@
-[
-  {
-    "datum": "19.06.2026",
-    "kategorie": "Löwenpark",
-    "tint": "violet",
-    "titel": "Wichtige Meilensteine für den Löwenpark",
-    "kurztext": "Der Erfurter Stadtrat hat die Deckung der Kostensteigerung beschlossen. Am 24. April feierten Oberbürgermeister Andreas Horn und Geschäftsführer Marko Fliege gemeinsam Richtfest.",
-    "slug": "loewenpark-meilensteine"
-  },
-  {
-    "datum": "31.03.2026",
-    "kategorie": "Profis",
-    "tint": "blue",
-    "titel": "CATL Basketball Löwen beenden durchwachsene Saison",
-    "kurztext": "Mit 8:16 Siegen und Platz 12 verpassen die Löwen die Playoffs. Coach Florian Gut verweist auf den dünnen Kader — Kapitän Paul Albrecht und Spielmacher Musa Abra überzeugen dennoch.",
-    "slug": "durchwachsene-saison"
-  },
-  {
-    "datum": "30.10.2025",
-    "kategorie": "Profis",
-    "tint": "orange",
-    "titel": "Löwen-Saisonstart und Dauerkartenverkauf",
-    "kurztext": "Nach der 74:95-Testspielniederlage gegen Paderborn startet die Saison zu Hause gegen die BBC Coburg. Anwurf 18:30 Uhr, die Damen eröffnen bereits um 14:30 Uhr.",
-    "slug": "saisonstart-dauerkarten"
-  },
-  {
-    "datum": "26.08.2025",
-    "kategorie": "Partner",
-    "tint": "neutral",
-    "titel": "CATL und Basketball Löwen Erfurt verlängern erfolgreiche Partnerschaft",
-    "kurztext": "Der Batteriezellen-Hersteller CATL bleibt Namenssponsor der Profimannschaft — bereits die vierte gemeinsame Saison in der ProB.",
-    "slug": "catl-partnerschaft-verlaengert"
-  },
-  {
-    "datum": "2026",
-    "kategorie": "Interview",
-    "tint": "neutral",
-    "titel": "Sommerinterview mit Sportdirektor Florian Gut (Teil 1–3)",
-    "kurztext": "Florian Gut blickt im dreiteiligen Sommerinterview auf die vergangene Saison zurück und gibt einen Ausblick auf die kommende Spielzeit.",
-    "slug": "sommerinterview-florian-gut"
-  }
-]
+{
+  "hinweis": "Zentrale Liste aller News-Beiträge. 'topNews': true steuert, ob ein Beitrag im Top-News-Bereich der Startseite erscheint — neue Beiträge ohne dieses Flag (oder mit false) werden nur auf der Aktuelles-Seite gelistet, nicht im Startseiten-Slider.",
+  "artikel": [
+    {
+      "datum": "19.06.2026",
+      "kategorie": "Löwenpark",
+      "tint": "tint-violet",
+      "icon": "hammer",
+      "titel": "Wichtige Meilensteine für den Löwenpark",
+      "kurztext": "Der Stadtrat hat die Kostensteigerung gedeckt — nach dem Richtfest im April ist die Eröffnung greifbar nah.",
+      "url": "/news/loewenpark-meilensteine.html",
+      "topNews": true
+    },
+    {
+      "datum": "31.03.2026",
+      "kategorie": "Profis",
+      "tint": "tint-blue",
+      "icon": "trophy",
+      "titel": "CATL Basketball Löwen beenden durchwachsene Saison",
+      "kurztext": "Platz 12 in der ProB — Coach Florian Gut zieht Bilanz und blickt nach vorn.",
+      "url": "/teams-saison/spielbericht-saisonrueckblick-2025-26.html",
+      "topNews": true
+    },
+    {
+      "datum": "30.10.2025",
+      "kategorie": "Profis",
+      "tint": "tint-orange",
+      "icon": "calendar",
+      "titel": "Löwen-Saisonstart und Dauerkartenverkauf",
+      "kurztext": "Nach dem Testspiel startet die Saison zu Hause gegen die BBC Coburg.",
+      "url": "/news/saisonstart-dauerkartenverkauf.html",
+      "topNews": true
+    },
+    {
+      "datum": "26.08.2025",
+      "kategorie": "Partner",
+      "tint": "tint-neutral",
+      "icon": "handshake",
+      "titel": "CATL verlängert Partnerschaft",
+      "kurztext": "Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.",
+      "url": "/news/catl-partnerschaft-verlaengert.html",
+      "topNews": true
+    },
+    {
+      "datum": "",
+      "kategorie": "Sommerinterview",
+      "tint": "tint-blue",
+      "icon": "mic",
+      "titel": "Sportdirektor Florian Gut im Interview (Teil 1–3)",
+      "kurztext": "Rückblick auf die Saison und Ausblick auf die kommende Spielzeit.",
+      "url": "/news/sommerinterview-florian-gut.html",
+      "topNews": true
+    }
+  ]
+}

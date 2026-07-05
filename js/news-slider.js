@@ -1,6 +1,8 @@
 /* Top-News-Slider im Homepage-Hero: wechselt alle 7 Sekunden zur nächsten News,
-   neue Meldung scrollt von unten nach oben rein; Dots erlauben Direktsprung. */
-document.querySelectorAll('[data-news-slider]').forEach(function (slider) {
+   neue Meldung scrollt von unten nach oben rein; Dots erlauben Direktsprung.
+   initNewsSlider wird explizit aufgerufen, nachdem die Slides aus
+   /data/news.json nachgeladen wurden (siehe Inline-Script in index.html). */
+function initNewsSlider(slider) {
   var slides = slider.querySelectorAll('.news-slide');
   var dots = slider.querySelectorAll('.news-dot');
   if (slides.length < 2) return;
@@ -37,4 +39,4 @@ document.querySelectorAll('[data-news-slider]').forEach(function (slider) {
   });
 
   restart();
-});
+}

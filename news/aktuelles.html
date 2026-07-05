@@ -6,8 +6,8 @@
 <title>Aktuelles — Basketball Löwen Erfurt</title>
 <meta name="description" content="Alle News der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783253602" />
-<link rel="stylesheet" href="/css/site.css?v=1783253602" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783254854" />
+<link rel="stylesheet" href="/css/site.css?v=1783254854" />
 </head>
 <body data-nav-group="news">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -22,54 +22,32 @@
     <span class="photo-note">Platzhalterbild — echtes Pressefoto folgt</span>
   </section>
   <section class="section">
-    <div class="container grid-3">
-      <div class="card hoverable">
-        <div class="card-media tint-violet"><i data-lucide="hammer" style="width:32px;height:32px"></i></div>
-        <div class="card-body">
-          <span class="card-label">19.06.2026 · Löwenpark</span>
-          <h3 style="font-size:18px">Wichtige Meilensteine für den Löwenpark</h3>
-          <p>Der Stadtrat hat die Kostensteigerung gedeckt — nach dem Richtfest im April ist die Eröffnung greifbar nah.</p>
-          <a class="card-link" href="/news/loewenpark-meilensteine.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-        </div>
-      </div>
-      <div class="card hoverable">
-        <div class="card-media tint-blue"><i data-lucide="trophy" style="width:32px;height:32px"></i></div>
-        <div class="card-body">
-          <span class="card-label">31.03.2026 · Profis</span>
-          <h3 style="font-size:18px">CATL Basketball Löwen beenden durchwachsene Saison</h3>
-          <p>Platz 12 in der ProB — Coach Florian Gut zieht Bilanz und blickt nach vorn.</p>
-        </div>
-      </div>
-      <div class="card hoverable">
-        <div class="card-media tint-orange"><i data-lucide="calendar" style="width:32px;height:32px"></i></div>
-        <div class="card-body">
-          <span class="card-label">30.10.2025 · Profis</span>
-          <h3 style="font-size:18px">Löwen-Saisonstart und Dauerkartenverkauf</h3>
-          <p>Nach dem Testspiel gegen Paderborn startet die Saison zu Hause gegen die BBC Coburg.</p>
-        </div>
-      </div>
-      <div class="card hoverable">
-        <div class="card-media tint-neutral"><i data-lucide="handshake" style="width:32px;height:32px"></i></div>
-        <div class="card-body">
-          <span class="card-label">26.08.2025 · Partner</span>
-          <h3 style="font-size:18px">CATL verlängert Partnerschaft</h3>
-          <p>Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.</p>
-        </div>
-      </div>
-      <div class="card hoverable">
-        <div class="card-media tint-blue"><i data-lucide="mic" style="width:32px;height:32px"></i></div>
-        <div class="card-body">
-          <span class="card-label">Sommerinterview</span>
-          <h3 style="font-size:18px">Sportdirektor Florian Gut im Interview (Teil 1–3)</h3>
-          <p>Rückblick auf die Saison und Ausblick auf die kommende Spielzeit.</p>
-        </div>
-      </div>
-    </div>
+    <div class="container grid-3" id="news-grid"></div>
   </section>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783253602"></script>
-<script src="/js/include.js?v=1783253602"></script>
+<script src="/js/nav.js?v=1783254854"></script>
+<script src="/js/include.js?v=1783254854"></script>
+<script>
+  // Alle Artikel aus /data/news.json rendern (ungefiltert — das "topNews"-Flag
+  // steuert nur den Top-News-Bereich auf der Startseite, nicht diese Übersicht).
+  fetch('/data/news.json').then(function (r) { return r.json(); }).then(function (d) {
+    var grid = document.getElementById('news-grid');
+    grid.innerHTML = d.artikel.map(function (a) {
+      var label = a.datum ? (a.datum + ' · ' + a.kategorie) : a.kategorie;
+      return '<div class="card hoverable">' +
+        '<div class="card-media ' + a.tint + '"><i data-lucide="' + a.icon + '" style="width:32px;height:32px"></i></div>' +
+        '<div class="card-body">' +
+          '<span class="card-label">' + label + '</span>' +
+          '<h3 style="font-size:18px">' + a.titel + '</h3>' +
+          '<p>' + a.kurztext + '</p>' +
+          '<a class="card-link" href="' + a.url + '">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    if (window.lucide) { lucide.createIcons(); }
+  });
+</script>
 </body>
 </html>
