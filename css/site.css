@@ -662,11 +662,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
 }
 .footer-bottom-col { display: flex; flex-direction: column; gap: 10px; }
-.footer-bottom-legal { font-size: 13px; color: rgba(255,255,255,.5); }
+.footer-bottom-legal { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
 .footer-bottom-donate { flex-direction: row; align-items: center; justify-content: flex-end; gap: 20px; }
 .footer-donate-lines {
-  display: flex; flex-direction: column; gap: 2px; text-align: left;
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
 }
 
