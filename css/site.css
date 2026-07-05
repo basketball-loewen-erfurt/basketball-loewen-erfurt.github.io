@@ -673,7 +673,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .footer-bottom-legal { grid-column: 1 / 3; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
 .footer-bottom-account { grid-column: 3 / 4; }
-.footer-bottom-donate-btn { grid-column: 4 / 5; }
+.footer-bottom-donate-btn { grid-column: 4 / 5; align-items: flex-start; }
 .footer-donate-lines {
   display: flex; flex-direction: column; gap: 4px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
