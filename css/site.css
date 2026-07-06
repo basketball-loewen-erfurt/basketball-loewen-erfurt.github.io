@@ -333,10 +333,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
   padding: 20px; background: linear-gradient(0deg, rgba(0,18,45,.92) 0%, rgba(0,18,45,.55) 45%, rgba(0,18,45,0) 80%);
 }
-.news-tile-tag {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: var(--weight-semibold);
-  color: var(--color-brand-orange); margin-bottom: 8px;
-}
 .news-tile-headline {
   font-family: var(--font-base); font-weight: var(--weight-extrabold); letter-spacing: -.01em;
   line-height: 1.15; margin: 0 0 10px; color: #fff;
@@ -550,16 +546,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    WERTE BAND
    ===================================================================== */
 .werte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; text-align: center; }
+.werte-item-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
 .werte-item .ic {
-  width: 56px; height: 56px; border-radius: var(--radius-lg); margin: 0 auto 14px;
+  width: 40px; height: 40px; border-radius: var(--radius-lg); flex-shrink: 0;
   border: 1px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center;
 }
-.werte-item .ic-logo {
-  height: 56px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
-}
-.werte-item .ic-logo img { max-height: 100%; max-width: 170px; object-fit: contain; }
-.werte-item .ic-logo.ic-logo-chip { background: #fff; border-radius: var(--radius-lg); padding: 8px 16px; }
-.werte-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 18px; letter-spacing: -.01em; margin-bottom: 8px; color: #fff; }
+.werte-item .ic i { width: 20px; height: 20px; }
+.werte-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 18px; letter-spacing: -.01em; margin: 0; color: #fff; }
 .werte-item p { font-size: 14px; color: rgba(255,255,255,.78); font-weight: var(--weight-light); }
 
 /* =====================================================================
