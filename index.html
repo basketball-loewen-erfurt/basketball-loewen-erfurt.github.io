@@ -6,8 +6,8 @@
 <title>Basketball Löwen Erfurt — Gemeinsam wachsen.</title>
 <meta name="description" content="Basketball Löwen Erfurt e.V. — Profis, Damen und Nachwuchs aus Thüringen. Trainingszeiten, Spielplan, Tickets, Probetraining und Mitgliedschaft." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783341756" />
-<link rel="stylesheet" href="/css/site.css?v=1783341756" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783350466" />
+<link rel="stylesheet" href="/css/site.css?v=1783350466" />
 </head>
 <body data-nav-group="">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -62,49 +62,54 @@
           <a class="btn btn-outline-orange" href="/news/newsletter.html">Newsletter abonnieren</a>
         </div>
       </div>
-      <div class="grid-3">
-        <a class="card hoverable" href="https://www.instagram.com/basketball.loewen/" target="_blank" rel="noopener" style="display:block;color:inherit;text-decoration:none">
-          <div class="card-media" style="height:100px;padding:0">
-            <img src="/assets/img/stock-lion.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
-          </div>
-          <div class="card-body">
-            <h3 style="font-size:18px;color:var(--color-brand-orange)">Instagram Basketball Löwen</h3>
-            <p>Einblicke hinter die Kulissen, Spieltag-Momente und mehr auf unserem Hauptkanal.</p>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0">
-              <img src="https://picsum.photos/seed/loewen-insta-1/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewen-insta-2/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewen-insta-3/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewen-insta-4/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-            </div>
-            <span class="card-link">Profil ansehen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+      <!-- ENTWURF: gemischtes News-Bento (interne News + beide Insta-Feeds) — Bilder/Captions
+           sind Platzhalter, bis der n8n-Workflow (data/homepage-feed.json) live liefert. -->
+      <div class="news-bento">
+        <a class="news-tile news-tile-featured" href="/news/260701_sommerinterview_gut.html">
+          <img src="/assets/img/team-prob.jpg" alt="" />
+          <div class="news-tile-overlay">
+            <span class="news-tile-tag">News · 01.07.2026</span>
+            <h3 class="news-tile-headline">Sportdirektor Florian Gut im Interview</h3>
+            <p class="news-tile-teaser">Vor dem Start in die neue Saison spricht Sportdirektor Florian Gut über Kaderplanung, Ziele und die Rolle des Nachwuchses.</p>
+            <span class="news-tile-link">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
           </div>
         </a>
-        <a class="card hoverable" href="https://www.instagram.com/loewenpark_erfurt/" target="_blank" rel="noopener" style="display:block;color:inherit;text-decoration:none">
-          <div class="card-media" style="height:100px;padding:0">
-            <img src="/assets/img/stock-sporthalle.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
-          </div>
-          <div class="card-body">
-            <h3 style="font-size:18px;color:var(--color-brand-orange)">Instagram LÖWENPARK</h3>
-            <p>Baufortschritt, Trainingsalltag und News rund um unser neues Zuhause.</p>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0">
-              <img src="https://picsum.photos/seed/loewenpark-insta-1/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewenpark-insta-2/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewenpark-insta-3/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-              <img src="https://picsum.photos/seed/loewenpark-insta-4/120/120" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block" />
-            </div>
-            <span class="card-link">Profil ansehen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        <a class="news-tile news-tile-side" href="https://www.instagram.com/basketball.loewen/" target="_blank" rel="noopener">
+          <img src="/assets/img/stock-lion.jpg" alt="" />
+          <div class="news-tile-overlay">
+            <span class="news-tile-tag"><i data-lucide="instagram" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px"></i>Instagram · Basketball Löwen</span>
+            <h3 class="news-tile-headline">Einblicke hinter die Kulissen vom Spieltag</h3>
+            <p class="news-tile-teaser">Mitten im Geschehen: Aufwärmen, Kabine, letzte Ansprache — exklusive Eindrücke direkt von den Löwen.</p>
+            <span class="news-tile-link">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
           </div>
         </a>
-        <div class="card hoverable" id="news-rotator-card">
-          <div class="card-media" style="height:100px;padding:0">
-            <img src="/assets/img/stock-zeitung.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <a class="news-tile news-tile-small" href="https://www.instagram.com/loewenpark_erfurt/" target="_blank" rel="noopener">
+          <img src="/assets/img/stock-sporthalle.jpg" alt="" />
+          <div class="news-tile-overlay">
+            <span class="news-tile-tag"><i data-lucide="instagram" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px"></i>Instagram · LÖWENPARK</span>
+            <h3 class="news-tile-headline">Baufortschritt am Südpark</h3>
+            <p class="news-tile-teaser">Die Kräne stehen, der Rohbau wächst — ein aktueller Blick auf die Baustelle.</p>
+            <span class="news-tile-link">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
           </div>
-          <div class="card-body">
-            <h3 style="font-size:18px;color:var(--color-brand-orange)">News</h3>
-            <p id="news-rotator-text">Lädt …</p>
-            <a class="card-link" id="news-rotator-link" href="/news/aktuelles.html">weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+        </a>
+        <a class="news-tile news-tile-small" href="/news/260619_loewenpark_meilenstein.html">
+          <img src="/assets/img/stock-zeitung.jpg" alt="" />
+          <div class="news-tile-overlay">
+            <span class="news-tile-tag">News · 19.06.2026</span>
+            <h3 class="news-tile-headline">Wichtige Meilensteine für den LÖWENPARK</h3>
+            <p class="news-tile-teaser">Der Zeitplan nimmt konkrete Formen an — ein Überblick über die nächsten Schritte.</p>
+            <span class="news-tile-link">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
           </div>
-        </div>
+        </a>
+        <a class="news-tile news-tile-small" href="/news/250826_catl_verlaengert.html">
+          <img src="/assets/img/team-damen.jpg" alt="" />
+          <div class="news-tile-overlay">
+            <span class="news-tile-tag">News · 26.08.2025</span>
+            <h3 class="news-tile-headline">CATL verlängert Partnerschaft</h3>
+            <p class="news-tile-teaser">Der Reifenhersteller bleibt den Löwen treu und verlängert sein Engagement als Trikotsponsor.</p>
+            <span class="news-tile-link">Weiterlesen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -164,20 +169,20 @@
   <section class="section bg-gradient-violet">
     <div class="container" style="text-align:center">
       <h2 class="t-h2" style="color:#fff">MEHR ALS BASKETBALL</h2>
-      <p class="t-body" style="color:rgba(255,255,255,.78);max-width:56ch;margin:12px auto 0">Die Basketball Löwen Erfurt stehen für kostenfreie und niedrigschwellige Bewegungsräume für Kinder und Jugendliche in Erfurt — unabhängig von Herkunft. Sport stärkt Selbstvertrauen, verändert Perspektiven und schafft Gemeinschaft.</p>
+      <p class="t-body" style="color:rgba(255,255,255,.78);max-width:56ch;margin:12px auto 0">Die Basketball Löwen Erfurt schaffen Bewegungsräume für Kinder und Jugendliche in Erfurt. Kostenfrei. Niedrigschwellig. Unabhängig von Herkunft. Sport stärkt Selbstvertrauen. Er verändert Perspektiven. Er schafft Gemeinschaft.</p>
       <div class="werte-grid">
         <div class="werte-item">
-          <div class="ic"><i data-lucide="sprout" style="color:#fff"></i></div>
+          <div class="ic-logo"><img src="/assets/logos-programme/baskidball-logo.png" alt="BasKIDball" /></div>
           <h3>BasKIDball</h3>
           <p>5× wöchentlich trainieren Kinder und Jugendliche mit Trainer:innen und Pädagog:innen — inklusive Hausaufgabenbetreuung, mit Profis als Vorbilder.</p>
         </div>
         <div class="werte-item">
-          <div class="ic"><i data-lucide="users" style="color:#fff"></i></div>
+          <div class="ic-logo ic-logo-chip"><img src="/assets/logos-programme/sportvernetzt-logo.png" alt="SPORT VERNETZT" /></div>
           <h3>SPORT VERNETZT</h3>
           <p>Unsere Coaches bringen Bewegung täglich direkt in Kitas und Schulen in Erfurt — spielerisch und ohne Hürden.</p>
         </div>
         <div class="werte-item">
-          <div class="ic"><i data-lucide="handshake" style="color:#fff"></i></div>
+          <div class="ic"><i data-lucide="accessibility" style="color:#fff"></i></div>
           <h3>WAID-Löwen</h3>
           <p>Menschen mit und ohne Behinderung trainieren gemeinsam, zweimal wöchentlich — 2026 erstmals bei einem nationalen Wettbewerb.</p>
         </div>
@@ -245,13 +250,11 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783341756"></script>
-<script src="/js/include.js?v=1783341756"></script>
-<script src="/js/season-config.js?v=1783341756"></script>
-<script src="/js/news-slider.js?v=1783341756"></script>
-<script src="/js/home-news.js?v=1783341756"></script>
-<script src="/js/home-next-game.js?v=1783341756"></script>
-<script src="/js/home-news-rotator.js?v=1783341756"></script>
-<script src="/js/home-hero-widget-toggle.js?v=1783341756"></script>
+<script src="/js/nav.js?v=1783350466"></script>
+<script src="/js/include.js?v=1783350466"></script>
+<script src="/js/season-config.js?v=1783350466"></script>
+<script src="/js/news-slider.js?v=1783350466"></script>
+<script src="/js/home-news.js?v=1783350466"></script>
+<script src="/js/home-next-game.js?v=1783350466"></script><script src="/js/home-hero-widget-toggle.js?v=1783350466"></script>
 </body>
 </html>

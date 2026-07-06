@@ -312,6 +312,57 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .card-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 13px; font-weight: var(--weight-semibold); color: var(--color-brand-orange); }
 .card-link:hover { text-decoration: underline; }
 
+/* News-Bento (Homepage) — 5 Kacheln, gemischt aus internen News + Instagram-Feeds:
+   Zeile 1 = 1 breite Kachel (2 Spalten) + 1 schmale; Zeile 2 = 3 gleich breite Kacheln.
+   Headline liegt als Overlay über dem Hero-Bild (Verlauf dunkel→transparent). */
+.news-bento {
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 320px 220px; gap: 20px;
+}
+.news-tile {
+  position: relative; display: block; overflow: hidden; border-radius: var(--radius-lg);
+  color: #fff; text-decoration: none; transition: transform var(--dur-fast) var(--ease-out);
+}
+.news-tile:hover { transform: translateY(-3px); }
+.news-tile-featured { grid-column: span 2; grid-row: 1; }
+.news-tile-side { grid-column: span 1; grid-row: 1; }
+.news-tile-small { grid-column: span 1; grid-row: 2; }
+.news-tile img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.news-tile-overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px; background: linear-gradient(0deg, rgba(0,18,45,.92) 0%, rgba(0,18,45,.55) 45%, rgba(0,18,45,0) 80%);
+}
+.news-tile-tag {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: var(--weight-semibold);
+  color: var(--color-brand-orange); margin-bottom: 8px;
+}
+.news-tile-headline {
+  font-family: var(--font-base); font-weight: var(--weight-extrabold); letter-spacing: -.01em;
+  line-height: 1.15; margin: 0 0 10px; color: #fff;
+}
+.news-tile-featured .news-tile-headline { font-size: 26px; }
+.news-tile-side .news-tile-headline, .news-tile-small .news-tile-headline { font-size: 17px; }
+.news-tile-teaser {
+  font-size: 13px; line-height: 1.45; color: rgba(255,255,255,.82); margin: 0 0 10px;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+}
+.news-tile-featured .news-tile-teaser { font-size: 14px; max-width: 46ch; }
+.news-tile-link {
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+  font-size: 13px; font-weight: var(--weight-semibold); color: #fff;
+}
+.news-tile-link:hover { text-decoration: underline; }
+@media (max-width: 1023px) {
+  .news-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 260px repeat(2, 200px); }
+  .news-tile-featured { grid-column: span 2; grid-row: 1; }
+  .news-tile-side, .news-tile-small { grid-column: span 1; grid-row: auto; }
+}
+@media (max-width: 599px) {
+  .news-bento { grid-template-columns: 1fr; grid-template-rows: repeat(5, 220px); }
+  .news-tile-featured, .news-tile-side, .news-tile-small { grid-column: span 1; grid-row: auto; }
+}
+
 /* Info tiles (homepage: next game / probetraining / tickets) */
 .info-tile {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -503,6 +554,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   width: 56px; height: 56px; border-radius: var(--radius-lg); margin: 0 auto 14px;
   border: 1px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center;
 }
+.werte-item .ic-logo {
+  height: 56px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+}
+.werte-item .ic-logo img { max-height: 100%; max-width: 170px; object-fit: contain; }
+.werte-item .ic-logo.ic-logo-chip { background: #fff; border-radius: var(--radius-lg); padding: 8px 16px; }
 .werte-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 18px; letter-spacing: -.01em; margin-bottom: 8px; color: #fff; }
 .werte-item p { font-size: 14px; color: rgba(255,255,255,.78); font-weight: var(--weight-light); }
 
