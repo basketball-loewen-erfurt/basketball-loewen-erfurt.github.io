@@ -462,6 +462,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
+/* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
+.hero-photo.hero-profis {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/team-prob.jpg');
+  background-size: cover; background-position: center 20%;
+}
+.hero-photo.hero-profis .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+
 /* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
 .hero-photo.hero-lg {
   min-height: 460px;
@@ -865,4 +876,46 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   .footer-bottom-donate-btn { grid-column: 1; margin-top: 6px; }
   .footer-donate-lines { text-align: center; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =====================================================================
+   Panini-Kader (Team-Seiten) — Spieler-/Trainerkacheln im Sticker-Stil.
+   Fehlt ein Bild/Spieler, bleibt die Kachel als "leerer Sticker" (is-empty)
+   mit gestricheltem Rahmen und Fragezeichen stehen.
+   ===================================================================== */
+.panini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.panini-grid-coaches { max-width: 700px; }
+.panini-card {
+  position: relative; display: flex; flex-direction: column; aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--color-brand-navy);
+  background: #fff;
+}
+.panini-card-photo {
+  flex: 1; position: relative; display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-violet); overflow: hidden;
+}
+.panini-card-number {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 60px;
+  color: rgba(255,255,255,.16); line-height: 1;
+}
+.panini-card-photo > i { position: relative; z-index: 1; width: 30px; height: 30px; color: rgba(255,255,255,.55); }
+.panini-card-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.panini-card-photo > img.photo-hover { opacity: 0; transition: opacity var(--dur-fast) var(--ease-out); }
+.panini-card:hover .panini-card-photo > img.photo-default { opacity: 0; }
+.panini-card:hover .panini-card-photo > img.photo-hover { opacity: 1; }
+.panini-card-badge {
+  position: absolute; top: 6px; left: 6px; z-index: 2; background: var(--color-brand-orange); color: #fff;
+  font-weight: var(--weight-extrabold); font-size: 12px; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.panini-card-info { padding: 8px 6px; text-align: center; border-top: 2px solid var(--color-brand-navy); }
+.panini-card-name { font-weight: var(--weight-extrabold); font-size: 13px; line-height: 1.2; color: var(--color-brand-navy); }
+.panini-card-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.panini-card.is-empty .panini-card-name { color: var(--text-muted); font-weight: var(--weight-semibold); }
+@media (max-width: 1023px) {
+  .panini-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 599px) {
+  .panini-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
