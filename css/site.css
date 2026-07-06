@@ -891,7 +891,7 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
    mit gestricheltem Rahmen und Fragezeichen stehen.
    ===================================================================== */
 .panini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.panini-grid-coaches { max-width: 700px; }
+.panini-grid-coaches { grid-template-columns: repeat(5, 1fr); }
 .panini-card {
   position: relative; display: flex; flex-direction: column; aspect-ratio: 3 / 4;
   border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--color-brand-navy);
