@@ -309,7 +309,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   letter-spacing: -.01em; font-size: 20px; margin: 0 0 8px;
 }
 .card-body p { font-size: 14px; color: var(--text-secondary); font-weight: var(--weight-light); line-height: 1.5; margin-bottom: 12px; }
-.card-link { font-size: 13px; font-weight: var(--weight-semibold); color: var(--color-brand-orange); }
+.card-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 13px; font-weight: var(--weight-semibold); color: var(--color-brand-orange); }
 .card-link:hover { text-decoration: underline; }
 
 /* Info tiles (homepage: next game / probetraining / tickets) */
