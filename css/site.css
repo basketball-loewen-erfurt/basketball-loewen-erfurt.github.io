@@ -469,12 +469,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
-/* Hero-Variante für den Fanshop — Kind im Vereins-Shirt an der Hand eines Spielers */
+/* Hero-Variante für den Fanshop — freies Stockfoto (Platzhalter, wird später gegen echtes Foto getauscht) */
 .hero-photo.hero-fanshop {
   background:
-    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
-    url('/assets/img/hero-einlaufkind.jpg');
-  background-size: cover; background-position: center 55%;
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.6) 38%, rgba(253,246,238,.1) 62%),
+    url('/assets/img/stock-fanshop.jpg');
+  background-size: cover; background-position: center 60%;
 }
 .hero-photo.hero-fanshop .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
