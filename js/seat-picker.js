@@ -210,7 +210,9 @@
         '<span>' + tarifLabel + ' <strong>' + price + ' €</strong></span>' +
         '<span class="seatplan-stepper">' +
           '<button type="button" data-step="-1" data-zone="' + zoneId + '" data-tarif="' + tarif + '" aria-label="weniger ' + tarifLabel + '">−</button>' +
-          '<span data-count="' + zoneId + '-' + tarif + '">0</span>' +
+          '<input type="number" inputmode="numeric" min="0" max="' + freeCount + '" value="0" ' +
+            'data-count="' + zoneId + '-' + tarif + '" data-zone="' + zoneId + '" data-tarif="' + tarif + '" ' +
+            'aria-label="Anzahl ' + tarifLabel + '">' +
           '<button type="button" data-step="1" data-zone="' + zoneId + '" data-tarif="' + tarif + '" aria-label="mehr ' + tarifLabel + '">+</button>' +
         '</span>';
       return row;
@@ -227,24 +229,38 @@
         self._stepBlock(zoneId, zoneLabel, category, priceInfo, this.dataset.tarif, delta, freeCount);
       });
     });
+    box.querySelectorAll('input[data-count]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var value = parseInt(this.value, 10);
+        if (isNaN(value)) value = 0;
+        self._setBlockCount(zoneId, zoneLabel, category, priceInfo, this.dataset.tarif, value, freeCount);
+      });
+    });
 
     return box;
   };
 
   SeatPicker.prototype._stepBlock = function (zoneId, zoneLabel, category, priceInfo, tarif, delta, freeCount) {
     var counts = this.blockCounts[zoneId] || { normal: 0, ermaessigt: 0 };
-    var totalSelected = counts.normal + counts.ermaessigt;
-    var next = counts[tarif] + delta;
-    if (next < 0) return;
-    if (delta > 0 && totalSelected >= freeCount) return;
+    this._setBlockCount(zoneId, zoneLabel, category, priceInfo, tarif, counts[tarif] + delta, freeCount);
+  };
+
+  /* Direkte Zahleneingabe im Stepper — ermöglicht Bulk-Buchungen (z. B. 50
+     Tickets auf einmal), ohne 50× auf "+" klicken zu müssen. Wert wird auf
+     [0, verbleibende freie Plätze im Block minus bereits anderer Tarif] begrenzt. */
+  SeatPicker.prototype._setBlockCount = function (zoneId, zoneLabel, category, priceInfo, tarif, value, freeCount) {
+    var counts = this.blockCounts[zoneId] || { normal: 0, ermaessigt: 0 };
+    var otherTarif = tarif === 'normal' ? 'ermaessigt' : 'normal';
+    var maxForTarif = Math.max(0, freeCount - (counts[otherTarif] || 0));
+    var next = Math.max(0, Math.min(value, maxForTarif));
     counts[tarif] = next;
     counts.zoneLabel = zoneLabel;
     counts.category = category;
     counts.priceInfo = priceInfo;
     this.blockCounts[zoneId] = counts;
 
-    var span = this.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
-    if (span) span.textContent = String(next);
+    var input = this.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
+    if (input) input.value = String(next);
     this._renderCart();
   };
 
@@ -382,10 +398,10 @@
           var moved = counts[oldTarif];
           counts[oldTarif] = 0;
           counts[newTarif] = (counts[newTarif] || 0) + moved;
-          var oldSpan = self.root.querySelector('[data-count="' + zoneId + '-' + oldTarif + '"]');
-          if (oldSpan) oldSpan.textContent = '0';
-          var newSpan = self.root.querySelector('[data-count="' + zoneId + '-' + newTarif + '"]');
-          if (newSpan) newSpan.textContent = String(counts[newTarif]);
+          var oldInput = self.root.querySelector('[data-count="' + zoneId + '-' + oldTarif + '"]');
+          if (oldInput) oldInput.value = '0';
+          var newInput = self.root.querySelector('[data-count="' + zoneId + '-' + newTarif + '"]');
+          if (newInput) newInput.value = String(counts[newTarif]);
           self._renderCart();
         });
       });
@@ -394,8 +410,8 @@
           var zoneId = this.dataset.blockRemove;
           var tarif = this.dataset.blockTarif;
           self.blockCounts[zoneId][tarif] = 0;
-          var span = self.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
-          if (span) span.textContent = '0';
+          var input = self.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
+          if (input) input.value = '0';
           self._renderCart();
         });
       });

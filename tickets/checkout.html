@@ -10,16 +10,17 @@
 <link rel="stylesheet" href="/css/site.css?v=1783432726" />
 <link rel="stylesheet" href="/css/seat-picker.css?v=1" />
 <style>
-  .checkout-grid { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
-  @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } .checkout-grid > *:last-child { order: -1; } }
+  .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
   .field { margin-bottom: 10px; }
   .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
-  .field input {
+  .field input, .field textarea {
     width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-md);
     font-family: inherit; font-size: 14px;
   }
-  .field input::placeholder { color: var(--text-muted); opacity: .7; }
-  .field input:focus { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
+  .field textarea { resize: vertical; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); opacity: .7; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .billing-address {
     border: 1px solid var(--border); border-radius: var(--radius-md);
@@ -34,6 +35,8 @@
   .billing-address summary::before { content: '+'; font-size: 16px; color: var(--color-brand-orange); }
   .billing-address[open] summary::before { content: '−'; }
   .billing-address .billing-address-fields { padding: 2px 0 12px; }
+  .field-checkbox { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 4px 0 12px; cursor: pointer; }
+  .field-checkbox input { width: 16px; height: 16px; accent-color: var(--color-brand-orange); flex-shrink: 0; }
 
   .process-chain { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin: 24px 0 4px; flex-wrap: wrap; }
   .process-step { display: flex; align-items: center; }
@@ -48,11 +51,18 @@
   .process-step.active .label { color: var(--text-primary); }
   .process-connector { width: 32px; height: 2px; background: var(--border-strong); margin: 0 8px; align-self: center; }
   .process-connector.done { background: var(--color-brand-orange); }
-  .badge-product-type {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: var(--radius-full); background: var(--color-orange-50); color: var(--color-brand-orange);
-    margin-bottom: 8px;
+  .voucher-box { margin: 14px 0; }
+  .voucher-input-row { display: flex; gap: 8px; }
+  .voucher-input-row input {
+    flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    font-family: inherit; font-size: 13px; text-transform: uppercase;
   }
+  .voucher-input-row input::placeholder { text-transform: none; color: var(--text-muted); opacity: .7; }
+  .voucher-input-row input:focus { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
+  .voucher-message { font-size: 12px; margin: 6px 0 0; }
+  .voucher-message.success { color: #1B8A3D; }
+  .voucher-message.error { color: #b3392c; }
+  .seatplan-cart-item.discount { color: #1B8A3D; }
 </style>
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
@@ -84,6 +94,22 @@
       </div>
 
       <div id="checkout-content" class="checkout-grid" style="display:none">
+        <div class="card" style="padding:24px;position:sticky;top:20px">
+          <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
+          <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="checkout-event-label"></p>
+          <div id="checkout-lines"></div>
+
+          <div class="voucher-box">
+            <div class="voucher-input-row">
+              <input type="text" id="voucher-input" placeholder="Gutschein-Code">
+              <button type="button" class="btn btn-ghost btn-sm" id="voucher-apply">Einlösen</button>
+            </div>
+            <p class="voucher-message" id="voucher-message"></p>
+          </div>
+
+          <div class="seatplan-cart-total"><span>Gesamt</span><span id="checkout-total">0 €</span></div>
+        </div>
+
         <div class="card" style="padding:24px">
           <h3 class="t-h4" style="margin-bottom:14px">Deine Daten</h3>
           <form id="checkout-form">
@@ -100,6 +126,11 @@
                 <label for="cf-nachname">Nachname</label>
                 <input type="text" id="cf-nachname" name="nachname" autocomplete="family-name">
               </div>
+            </div>
+
+            <div class="field">
+              <label for="cf-notiz">Notiz zur Bestellung</label>
+              <textarea id="cf-notiz" name="notiz" rows="2" placeholder="z. B. Schulklasse 3c, Grundschule Gispersleben"></textarea>
             </div>
 
             <details class="billing-address">
@@ -123,23 +154,16 @@
                     <input type="text" id="cf-ort" name="ort" autocomplete="address-level2" placeholder="Erfurt">
                   </div>
                 </div>
-                <div class="field">
-                  <label for="cf-land">Land</label>
-                  <input type="text" id="cf-land" name="land" autocomplete="country-name" value="Deutschland">
-                </div>
               </div>
             </details>
 
+            <label class="field-checkbox">
+              <input type="checkbox" id="cf-newsletter" name="newsletter">
+              <span>Newsletter abonnieren</span>
+            </label>
+
             <button class="btn btn-primary btn-sm" type="submit" style="width:100%;justify-content:center;margin-top:8px">Weiter zur Zahlung</button>
           </form>
-        </div>
-
-        <div class="card" style="padding:24px;position:sticky;top:20px">
-          <span class="badge-product-type" id="checkout-product-type"></span>
-          <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
-          <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="checkout-event-label"></p>
-          <div id="checkout-lines"></div>
-          <div class="seatplan-cart-total"><span>Gesamt</span><span id="checkout-total">0 €</span></div>
         </div>
       </div>
 
@@ -164,16 +188,75 @@
     }
     document.getElementById('checkout-content').style.display = 'grid';
     document.getElementById('checkout-event-label').textContent = cart.eventLabel;
-    document.getElementById('checkout-product-type').textContent = cart.productType === 'dauerkarte' ? 'Dauerkarte' : 'Einzelticket';
+
+    /* Gutschein-Codes sind noch nicht an pretix angebunden — feste Testcodes,
+       damit sich der Ablauf (einlösen, Rabattzeile, entfernen) schon jetzt echt
+       durchklicken lässt. */
+    var MOCK_VOUCHERS = {
+      'LOEWEN10': { type: 'percent', value: 10, label: 'LOEWEN10 (10 %)' },
+      'WILLKOMMEN5': { type: 'fixed', value: 5, label: 'WILLKOMMEN5 (5 €)' }
+    };
+    var appliedVoucher = null;
 
     var linesEl = document.getElementById('checkout-lines');
-    linesEl.innerHTML = cart.lines.map(function (l) {
-      return '<div class="seatplan-cart-item">' +
-        '<div>' + (l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
-        '<div class="seatplan-cart-item-right"><span>' + l.lineTotal + ' €</span></div>' +
-      '</div>';
-    }).join('');
-    document.getElementById('checkout-total').textContent = cart.total + ' €';
+    var totalEl = document.getElementById('checkout-total');
+    var voucherInput = document.getElementById('voucher-input');
+    var voucherMsg = document.getElementById('voucher-message');
+    var voucherBtn = document.getElementById('voucher-apply');
+
+    function renderSummary() {
+      var html = cart.lines.map(function (l) {
+        return '<div class="seatplan-cart-item">' +
+          '<div>' + (l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
+          '<div class="seatplan-cart-item-right"><span>' + l.lineTotal + ' €</span></div>' +
+        '</div>';
+      }).join('');
+
+      var total = cart.total;
+      if (appliedVoucher) {
+        var discount = appliedVoucher.type === 'percent'
+          ? Math.round(cart.total * appliedVoucher.value) / 100
+          : Math.min(appliedVoucher.value, cart.total);
+        total = Math.max(0, cart.total - discount);
+        html += '<div class="seatplan-cart-item discount">' +
+          '<div>Gutschein ' + appliedVoucher.label + '</div>' +
+          '<div class="seatplan-cart-item-right"><span>−' + discount + ' €</span>' +
+          '<button type="button" id="voucher-remove">entfernen</button></div>' +
+        '</div>';
+      }
+      linesEl.innerHTML = html;
+      totalEl.textContent = total + ' €';
+
+      var removeBtn = document.getElementById('voucher-remove');
+      if (removeBtn) {
+        removeBtn.addEventListener('click', function () {
+          appliedVoucher = null;
+          voucherInput.value = '';
+          voucherMsg.textContent = '';
+          voucherMsg.className = 'voucher-message';
+          renderSummary();
+        });
+      }
+    }
+    renderSummary();
+
+    voucherBtn.addEventListener('click', function () {
+      var code = voucherInput.value.trim().toUpperCase();
+      if (!code) return;
+      var voucher = MOCK_VOUCHERS[code];
+      if (voucher) {
+        appliedVoucher = voucher;
+        voucherMsg.textContent = 'Gutschein eingelöst.';
+        voucherMsg.className = 'voucher-message success';
+        renderSummary();
+      } else {
+        voucherMsg.textContent = 'Dieser Gutschein-Code ist ungültig oder abgelaufen.';
+        voucherMsg.className = 'voucher-message error';
+      }
+    });
+    voucherInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); voucherBtn.click(); }
+    });
 
     document.getElementById('checkout-form').addEventListener('submit', function (e) {
       e.preventDefault();

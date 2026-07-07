@@ -714,6 +714,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   transition: background var(--dur-fast) var(--ease-out);
 }
 .discount-ribbon:hover { background: var(--action-primary-hover); }
+.discount-ribbon-left {
+  left: -58px; right: auto; top: 18px; transform: rotate(-45deg); cursor: default; white-space: nowrap;
+  padding: 6px 46px; font-size: 11px;
+}
+.discount-ribbon-left:hover { background: var(--color-brand-orange); }
 
 /* Sitzplan links / Kaufbox rechts auf der Ticket-Detailseite */
 .ticket-detail-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 32px; align-items: start; }
@@ -809,6 +814,7 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
 .footer-col a:hover { color: var(--color-brand-orange); text-decoration: none; }
 .footer-donate-btn { display: inline-flex; align-items: center; color: #fff; }
 .footer-donate-btn:hover { color: #fff; }
+.footer-donate-btn-icon { display: none; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.12); padding: 32px 0;
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; align-items: start;
@@ -863,6 +869,7 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   .footer-bottom-donate-btn { grid-column: 3; margin-top: 0; align-self: center; }
   .footer-donate-btn { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: var(--radius-full); }
   .footer-donate-btn-text { display: none; }
+  .footer-donate-btn-icon { display: inline-block; }
 }
 
 /* Genug Platz für Logo + 3 Nav-Punkte + „Mehr" einzeilig (schmalere Tablets sonst:

@@ -1,11 +1,5 @@
 /* Styles für die wiederverwendbare Sitzplatzwahl (js/seat-picker.js).
    Nutzt die bestehenden Marken-Tokens aus colors_and_type.css. */
-.earlybird-banner {
-  background: var(--color-brand-orange); color: #fff; font-size: 13px; font-weight: 500;
-  padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: 14px;
-  display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; line-height: 1.4;
-}
-.earlybird-banner strong { font-weight: 800; }
 .banner-note {
   background: #fff3e6;
   border: 1px solid #f3c893;
@@ -62,7 +56,12 @@
   background: #fff; font-size: 13px; line-height: 1; cursor: pointer; padding: 0;
 }
 .seatplan-stepper button:hover { background: #f2f3f6; }
-.seatplan-stepper span[data-count] { min-width: 14px; text-align: center; font-weight: 700; }
+.seatplan-stepper input[data-count] {
+  width: 34px; text-align: center; font-weight: 700; font-family: inherit; font-size: 11px;
+  border: 1px solid #d7dbe3; border-radius: 4px; padding: 2px 0; -moz-appearance: textfield;
+}
+.seatplan-stepper input[data-count]::-webkit-outer-spin-button,
+.seatplan-stepper input[data-count]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
 /* Dauerkarte: kompaktes Kauf-Grid (Vorschaubild | Preise | Warenkorb), das große
    interaktive Sitzplan-Popup öffnet sich erst per Klick auf das Vorschaubild. */
