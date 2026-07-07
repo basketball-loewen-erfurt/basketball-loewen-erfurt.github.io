@@ -18,14 +18,14 @@
         '<span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="calendar" style="width:14px;height:14px"></i>' + dateStr + '</span>' +
         '<span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="clock" style="width:14px;height:14px"></i>' + g.s.zeit + ' Uhr · Riethsporthalle</span>' +
       '</p>' +
-      '<a class="btn btn-outline-orange btn-sm" href="/tickets.html">Tickets sichern <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
+      '<a class="btn btn-outline-orange btn-sm" href="' + (g.s.ticketUrl || '/tickets.html') + '">Tickets sichern <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
     '</div>';
   }
 
   var card = document.getElementById('next-game-card');
   if (!card) return;
 
-  fetch('/data/heimspiele.json').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/data/heimspiele.json?v=1783432726').then(function (r) { return r.json(); }).then(function (d) {
     var today = new Date();
     today.setHours(0, 0, 0, 0);
 

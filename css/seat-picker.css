@@ -1,5 +1,11 @@
 /* Styles für die wiederverwendbare Sitzplatzwahl (js/seat-picker.js).
    Nutzt die bestehenden Marken-Tokens aus colors_and_type.css. */
+.earlybird-banner {
+  background: var(--color-brand-orange); color: #fff; font-size: 13px; font-weight: 500;
+  padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; line-height: 1.4;
+}
+.earlybird-banner strong { font-weight: 800; }
 .banner-note {
   background: #fff3e6;
   border: 1px solid #f3c893;

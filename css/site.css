@@ -854,6 +854,15 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   .main-nav-bar .container { position: relative; }
   .more-btn { display: inline-flex; }
   .drawer-utility-section { display: none; }
+
+  /* Footer wird hier zweispaltig — der Spenden-Button bekommt eine eigene schmale
+     dritte Spalte, statt unter das Spendenkonto zu rutschen, und schrumpft dafür
+     auf ein quadratisches Herz-Icon ohne Text. */
+  .footer-bottom { grid-template-columns: 1.3fr 1fr auto; }
+  .footer-bottom-account { grid-column: 2; }
+  .footer-bottom-donate-btn { grid-column: 3; margin-top: 0; align-self: center; }
+  .footer-donate-btn { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: var(--radius-full); }
+  .footer-donate-btn-text { display: none; }
 }
 
 /* Genug Platz für Logo + 3 Nav-Punkte + „Mehr" einzeilig (schmalere Tablets sonst:

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kasse — Basketball Löwen Erfurt</title>
+<title>Warenkorb — Basketball Löwen Erfurt</title>
 <meta name="description" content="Käuferdaten für deine Bestellung bei den Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css?v=1783432726" />
@@ -12,14 +12,47 @@
 <style>
   .checkout-grid { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
   @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } .checkout-grid > *:last-child { order: -1; } }
-  .field { margin-bottom: 16px; }
-  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .field { margin-bottom: 10px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
   .field input {
-    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-md);
     font-family: inherit; font-size: 14px;
   }
+  .field input::placeholder { color: var(--text-muted); opacity: .7; }
   .field input:focus { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
-  .field .hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .billing-address {
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 2px 12px; margin-bottom: 12px;
+  }
+  .billing-address summary {
+    padding: 8px 0; font-size: 13px; font-weight: 600; cursor: pointer; list-style: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .billing-address summary .t-caption { font-weight: 400; }
+  .billing-address summary::-webkit-details-marker { display: none; }
+  .billing-address summary::before { content: '+'; font-size: 16px; color: var(--color-brand-orange); }
+  .billing-address[open] summary::before { content: '−'; }
+  .billing-address .billing-address-fields { padding: 2px 0 12px; }
+
+  .process-chain { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin: 24px 0 4px; flex-wrap: wrap; }
+  .process-step { display: flex; align-items: center; }
+  .process-step .dot {
+    width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; background: #fff; border: 2px solid var(--border-strong); color: var(--text-muted); flex-shrink: 0;
+  }
+  .process-step .label { margin-left: 8px; font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+  .process-step.done .dot { background: var(--color-brand-orange); border-color: var(--color-brand-orange); color: #fff; }
+  .process-step.done .label { color: var(--text-primary); }
+  .process-step.active .dot { border-color: var(--color-brand-orange); color: var(--color-brand-orange); }
+  .process-step.active .label { color: var(--text-primary); }
+  .process-connector { width: 32px; height: 2px; background: var(--border-strong); margin: 0 8px; align-self: center; }
+  .process-connector.done { background: var(--color-brand-orange); }
+  .badge-product-type {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: var(--radius-full); background: var(--color-orange-50); color: var(--color-brand-orange);
+    margin-bottom: 8px;
+  }
 </style>
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
@@ -27,15 +60,18 @@
 <div id="site-header-placeholder"></div>
 <main id="main">
 
-  <section class="hero-photo hero-tickets">
-    <div class="container">
-      <div class="hero-lg-grid">
-        <div>
-          <span class="eyebrow">Kasse</span>
-          <h1 style="font-size:clamp(28px,4.5vw,48px);white-space:normal">Käuferdaten</h1>
-          <p class="lead">Fast geschafft — nur noch deine Daten für die Bestellbestätigung.</p>
-        </div>
-        <div></div>
+  <section class="section-sm bg-subtle" style="padding-bottom:28px">
+    <div class="container" style="text-align:center">
+      <span class="eyebrow">Warenkorb</span>
+      <h1 class="t-h2" style="margin:6px 0 20px">Käuferdaten</h1>
+      <div class="process-chain">
+        <div class="process-step done"><span class="dot">✓</span><span class="label">Produktauswahl</span></div>
+        <div class="process-connector done"></div>
+        <div class="process-step active"><span class="dot">2</span><span class="label">Käuferdaten</span></div>
+        <div class="process-connector"></div>
+        <div class="process-step"><span class="dot">3</span><span class="label">Zahlung</span></div>
+        <div class="process-connector"></div>
+        <div class="process-step"><span class="dot">4</span><span class="label">Bestätigung</span></div>
       </div>
     </div>
   </section>
@@ -49,32 +85,57 @@
 
       <div id="checkout-content" class="checkout-grid" style="display:none">
         <div class="card" style="padding:24px">
-          <h3 class="t-h4" style="margin-bottom:4px">Deine Daten</h3>
-          <p class="t-caption" style="color:var(--text-muted);margin-bottom:18px">Die E-Mail-Adresse brauchen wir, um dir Ticket und Rechnung zuzuschicken.</p>
+          <h3 class="t-h4" style="margin-bottom:14px">Deine Daten</h3>
           <form id="checkout-form">
             <div class="field">
-              <label for="cf-vorname">Vorname *</label>
-              <input type="text" id="cf-vorname" name="vorname" required autocomplete="given-name">
-            </div>
-            <div class="field">
-              <label for="cf-nachname">Nachname</label>
-              <input type="text" id="cf-nachname" name="nachname" autocomplete="family-name">
-            </div>
-            <div class="field">
-              <label for="cf-firma">Firma / abweichender Rechnungsname</label>
-              <input type="text" id="cf-firma" name="firma" autocomplete="organization">
-              <p class="hint">Nur ausfüllen, falls die Rechnung auf einen anderen Namen oder eine Firma laufen soll.</p>
-            </div>
-            <div class="field">
               <label for="cf-email">E-Mail *</label>
-              <input type="email" id="cf-email" name="email" required autocomplete="email">
-              <p class="hint">Hierhin schicken wir Ticket, Bestätigung und Rechnung.</p>
+              <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="für Ticket, Bestätigung & Rechnung">
             </div>
+            <div class="field field-row">
+              <div>
+                <label for="cf-vorname">Vorname</label>
+                <input type="text" id="cf-vorname" name="vorname" autocomplete="given-name">
+              </div>
+              <div>
+                <label for="cf-nachname">Nachname</label>
+                <input type="text" id="cf-nachname" name="nachname" autocomplete="family-name">
+              </div>
+            </div>
+
+            <details class="billing-address">
+              <summary>Rechnungsadresse eingeben <span class="t-caption">(optional)</span></summary>
+              <div class="billing-address-fields">
+                <div class="field">
+                  <label for="cf-firma">Firma / Unternehmen (falls abweichend)</label>
+                  <input type="text" id="cf-firma" name="firma" autocomplete="organization" placeholder="z. B. für Firmenrechnung">
+                </div>
+                <div class="field">
+                  <label for="cf-strasse">Straße und Hausnummer</label>
+                  <input type="text" id="cf-strasse" name="strasse" autocomplete="street-address" placeholder="Musterstraße 1">
+                </div>
+                <div class="field field-row">
+                  <div>
+                    <label for="cf-plz">PLZ</label>
+                    <input type="text" id="cf-plz" name="plz" autocomplete="postal-code" inputmode="numeric" placeholder="99089">
+                  </div>
+                  <div>
+                    <label for="cf-ort">Ort</label>
+                    <input type="text" id="cf-ort" name="ort" autocomplete="address-level2" placeholder="Erfurt">
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="cf-land">Land</label>
+                  <input type="text" id="cf-land" name="land" autocomplete="country-name" value="Deutschland">
+                </div>
+              </div>
+            </details>
+
             <button class="btn btn-primary btn-sm" type="submit" style="width:100%;justify-content:center;margin-top:8px">Weiter zur Zahlung</button>
           </form>
         </div>
 
         <div class="card" style="padding:24px;position:sticky;top:20px">
+          <span class="badge-product-type" id="checkout-product-type"></span>
           <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="checkout-event-label"></p>
           <div id="checkout-lines"></div>
@@ -103,6 +164,7 @@
     }
     document.getElementById('checkout-content').style.display = 'grid';
     document.getElementById('checkout-event-label').textContent = cart.eventLabel;
+    document.getElementById('checkout-product-type').textContent = cart.productType === 'dauerkarte' ? 'Dauerkarte' : 'Einzelticket';
 
     var linesEl = document.getElementById('checkout-lines');
     linesEl.innerHTML = cart.lines.map(function (l) {
