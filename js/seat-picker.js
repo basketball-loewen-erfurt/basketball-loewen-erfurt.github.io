@@ -27,6 +27,9 @@
     this.totalEl = opts.totalEl;
     this.ctaEl = opts.ctaEl;
     this.onContinue = opts.onContinue || function () {};
+    this.nachwuchsBeitrag = !!opts.nachwuchsBeitrag; // Pauschale pro Bestellung, standardmäßig an, unabhängig von Anzahl Plätze/Tickets
+    this.nachwuchsAmount = opts.nachwuchsAmount || 2;
+    this.nachwuchsChecked = true;
     this.selected = {}; // seat_guid -> {...} (Modus "seats")
     this.blockCounts = {}; // zone_id -> { normal: n, ermaessigt: n } (Modus "blocks")
     this._load();
@@ -207,6 +210,25 @@
     this._renderCart();
   };
 
+  /* Nachwuchsbeitrag ist eine Pauschale pro Bestellung (nicht pro Platz/Ticket),
+     standardmäßig aktiviert, mit Opt-out-Checkbox. Wird nur angezeigt, wenn der
+     Warenkorb nicht leer ist. Gemeinsam für "seats"- und "blocks"-Modus. */
+  SeatPicker.prototype._appendNachwuchsRow = function () {
+    var self = this;
+    if (!this.nachwuchsBeitrag) return;
+    var nwRow = document.createElement('label');
+    nwRow.className = 'seatplan-nachwuchs-row';
+    nwRow.innerHTML =
+      '<input type="checkbox" id="seatplan-nachwuchs-checkbox"' + (this.nachwuchsChecked ? ' checked' : '') + '>' +
+      '<span>Unterstützung für den Nachwuchs</span>' +
+      '<strong>' + (this.nachwuchsChecked ? this.nachwuchsAmount : 0) + ' €</strong>';
+    this.cartEl.appendChild(nwRow);
+    nwRow.querySelector('input').addEventListener('change', function () {
+      self.nachwuchsChecked = this.checked;
+      self._renderCart();
+    });
+  };
+
   SeatPicker.prototype._renderCart = function () {
     if (this.mode === 'blocks') { this._renderCartBlocks(); return; }
 
@@ -233,6 +255,8 @@
           '<button type="button" data-remove="' + guid + '">entfernen</button></div>';
         self.cartEl.appendChild(row);
       });
+
+      this._appendNachwuchsRow();
       this.ctaEl.disabled = false;
 
       this.cartEl.querySelectorAll('[data-tarif]').forEach(function (sel) {
@@ -256,6 +280,7 @@
     }
 
     var total = guids.reduce(function (sum, guid) { return sum + self.selected[guid].price; }, 0);
+    if (this.nachwuchsBeitrag && this.nachwuchsChecked && guids.length > 0) total += this.nachwuchsAmount;
     this.totalEl.textContent = total + ' €';
   };
 
@@ -267,6 +292,7 @@
       if (c.normal > 0) lines.push({ zoneId: zoneId, tarif: 'normal', label: 'Normalpreis', count: c.normal, price: c.priceInfo.normal, zoneLabel: c.zoneLabel });
       if (c.ermaessigt > 0) lines.push({ zoneId: zoneId, tarif: 'ermaessigt', label: 'Ermäßigt', count: c.ermaessigt, price: c.priceInfo.ermaessigt, zoneLabel: c.zoneLabel });
     });
+    var ticketCount = lines.reduce(function (sum, l) { return sum + l.count; }, 0);
 
     if (lines.length === 0) {
       this.cartEl.innerHTML = '<div class="seatplan-cart-empty">Noch keine Tickets ausgewählt.</div>';
@@ -282,6 +308,8 @@
           '<button type="button" data-block-remove="' + l.zoneId + '" data-block-tarif="' + l.tarif + '">entfernen</button></div>';
         self.cartEl.appendChild(row);
       });
+
+      this._appendNachwuchsRow();
       this.ctaEl.disabled = false;
 
       this.cartEl.querySelectorAll('[data-block-remove]').forEach(function (b) {
@@ -297,6 +325,7 @@
     }
 
     var total = lines.reduce(function (sum, l) { return sum + l.count * l.price; }, 0);
+    if (this.nachwuchsBeitrag && this.nachwuchsChecked && ticketCount > 0) total += this.nachwuchsAmount;
     this.totalEl.textContent = total + ' €';
   };
 
@@ -312,6 +341,55 @@
       var s = self.selected[guid];
       return { seat_guid: guid, zoneLabel: s.zoneLabel, rowLabel: s.rowLabel, seatNumber: s.seatNumber, tarif: s.tarif, price: s.price };
     });
+  };
+
+  /* Einheitliche Zusammenfassung für die Übergabe an die gemeinsame Checkout-Seite
+     (Käuferdaten). Gleiche Form für "seats"- und "blocks"-Modus. */
+  SeatPicker.prototype.getSummary = function () {
+    var self = this;
+    var lines = [];
+    var total = 0;
+
+    if (this.mode === 'blocks') {
+      Object.keys(this.blockCounts).forEach(function (zoneId) {
+        var c = self.blockCounts[zoneId];
+        ['normal', 'ermaessigt'].forEach(function (tarif) {
+          var count = c[tarif];
+          if (count > 0) {
+            var price = tarif === 'ermaessigt' ? c.priceInfo.ermaessigt : c.priceInfo.normal;
+            lines.push({
+              label: c.zoneLabel + ' · ' + (tarif === 'ermaessigt' ? 'Ermäßigt' : 'Normalpreis'),
+              qty: count, unitPrice: price, lineTotal: count * price
+            });
+            total += count * price;
+          }
+        });
+      });
+      var ticketCount = lines.reduce(function (sum, l) { return sum + l.qty; }, 0);
+      var nachwuchsAmount = 0;
+      if (this.nachwuchsBeitrag && this.nachwuchsChecked && ticketCount > 0) {
+        nachwuchsAmount = this.nachwuchsAmount;
+        lines.push({ label: 'Unterstützung für den Nachwuchs', qty: 1, unitPrice: nachwuchsAmount, lineTotal: nachwuchsAmount });
+        total += nachwuchsAmount;
+      }
+      return { lines: lines, total: total, nachwuchsBeitrag: { checked: this.nachwuchsChecked, amount: nachwuchsAmount } };
+    }
+
+    Object.keys(this.selected).forEach(function (guid) {
+      var s = self.selected[guid];
+      lines.push({
+        label: s.zoneLabel + ' · Reihe ' + s.rowLabel + ', Platz ' + s.seatNumber + ' · ' + (s.tarif === 'ermaessigt' ? 'Ermäßigt' : 'Normalpreis'),
+        qty: 1, unitPrice: s.price, lineTotal: s.price
+      });
+      total += s.price;
+    });
+    var nwAmount = 0;
+    if (this.nachwuchsBeitrag && this.nachwuchsChecked && lines.length > 0) {
+      nwAmount = this.nachwuchsAmount;
+      lines.push({ label: 'Unterstützung für den Nachwuchs', qty: 1, unitPrice: nwAmount, lineTotal: nwAmount });
+      total += nwAmount;
+    }
+    return { lines: lines, total: total, nachwuchsBeitrag: { checked: this.nachwuchsChecked, amount: nwAmount } };
   };
 
   window.SeatPicker = SeatPicker;

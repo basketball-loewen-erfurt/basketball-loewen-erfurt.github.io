@@ -60,29 +60,29 @@
 
 /* Dauerkarte: kompaktes Kauf-Grid (Vorschaubild | Preise | Warenkorb), das große
    interaktive Sitzplan-Popup öffnet sich erst per Klick auf das Vorschaubild. */
-.dk-buy-grid {
+.buy-grid {
   display: grid;
   grid-template-columns: 0.9fr 1fr 1.1fr;
   gap: 28px;
   align-items: start;
 }
 @media (max-width: 900px) {
-  .dk-buy-grid { grid-template-columns: 1fr; }
+  .buy-grid { grid-template-columns: 1fr; }
 }
-.dk-thumb-btn {
+.buy-thumb-btn {
   display: block; width: 100%; padding: 0; border: 1px solid var(--border);
   border-radius: var(--radius-md); background: none; cursor: pointer; position: relative;
   overflow: hidden;
 }
-.dk-thumb-btn img { width: 100%; display: block; }
-.dk-thumb-cta {
+.buy-thumb-btn img { width: 100%; display: block; }
+.buy-thumb-cta {
   position: absolute; left: 0; right: 0; bottom: 0;
   background: linear-gradient(0deg, rgba(0,18,45,.82), rgba(0,18,45,0));
   color: #fff; font-size: 13px; font-weight: 600;
   padding: 24px 12px 10px; display: flex; align-items: center; justify-content: center; gap: 6px;
 }
-.dk-prices-col .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--bg-muted); font-size: 14px; }
-.dk-prices-col .price-row:last-of-type { border-bottom: none; }
+.buy-prices-col .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--bg-muted); font-size: 14px; }
+.buy-prices-col .price-row:last-of-type { border-bottom: none; }
 
 /* Callout "Dauerkarte trotz laufender Saison" unter "Gut zu wissen" */
 .dauerkarte-callout {
@@ -133,6 +133,13 @@
   background: none; border: none; color: #b3392c; font-size: 12px; cursor: pointer; padding: 2px 4px;
 }
 .seatplan-tarif-select { margin-top: 4px; font-size: 12px; font-family: inherit; padding: 2px 4px; border-radius: 4px; border: 1px solid #d7dbe3; }
+.seatplan-nachwuchs-row {
+  display: flex; align-items: center; gap: 10px; padding: 12px 0;
+  border-top: 1px dashed #dfe2e9; font-size: 13px; cursor: pointer;
+}
+.seatplan-nachwuchs-row input { width: 16px; height: 16px; accent-color: var(--color-brand-orange); flex-shrink: 0; }
+.seatplan-nachwuchs-row span { flex: 1; }
+.seatplan-nachwuchs-row .t-caption { display: block; color: var(--text-muted); }
 .seatplan-cart-total {
   display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;
   margin-top: 12px; padding-top: 12px; border-top: 1px solid #eef0f4;

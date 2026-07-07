@@ -20,8 +20,8 @@
       <div class="hero-lg-grid">
         <div>
           <span class="eyebrow">Saison 2026/ 27</span>
-          <h1 style="font-size:clamp(32px,5vw,56px);white-space:normal">Hol dir deine <span class="kw">Dauerkarte<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
-          <p class="lead">Einmal gewählt, gilt dein Sitzplatz für die komplette Hin- und Rückrunde der Saison (außer Playoff-Spiele).</p>
+          <h1 style="font-size:clamp(24px,5vw,56px);white-space:nowrap">Hol dir deine <span class="kw">Dauerkarte<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+          <p class="lead">Einmal gewählt, immer der gleiche Blick aufs Parkett.</p>
         </div>
         <div></div>
       </div>
@@ -31,26 +31,27 @@
   <section class="section">
     <div class="container">
       <div class="card" style="padding:24px">
-        <div class="dk-buy-grid">
-          <div class="dk-thumb-col">
-            <button type="button" class="dk-thumb-btn" id="seatplan-modal-trigger" aria-label="Sitzplatzwahl öffnen">
-              <img src="/assets/img/riethsporthalle-blockplan.png" alt="Blockplan der Riethsporthalle mit Blöcken A–F, Kategorien und Spielfeld" />
-              <span class="dk-thumb-cta"><i data-lucide="expand" style="width:16px;height:16px"></i> Sitzplatz wählen</span>
-            </button>
-          </div>
-          <div class="dk-prices-col">
+        <div class="buy-grid">
+          <div class="buy-prices-col">
             <h3 class="t-h4" style="margin-bottom:12px">Preise</h3>
             <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
             <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
             <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
             <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>90 €</strong></div>
           </div>
-          <div class="dk-cart-col">
+          <div class="buy-thumb-col">
+            <button type="button" class="buy-thumb-btn" id="seatplan-modal-trigger" aria-label="Sitzplatzwahl öffnen">
+              <img src="/assets/img/riethsporthalle-blockplan.png" alt="Blockplan der Riethsporthalle mit Blöcken A–F, Kategorien und Spielfeld" />
+              <span class="buy-thumb-cta"><i data-lucide="expand" style="width:16px;height:16px"></i> Sitzplatz wählen</span>
+            </button>
+          </div>
+          <div class="buy-cart-col">
             <h3 class="t-h4" style="margin-bottom:4px">Deine Auswahl</h3>
             <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px">Gilt für alle Heimspiele der Saison</p>
             <div id="seatplan-cart"></div>
             <div class="seatplan-cart-total"><span>Gesamt</span><span id="seatplan-total">0 €</span></div>
-            <button class="btn btn-primary btn-sm" id="seatplan-cta" style="margin-top:16px;width:100%;justify-content:center" disabled>Weiter zu den Käuferdaten</button>
+            <button class="btn btn-primary btn-sm" id="seatplan-cta" style="margin-top:16px;width:100%;justify-content:center" disabled>Jetzt kostenpflichtig bestellen</button>
+            <p class="t-caption" style="margin-top:10px;color:var(--text-muted)">Deine Auswahl: Dauerkarte für alle Heimspiele der Hin- und Rückrunde, außer Playoffs.</p>
           </div>
         </div>
       </div>
@@ -64,7 +65,7 @@
           <div style="flex:1;min-height:0;overflow-y:auto">
             <div id="seatplan-root"></div>
           </div>
-          <button class="btn btn-primary btn-sm" id="seatplan-modal-confirm" style="margin-top:16px;width:100%;justify-content:center">Jetzt bestellen</button>
+          <button class="btn btn-primary btn-sm" id="seatplan-modal-confirm" style="margin-top:16px;width:100%;justify-content:center">Übernehmen</button>
         </div>
       </div>
 
@@ -73,7 +74,7 @@
         <div class="grid-3">
           <div style="display:flex;gap:10px;align-items:flex-start">
             <i data-lucide="armchair" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
-            <p class="t-body-sm">Fester, einmal gewählter Sitzplatz für die komplette Saison.</p>
+            <p class="t-body-sm">Dein Sitzplatz gilt für die komplette Hin- und Rückrunde der Saison, außer Playoffs.</p>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start">
             <i data-lucide="smartphone" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
@@ -81,7 +82,7 @@
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start">
             <i data-lucide="percent" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
-            <p class="t-body-sm">Ermäßigt für Studierende, Azubis, Menschen mit Behinderung, unter 27, Rentner*innen, Vereinsmitglieder und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis).</p>
+            <p class="t-body-sm">Ermäßigt für Studierende, Azubis, Menschen mit Behinderung, unter 27, Rentner*innen und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis).</p>
           </div>
         </div>
       </div>
@@ -121,7 +122,9 @@
 <script src="/js/seat-picker.js?v=1"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    new SeatPicker(document.getElementById('seatplan-root'), {
+    var picker = new SeatPicker(document.getElementById('seatplan-root'), {
+      nachwuchsBeitrag: true,
+      nachwuchsAmount: 9,
       planUrl: '/assets/seating/riethsporthalle-seatingplan.json',
       northZones: ['D', 'E', 'F'],
       southZones: ['A', 'B', 'C'],
@@ -134,7 +137,14 @@
       ctaEl: document.getElementById('seatplan-cta')
     });
     function goToBuyerDetails() {
-      alert('Weiter zu den Käuferdaten — noch nicht gebaut.');
+      var summary = picker.getSummary();
+      sessionStorage.setItem('bl_cart', JSON.stringify({
+        productType: 'dauerkarte',
+        eventLabel: 'Dauerkarte 2026/ 27 — alle Heimspiele der Hin- und Rückrunde, außer Playoffs',
+        lines: summary.lines,
+        total: summary.total
+      }));
+      window.location.href = '/tickets/checkout.html';
     }
     document.getElementById('seatplan-cta').addEventListener('click', goToBuyerDetails);
 
@@ -145,10 +155,7 @@
     document.getElementById('seatplan-modal-close').addEventListener('click', closeSeatModal);
     backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeSeatModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSeatModal(); });
-    document.getElementById('seatplan-modal-confirm').addEventListener('click', function () {
-      closeSeatModal();
-      goToBuyerDetails();
-    });
+    document.getElementById('seatplan-modal-confirm').addEventListener('click', closeSeatModal);
   });
 </script>
 </body>
