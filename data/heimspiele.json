@@ -1,7 +1,7 @@
 {
   "hinweis": "Heimspiele Profis (Basketball Löwen Erfurt), Saison 2026/ 27 ProB. Quelle: basketball-loewen.com/saison/profis/spielplan. Alle Spiele in der Riethsporthalle, Essener Straße 20, 99089 Erfurt.",
   "spiele": [
-    { "datum": "11.10.2026", "zeit": "17:00", "gegner": "Porsche BBA Ludwigsburg" },
+    { "datum": "11.10.2026", "zeit": "17:00", "gegner": "Porsche BBA Ludwigsburg", "ticketUrl": "/tickets/einzelticket.html" },
     { "datum": "18.10.2026", "zeit": "17:00", "gegner": "TSG Reutlingen Ravens" },
     { "datum": "08.11.2026", "zeit": "17:00", "gegner": "Culture City Weimar" },
     { "datum": "13.11.2026", "zeit": "18:30", "gegner": "Dresden Titans" },

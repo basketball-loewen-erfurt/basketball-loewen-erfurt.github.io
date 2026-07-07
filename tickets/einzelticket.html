@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tickets — Basketball Löwen Erfurt – Porsche BBA Ludwigsburg</title>
+<meta name="description" content="Tickets für Basketball Löwen Erfurt gegen Porsche BBA Ludwigsburg." />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783432726" />
+<link rel="stylesheet" href="/css/site.css?v=1783432726" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1" />
+</head>
+<body data-nav-group="" class="hide-mobile-cta">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+
+  <section class="hero-photo hero-tickets">
+    <div class="container">
+      <div class="hero-lg-grid">
+        <div>
+          <span class="eyebrow">Heimspiel</span>
+          <h1 style="font-size:clamp(32px,5vw,56px);white-space:normal">Basketball Löwen Erfurt – <span style="color:var(--color-brand-orange)">Porsche BBA Ludwigsburg</span>.</h1>
+          <p class="lead">11. Oktober 2026 · 17:00 Uhr</p>
+          <a class="hero-location" href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Riethsporthalle, Essener Straße 20, 99089 Erfurt</a>
+        </div>
+        <div><!-- reserviert für künftiges CTA/Element auf dem Herobild --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sitzplan links, Kaufbox rechts — angelehnt an klassische Ticket-Produktseiten -->
+  <section class="section">
+    <div class="container">
+      <div class="banner-note">Vorschau — Sitzplatzverfügbarkeit ist noch Platzhalterdaten, bis der echte Saalplan final in pretix hinterlegt ist.</div>
+
+      <div class="ticket-detail-grid">
+        <div class="ticket-blockplan-col">
+          <div class="card" style="padding:20px">
+            <h3 class="t-h4" style="margin-bottom:12px">Sitzplatz wählen</h3>
+            <div id="seatplan-root"></div>
+          </div>
+        </div>
+        <div class="ticket-cart-col" style="display:flex;flex-direction:column;gap:20px">
+          <div class="card" style="padding:24px;position:sticky;top:20px">
+            <h3 class="t-h4" style="margin-bottom:4px">Deine Auswahl</h3>
+            <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px">Nur gültig für dieses eine Spiel.</p>
+            <div id="seatplan-cart"></div>
+            <div class="seatplan-cart-total"><span>Gesamt</span><span id="seatplan-total">0 €</span></div>
+            <button class="btn btn-primary btn-sm" id="seatplan-cta" style="margin-top:16px;width:100%;justify-content:center" disabled>Weiter zu den Käuferdaten</button>
+          </div>
+
+          <!-- Cross-Sell: Wer ein Einzelticket kauft, soll die Dauerkarte immer mitangeboten
+               bekommen — gleiche Preisbox wie auf tickets.html, verlinkt auf die Dauerkartenseite. -->
+          <div class="ticket-sidebar" style="position:static">
+            <span class="eyebrow">Preis pro Saison</span>
+            <h3 class="t-h4" style="margin:6px 0 14px">Dauerkarten 2026/ 27</h3>
+            <p class="t-body-sm" style="margin-bottom:12px">Mit der Dauerkarte sicherst du dir deinen festen Platz für die ganze Saison — Spiel für Spiel derselbe Blick aufs Parkett.</p>
+            <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
+            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>90 €</strong></div>
+            <a class="btn btn-primary btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="/tickets/dauerkarte.html">Dauerkarte kaufen</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:32px;padding:20px 24px">
+        <h3 class="t-h4" style="margin-bottom:12px">Dein Ticket</h3>
+        <div class="grid-3">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <i data-lucide="smartphone" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
+            <p class="t-body-sm">Digital als QR-Code per E-Mail — zum Einlass einfach aufs Handy holen oder ausdrucken.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <i data-lucide="armchair" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
+            <p class="t-body-sm">Gültig für die gewählte Kategorie, freie Platzwahl innerhalb des Blocks.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <i data-lucide="ticket" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
+            <p class="t-body-sm">Gilt ausschließlich für dieses eine Spiel.</p>
+          </div>
+        </div>
+      </div>
+
+      <span class="eyebrow" style="display:block;margin-top:40px;margin-bottom:16px">Gut zu wissen</span>
+      <div class="grid-3">
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="door-open"></i></div>
+          <h3 class="t-h4">Einlass</h3>
+          <p class="t-body-sm">Eine Stunde vor Spielbeginn öffnen sich die Türen der Riethsporthalle.</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="percent"></i></div>
+          <h3 class="t-h4">Ermäßigungen</h3>
+          <p class="t-body-sm">Für Studierende, Azubis, Menschen mit Behinderung, unter 27, Rentner*innen, Vereinsmitglieder und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis).</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="shield-check"></i></div>
+          <h3 class="t-h4">Sicher bezahlen</h3>
+          <p class="t-body-sm">Der Kauf läuft direkt und sicher über unseren Ticketanbieter pretix.</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="baby"></i></div>
+          <h3 class="t-h4">Kinder bis 6</h3>
+          <p class="t-body-sm">Kinder bis 6 Jahre haben freien Eintritt (ohne Anspruch auf einen eigenen Sitzplatz).</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="ban"></i></div>
+          <h3 class="t-h4">Rückgabe & Verlust</h3>
+          <p class="t-body-sm">Eine Rücknahme von Eintrittskarten ist nicht möglich. Bei Verlust wird kein Ersatz geleistet.</p>
+        </div>
+        <div class="info-tile">
+          <div class="tile-icon"><i data-lucide="mail"></i></div>
+          <h3 class="t-h4">Fragen zum Ticket?</h3>
+          <p class="t-body-sm">Wir helfen gerne: <a href="mailto:info@basketball-loewen.com">info@basketball-loewen.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div id="site-footer-placeholder"></div>
+<div class="discount-corner-fixed"><button class="ribbon-inner" data-discount-ribbon>10% Rabatt</button></div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js?v=1783432726"></script>
+<script src="/js/include.js?v=1783432726"></script>
+<script src="/js/discount-modal.js?v=1783432726"></script>
+<script src="/js/seat-picker.js?v=1"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new SeatPicker(document.getElementById('seatplan-root'), {
+      planUrl: '/assets/seating/riethsporthalle-seatingplan.json',
+      northZones: ['D', 'E', 'F'],
+      southZones: ['A', 'B', 'C'],
+      prices: {
+        'Kategorie I': { normal: 19, ermaessigt: 12 },
+        'Kategorie II': { normal: 15, ermaessigt: 9 }
+      },
+      cartEl: document.getElementById('seatplan-cart'),
+      totalEl: document.getElementById('seatplan-total'),
+      ctaEl: document.getElementById('seatplan-cta')
+    });
+    document.getElementById('seatplan-cta').addEventListener('click', function () {
+      alert('Weiter zu den Käuferdaten — noch nicht gebaut.');
+    });
+  });
+</script>
+</body>
+</html>

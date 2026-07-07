@@ -33,21 +33,9 @@
 
         <div>
           <div class="ticket-list">
-            <!-- Test-Event aus pretix — einziges aktuell wirklich buchbares Event -->
-            <div class="ticket-row featured">
-              <div>
-                <div class="ticket-row-title"><strong>XX. September</strong> · Basketball Löwen – Ein toller Gegner</div>
-                <div class="ticket-row-meta">
-                  <a href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:14px;height:14px"></i> Riethsporthalle</a>
-                  <span><i data-lucide="clock" style="width:14px;height:14px"></i> 18:00 Uhr</span>
-                </div>
-              </div>
-              <div class="tactions">
-                <a class="btn btn-primary btn-sm" href="/tickets/testspiel.html">Tickets <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
-              </div>
-            </div>
-
-            <!-- Reale Heimspieltermine aus dem Spielplan — Vorverkauf startet 10 Tage vor dem Spiel, sobald in pretix angelegt -->
+            <!-- Reale Heimspieltermine aus dem Spielplan. Spiele mit hinterlegter ticketUrl in
+                 heimspiele.json zeigen einen echten Tickets-Button statt des Vorverkaufsstart-Badges
+                 (aktuell nur 11.10. gegen Ludwigsburg — unser erstes real verkäufliches Spiel). -->
             <div id="heimspiele-liste"></div>
           </div>
         </div>
@@ -74,7 +62,7 @@
             <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
             <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
             <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>90 €</strong></div>
-            <a class="btn btn-primary btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="https://pretix-production-4263.up.railway.app/blev/" target="_blank" rel="noopener">Dauerkarte kaufen</a>
+            <a class="btn btn-primary btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="/tickets/dauerkarte.html">Dauerkarte kaufen</a>
           </div>
         </aside>
 
@@ -116,7 +104,7 @@
     });
     return 'https://calendar.google.com/calendar/render?' + params.toString();
   }
-  fetch('/data/heimspiele.json').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/data/heimspiele.json?v=1783432726').then(function (r) { return r.json(); }).then(function (d) {
     var el = document.getElementById('heimspiele-liste');
     el.innerHTML = d.spiele.map(function (s) {
       var gameDate = parseDMY(s.datum);

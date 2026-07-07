@@ -1,0 +1,96 @@
+/* Styles für die wiederverwendbare Sitzplatzwahl (js/seat-picker.js).
+   Nutzt die bestehenden Marken-Tokens aus colors_and_type.css. */
+.banner-note {
+  background: #fff3e6;
+  border: 1px solid #f3c893;
+  color: #7a4300;
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+}
+.seatplan-strip {
+  background: var(--color-brand-navy);
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  padding: 6px 0;
+  margin-bottom: 10px;
+}
+.seatplan-strip-south { margin-top: 10px; margin-bottom: 0; }
+.seatplan-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.seatplan-block {
+  background: #f7f8fb;
+  border: 1px solid #e4e7ee;
+  border-radius: var(--radius-md);
+  padding: 10px;
+  overflow-x: auto;
+}
+.seatplan-block.cat1 { background: #fdf1e6; border-color: #f2cea0; }
+.seatplan-block-label { text-align: center; font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.seatplan-block-cat { text-align: center; font-size: 10px; color: var(--text-muted); margin-bottom: 8px; }
+.seatplan-grid { display: grid; gap: 3px; justify-content: center; width: max-content; margin: 0 auto; }
+.seatplan-seat {
+  width: 12px; height: 12px; border-radius: 3px;
+  background: #d7dbe3; border: 1px solid #b7bdc9; cursor: pointer; padding: 0;
+}
+.seatplan-seat[disabled] { background: #eceef2; border-color: #dcdfe6; cursor: not-allowed; }
+.seatplan-seat.selected { background: var(--color-brand-orange); border-color: #b85a08; }
+.seatplan-seat:focus-visible { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
+
+.seatplan-court-area { display: flex; gap: 10px; align-items: stretch; margin-top: 14px; }
+.seatplan-side-strip {
+  writing-mode: vertical-rl;
+  background: var(--color-brand-blue);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 6px;
+  padding: 8px 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+.seatplan-court {
+  flex: 1;
+  border: 1px solid #d7dbe3;
+  border-radius: var(--radius-md);
+  min-height: 110px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  background: #fff;
+}
+
+.seatplan-legend { display: flex; gap: 16px; margin-top: 16px; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+.seatplan-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.seatplan-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.seatplan-legend .free i { background: #d7dbe3; border: 1px solid #b7bdc9; }
+.seatplan-legend .taken i { background: #eceef2; border: 1px solid #dcdfe6; }
+.seatplan-legend .sel i { background: var(--color-brand-orange); }
+
+.seatplan-cart-empty { font-size: 13px; color: var(--text-muted); padding: 12px 0; }
+.seatplan-cart-item {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid #eef0f4; font-size: 13px; gap: 10px;
+}
+.seatplan-cart-item:last-of-type { border-bottom: none; }
+.seatplan-cart-item-right { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.seatplan-cart-item button {
+  background: none; border: none; color: #b3392c; font-size: 12px; cursor: pointer; padding: 2px 4px;
+}
+.seatplan-tarif-select { margin-top: 4px; font-size: 12px; font-family: inherit; padding: 2px 4px; border-radius: 4px; border: 1px solid #d7dbe3; }
+.seatplan-cart-total {
+  display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid #eef0f4;
+}
+
+@media (max-width: 720px) {
+  .seatplan-row { grid-template-columns: 1fr; }
+}
