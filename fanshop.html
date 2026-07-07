@@ -4,32 +4,168 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fanshop — Basketball Löwen Erfurt</title>
-<meta name="description" content="Der Fanshop der Basketball Löwen Erfurt." />
+<meta name="description" content="Der Fanshop der Basketball Löwen Erfurt — Trikots, Merchandise und mehr." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css?v=1783432726" />
 <link rel="stylesheet" href="/css/site.css?v=1783432726" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1" />
+<style>
+  .fanshop-grid-wrap { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
+  @media (max-width: 900px) { .fanshop-grid-wrap { grid-template-columns: 1fr; } }
+  .fanshop-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .fanshop-products { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .fanshop-products { grid-template-columns: 1fr; } }
+  .fanshop-product-img {
+    aspect-ratio: 1; border-radius: var(--radius-md); background: var(--bg-subtle);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+  }
+  .fanshop-product-img i { width: 36px; height: 36px; color: var(--color-brand-orange); }
+  .fanshop-product h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+  .fanshop-product .fanshop-price { font-weight: 700; margin-bottom: 10px; }
+  .fanshop-product .seatplan-stepper { width: 100%; justify-content: center; }
+</style>
 </head>
-<body data-nav-group="">
+<body data-nav-group="" class="hide-mobile-cta">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <div id="site-header-placeholder"></div>
 <main id="main">
+
   <section class="hero-photo">
     <div class="container">
-    <span class="eyebrow">Fanshop</span>
-    <h1>Zeig, wofür du stehst.</h1>
-    <p class="lead">Unser Fanshop wird extern betrieben — Trikots, Merchandise und mehr findest du dort.</p>
+      <span class="eyebrow">Fanshop</span>
+      <h1>Zeig, wofür du stehst.</h1>
+      <p class="lead">Trikots, Merchandise und mehr — direkt online bestellen.</p>
     </div>
     <span class="photo-note">Platzhalterbild — echtes Foto folgt</span>
   </section>
+
   <section class="section">
-    <div class="container" style="text-align:center">
-      <a class="btn btn-primary" href="https://erfurt-mitte.de/collections/fanshop-basketball-loewen-erfurt" target="_blank" rel="noopener">Zum Fanshop <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>
+    <div class="container">
+      <p class="banner-note">Prototyp: Produktbilder sind Platzhalter, die Bestellung läuft über denselben Warenkorb wie die Tickets.</p>
+
+      <div class="fanshop-grid-wrap">
+        <div class="fanshop-products" id="fanshop-products"></div>
+
+        <div class="card" style="padding:24px;position:sticky;top:20px;background:var(--bg-subtle)">
+          <h3 class="t-h4" style="margin-bottom:4px">Dein Warenkorb</h3>
+          <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px">Fanshop-Bestellung Basketball Löwen Erfurt</p>
+          <div id="fanshop-cart"></div>
+          <div class="seatplan-cart-total"><span>Gesamt</span><span id="fanshop-total">0,00 €</span></div>
+          <button class="btn btn-primary btn-sm" id="fanshop-cta" style="margin-top:16px;width:100%;justify-content:center" disabled>Weiter zur Kasse</button>
+        </div>
+      </div>
     </div>
   </section>
+
 </main>
 <div id="site-footer-placeholder"></div>
+
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1783432726"></script>
 <script src="/js/include.js?v=1783432726"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var PRODUCTS = [
+      { id: 'trikot-home', name: 'Heimtrikot 2026/ 27', price: 79.90, icon: 'shirt' },
+      { id: 'trikot-away', name: 'Auswärtstrikot 2026/ 27', price: 79.90, icon: 'shirt' },
+      { id: 'hoodie', name: 'Kapuzenpullover Vereinslogo', price: 49.90, icon: 'shirt' },
+      { id: 'tshirt', name: 'T-Shirt Vereinslogo', price: 24.90, icon: 'shirt' },
+      { id: 'cap', name: 'Cap Basketball Löwen', price: 22.90, icon: 'star' },
+      { id: 'schal', name: 'Fan-Schal', price: 19.90, icon: 'gift' },
+      { id: 'ball', name: 'Spielball, offiziell', price: 29.90, icon: 'circle' },
+      { id: 'flasche', name: 'Trinkflasche 0,75 l', price: 14.90, icon: 'package' },
+      { id: 'aufkleber', name: 'Aufkleber-Set (5 Stück)', price: 6.90, icon: 'package' },
+      { id: 'kids-trikot', name: 'Kinder-Trikot', price: 54.90, icon: 'baby' }
+    ];
+    var cart = {}; // id -> qty
+
+    function formatMoney(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+    var grid = document.getElementById('fanshop-products');
+    grid.innerHTML = PRODUCTS.map(function (p) {
+      return '<div class="card fanshop-product" style="padding:16px">' +
+        '<div class="fanshop-product-img"><i data-lucide="' + p.icon + '"></i></div>' +
+        '<h4>' + p.name + '</h4>' +
+        '<div class="fanshop-price">' + formatMoney(p.price) + '</div>' +
+        '<span class="seatplan-stepper">' +
+          '<button type="button" data-step="-1" data-product="' + p.id + '" aria-label="weniger ' + p.name + '">−</button>' +
+          '<input type="number" inputmode="numeric" min="0" max="20" value="0" data-count="' + p.id + '" data-product="' + p.id + '" aria-label="Anzahl ' + p.name + '">' +
+          '<button type="button" data-step="1" data-product="' + p.id + '" aria-label="mehr ' + p.name + '">+</button>' +
+        '</span>' +
+      '</div>';
+    }).join('');
+    if (window.lucide) window.lucide.createIcons();
+
+    var cartEl = document.getElementById('fanshop-cart');
+    var totalEl = document.getElementById('fanshop-total');
+    var ctaEl = document.getElementById('fanshop-cta');
+
+    function setQty(id, value) {
+      var next = Math.max(0, Math.min(20, value));
+      cart[id] = next;
+      var input = grid.querySelector('[data-count="' + id + '"]');
+      if (input) input.value = String(next);
+      renderCart();
+    }
+
+    grid.querySelectorAll('[data-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = this.dataset.product;
+        setQty(id, (cart[id] || 0) + parseInt(this.dataset.step, 10));
+      });
+    });
+    grid.querySelectorAll('input[data-count]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var value = parseInt(this.value, 10);
+        if (isNaN(value)) value = 0;
+        setQty(this.dataset.product, value);
+      });
+    });
+
+    function renderCart() {
+      var lines = PRODUCTS.filter(function (p) { return cart[p.id] > 0; })
+        .map(function (p) { return { id: p.id, label: p.name, qty: cart[p.id], unitPrice: p.price, lineTotal: Math.round(cart[p.id] * p.price * 100) / 100 }; });
+
+      if (lines.length === 0) {
+        cartEl.innerHTML = '<div class="seatplan-cart-empty">Noch keine Artikel ausgewählt.</div>';
+        ctaEl.disabled = true;
+      } else {
+        cartEl.innerHTML = lines.map(function (l) {
+          return '<div class="seatplan-cart-item">' +
+            '<div>' + l.qty + '× ' + l.label + '<br><span class="t-caption">' + formatMoney(l.unitPrice) + ' je Stück</span></div>' +
+            '<div class="seatplan-cart-item-right"><span>' + formatMoney(l.lineTotal) + '</span>' +
+            '<button type="button" data-remove="' + l.id + '">entfernen</button></div>' +
+          '</div>';
+        }).join('');
+        ctaEl.disabled = false;
+        cartEl.querySelectorAll('[data-remove]').forEach(function (b) {
+          b.addEventListener('click', function () { setQty(this.dataset.remove, 0); });
+        });
+      }
+
+      var total = lines.reduce(function (sum, l) { return sum + l.lineTotal; }, 0);
+      total = Math.round(total * 100) / 100;
+      totalEl.textContent = formatMoney(total);
+
+      ctaEl.dataset.lines = JSON.stringify(lines);
+      ctaEl.dataset.total = total;
+    }
+    renderCart();
+
+    ctaEl.addEventListener('click', function () {
+      var lines = JSON.parse(ctaEl.dataset.lines || '[]').map(function (l) {
+        return { label: l.label, qty: l.qty, unitPrice: l.unitPrice, lineTotal: l.lineTotal };
+      });
+      sessionStorage.setItem('bl_cart', JSON.stringify({
+        productType: 'fanshop',
+        eventLabel: 'Fanshop-Bestellung Basketball Löwen Erfurt',
+        lines: lines,
+        total: parseFloat(ctaEl.dataset.total),
+        voucher: null
+      }));
+      window.location.href = '/tickets/checkout.html';
+    });
+  });
+</script>
 </body>
 </html>
