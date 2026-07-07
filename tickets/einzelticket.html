@@ -20,7 +20,7 @@
       <div class="hero-lg-grid">
         <div>
           <span class="eyebrow">Heimspiel Basketball Löwen Erfurt</span>
-          <h1 style="font-size:clamp(32px,5vw,56px);white-space:normal"><span class="kw">Porsche BBA Ludwigsburg<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+          <h1 style="font-size:clamp(20px,5vw,56px);white-space:nowrap"><span class="kw">Porsche BBA Ludwigsburg<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
           <p class="lead">11. Oktober 2026 · 17:00 Uhr</p>
           <a class="hero-location" href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Riethsporthalle, Essener Straße 20, 99089 Erfurt</a>
         </div>
@@ -35,7 +35,12 @@
       <div class="card" style="padding:24px">
         <div class="buy-grid">
           <div class="buy-prices-col">
-            <h3 class="t-h4" style="margin-bottom:12px">Preise</h3>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+              <h3 class="t-h4" style="margin-bottom:0">Preise</h3>
+              <button type="button" class="badge badge-orange" data-discount-ribbon style="border:none;cursor:pointer;font-family:inherit">
+                <i data-lucide="percent" style="width:12px;height:12px"></i> 10 % Rabatt
+              </button>
+            </div>
             <div class="price-row"><span>Kategorie 1</span><strong>19 €</strong></div>
             <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>12 €</strong></div>
             <div class="price-row"><span>Kategorie 2</span><strong>15 €</strong></div>
@@ -132,7 +137,6 @@
 
 </main>
 <div id="site-footer-placeholder"></div>
-<div class="discount-corner-fixed"><button class="ribbon-inner" data-discount-ribbon>10% Rabatt</button></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1783432726"></script>
@@ -163,7 +167,8 @@
         productType: 'einzelticket',
         eventLabel: 'Basketball Löwen Erfurt – Porsche BBA Ludwigsburg, 11. Oktober 2026',
         lines: summary.lines,
-        total: summary.total
+        total: summary.total,
+        voucher: summary.voucher
       }));
       window.location.href = '/tickets/checkout.html';
     }

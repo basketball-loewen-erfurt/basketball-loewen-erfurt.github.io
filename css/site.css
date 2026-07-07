@@ -714,11 +714,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   transition: background var(--dur-fast) var(--ease-out);
 }
 .discount-ribbon:hover { background: var(--action-primary-hover); }
-.discount-ribbon-left {
-  left: -58px; right: auto; top: 18px; transform: rotate(-45deg); cursor: default; white-space: nowrap;
-  padding: 6px 46px; font-size: 11px;
-}
-.discount-ribbon-left:hover { background: var(--color-brand-orange); }
 
 /* Sitzplan links / Kaufbox rechts auf der Ticket-Detailseite */
 .ticket-detail-grid { display: grid; grid-template-columns: 0.8fr 1fr; gap: 32px; align-items: start; }

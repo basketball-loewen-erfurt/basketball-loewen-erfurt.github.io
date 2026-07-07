@@ -16,6 +16,14 @@
     return x - Math.floor(x);
   }
 
+  /* Gutschein-Codes sind noch nicht an pretix angebunden — feste Testcodes,
+     damit sich der Ablauf schon jetzt echt durchklicken lässt. Dieselben Codes
+     wie auf der Checkout-Seite (tickets/checkout.html). */
+  var MOCK_VOUCHERS = {
+    'LOEWEN10': { type: 'percent', value: 10, label: 'LOEWEN10 (10 %)' },
+    'WILLKOMMEN5': { type: 'fixed', value: 5, label: 'WILLKOMMEN5 (5 €)' }
+  };
+
   function SeatPicker(root, opts) {
     this.root = root;
     this.mode = opts.mode || 'seats';
@@ -32,8 +40,19 @@
     this.nachwuchsChecked = true;
     this.selected = {}; // seat_guid -> {...} (Modus "seats")
     this.blockCounts = {}; // zone_id -> { normal: n, ermaessigt: n } (Modus "blocks")
+    this.voucherCode = null;
+    this.voucherInfo = null;
+    this.voucherError = null;
     this._load();
   }
+
+  /* Rabatt für einen gegebenen Zwischensumme-Betrag (Tickets + Nachwuchsbeitrag),
+     gemeinsam für "seats"- und "blocks"-Modus sowie für getSummary(). */
+  SeatPicker.prototype._voucherDiscount = function (base) {
+    if (!this.voucherInfo || base <= 0) return 0;
+    var d = this.voucherInfo.type === 'percent' ? (base * this.voucherInfo.value / 100) : this.voucherInfo.value;
+    return Math.min(Math.round(d * 100) / 100, base);
+  };
 
   SeatPicker.prototype._load = function () {
     var self = this;
@@ -298,6 +317,54 @@
     });
   };
 
+  /* Gutschein-Code — gemeinsam für "seats"- und "blocks"-Modus, wird wie der
+     Nachwuchsbeitrag nur angezeigt, wenn der Warenkorb nicht leer ist. */
+  SeatPicker.prototype._appendVoucherRow = function () {
+    var self = this;
+    var wrap = document.createElement('div');
+    wrap.className = 'seatplan-voucher-row';
+
+    if (this.voucherInfo) {
+      wrap.innerHTML =
+        '<div class="seatplan-voucher-applied">' +
+          '<span><i data-lucide="tag" style="width:14px;height:14px"></i> Gutschein ' + this.voucherInfo.label + '</span>' +
+          '<button type="button" data-voucher-remove>entfernen</button>' +
+        '</div>';
+      this.cartEl.appendChild(wrap);
+      if (window.lucide) window.lucide.createIcons();
+      wrap.querySelector('[data-voucher-remove]').addEventListener('click', function () {
+        self.voucherCode = null;
+        self.voucherInfo = null;
+        self.voucherError = null;
+        self._renderCart();
+      });
+    } else {
+      wrap.innerHTML =
+        '<div class="seatplan-voucher-input-wrap">' +
+          '<input type="text" placeholder="Gutscheincode" id="seatplan-voucher-input">' +
+          '<button type="button" data-voucher-apply>Einlösen</button>' +
+        '</div>' +
+        (this.voucherError ? '<p class="seatplan-voucher-error">' + this.voucherError + '</p>' : '');
+      this.cartEl.appendChild(wrap);
+      var input = wrap.querySelector('#seatplan-voucher-input');
+      var apply = function () {
+        var code = input.value.trim().toUpperCase();
+        if (!code) return;
+        var match = MOCK_VOUCHERS[code];
+        if (match) {
+          self.voucherCode = code;
+          self.voucherInfo = match;
+          self.voucherError = null;
+        } else {
+          self.voucherError = 'Dieser Gutscheincode ist ungültig.';
+        }
+        self._renderCart();
+      };
+      wrap.querySelector('[data-voucher-apply]').addEventListener('click', apply);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); apply(); } });
+    }
+  };
+
   SeatPicker.prototype._renderCart = function () {
     if (this.mode === 'blocks') { this._renderCartBlocks(); return; }
 
@@ -315,6 +382,7 @@
         var hasErmaessigt = s.priceInfo.ermaessigt !== undefined;
         row.innerHTML =
           '<div>' + s.zoneLabel + ' · Reihe ' + s.rowLabel + ', Platz ' + s.seatNumber +
+          '<br><span class="t-caption">' + s.price + ' € je Ticket</span>' +
           (hasErmaessigt ? '<br><select data-tarif="' + guid + '" class="seatplan-tarif-select">' +
             '<option value="normal"' + (s.tarif === 'normal' ? ' selected' : '') + '>Normalpreis</option>' +
             '<option value="ermaessigt"' + (s.tarif === 'ermaessigt' ? ' selected' : '') + '>Ermäßigt</option>' +
@@ -326,6 +394,7 @@
       });
 
       this._appendNachwuchsRow();
+      this._appendVoucherRow();
       this.ctaEl.disabled = false;
 
       this.cartEl.querySelectorAll('[data-tarif]').forEach(function (sel) {
@@ -350,6 +419,7 @@
 
     var total = guids.reduce(function (sum, guid) { return sum + self.selected[guid].price; }, 0);
     if (this.nachwuchsBeitrag && this.nachwuchsChecked && guids.length > 0) total += this.nachwuchsAmount;
+    total -= this._voucherDiscount(total);
     this.totalEl.textContent = total + ' €';
   };
 
@@ -374,11 +444,11 @@
         var hasErmaessigt = l.zoneId && self.blockCounts[l.zoneId].priceInfo.ermaessigt !== undefined;
         row.innerHTML =
           '<div>' + l.count + '× ' + l.zoneLabel +
+          '<br><span class="t-caption">' + l.price + ' € je Ticket</span>' +
           (hasErmaessigt ? '<br><select class="seatplan-tarif-select" data-block-tarif-select data-zone="' + l.zoneId + '" data-tarif="' + l.tarif + '">' +
             '<option value="normal"' + (l.tarif === 'normal' ? ' selected' : '') + '>Normalpreis</option>' +
             '<option value="ermaessigt"' + (l.tarif === 'ermaessigt' ? ' selected' : '') + '>Ermäßigt</option>' +
             '</select>' : '<br><span class="t-caption">' + l.label + '</span>') +
-          '<br><span class="t-caption">' + l.price + ' € je Ticket</span>' +
           '</div>' +
           '<div class="seatplan-cart-item-right"><span>' + (l.count * l.price) + ' €</span>' +
           '<button type="button" data-block-remove="' + l.zoneId + '" data-block-tarif="' + l.tarif + '">entfernen</button></div>';
@@ -386,6 +456,7 @@
       });
 
       this._appendNachwuchsRow();
+      this._appendVoucherRow();
       this.ctaEl.disabled = false;
 
       this.cartEl.querySelectorAll('[data-block-tarif-select]').forEach(function (sel) {
@@ -419,6 +490,7 @@
 
     var total = lines.reduce(function (sum, l) { return sum + l.count * l.price; }, 0);
     if (this.nachwuchsBeitrag && this.nachwuchsChecked && ticketCount > 0) total += this.nachwuchsAmount;
+    total -= this._voucherDiscount(total);
     this.totalEl.textContent = total + ' €';
   };
 
@@ -465,7 +537,7 @@
         lines.push({ label: 'Unterstützung für den Nachwuchs', qty: 1, unitPrice: nachwuchsAmount, lineTotal: nachwuchsAmount });
         total += nachwuchsAmount;
       }
-      return { lines: lines, total: total, nachwuchsBeitrag: { checked: this.nachwuchsChecked, amount: nachwuchsAmount } };
+      return this._applyVoucherToSummary(lines, total, nachwuchsAmount);
     }
 
     Object.keys(this.selected).forEach(function (guid) {
@@ -482,7 +554,24 @@
       lines.push({ label: 'Unterstützung für den Nachwuchs', qty: 1, unitPrice: nwAmount, lineTotal: nwAmount });
       total += nwAmount;
     }
-    return { lines: lines, total: total, nachwuchsBeitrag: { checked: this.nachwuchsChecked, amount: nwAmount } };
+    return this._applyVoucherToSummary(lines, total, nwAmount);
+  };
+
+  /* Hängt einen Gutschein-Rabatt als eigene Zeile an (falls ein gültiger Code
+     aktiv ist) und liefert die Gutschein-Metadaten mit, damit die Checkout-Seite
+     weiß, dass hier schon ein Code eingelöst wurde (kein doppelter Rabatt). */
+  SeatPicker.prototype._applyVoucherToSummary = function (lines, total, nachwuchsAmount) {
+    var discount = this._voucherDiscount(total);
+    if (discount > 0) {
+      lines.push({ label: 'Gutschein ' + this.voucherInfo.label, qty: 1, unitPrice: -discount, lineTotal: -discount });
+      total -= discount;
+    }
+    return {
+      lines: lines,
+      total: total,
+      nachwuchsBeitrag: { checked: this.nachwuchsChecked, amount: nachwuchsAmount },
+      voucher: discount > 0 ? { code: this.voucherCode, label: this.voucherInfo.label, amount: discount } : null
+    };
   };
 
   window.SeatPicker = SeatPicker;

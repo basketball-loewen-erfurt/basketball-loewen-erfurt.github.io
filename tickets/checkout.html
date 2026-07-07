@@ -94,7 +94,7 @@
       </div>
 
       <div id="checkout-content" class="checkout-grid" style="display:none">
-        <div class="card" style="padding:24px;position:sticky;top:20px">
+        <div class="card" style="padding:24px;position:sticky;top:20px;background:var(--bg-subtle)">
           <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="checkout-event-label"></p>
           <div id="checkout-lines"></div>
@@ -191,46 +191,49 @@
 
     /* Gutschein-Codes sind noch nicht an pretix angebunden — feste Testcodes,
        damit sich der Ablauf (einlösen, Rabattzeile, entfernen) schon jetzt echt
-       durchklicken lässt. */
+       durchklicken lässt. Dieselben Codes wie im SeatPicker (js/seat-picker.js).
+       cart.lines/cart.total sind die einzige Wahrheitsquelle — ein Gutschein kann
+       schon auf der Auswahlseite eingelöst worden sein (dann steckt die Rabattzeile
+       schon in cart.lines) oder erst hier. */
     var MOCK_VOUCHERS = {
       'LOEWEN10': { type: 'percent', value: 10, label: 'LOEWEN10 (10 %)' },
       'WILLKOMMEN5': { type: 'fixed', value: 5, label: 'WILLKOMMEN5 (5 €)' }
     };
-    var appliedVoucher = null;
 
     var linesEl = document.getElementById('checkout-lines');
     var totalEl = document.getElementById('checkout-total');
+    var voucherBoxEl = document.querySelector('.voucher-box');
     var voucherInput = document.getElementById('voucher-input');
     var voucherMsg = document.getElementById('voucher-message');
     var voucherBtn = document.getElementById('voucher-apply');
 
+    function findVoucherLineIndex() {
+      return cart.lines.findIndex(function (l) { return l.label.indexOf('Gutschein ') === 0; });
+    }
+
     function renderSummary() {
       var html = cart.lines.map(function (l) {
-        return '<div class="seatplan-cart-item">' +
-          '<div>' + (l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
-          '<div class="seatplan-cart-item-right"><span>' + l.lineTotal + ' €</span></div>' +
-        '</div>';
+        var isVoucher = l.label.indexOf('Gutschein ') === 0;
+        return '<div class="seatplan-cart-item' + (isVoucher ? ' discount' : '') + '">' +
+          '<div>' + (!isVoucher && l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
+          '<div class="seatplan-cart-item-right"><span>' + (l.lineTotal < 0 ? '−' + Math.abs(l.lineTotal) : l.lineTotal) + ' €</span>' +
+          (isVoucher ? '<button type="button" id="voucher-remove">entfernen</button>' : '') +
+        '</div></div>';
       }).join('');
-
-      var total = cart.total;
-      if (appliedVoucher) {
-        var discount = appliedVoucher.type === 'percent'
-          ? Math.round(cart.total * appliedVoucher.value) / 100
-          : Math.min(appliedVoucher.value, cart.total);
-        total = Math.max(0, cart.total - discount);
-        html += '<div class="seatplan-cart-item discount">' +
-          '<div>Gutschein ' + appliedVoucher.label + '</div>' +
-          '<div class="seatplan-cart-item-right"><span>−' + discount + ' €</span>' +
-          '<button type="button" id="voucher-remove">entfernen</button></div>' +
-        '</div>';
-      }
       linesEl.innerHTML = html;
-      totalEl.textContent = total + ' €';
+      totalEl.textContent = cart.total + ' €';
+
+      var hasVoucher = findVoucherLineIndex() !== -1;
+      voucherBoxEl.style.display = hasVoucher ? 'none' : '';
 
       var removeBtn = document.getElementById('voucher-remove');
       if (removeBtn) {
         removeBtn.addEventListener('click', function () {
-          appliedVoucher = null;
+          var idx = findVoucherLineIndex();
+          if (idx !== -1) {
+            cart.total -= cart.lines[idx].lineTotal;
+            cart.lines.splice(idx, 1);
+          }
           voucherInput.value = '';
           voucherMsg.textContent = '';
           voucherMsg.className = 'voucher-message';
@@ -245,7 +248,11 @@
       if (!code) return;
       var voucher = MOCK_VOUCHERS[code];
       if (voucher) {
-        appliedVoucher = voucher;
+        var discount = voucher.type === 'percent'
+          ? Math.round(cart.total * voucher.value) / 100
+          : Math.min(voucher.value, cart.total);
+        cart.lines.push({ label: 'Gutschein ' + voucher.label, qty: 1, unitPrice: -discount, lineTotal: -discount });
+        cart.total = Math.max(0, cart.total - discount);
         voucherMsg.textContent = 'Gutschein eingelöst.';
         voucherMsg.className = 'voucher-message success';
         renderSummary();
@@ -260,7 +267,20 @@
 
     document.getElementById('checkout-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      alert('Weiter zur Zahlung (PayPal) — noch nicht gebaut.');
+      var buyer = {
+        email: document.getElementById('cf-email').value.trim(),
+        vorname: document.getElementById('cf-vorname').value.trim(),
+        nachname: document.getElementById('cf-nachname').value.trim(),
+        notiz: document.getElementById('cf-notiz').value.trim(),
+        firma: document.getElementById('cf-firma').value.trim(),
+        strasse: document.getElementById('cf-strasse').value.trim(),
+        plz: document.getElementById('cf-plz').value.trim(),
+        ort: document.getElementById('cf-ort').value.trim(),
+        newsletter: document.getElementById('cf-newsletter').checked
+      };
+      sessionStorage.setItem('bl_buyer', JSON.stringify(buyer));
+      sessionStorage.setItem('bl_cart', JSON.stringify(cart));
+      window.location.href = '/tickets/payment.html';
     });
   });
 </script>

@@ -145,6 +145,28 @@
 .seatplan-nachwuchs-row input { width: 16px; height: 16px; accent-color: var(--color-brand-orange); flex-shrink: 0; }
 .seatplan-nachwuchs-row span { flex: 1; }
 .seatplan-nachwuchs-row .t-caption { display: block; color: var(--text-muted); }
+.seatplan-voucher-row { padding: 12px 0; border-top: 1px dashed #dfe2e9; }
+.seatplan-voucher-input-wrap { display: flex; gap: 8px; }
+.seatplan-voucher-input-wrap input {
+  flex: 1; font-size: 13px; font-family: inherit; padding: 8px 10px;
+  border: 1px solid #d7dbe3; border-radius: var(--radius-md);
+}
+.seatplan-voucher-input-wrap button {
+  flex-shrink: 0; font-size: 13px; font-weight: 600; padding: 8px 14px;
+  border: 1px solid var(--color-brand-navy); border-radius: var(--radius-md);
+  background: #fff; color: var(--color-brand-navy); cursor: pointer;
+}
+.seatplan-voucher-input-wrap button:hover { background: var(--color-brand-navy); color: #fff; }
+.seatplan-voucher-error { color: #b3392c; font-size: 12px; margin: 6px 0 0; }
+.seatplan-voucher-applied {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-size: 13px; color: var(--color-heart-green); font-weight: 600;
+}
+.seatplan-voucher-applied span { display: inline-flex; align-items: center; gap: 6px; }
+.seatplan-voucher-applied button {
+  background: none; border: none; color: var(--text-muted); font-size: 12px;
+  font-weight: 400; cursor: pointer; padding: 2px 4px; text-decoration: underline;
+}
 .seatplan-cart-total {
   display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;
   margin-top: 12px; padding-top: 12px; border-top: 1px solid #eef0f4;

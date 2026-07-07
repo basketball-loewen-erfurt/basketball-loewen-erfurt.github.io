@@ -30,11 +30,15 @@
 
   <section class="section">
     <div class="container">
-      <div class="card discount-corner-wrap" style="padding:24px">
-        <span class="discount-ribbon discount-ribbon-left">20 % !!! Nur noch bis 31.07.26</span>
+      <div class="card" style="padding:24px">
         <div class="buy-grid">
           <div class="buy-prices-col">
-            <h3 class="t-h4" style="margin-bottom:12px">Preise</h3>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
+              <h3 class="t-h4" style="margin-bottom:0">Preise</h3>
+              <button type="button" class="badge badge-orange" id="dk-discount-badge" style="border:none;cursor:pointer;font-family:inherit">
+                <i data-lucide="percent" style="width:12px;height:12px"></i> -20 % bis 31.07.
+              </button>
+            </div>
             <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
             <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
             <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
@@ -66,6 +70,16 @@
             <div id="seatplan-root"></div>
           </div>
           <button class="btn btn-primary btn-sm" id="seatplan-modal-confirm" style="margin-top:16px;width:100%;justify-content:center">Übernehmen</button>
+        </div>
+      </div>
+
+      <div class="modal-backdrop" id="dk-discount-modal-backdrop">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dk-discount-modal-title">
+          <button class="modal-close" aria-label="Schließen" id="dk-discount-modal-close"><i data-lucide="x"></i></button>
+          <div class="modal-icon"><i data-lucide="percent"></i></div>
+          <span class="eyebrow" id="dk-discount-modal-title">20 % Rabatt</span>
+          <h3 class="t-h3" style="margin:8px 0 12px">Dauerkarten-Frühbucherrabatt.</h3>
+          <p class="t-body-sm">Die angezeigten Preise beinhalten schon deinen 20&nbsp;%-Frühbucher-Rabatt. Sichere dir deine Dauerkarte bis zum 31.07.2026 — danach gilt der reguläre Preis.</p>
         </div>
       </div>
 
@@ -142,7 +156,8 @@
         productType: 'dauerkarte',
         eventLabel: 'Dauerkarte 2026/ 27 — alle Heimspiele der Hin- und Rückrunde, außer Playoffs',
         lines: summary.lines,
-        total: summary.total
+        total: summary.total,
+        voucher: summary.voucher
       }));
       window.location.href = '/tickets/checkout.html';
     }
@@ -156,6 +171,14 @@
     backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeSeatModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSeatModal(); });
     document.getElementById('seatplan-modal-confirm').addEventListener('click', closeSeatModal);
+
+    var discountBackdrop = document.getElementById('dk-discount-modal-backdrop');
+    function openDiscountModal() { discountBackdrop.classList.add('open'); }
+    function closeDiscountModal() { discountBackdrop.classList.remove('open'); }
+    document.getElementById('dk-discount-badge').addEventListener('click', openDiscountModal);
+    document.getElementById('dk-discount-modal-close').addEventListener('click', closeDiscountModal);
+    discountBackdrop.addEventListener('click', function (e) { if (e.target === discountBackdrop) closeDiscountModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDiscountModal(); });
   });
 </script>
 </body>
