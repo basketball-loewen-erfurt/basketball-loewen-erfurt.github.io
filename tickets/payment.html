@@ -6,12 +6,15 @@
 <title>Zahlung — Basketball Löwen Erfurt</title>
 <meta name="description" content="Zahlung für deine Bestellung bei den Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783458197" />
-<link rel="stylesheet" href="/css/site.css?v=1783458197" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1783458197" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783458839" />
+<link rel="stylesheet" href="/css/site.css?v=1783458839" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1783458839" />
 <style>
   .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
-  @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+    #order-summary-card { position: static; }
+  }
   .field { margin-bottom: 10px; }
   .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
   .field input {
@@ -79,7 +82,7 @@
       </div>
 
       <div id="payment-content" class="checkout-grid" style="display:none">
-        <div class="card" style="padding:24px;position:sticky;top:20px;background:var(--bg-subtle)">
+        <div class="card" id="order-summary-card" style="padding:24px;position:sticky;top:20px;background:var(--bg-subtle)">
           <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="payment-event-label"></p>
           <div id="payment-lines"></div>
@@ -136,8 +139,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783458197"></script>
-<script src="/js/include.js?v=1783458197"></script>
+<script src="/js/nav.js?v=1783458839"></script>
+<script src="/js/include.js?v=1783458839"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_cart');
