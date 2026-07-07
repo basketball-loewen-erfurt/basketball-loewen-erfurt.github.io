@@ -564,7 +564,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    WERTE BAND
    ===================================================================== */
 .werte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; text-align: center; }
-.werte-item-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+.werte-item-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; text-decoration: none; }
+.werte-item-head:hover h3 { text-decoration: underline; }
 .werte-item .ic {
   width: 40px; height: 40px; border-radius: var(--radius-lg); flex-shrink: 0;
   border: 1px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center;

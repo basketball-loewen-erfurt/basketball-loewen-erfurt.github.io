@@ -1,8 +1,13 @@
 /* Wiederverwendbare Sitzplatzwahl für Einzelticket- und Dauerkarten-Detailseite.
    Lädt den echten, pretix-schema-konformen Saalplan aus assets/seating/ und rendert
-   ihn als Block-Grid mit einzeln klickbaren Sitzen. Verfügbarkeit ist bis zur echten
-   pretix-Anbindung ein deterministischer Zufalls-Mock (siehe seededRandom).
-   Kein Limit an wählbaren Plätzen pro Bestellung. */
+   ihn als Block-Grid. Verfügbarkeit ist bis zur echten pretix-Anbindung ein
+   deterministischer Zufalls-Mock (siehe seededRandom). Kein Limit an wählbaren
+   Plätzen pro Bestellung.
+
+   Zwei Modi:
+   - "seats" (Dauerkarte): einzelne Sitze sind klickbar, fester Platz für die Saison.
+   - "blocks" (Einzelticket): nur der Block ist wählbar (Anzahl je Tarif), die Sitze
+     im Block sind rein dekorativ (First-Come-First-Serve-Platzwahl vor Ort). */
 (function () {
   'use strict';
 
@@ -13,6 +18,7 @@
 
   function SeatPicker(root, opts) {
     this.root = root;
+    this.mode = opts.mode || 'seats';
     this.planUrl = opts.planUrl;
     this.prices = opts.prices; // { "Kategorie I": {normal: 19, ermaessigt: 12}, "Kategorie II": {...} }
     this.northZones = opts.northZones; // z.B. ["D", "E", "F"]
@@ -21,7 +27,8 @@
     this.totalEl = opts.totalEl;
     this.ctaEl = opts.ctaEl;
     this.onContinue = opts.onContinue || function () {};
-    this.selected = {}; // seat_guid -> { zoneLabel, rowLabel, seatNumber, category, tarif, price }
+    this.selected = {}; // seat_guid -> {...} (Modus "seats")
+    this.blockCounts = {}; // zone_id -> { normal: n, ermaessigt: n } (Modus "blocks")
     this._load();
   }
 
@@ -50,6 +57,18 @@
     this.northZones.forEach(function (id) { northRow.appendChild(self._renderZone(self._zoneById(id))); });
     this.southZones.forEach(function (id) { southRow.appendChild(self._renderZone(self._zoneById(id))); });
 
+    var legend = this.mode === 'blocks'
+      ? '<div class="seatplan-legend">' +
+          '<span class="free"><i></i> First come, first serve</span>' +
+          '<span class="free"><i></i> Freie Sitzplatzwahl innerhalb des Blocks</span>' +
+        '</div>' +
+        '<p class="t-caption" style="margin-top:6px;color:var(--text-muted)">Nur mit der Dauerkarte sicherst du dir einen festen Sitzplatz.</p>'
+      : '<div class="seatplan-legend">' +
+          '<span class="free"><i></i> frei</span>' +
+          '<span class="taken"><i></i> vergeben</span>' +
+          '<span class="sel"><i></i> deine Auswahl</span>' +
+        '</div>';
+
     this.root.innerHTML =
       '<div class="seatplan-strip">Nordtribüne</div>' +
       '<div id="seatplan-north"></div>' +
@@ -60,11 +79,7 @@
       '</div>' +
       '<div id="seatplan-south" style="margin-top:14px"></div>' +
       '<div class="seatplan-strip seatplan-strip-south">Südtribüne</div>' +
-      '<div class="seatplan-legend">' +
-        '<span class="free"><i></i> frei</span>' +
-        '<span class="taken"><i></i> vergeben</span>' +
-        '<span class="sel"><i></i> deine Auswahl</span>' +
-      '</div>';
+      legend;
 
     document.getElementById('seatplan-north').appendChild(northRow);
     document.getElementById('seatplan-south').appendChild(southRow);
@@ -96,16 +111,20 @@
     grid.style.gridTemplateColumns = 'repeat(' + cols + ', 12px)';
 
     var seedBase = zone.zone_id.charCodeAt(0) * 97;
+    var freeCount = 0;
+    var blockMode = this.mode === 'blocks';
     zone.rows.forEach(function (row, rIdx) {
       row.seats.forEach(function (seat, cIdx) {
         var taken = seededRandom(seedBase + rIdx * cols + cIdx) < 0.28;
+        if (!taken) freeCount++;
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'seatplan-seat';
+        if (blockMode) btn.tabIndex = -1;
         btn.dataset.seatGuid = seat.seat_guid;
         var label = zone.name + ', Reihe ' + row.row_label + ', Platz ' + seat.seat_number;
         btn.setAttribute('aria-label', label + (taken ? ' (vergeben)' : ' (frei)'));
-        if (taken) {
+        if (taken || blockMode) {
           btn.disabled = true;
         } else if (self.prices[category]) {
           btn.addEventListener('click', function () {
@@ -116,7 +135,61 @@
       });
     });
     wrap.appendChild(grid);
+
+    if (blockMode && this.prices[category]) {
+      wrap.appendChild(this._renderBlockControls(zone.zone_id, zone.name, category, priceInfo, freeCount));
+    }
     return wrap;
+  };
+
+  SeatPicker.prototype._renderBlockControls = function (zoneId, zoneLabel, category, priceInfo, freeCount) {
+    var self = this;
+    var box = document.createElement('div');
+    box.className = 'seatplan-block-controls';
+
+    function stepperRow(tarif, tarifLabel, price) {
+      var row = document.createElement('div');
+      row.className = 'seatplan-stepper-row';
+      row.innerHTML =
+        '<span>' + tarifLabel + ' <strong>' + price + ' €</strong></span>' +
+        '<span class="seatplan-stepper">' +
+          '<button type="button" data-step="-1" data-zone="' + zoneId + '" data-tarif="' + tarif + '" aria-label="weniger ' + tarifLabel + '">−</button>' +
+          '<span data-count="' + zoneId + '-' + tarif + '">0</span>' +
+          '<button type="button" data-step="1" data-zone="' + zoneId + '" data-tarif="' + tarif + '" aria-label="mehr ' + tarifLabel + '">+</button>' +
+        '</span>';
+      return row;
+    }
+
+    box.appendChild(stepperRow('normal', 'Normalpreis', priceInfo.normal));
+    if (priceInfo.ermaessigt !== undefined) {
+      box.appendChild(stepperRow('ermaessigt', 'Ermäßigt', priceInfo.ermaessigt));
+    }
+
+    box.querySelectorAll('[data-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var delta = parseInt(this.dataset.step, 10);
+        self._stepBlock(zoneId, zoneLabel, category, priceInfo, this.dataset.tarif, delta, freeCount);
+      });
+    });
+
+    return box;
+  };
+
+  SeatPicker.prototype._stepBlock = function (zoneId, zoneLabel, category, priceInfo, tarif, delta, freeCount) {
+    var counts = this.blockCounts[zoneId] || { normal: 0, ermaessigt: 0 };
+    var totalSelected = counts.normal + counts.ermaessigt;
+    var next = counts[tarif] + delta;
+    if (next < 0) return;
+    if (delta > 0 && totalSelected >= freeCount) return;
+    counts[tarif] = next;
+    counts.zoneLabel = zoneLabel;
+    counts.category = category;
+    counts.priceInfo = priceInfo;
+    this.blockCounts[zoneId] = counts;
+
+    var span = this.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
+    if (span) span.textContent = String(next);
+    this._renderCart();
   };
 
   SeatPicker.prototype._toggleSeat = function (guid, zoneLabel, rowLabel, seatNumber, category, priceInfo) {
@@ -135,6 +208,8 @@
   };
 
   SeatPicker.prototype._renderCart = function () {
+    if (this.mode === 'blocks') { this._renderCartBlocks(); return; }
+
     var self = this;
     var guids = Object.keys(this.selected);
     if (guids.length === 0) {
@@ -184,8 +259,55 @@
     this.totalEl.textContent = total + ' €';
   };
 
+  SeatPicker.prototype._renderCartBlocks = function () {
+    var self = this;
+    var lines = [];
+    Object.keys(this.blockCounts).forEach(function (zoneId) {
+      var c = self.blockCounts[zoneId];
+      if (c.normal > 0) lines.push({ zoneId: zoneId, tarif: 'normal', label: 'Normalpreis', count: c.normal, price: c.priceInfo.normal, zoneLabel: c.zoneLabel });
+      if (c.ermaessigt > 0) lines.push({ zoneId: zoneId, tarif: 'ermaessigt', label: 'Ermäßigt', count: c.ermaessigt, price: c.priceInfo.ermaessigt, zoneLabel: c.zoneLabel });
+    });
+
+    if (lines.length === 0) {
+      this.cartEl.innerHTML = '<div class="seatplan-cart-empty">Noch keine Tickets ausgewählt.</div>';
+      this.ctaEl.disabled = true;
+    } else {
+      this.cartEl.innerHTML = '';
+      lines.forEach(function (l) {
+        var row = document.createElement('div');
+        row.className = 'seatplan-cart-item';
+        row.innerHTML =
+          '<div>' + l.count + '× ' + l.zoneLabel + '<br><span class="t-caption">' + l.label + '</span></div>' +
+          '<div class="seatplan-cart-item-right"><span>' + (l.count * l.price) + ' €</span>' +
+          '<button type="button" data-block-remove="' + l.zoneId + '" data-block-tarif="' + l.tarif + '">entfernen</button></div>';
+        self.cartEl.appendChild(row);
+      });
+      this.ctaEl.disabled = false;
+
+      this.cartEl.querySelectorAll('[data-block-remove]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var zoneId = this.dataset.blockRemove;
+          var tarif = this.dataset.blockTarif;
+          self.blockCounts[zoneId][tarif] = 0;
+          var span = self.root.querySelector('[data-count="' + zoneId + '-' + tarif + '"]');
+          if (span) span.textContent = '0';
+          self._renderCart();
+        });
+      });
+    }
+
+    var total = lines.reduce(function (sum, l) { return sum + l.count * l.price; }, 0);
+    this.totalEl.textContent = total + ' €';
+  };
+
   SeatPicker.prototype.getSelection = function () {
     var self = this;
+    if (this.mode === 'blocks') {
+      return Object.keys(this.blockCounts).map(function (zoneId) {
+        var c = self.blockCounts[zoneId];
+        return { zone_id: zoneId, zoneLabel: c.zoneLabel, normal: c.normal, ermaessigt: c.ermaessigt, priceInfo: c.priceInfo };
+      }).filter(function (l) { return l.normal > 0 || l.ermaessigt > 0; });
+    }
     return Object.keys(this.selected).map(function (guid) {
       var s = self.selected[guid];
       return { seat_guid: guid, zoneLabel: s.zoneLabel, rowLabel: s.rowLabel, seatNumber: s.seatNumber, tarif: s.tarif, price: s.price };

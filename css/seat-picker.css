@@ -45,6 +45,53 @@
 .seatplan-seat.selected { background: var(--color-brand-orange); border-color: #b85a08; }
 .seatplan-seat:focus-visible { outline: 2px solid var(--color-brand-blue); outline-offset: 1px; }
 
+.seatplan-block-controls { margin-top: 10px; border-top: 1px dashed #dfe2e9; padding-top: 8px; }
+.seatplan-stepper-row {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; padding: 4px 0; gap: 8px; white-space: nowrap;
+}
+.seatplan-stepper { display: inline-flex; align-items: center; gap: 6px; }
+.seatplan-stepper button {
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid #b7bdc9;
+  background: #fff; font-size: 13px; line-height: 1; cursor: pointer; padding: 0;
+}
+.seatplan-stepper button:hover { background: #f2f3f6; }
+.seatplan-stepper span[data-count] { min-width: 14px; text-align: center; font-weight: 700; }
+
+/* Dauerkarte: kompaktes Kauf-Grid (Vorschaubild | Preise | Warenkorb), das große
+   interaktive Sitzplan-Popup öffnet sich erst per Klick auf das Vorschaubild. */
+.dk-buy-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr 1.1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .dk-buy-grid { grid-template-columns: 1fr; }
+}
+.dk-thumb-btn {
+  display: block; width: 100%; padding: 0; border: 1px solid var(--border);
+  border-radius: var(--radius-md); background: none; cursor: pointer; position: relative;
+  overflow: hidden;
+}
+.dk-thumb-btn img { width: 100%; display: block; }
+.dk-thumb-cta {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(0deg, rgba(0,18,45,.82), rgba(0,18,45,0));
+  color: #fff; font-size: 13px; font-weight: 600;
+  padding: 24px 12px 10px; display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.dk-prices-col .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--bg-muted); font-size: 14px; }
+.dk-prices-col .price-row:last-of-type { border-bottom: none; }
+
+/* Callout "Dauerkarte trotz laufender Saison" unter "Gut zu wissen" */
+.dauerkarte-callout {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  background: #fdf1e6; border: 1px solid #f2cea0; border-radius: var(--radius-lg);
+  padding: 18px 20px; margin-top: 16px;
+}
+.dauerkarte-callout p { margin: 0; flex: 1; min-width: 220px; }
+
 .seatplan-court-area { display: flex; gap: 10px; align-items: stretch; margin-top: 14px; }
 .seatplan-side-strip {
   writing-mode: vertical-rl;

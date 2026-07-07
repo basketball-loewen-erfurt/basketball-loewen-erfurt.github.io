@@ -19,10 +19,9 @@
     <div class="container">
       <div class="hero-lg-grid">
         <div>
-          <span class="eyebrow">Preis pro Saison</span>
-          <h1 style="font-size:clamp(32px,5vw,56px);white-space:normal">Dauerkarte <span style="color:var(--color-brand-orange)">2026/ 27</span>.</h1>
-          <p class="lead">Deinen festen Platz sichern — Spiel für Spiel derselbe Blick aufs Parkett.</p>
-          <a class="hero-location" href="https://www.google.com/maps/search/?api=1&query=Riethsporthalle+Erfurt+Essener+Stra%C3%9Fe+20+99089+Erfurt" target="_blank" rel="noopener"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Riethsporthalle, Essener Straße 20, 99089 Erfurt</a>
+          <span class="eyebrow">Saison 2026/ 27</span>
+          <h1 style="font-size:clamp(32px,5vw,56px);white-space:normal">Hol dir deine <span class="kw">Dauerkarte<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+          <p class="lead">Einmal gewählt, gilt dein Sitzplatz für die komplette Hin- und Rückrunde der Saison (außer Playoff-Spiele).</p>
         </div>
         <div></div>
       </div>
@@ -31,23 +30,41 @@
 
   <section class="section">
     <div class="container">
-      <div class="banner-note">Vorschau — Sitzplatzverfügbarkeit ist noch Platzhalterdaten, bis der echte Saalplan final in pretix hinterlegt ist.</div>
-
-      <div class="ticket-detail-grid">
-        <div class="ticket-blockplan-col">
-          <div class="card" style="padding:20px">
-            <h3 class="t-h4" style="margin-bottom:12px">Sitzplatz wählen</h3>
-            <div id="seatplan-root"></div>
+      <div class="card" style="padding:24px">
+        <div class="dk-buy-grid">
+          <div class="dk-thumb-col">
+            <button type="button" class="dk-thumb-btn" id="seatplan-modal-trigger" aria-label="Sitzplatzwahl öffnen">
+              <img src="/assets/img/riethsporthalle-blockplan.png" alt="Blockplan der Riethsporthalle mit Blöcken A–F, Kategorien und Spielfeld" />
+              <span class="dk-thumb-cta"><i data-lucide="expand" style="width:16px;height:16px"></i> Sitzplatz wählen</span>
+            </button>
           </div>
-        </div>
-        <div class="ticket-cart-col">
-          <div class="card" style="padding:24px;position:sticky;top:20px">
+          <div class="dk-prices-col">
+            <h3 class="t-h4" style="margin-bottom:12px">Preise</h3>
+            <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
+            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>90 €</strong></div>
+          </div>
+          <div class="dk-cart-col">
             <h3 class="t-h4" style="margin-bottom:4px">Deine Auswahl</h3>
-            <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px">Dauerkarte 2026/ 27 · gilt für alle Heimspiele der Saison</p>
+            <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px">Gilt für alle Heimspiele der Saison</p>
             <div id="seatplan-cart"></div>
             <div class="seatplan-cart-total"><span>Gesamt</span><span id="seatplan-total">0 €</span></div>
             <button class="btn btn-primary btn-sm" id="seatplan-cta" style="margin-top:16px;width:100%;justify-content:center" disabled>Weiter zu den Käuferdaten</button>
           </div>
+        </div>
+      </div>
+
+      <!-- Sitzplatzwahl-Popup — Vorschaubild bleibt kompakt im Grid, Klick öffnet den echten,
+           interaktiven Sitzplan groß. Warenkorb/Preise oben bleiben unabhängig vom Modal sichtbar. -->
+      <div class="modal-backdrop" id="seatplan-modal-backdrop">
+        <div class="modal-box modal-box-blockplan" role="dialog" aria-modal="true" aria-label="Sitzplatzwahl">
+          <button class="modal-close" aria-label="Schließen" id="seatplan-modal-close"><i data-lucide="x"></i></button>
+          <h3 class="t-h4" style="margin-bottom:12px">Sitzplatz wählen</h3>
+          <div style="flex:1;min-height:0;overflow-y:auto">
+            <div id="seatplan-root"></div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="seatplan-modal-confirm" style="margin-top:16px;width:100%;justify-content:center">Jetzt bestellen</button>
         </div>
       </div>
 
@@ -116,8 +133,21 @@
       totalEl: document.getElementById('seatplan-total'),
       ctaEl: document.getElementById('seatplan-cta')
     });
-    document.getElementById('seatplan-cta').addEventListener('click', function () {
+    function goToBuyerDetails() {
       alert('Weiter zu den Käuferdaten — noch nicht gebaut.');
+    }
+    document.getElementById('seatplan-cta').addEventListener('click', goToBuyerDetails);
+
+    var backdrop = document.getElementById('seatplan-modal-backdrop');
+    function openSeatModal() { backdrop.classList.add('open'); }
+    function closeSeatModal() { backdrop.classList.remove('open'); }
+    document.getElementById('seatplan-modal-trigger').addEventListener('click', openSeatModal);
+    document.getElementById('seatplan-modal-close').addEventListener('click', closeSeatModal);
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeSeatModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSeatModal(); });
+    document.getElementById('seatplan-modal-confirm').addEventListener('click', function () {
+      closeSeatModal();
+      goToBuyerDetails();
     });
   });
 </script>
