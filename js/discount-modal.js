@@ -11,7 +11,7 @@
         '<div class="modal-icon"><i data-lucide="percent"></i></div>' +
         '<span class="eyebrow" id="discount-modal-title">10% Rabatt</span>' +
         '<h3 class="t-h3" style="margin:8px 0 12px">Für Vereinsmitglieder.</h3>' +
-        '<p class="t-body-sm">Werde Mitglied im Verein ab 72&nbsp;€ im Jahr und spare 10&nbsp;% auf deinen Ticketkauf — dazu Dauerkarten-Rabatt, Meet&nbsp;&amp;&nbsp;Greets und mehr.</p>' +
+        '<p class="t-body-sm">Werde Mitglied im Verein ab 72&nbsp;€ im Jahr und spare 10&nbsp;% auf deinen Ticketkauf — dazu Dauerkarten-Rabatt, Meet&nbsp;&amp;&nbsp;Greets und mehr. Sichere dir den Rabatt noch bis zum 30.08.2026.</p>' +
         '<a class="btn btn-primary btn-block" style="margin-top:20px" href="/mitglied-werden.html">Jetzt Mitglied werden</a>' +
       '</div>';
     document.body.appendChild(el);

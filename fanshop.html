@@ -23,6 +23,12 @@
   .fanshop-product h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
   .fanshop-product .fanshop-price { font-weight: 700; margin-bottom: 10px; }
   .fanshop-product .seatplan-stepper { width: 100%; justify-content: center; }
+  .fanshop-more-card {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 18px 20px; margin-top: 20px;
+  }
+  .fanshop-more-card p { margin: 0; flex: 1; min-width: 220px; }
 </style>
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
@@ -30,21 +36,27 @@
 <div id="site-header-placeholder"></div>
 <main id="main">
 
-  <section class="hero-photo">
+  <section class="hero-photo hero-fanshop">
     <div class="container">
       <span class="eyebrow">Fanshop</span>
       <h1>Zeig, wofür du stehst.</h1>
       <p class="lead">Trikots, Merchandise und mehr — direkt online bestellen.</p>
     </div>
-    <span class="photo-note">Platzhalterbild — echtes Foto folgt</span>
   </section>
 
   <section class="section">
     <div class="container">
-      <p class="banner-note">Prototyp: Produktbilder sind Platzhalter, die Bestellung läuft über denselben Warenkorb wie die Tickets.</p>
-
       <div class="fanshop-grid-wrap">
-        <div class="fanshop-products" id="fanshop-products"></div>
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:14px">Ausgewählte Produkte</span>
+          <div class="fanshop-products" id="fanshop-products"></div>
+
+          <div class="fanshop-more-card">
+            <i data-lucide="shopping-bag" style="width:28px;height:28px;color:var(--color-brand-orange);flex-shrink:0"></i>
+            <p class="t-body-sm">Weitere Produkte — Trikots in allen Größen, Damen- und Kindervarianten — findest du in unserem vollen Fanshop.</p>
+            <a class="btn btn-primary btn-sm" href="https://erfurt-mitte.de/collections/fanshop-basketball-loewen-erfurt" target="_blank" rel="noopener">Weitere Produkte <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>
+          </div>
+        </div>
 
         <div class="card" style="padding:24px;position:sticky;top:20px;background:var(--bg-subtle)">
           <h3 class="t-h4" style="margin-bottom:4px">Dein Warenkorb</h3>
@@ -66,16 +78,16 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var PRODUCTS = [
-      { id: 'trikot-home', name: 'Heimtrikot 2026/ 27', price: 79.90, icon: 'shirt' },
-      { id: 'trikot-away', name: 'Auswärtstrikot 2026/ 27', price: 79.90, icon: 'shirt' },
-      { id: 'hoodie', name: 'Kapuzenpullover Vereinslogo', price: 49.90, icon: 'shirt' },
-      { id: 'tshirt', name: 'T-Shirt Vereinslogo', price: 24.90, icon: 'shirt' },
-      { id: 'cap', name: 'Cap Basketball Löwen', price: 22.90, icon: 'star' },
-      { id: 'schal', name: 'Fan-Schal', price: 19.90, icon: 'gift' },
-      { id: 'ball', name: 'Spielball, offiziell', price: 29.90, icon: 'circle' },
-      { id: 'flasche', name: 'Trinkflasche 0,75 l', price: 14.90, icon: 'package' },
-      { id: 'aufkleber', name: 'Aufkleber-Set (5 Stück)', price: 6.90, icon: 'package' },
-      { id: 'kids-trikot', name: 'Kinder-Trikot', price: 54.90, icon: 'baby' }
+      { id: 'tshirt-logo', name: 'T-Shirt LOGO', price: 29.00, icon: 'shirt' },
+      { id: 'tshirt-damen-logo', name: 'T-Shirt Damen LOGO', price: 29.00, icon: 'shirt' },
+      { id: 'tshirt-kinder-logo', name: 'T-Shirt Kinder LOGO', price: 25.00, icon: 'baby' },
+      { id: 'hoodie-stamp', name: 'Hoodie STAMP (unisex)', price: 59.00, icon: 'shirt' },
+      { id: 'pullover-logo', name: 'Pullover LOGO (unisex)', price: 45.00, icon: 'shirt' },
+      { id: 'sweatjacke-herren-logo', name: 'Sweatjacke Herren LOGO', price: 59.00, icon: 'shirt' },
+      { id: 'fanschal', name: 'Fanschal', price: 17.00, icon: 'gift' },
+      { id: 'tasse', name: 'Tasse', price: 9.90, icon: 'coffee' },
+      { id: 'pin', name: 'Pin', price: 4.95, icon: 'tag' },
+      { id: 'aufkleberbogen', name: 'Aufkleberbogen', price: 3.00, icon: 'package' }
     ];
     var cart = {}; // id -> qty
 
