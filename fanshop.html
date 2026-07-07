@@ -50,7 +50,7 @@
     <div class="container">
       <span class="eyebrow">Fanshop</span>
       <h1>Zeig, wofür du stehst.</h1>
-      <p class="lead">Trikots, Merchandise und mehr — direkt online bestellen.</p>
+      <p class="lead">Merchandise und mehr — direkt online bestellen.</p>
     </div>
   </section>
 
@@ -58,7 +58,6 @@
     <div class="container">
       <div class="fanshop-grid-wrap">
         <div>
-          <span class="eyebrow" style="display:block;margin-bottom:14px">Geschenkgutschein</span>
           <div class="card fanshop-giftcard-card">
             <div class="fanshop-giftcard-img">
               <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
@@ -89,8 +88,7 @@
             </div>
           </div>
 
-          <span class="eyebrow" style="display:block;margin-bottom:14px">Ausgewählte Produkte</span>
-          <div class="fanshop-products" id="fanshop-products"></div>
+          <div class="fanshop-products" id="fanshop-products" style="margin-top:24px"></div>
 
           <div class="fanshop-more-card">
             <i data-lucide="shopping-bag" style="width:28px;height:28px;color:var(--color-brand-orange);flex-shrink:0"></i>
@@ -146,8 +144,15 @@
         '</span>';
     }
 
+    /* Löwen-Kaffee immer direkt nach dem Gutschein (also an erster Stelle im Produkt-Grid),
+       der Rest dahinter aufsteigend nach Preis sortiert. */
+    var mainProducts = PRODUCTS.filter(function (p) { return p.category !== 'gutschein'; });
+    var kaffeeProduct = mainProducts.find(function (p) { return p.id === 'kaffee'; });
+    var restSorted = mainProducts.filter(function (p) { return p.id !== 'kaffee'; }).sort(function (a, b) { return a.price - b.price; });
+    var orderedProducts = kaffeeProduct ? [kaffeeProduct].concat(restSorted) : restSorted;
+
     var grid = document.getElementById('fanshop-products');
-    grid.innerHTML = PRODUCTS.filter(function (p) { return p.category !== 'gutschein'; }).map(function (p) {
+    grid.innerHTML = orderedProducts.map(function (p) {
       return '<div class="card fanshop-product" style="padding:16px">' +
         '<div class="fanshop-product-img">' + (p.image ? '<img src="' + p.image + '" alt="' + p.name + '">' : '<i data-lucide="' + p.icon + '"></i>') + '</div>' +
         '<h4>' + p.name + '</h4>' +

@@ -69,11 +69,16 @@
   display: grid;
   grid-template-columns: 0.9fr 1fr 1.1fr;
   gap: 28px;
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 900px) {
   .buy-grid { grid-template-columns: 1fr; }
 }
+/* Cart-Spalte streckt sich auf die Höhe der Preise-/Vorschaubild-Spalte; der leere
+   Zustand ("Noch keine Plätze ausgewählt") füllt den Platz, sodass der Button unten
+   immer mit der Unterkante von Preistabelle und Floorplan abschließt. */
+.buy-cart-col { display: flex; flex-direction: column; }
+.buy-cart-col #seatplan-cart { flex: 1; }
 .buy-thumb-btn {
   display: block; width: 100%; padding: 0; border: 1px solid var(--border);
   border-radius: var(--radius-md); background: none; cursor: pointer; position: relative;
