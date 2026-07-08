@@ -1,8 +1,10 @@
-// Baut das News-Bento auf der Startseite dynamisch aus zwei Quellen zusammen:
-// echten News-Artikeln (data/news.json, nur topNews:true) und dem LÖWENPARK-
-// Instagram-Feed (data/instagram-loewenpark.json, von n8n/Behold befüllt).
-// data/instagram-loewen.json (Hauptaccount) wird optional mit eingebunden, sobald
-// diese Datei existiert — bis dahin wird ein 404 dafür stillschweigend ignoriert.
+// Baut das News-Bento auf der Startseite dynamisch aus drei Quellen zusammen:
+// echten News-Artikeln (data/news.json, nur topNews:true), dem LÖWENPARK-Feed
+// (data/instagram-loewenpark.json) und dem Hauptaccount-Feed
+// (data/instagram-loewen.json) — alle von n8n/Behold befüllt. Fehlt eine Datei
+// (404), wird sie still übersprungen. Ausgewogene Quote der 10 Startseiten-
+// Kacheln: immer die 2 aktuellsten News-Artikel (fest reserviert, unabhängig
+// von der Instagram-Aktualität), dazu max. 4 Löwen- und max. 4 LÖWENPARK-Posts.
 document.addEventListener('DOMContentLoaded', function () {
   var desktopTrack = document.getElementById('news-slider-track-desktop');
   var mobileTrack = document.getElementById('news-slider-track-mobile');
@@ -33,10 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchJson('/data/instagram-loewen.json')
   ]).then(function (results) {
     var newsData = results[0], parkFeed = results[1], hauptFeed = results[2];
-    var items = [];
 
-    (newsData && newsData.artikel || []).filter(function (a) { return a.topNews; }).forEach(function (a) {
-      items.push({
+    var newsItems = (newsData && newsData.artikel || []).filter(function (a) { return a.topNews; }).map(function (a) {
+      return {
         date: parseGermanDate(a.datum),
         dateLabel: a.datum,
         image: a.bild,
@@ -45,26 +46,34 @@ document.addEventListener('DOMContentLoaded', function () {
         url: a.url,
         external: false,
         badge: null
-      });
+      };
     });
 
-    [{ feed: parkFeed, badge: 'LÖWENPARK', feedKey: 'loewenpark' }, { feed: hauptFeed, badge: 'Löwen', feedKey: 'loewen' }].forEach(function (entry) {
-      (entry.feed && entry.feed.posts || []).forEach(function (p) {
-        items.push({
+    function instaItems(feed, badge, feedKey) {
+      return (feed && feed.posts || []).map(function (p) {
+        return {
           date: new Date(p.timestamp),
           dateLabel: null,
           image: p.image,
           headline: firstLine(p.caption, 70),
           teaser: firstLine(p.caption.split('\n').slice(1).join(' ').trim(), 110) || 'Jetzt ansehen.',
-          url: '/news/insta-post.html?feed=' + entry.feedKey + '&id=' + encodeURIComponent(p.id),
+          url: '/news/insta-post.html?feed=' + feedKey + '&id=' + encodeURIComponent(p.id),
           external: true,
-          badge: entry.badge
-        });
+          badge: badge
+        };
       });
-    });
+    }
 
-    items.sort(function (a, b) { return b.date - a.date; });
-    items = items.slice(0, 10);
+    function byDateDesc(a, b) { return b.date - a.date; }
+    function takeMax(list, max) { return list.slice().sort(byDateDesc).slice(0, max); }
+
+    // Ausgewogene Quote: max. 4 Löwen, max. 4 LÖWENPARK, max. 2 News-Artikel.
+    var items = []
+      .concat(takeMax(newsItems, 2))
+      .concat(takeMax(instaItems(parkFeed, 'LÖWENPARK', 'loewenpark'), 4))
+      .concat(takeMax(instaItems(hauptFeed, 'Löwen', 'loewen'), 4));
+
+    items.sort(byDateDesc);
     if (!items.length) return;
 
     function tileHtml(item, roleClass) {
