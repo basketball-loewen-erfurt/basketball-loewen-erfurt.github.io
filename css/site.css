@@ -358,7 +358,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .aktuelles-sidebar { position: static; margin-top: 0; }
 }
 
-/* Partner-Flipcards (Erfurt-Partner-Seite): Mouseover dreht die Karte um die
+/* Partner-Flipcards (Löwen-Unterstützer-Seite): Mouseover dreht die Karte um die
    Y-Achse (rechts nach links) und zeigt auf der Rückseite den Web-Claim der
    jeweiligen Firma. */
 .partner-flip-card { height: 150px; perspective: 1200px; }
@@ -670,15 +670,15 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
-/* Hero-Variante für die Erfurt-Partner-Seite — Erfurter Dom/Severikirche
+/* Hero-Variante für die Löwen-Unterstützer-Seite — Erfurter Dom/Severikirche
    (Stockfoto, niedrige Auflösung als Platzhalter bis zum echten Lizenzkauf). */
-.hero-photo.hero-erfurt-partner {
+.hero-photo.hero-loewen-unterstuetzer {
   background:
     linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
-    url('/assets/img/hero-erfurt-partner.jpg');
+    url('/assets/img/hero-loewen-unterstuetzer.jpg');
   background-size: cover; background-position: center 55%;
 }
-.hero-photo.hero-erfurt-partner .hero-media::after {
+.hero-photo.hero-loewen-unterstuetzer .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
