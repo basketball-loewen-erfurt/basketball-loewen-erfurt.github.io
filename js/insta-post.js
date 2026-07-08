@@ -37,13 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
       ', ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
   }
 
+  function articleFooterHtml() {
+    return '<div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">' +
+      '<a class="article-back-link" href="/news/aktuelles.html">← Alle News</a>' +
+      '<a class="btn btn-outline-orange btn-sm" href="/news/newsletter.html">Newsletter abonnieren</a>' +
+      '</div>';
+  }
+
   function showNotFound() {
     titleEl.textContent = 'Beitrag nicht mehr verfügbar';
-    eyebrowEl.textContent = feedConfig ? feedConfig.badge + ' · Instagram' : 'Instagram';
+    eyebrowEl.textContent = 'Aktuelles · ' + (feedConfig ? feedConfig.badge + ' · Instagram' : 'Instagram');
     var profileUrl = feedConfig ? feedConfig.profile : 'https://www.instagram.com/basketball.loewen/';
     contentEl.innerHTML =
       '<p class="t-body">Dieser Beitrag ist im aktuellen Instagram-Feed nicht mehr enthalten — Instagram zeigt uns hier immer nur die letzten Beiträge.</p>' +
-      '<a class="btn btn-primary" style="margin-top:16px" href="' + profileUrl + '" target="_blank" rel="noopener">Zum Instagram-Profil <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>';
+      '<a class="btn btn-primary" style="margin-top:16px" href="' + profileUrl + '" target="_blank" rel="noopener">Zum Instagram-Profil <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>' +
+      articleFooterHtml();
     if (window.lucide) { lucide.createIcons(); }
   }
 
@@ -63,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
       heroEl.style.backgroundSize = 'cover';
       heroEl.style.backgroundPosition = 'center top';
 
-      eyebrowEl.textContent = feedConfig.badge + ' · Instagram';
+      eyebrowEl.textContent = 'Aktuelles · ' + feedConfig.badge + ' · Instagram';
       titleEl.textContent = firstLine(post.caption, 90);
 
       var likesLine = (post.likeCount || post.commentsCount)
@@ -82,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
             '<p class="t-body" style="white-space:pre-line">' + escapeHtml(post.caption || '') + '</p>' +
             '<a class="btn btn-primary" style="margin-top:20px" href="' + post.permalink + '" target="_blank" rel="noopener">Original auf Instagram ansehen <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>' +
           '</div>' +
-        '</div>';
+        '</div>' +
+        articleFooterHtml();
 
       if (window.lucide) { lucide.createIcons(); }
     })
