@@ -404,6 +404,10 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .news-slider-dots button.active { background: var(--color-brand-orange); }
 .news-slider-mobile { display: none; }
+/* Fortschrittsbalken statt Einzel-Punkte — bei 15 Kacheln wären 15 Punkte zu
+   viel, der schmale Balken deutet nur an, wie weit man ist und dass es weitergeht. */
+.news-mobile-progress { height: 3px; border-radius: 999px; background: var(--border); margin: 14px 4px 0; overflow: hidden; }
+.news-mobile-progress-thumb { height: 100%; width: 20%; border-radius: 999px; background: var(--color-brand-orange); transform: translateX(0); }
 @media (max-width: 1023px) {
   .news-slider-desktop { display: none; }
   .news-slider-mobile { display: block; }
@@ -503,6 +507,30 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* News-Artikel-Überschriften sind variabel lang (echte Meldungen statt kurzer
    Taglines) — hier immer normal umbrechen, auch auf Desktop-Breiten. */
 .hero-photo.hero-article h1 { white-space: normal; }
+
+/* Editorial-Minimal-Layout für News-Artikel-Detailseiten: Kopfzeile frei auf
+   Weiß statt Bild-Overlay, Foto als eigener Block darunter, schmale Textspalte
+   mit Zitat-Element für Highlights. Ersetzt .hero-photo auf Artikelseiten. */
+.article-head { padding: 48px 0 32px; text-align: center; }
+.article-head .eyebrow { display: block; margin-bottom: 10px; }
+.article-head h1 {
+  font-family: var(--font-display); font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-display); line-height: 1.15; text-wrap: balance;
+  font-size: clamp(26px, 4vw, 40px); max-width: 22ch; margin: 0 auto 14px; color: var(--text-primary);
+}
+.article-meta { font-size: 13px; color: var(--text-muted); }
+.article-photo { width: 100%; height: 380px; overflow: hidden; }
+.article-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.article-body { max-width: 640px; margin: 0 auto; padding-top: 32px; }
+.article-body p.t-body { font-size: 16px; line-height: 1.75; }
+.article-body .pull-quote {
+  font-weight: var(--weight-semibold); font-size: 19px; line-height: 1.5; color: var(--text-primary);
+  border-left: 3px solid var(--color-brand-orange); padding-left: 20px; margin: 28px 0;
+}
+@media (max-width: 599px) {
+  .article-head { padding: 32px 0 24px; }
+  .article-photo { height: 220px; }
+}
 .hero-location {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 15px; color: var(--text-secondary); text-decoration: none;

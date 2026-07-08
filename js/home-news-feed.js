@@ -109,7 +109,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (window.lucide) { lucide.createIcons(); }
     initSlider();
+    initMobileProgress();
   });
+
+  function initMobileProgress() {
+    var thumb = document.getElementById('news-mobile-progress-thumb');
+    if (!thumb) return;
+    var track = mobileTrack;
+
+    function update() {
+      var scrollable = track.scrollWidth - track.clientWidth;
+      var widthPct = Math.max(12, (track.clientWidth / track.scrollWidth) * 100);
+      var progress = scrollable > 0 ? track.scrollLeft / scrollable : 0;
+      var maxTranslatePct = 100 - widthPct;
+      thumb.style.width = widthPct + '%';
+      thumb.style.transform = 'translateX(' + (progress * maxTranslatePct / widthPct * 100) + '%)';
+    }
+
+    var resizeTimer;
+    track.addEventListener('scroll', function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(update, 30);
+    });
+    window.addEventListener('resize', update);
+    update();
+  }
 
   function initSlider() {
     var track = desktopTrack;
