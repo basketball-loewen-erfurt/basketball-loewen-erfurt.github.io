@@ -386,17 +386,29 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .loewenpark-countdown-hero .countdown-unit { padding: 14px 20px; min-width: 76px; }
 .loewenpark-countdown-hero .countdown-unit strong { font-size: 36px; }
 
-/* LÖWENPARK-History: eine horizontale, scrollbare Zeitleiste statt der
-   vorherigen Kartenraster-Zeitleiste — ersetzt diese vollständig, damit es
-   nur noch eine Zeitleiste auf der Seite gibt. */
-.history-timeline { display: flex; gap: 28px; overflow-x: auto; padding: 32px 4px 12px; margin-top: 24px; }
-.history-item { position: relative; flex: 0 0 200px; padding-top: 24px; border-top: 3px solid rgba(255,255,255,.35); }
+/* LÖWENPARK-History: horizontale, scrollbare Zeitleiste. Jedes Item ist nur ein
+   schmaler "Taktschlag" (Punkt + Liniensegment); der Textblock ist breiter als
+   dieser Takt, startet bündig am eigenen Punkt und ragt nach rechts in den
+   Bereich der nächsten Punkte hinein — da Etappen sich ober-/unterhalb der
+   Linie abwechseln, kollidiert der Text nie mit dem jeweils übernächsten
+   gleichseitigen Textblock. Macht die Zeitleiste deutlich kompakter als eine
+   Version, die jedem Item seine volle Textbreite als eigene Spalte gibt. */
+.history-timeline { position: relative; display: flex; overflow-x: auto; padding: 170px 4px; margin-top: 24px; }
+.history-item { position: relative; flex: 0 0 100px; }
 .history-item::before {
-  content: ''; position: absolute; top: -8px; left: 0; width: 13px; height: 13px;
-  border-radius: 50%; background: var(--color-brand-orange); border: 3px solid #fff;
+  content: ''; position: absolute; top: 0; left: 0; margin: -6.5px 0 0 -6.5px;
+  width: 13px; height: 13px; border-radius: 50%; background: var(--color-brand-orange);
+  border: 3px solid #fff; z-index: 3;
 }
-.history-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 16px; color: #fff; margin: 4px 0 6px; }
-.history-item p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.78); margin: 0; }
+.history-item::after {
+  content: ''; position: absolute; top: -1.5px; left: 0; width: 100px;
+  height: 3px; background: rgba(255,255,255,.35); z-index: 1;
+}
+.history-content { position: absolute; left: 0; width: 180px; z-index: 2; }
+.history-content-top { bottom: 14px; }
+.history-content-bottom { top: 14px; }
+.history-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 15px; color: #fff; margin: 4px 0 6px; }
+.history-item p { font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,.78); margin: 0; }
 
 /* Partner-Flipcards (Löwen-Unterstützer-Seite): Mouseover dreht die Karte um die
    Y-Achse (rechts nach links) und zeigt auf der Rückseite den Web-Claim der
