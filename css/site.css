@@ -312,6 +312,29 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .card-body p { font-size: 14px; color: var(--text-secondary); font-weight: var(--weight-light); line-height: 1.5; margin-bottom: 12px; }
 .card-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 13px; font-weight: var(--weight-semibold); color: var(--color-brand-orange); }
 .card-link:hover { text-decoration: underline; }
+/* Foto-Variante von .card-media für echte Pressefotos (statt Icon+Farbverlauf),
+   z.B. auf der News-Übersichtsseite. */
+.card-media-photo { height: 180px; padding: 0; }
+.card-media-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Abschnitts-Trenner mit Label — trennt z.B. Vereinsnews optisch von Social-Content. */
+.section-divider {
+  display: flex; align-items: center; gap: 16px; margin: 8px 0 32px;
+  color: var(--text-muted); font-size: 12px; font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: .1em;
+}
+.section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* Dichtes Instagram-Raster auf der News-Übersichtsseite — kleinere Kacheln als
+   das Homepage-Bento, nutzt aber dieselbe .news-tile-Optik (Foto + Verlauf). */
+.insta-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.insta-overview-grid .news-tile { aspect-ratio: 3 / 4; }
+.insta-overview-grid .news-tile-headline {
+  font-size: 13px; margin-bottom: 6px;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+}
+@media (max-width: 1023px) { .insta-overview-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 599px) { .insta-overview-grid { grid-template-columns: repeat(2, 1fr); } }
 
 /* News-Bento (Homepage) — 5 Kacheln, gemischt aus internen News + Instagram-Feeds:
    Zeile 1 = 1 breite Kachel (2 Spalten) + 1 schmale; Zeile 2 = 3 gleich breite Kacheln.
