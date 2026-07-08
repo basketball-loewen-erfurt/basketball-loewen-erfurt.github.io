@@ -75,9 +75,14 @@ document.addEventListener('DOMContentLoaded', function () {
         : '<p class="t-caption" style="color:var(--text-muted);margin-bottom:16px">' + formatDate(post.timestamp) + '</p>';
 
       contentEl.innerHTML =
-        likesLine +
-        '<p class="t-body" style="white-space:pre-line">' + escapeHtml(post.caption || '') + '</p>' +
-        '<a class="btn btn-primary" style="margin-top:20px" href="' + post.permalink + '" target="_blank" rel="noopener">Original auf Instagram ansehen <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>';
+        '<div class="insta-detail-grid">' +
+          '<div class="insta-detail-media"><img src="' + post.image + '" alt="" /></div>' +
+          '<div>' +
+            likesLine +
+            '<p class="t-body" style="white-space:pre-line">' + escapeHtml(post.caption || '') + '</p>' +
+            '<a class="btn btn-primary" style="margin-top:20px" href="' + post.permalink + '" target="_blank" rel="noopener">Original auf Instagram ansehen <i data-lucide="arrow-up-right" style="width:16px;height:16px"></i></a>' +
+          '</div>' +
+        '</div>';
 
       if (window.lucide) { lucide.createIcons(); }
     })

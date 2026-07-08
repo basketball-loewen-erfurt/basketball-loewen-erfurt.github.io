@@ -335,6 +335,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .news-tile-insta img {
   object-position: top;
 }
+
+/* Instagram-Post-Detailseite (news/insta-post.html): Hochkant-Vorschaubild
+   neben dem Text, unabhängig vom Hero-Hintergrundbild. */
+.insta-detail-grid { display: grid; grid-template-columns: 300px 1fr; gap: 32px; align-items: start; }
+.insta-detail-media {
+  border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-subtle);
+  aspect-ratio: 9 / 16;
+}
+.insta-detail-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 720px) {
+  .insta-detail-grid { grid-template-columns: 1fr; }
+  .insta-detail-media { max-width: 260px; margin: 0 auto; }
+}
 .news-tile-overlay {
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
   padding: 20px; background: linear-gradient(0deg, rgba(0,18,45,.92) 0%, rgba(0,18,45,.55) 45%, rgba(0,18,45,0) 80%);
@@ -487,6 +500,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 12px; color: var(--text-primary);
 }
 .hero-photo p.lead { font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px; }
+/* News-Artikel-Überschriften sind variabel lang (echte Meldungen statt kurzer
+   Taglines) — hier immer normal umbrechen, auch auf Desktop-Breiten. */
+.hero-photo.hero-article h1 { white-space: normal; }
 .hero-location {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 15px; color: var(--text-secondary); text-decoration: none;
