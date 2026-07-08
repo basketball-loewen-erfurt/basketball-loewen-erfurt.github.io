@@ -7,9 +7,9 @@
 <meta name="description" content="Bestellbestätigung für deine Tickets bei den Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783530977" />
-<link rel="stylesheet" href="/css/site.css?v=1783530977" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1783530977" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783533475" />
+<link rel="stylesheet" href="/css/site.css?v=1783533475" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1783533475" />
 <style>
   .process-chain { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin: 24px 0 4px; flex-wrap: wrap; }
   .process-step { display: flex; align-items: center; }
@@ -82,7 +82,7 @@
           <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="confirmation-event-label"></p>
           <div id="confirmation-lines"></div>
-          <div class="seatplan-cart-total"><span>Gesamt</span><span id="confirmation-lines-total">0 €</span></div>
+          <div class="seatplan-cart-total"><span>Gesamt</span><span><span id="confirmation-lines-total">0,00 €</span> <span id="confirmation-vat-note" style="font-weight:400;font-size:12px;color:var(--text-muted);display:none"></span></span></div>
         </div>
 
         <div class="card" style="padding:20px 24px;margin-top:20px">
@@ -104,8 +104,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783530977"></script>
-<script src="/js/include.js?v=1783530977"></script>
+<script src="/js/nav.js?v=1783533475"></script>
+<script src="/js/include.js?v=1783533475"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_order');
@@ -123,8 +123,10 @@
 
     var isFanshop = cart.productType === 'fanshop';
 
+    function formatMoney(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
     document.getElementById('confirmation-order-number').textContent = order.orderNumber;
-    document.getElementById('confirmation-total').textContent = cart.total + ' €';
+    document.getElementById('confirmation-total').textContent = formatMoney(cart.total);
     document.getElementById('confirmation-method').textContent = order.paymentMethod === 'sepa' ? 'SEPA-Lastschrift' : 'PayPal';
     document.getElementById('confirmation-event-label').textContent = cart.eventLabel;
 
@@ -144,10 +146,13 @@
       var isVoucher = l.label.indexOf('Gutschein ') === 0;
       return '<div class="seatplan-cart-item' + (isVoucher ? ' discount' : '') + '">' +
         '<div>' + (!isVoucher && l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
-        '<div class="seatplan-cart-item-right"><span>' + (l.lineTotal < 0 ? '−' + Math.abs(l.lineTotal) : l.lineTotal) + ' €</span></div>' +
+        '<div class="seatplan-cart-item-right"><span>' + (l.lineTotal < 0 ? '−' + formatMoney(Math.abs(l.lineTotal)) : formatMoney(l.lineTotal)) + '</span></div>' +
       '</div>';
     }).join('');
-    document.getElementById('confirmation-lines-total').textContent = cart.total + ' €';
+    document.getElementById('confirmation-lines-total').textContent = formatMoney(cart.total);
+    var confirmationVatNoteEl = document.getElementById('confirmation-vat-note');
+    confirmationVatNoteEl.textContent = cart.vatNote || '';
+    confirmationVatNoteEl.style.display = cart.vatNote ? '' : 'none';
 
     sessionStorage.removeItem('bl_cart');
     sessionStorage.removeItem('bl_buyer');

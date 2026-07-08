@@ -7,8 +7,8 @@
 <meta name="description" content="Regionale Unternehmen aus Erfurt und der Region zeigen mit uns Präsenz und werden Teil des wachsenden Löwen-Unterstützer-Netzwerks der Basketball Löwen." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783530977" />
-<link rel="stylesheet" href="/css/site.css?v=1783530977" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783533475" />
+<link rel="stylesheet" href="/css/site.css?v=1783533475" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -155,13 +155,14 @@
       <div style="max-width:460px;margin:0 auto;text-align:center">
         <div class="card" style="padding:28px">
           <span class="card-label">Mitmachen und Löwen-Unterstützer werden</span>
-          <h3 class="t-h3" style="margin:8px 0 16px;white-space:nowrap">49 € (zzgl. MwSt.)/ Monat</h3>
+          <h3 class="t-h3" style="margin:8px 0 4px;white-space:nowrap">49 € (zzgl. MwSt.)/ Monat*</h3>
+          <p class="t-caption" style="color:var(--text-muted);margin-bottom:16px">*Bei jährlicher Zahlung, 588 € (zzgl. MwSt.) pro Jahr.</p>
           <ul class="t-body-sm" style="margin:0 0 20px;padding-left:20px;color:var(--text-secondary);display:inline-block;text-align:left">
             <li>Logo auf der Löwen-Unterstützer-Seite</li>
             <li>Verlinkung zur eigenen Website</li>
             <li>Möglichkeit, unser Logo und unseren Namen auf der eigenen Webseite zu benutzen</li>
           </ul>
-          <button class="btn btn-primary btn-block" data-package="Löwen-Unterstützer" data-price="49">Paket buchen</button>
+          <button class="btn btn-primary btn-block" data-package="Löwen-Unterstützer" data-price="588">Paket buchen</button>
         </div>
       </div>
       <p class="t-caption" style="margin-top:20px;color:var(--text-muted)">Individuelles Paket gewünscht? <a href="mailto:andre.grenzdoerffer@basketball-loewen.com">Sprich uns an</a>.</p>
@@ -170,16 +171,17 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783530977"></script>
-<script src="/js/include.js?v=1783530977"></script>
+<script src="/js/nav.js?v=1783533475"></script>
+<script src="/js/include.js?v=1783533475"></script>
 <script>
   document.querySelectorAll('[data-package]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var price = parseFloat(this.dataset.price);
-      var label = 'Löwen-Unterstützer-Paket (pro Monat, zzgl. MwSt.)';
+      var label = 'Löwen-Unterstützer-Paket (pro Jahr)';
       sessionStorage.setItem('bl_cart', JSON.stringify({
         productType: 'loewen-unterstuetzer',
         eventLabel: 'Löwen-Unterstützer-Paket',
+        vatNote: 'zzgl. MwSt.',
         lines: [{ label: label, qty: 1, unitPrice: price, lineTotal: price }],
         total: price,
         voucher: null

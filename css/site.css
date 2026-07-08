@@ -358,6 +358,43 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .aktuelles-sidebar { position: static; margin-top: 0; }
 }
 
+/* LÖWENPARK-Seite: 2/3 Hauptspalte + 1/3 fest stehende Buchungs-Sidebar,
+   gleiches Prinzip wie die Aktuelles-Seite. */
+.loewenpark-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+.loewenpark-sidebar {
+  background: var(--bg-subtle); border-radius: var(--radius-lg);
+  padding: 24px; position: sticky; top: 96px;
+}
+@media (max-width: 1023px) {
+  .loewenpark-layout { grid-template-columns: 1fr; }
+  .loewenpark-sidebar { position: static; }
+}
+
+/* LÖWENPARK-Countdown: Live-Countdown bis zum Ende der Thüringer Herbstferien. */
+.loewenpark-countdown { margin: 20px 0 28px; }
+.countdown-grid { display: flex; gap: 12px; }
+.countdown-unit {
+  background: var(--bg-subtle); border-radius: var(--radius-md);
+  padding: 10px 18px; text-align: center; min-width: 64px;
+}
+.countdown-unit strong {
+  display: block; font-size: 26px; font-variant-numeric: tabular-nums;
+  color: var(--color-brand-orange); font-weight: var(--weight-extrabold);
+}
+.countdown-unit span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+
+/* LÖWENPARK-History: eine horizontale, scrollbare Zeitleiste statt der
+   vorherigen Kartenraster-Zeitleiste — ersetzt diese vollständig, damit es
+   nur noch eine Zeitleiste auf der Seite gibt. */
+.history-timeline { display: flex; gap: 28px; overflow-x: auto; padding: 32px 4px 12px; margin-top: 24px; }
+.history-item { position: relative; flex: 0 0 200px; padding-top: 24px; border-top: 3px solid rgba(255,255,255,.35); }
+.history-item::before {
+  content: ''; position: absolute; top: -8px; left: 0; width: 13px; height: 13px;
+  border-radius: 50%; background: var(--color-brand-orange); border: 3px solid #fff;
+}
+.history-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 16px; color: #fff; margin: 4px 0 6px; }
+.history-item p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.78); margin: 0; }
+
 /* Partner-Flipcards (Löwen-Unterstützer-Seite): Mouseover dreht die Karte um die
    Y-Achse (rechts nach links) und zeigt auf der Rückseite den Web-Claim der
    jeweiligen Firma. */
@@ -667,6 +704,18 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background-size: cover; background-position: center 60%;
 }
 .hero-photo.hero-fanshop .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+
+/* Hero-Variante für die LÖWENPARK-Seite — echtes Baustellenfoto (Luftaufnahme
+   Dach), bereits für die Meilenstein-News verwendet. */
+.hero-photo.hero-loewenpark {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/loewenpark-dach.jpg');
+  background-size: cover; background-position: center 60%;
+}
+.hero-photo.hero-loewenpark .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 

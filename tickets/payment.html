@@ -7,9 +7,9 @@
 <meta name="description" content="Zahlung für deine Bestellung bei den Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783530977" />
-<link rel="stylesheet" href="/css/site.css?v=1783530977" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1783530977" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783533475" />
+<link rel="stylesheet" href="/css/site.css?v=1783533475" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1783533475" />
 <style>
   .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
   #order-summary-card { position: sticky; top: 20px; }
@@ -88,7 +88,7 @@
           <h3 class="t-h4" style="margin-bottom:4px">Deine Bestellung</h3>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:14px" id="payment-event-label"></p>
           <div id="payment-lines"></div>
-          <div class="seatplan-cart-total"><span>Gesamt</span><span id="payment-total">0 €</span></div>
+          <div class="seatplan-cart-total"><span>Gesamt</span><span><span id="payment-total">0,00 €</span> <span id="payment-vat-note" style="font-weight:400;font-size:12px;color:var(--text-muted);display:none"></span></span></div>
         </div>
 
         <div class="card" style="padding:24px">
@@ -141,8 +141,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783530977"></script>
-<script src="/js/include.js?v=1783530977"></script>
+<script src="/js/nav.js?v=1783533475"></script>
+<script src="/js/include.js?v=1783533475"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_cart');
@@ -157,14 +157,19 @@
     document.getElementById('payment-event-label').textContent = cart.eventLabel;
 
     var linesEl = document.getElementById('payment-lines');
+    function formatMoney(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
     linesEl.innerHTML = cart.lines.map(function (l) {
       var isVoucher = l.label.indexOf('Gutschein ') === 0;
       return '<div class="seatplan-cart-item' + (isVoucher ? ' discount' : '') + '">' +
         '<div>' + (!isVoucher && l.qty > 1 ? l.qty + '× ' : '') + l.label + '</div>' +
-        '<div class="seatplan-cart-item-right"><span>' + (l.lineTotal < 0 ? '−' + Math.abs(l.lineTotal) : l.lineTotal) + ' €</span></div>' +
+        '<div class="seatplan-cart-item-right"><span>' + (l.lineTotal < 0 ? '−' + formatMoney(Math.abs(l.lineTotal)) : formatMoney(l.lineTotal)) + '</span></div>' +
       '</div>';
     }).join('');
-    document.getElementById('payment-total').textContent = cart.total + ' €';
+    document.getElementById('payment-total').textContent = formatMoney(cart.total);
+    var paymentVatNoteEl = document.getElementById('payment-vat-note');
+    paymentVatNoteEl.textContent = cart.vatNote || '';
+    paymentVatNoteEl.style.display = cart.vatNote ? '' : 'none';
     document.getElementById('pay-btn').textContent = 'Jetzt ' + cart.total.toFixed(2).replace('.', ',') + ' € bezahlen';
 
     if (cart.productType === 'dauerkarte') {
