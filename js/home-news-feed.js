@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    [{ feed: parkFeed, badge: 'LÖWENPARK' }, { feed: hauptFeed, badge: 'Löwen' }].forEach(function (entry) {
+    [{ feed: parkFeed, badge: 'LÖWENPARK', feedKey: 'loewenpark' }, { feed: hauptFeed, badge: 'Löwen', feedKey: 'loewen' }].forEach(function (entry) {
       (entry.feed && entry.feed.posts || []).forEach(function (p) {
         items.push({
           date: new Date(p.timestamp),
           dateLabel: null,
           image: p.image,
           headline: firstLine(p.caption, 70),
-          teaser: firstLine(p.caption.split('\n').slice(1).join(' ').trim(), 110) || 'Jetzt auf Instagram ansehen.',
-          url: p.permalink,
+          teaser: firstLine(p.caption.split('\n').slice(1).join(' ').trim(), 110) || 'Jetzt ansehen.',
+          url: '/news/insta-post.html?feed=' + entry.feedKey + '&id=' + encodeURIComponent(p.id),
           external: true,
           badge: entry.badge
         });
@@ -68,12 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!items.length) return;
 
     function tileHtml(item, roleClass) {
-      var linkAttrs = item.external ? ' target="_blank" rel="noopener"' : '';
       var linkLabel = item.external
         ? INSTAGRAM_ICON + ' ' + item.badge + ' · Weiterlesen'
         : (item.dateLabel ? item.dateLabel + ' · ' : '') + 'Weiterlesen';
       var extraClass = (roleClass ? ' ' + roleClass : '') + (item.external ? ' news-tile-insta' : '');
-      return '<a class="news-tile' + extraClass + '" href="' + item.url + '"' + linkAttrs + '>' +
+      return '<a class="news-tile' + extraClass + '" href="' + item.url + '">' +
         '<img src="' + item.image + '" alt="" />' +
         '<div class="news-tile-overlay">' +
           '<h3 class="news-tile-headline">' + item.headline + '</h3>' +
