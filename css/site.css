@@ -674,12 +674,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    (Stockfoto, niedrige Auflösung als Platzhalter bis zum echten Lizenzkauf). */
 .hero-photo.hero-loewen-unterstuetzer {
   background:
-    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    linear-gradient(90deg, rgba(253,246,238,.96) 0%, rgba(253,246,238,.82) 45%, rgba(253,246,238,.25) 78%, rgba(253,246,238,0) 92%),
     url('/assets/img/hero-loewen-unterstuetzer.jpg');
   background-size: cover; background-position: center 55%;
 }
 .hero-photo.hero-loewen-unterstuetzer .hero-media::after {
-  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+  background: linear-gradient(90deg, rgba(253,246,238,.96) 0%, rgba(253,246,238,.82) 45%, rgba(253,246,238,.25) 78%, rgba(253,246,238,0) 92%);
+}
+/* Breiterer Lead-Text auf dieser Seite reicht weiter in den Fotobereich —
+   zusätzlicher Schatten hält ihn auch dort lesbar. */
+.hero-photo.hero-loewen-unterstuetzer p.lead {
+  text-shadow: 0 1px 16px rgba(253,246,238,.85), 0 1px 4px rgba(253,246,238,.9);
 }
 
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
