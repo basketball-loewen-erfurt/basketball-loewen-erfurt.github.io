@@ -526,6 +526,80 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
+/* Hero-Varianten für einzelne News-Artikel mit echtem Pressefoto */
+.hero-photo.hero-news-saisonstart-2025 {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/saisonstart-2025.jpg');
+  background-size: cover; background-position: center 30%;
+}
+.hero-photo.hero-news-saisonstart-2025 .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-mitchell-abgang {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/mitchell-abgang.jpg');
+  background-size: cover; background-position: center 25%;
+}
+.hero-photo.hero-news-mitchell-abgang .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-loewenpark-dach {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/loewenpark-dach.jpg');
+  background-size: cover; background-position: center 55%;
+}
+.hero-photo.hero-news-loewenpark-dach .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-swe-sommercamp {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/swe-sommercamp.jpg');
+  background-size: cover; background-position: center 40%;
+}
+.hero-photo.hero-news-swe-sommercamp .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-damen-regionalliga {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/damen-regionalliga.jpg');
+  background-size: cover; background-position: center 25%;
+}
+.hero-photo.hero-news-damen-regionalliga .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-achtelfinale {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/achtelfinale.jpg');
+  background-size: cover; background-position: center 35%;
+}
+.hero-photo.hero-news-achtelfinale .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-playoff-heimspiel {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/playoff-heimspiel.jpg');
+  background-size: cover; background-position: center 35%;
+}
+.hero-photo.hero-news-playoff-heimspiel .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-news-raumtextilienshop {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/news/raumtextilienshop.jpg');
+  background-size: cover; background-position: center 50%;
+}
+.hero-photo.hero-news-raumtextilienshop .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+
 /* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
 .hero-photo.hero-lg {
   min-height: 460px;

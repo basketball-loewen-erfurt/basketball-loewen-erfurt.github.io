@@ -1,6 +1,17 @@
 {
-  "hinweis": "Zentrale Liste aller News-Beiträge. 'topNews': true steuert, ob ein Beitrag im Top-News-Bereich der Startseite erscheint — neue Beiträge ohne dieses Flag (oder mit false) werden nur auf der Aktuelles-Seite gelistet, nicht im Startseiten-Slider.",
+  "hinweis": "Zentrale Liste aller News-Beiträge. Inhalte stammen von der bisherigen Vereinswebsite (basketball-loewen.com) und wurden hierher übernommen. 'topNews': true steuert, ob ein Beitrag im Top-News-Bereich der Startseite erscheint — Beiträge ohne dieses Flag (oder mit false) werden nur auf der Aktuelles-Seite gelistet, nicht im Startseiten-Slider. 'bild' wird für die Foto-Kacheln im Startseiten-Newsfeed verwendet.",
   "artikel": [
+    {
+      "datum": "06.07.2026",
+      "kategorie": "Verein",
+      "tint": "tint-orange",
+      "icon": "sun",
+      "titel": "SWE Sommercamp startet mit besonderem Besuch",
+      "kurztext": "U20-Nationalspieler Musa Abra und Léonar Fliege schauen vor der EM-Vorbereitung beim Sommercamp vorbei.",
+      "url": "/news/260706_swe_sommercamp.html",
+      "bild": "/assets/img/news/swe-sommercamp.jpg",
+      "topNews": true
+    },
     {
       "datum": "19.06.2026",
       "kategorie": "Löwenpark",
@@ -9,6 +20,7 @@
       "titel": "Wichtige Meilensteine für den Löwenpark",
       "kurztext": "Der Stadtrat hat die Kostensteigerung gedeckt — nach dem Richtfest im April ist die Eröffnung greifbar nah.",
       "url": "/news/260619_loewenpark_meilenstein.html",
+      "bild": "/assets/img/news/loewenpark-dach.jpg",
       "topNews": true
     },
     {
@@ -16,19 +28,32 @@
       "kategorie": "Profis",
       "tint": "tint-blue",
       "icon": "trophy",
-      "titel": "CATL Basketball Löwen beenden durchwachsene Saison",
-      "kurztext": "Platz 12 in der ProB — Coach Florian Gut zieht Bilanz und blickt nach vorn.",
+      "titel": "Saisonrückblick 2025/ 26: Platz 12, Bilanz 8:16",
+      "kurztext": "Die Profis verpassen die Playoffs — Coach Florian Gut zieht Bilanz und blickt nach vorn.",
       "url": "/news/260331_spielbericht_saisonrueckblick-2025-26.html",
+      "bild": "/assets/img/team-prob.jpg",
       "topNews": true
     },
     {
-      "datum": "30.10.2025",
+      "datum": "04.03.2026",
+      "kategorie": "Profis",
+      "tint": "tint-blue",
+      "icon": "users",
+      "titel": "Vier wichtige Spiele — und ein sportlicher Abgang",
+      "kurztext": "Vor der entscheidenden Schlussphase verlässt Mike Mitchell das Team aus persönlichen Gründen.",
+      "url": "/news/260304_mitchell_abgang.html",
+      "bild": "/assets/img/news/mitchell-abgang.jpg",
+      "topNews": true
+    },
+    {
+      "datum": "25.09.2025",
       "kategorie": "Profis",
       "tint": "tint-orange",
       "icon": "calendar",
       "titel": "Löwen-Saisonstart und Dauerkartenverkauf",
       "kurztext": "Nach dem Testspiel startet die Saison zu Hause gegen die BBC Coburg.",
-      "url": "/news/251030_saisonstart_dauerkarten.html",
+      "url": "/news/250925_saisonstart_dauerkarten.html",
+      "bild": "/assets/img/news/saisonstart-2025.jpg",
       "topNews": true
     },
     {
@@ -39,17 +64,85 @@
       "titel": "CATL verlängert Partnerschaft",
       "kurztext": "Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.",
       "url": "/news/250826_catl_verlaengert.html",
-      "topNews": true
+      "bild": "/assets/img/hero-basketball.jpg",
+      "topNews": false
     },
     {
-      "datum": "",
+      "datum": "08.08.2025",
       "kategorie": "Sommerinterview",
       "tint": "tint-blue",
       "icon": "mic",
-      "titel": "Sportdirektor Florian Gut im Interview (Teil 1–3)",
-      "kurztext": "Rückblick auf die Saison und Ausblick auf die kommende Spielzeit.",
-      "url": "/news/260701_sommerinterview_gut.html",
-      "topNews": true
+      "titel": "Sommerinterview Teil 3: LÖWENPARK und Vorbereitung",
+      "kurztext": "Florian Gut über Finanzierung und Zeitplan des LÖWENPARK sowie den Start in die Saisonvorbereitung.",
+      "url": "/news/250808_sommerinterview_teil3.html",
+      "bild": "/assets/img/hero-basketball.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "01.08.2025",
+      "kategorie": "Sommerinterview",
+      "tint": "tint-blue",
+      "icon": "mic",
+      "titel": "Sommerinterview Teil 2: Neue Damenmannschaft",
+      "kurztext": "Florian Gut über langfristige Vereinsziele und den Start der Löwinnen in der Regionalliga.",
+      "url": "/news/250801_sommerinterview_teil2.html",
+      "bild": "/assets/img/news/damen-regionalliga.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "21.07.2025",
+      "kategorie": "Sommerinterview",
+      "tint": "tint-blue",
+      "icon": "mic",
+      "titel": "Sommerinterview Teil 1: Kaderplanung",
+      "kurztext": "Florian Gut über Abgänge, gesuchte Neuzugänge und einen starken Sommer für Musa Abra.",
+      "url": "/news/250721_sommerinterview_teil1.html",
+      "bild": "/assets/img/team-prob.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "07.07.2025",
+      "kategorie": "Partner",
+      "tint": "tint-neutral",
+      "icon": "handshake",
+      "titel": "Unterstützung von Raumtextilienshop.de",
+      "kurztext": "Dank an Raumtextilienshop.de und LYSEL.de für ihre Unterstützung.",
+      "url": "/news/250707_raumtextilienshop_unterstuetzung.html",
+      "bild": "/assets/img/news/raumtextilienshop.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "19.05.2025",
+      "kategorie": "Profis",
+      "tint": "tint-blue",
+      "icon": "users",
+      "titel": "Löwen-Kaderplanung für die nächste Saison",
+      "kurztext": "Vier langjährige Spieler verlassen den Verein — Florian Gut über die Hintergründe.",
+      "url": "/news/250519_kaderplanung_naechste_saison.html",
+      "bild": "/assets/img/team-prob.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "29.04.2025",
+      "kategorie": "Profis",
+      "tint": "tint-blue",
+      "icon": "trophy",
+      "titel": "CATL Basketball Löwen scheiden im Achtelfinale aus",
+      "kurztext": "Knappe 82:84-Heimniederlage gegen Paderborn beendet die Playoff-Saison.",
+      "url": "/news/250429_achtelfinale_aus.html",
+      "bild": "/assets/img/news/achtelfinale.jpg",
+      "topNews": false
+    },
+    {
+      "datum": "22.04.2025",
+      "kategorie": "Profis",
+      "tint": "tint-orange",
+      "icon": "calendar",
+      "titel": "Playoff-Heimspiel am Freitagabend",
+      "kurztext": "Nach knapper Auswärtsniederlage geht die Serie gegen Paderborn in der Riethsporthalle weiter.",
+      "url": "/news/250422_playoff_heimspiel_freitag.html",
+      "bild": "/assets/img/news/playoff-heimspiel.jpg",
+      "topNews": false
     }
   ]
 }
