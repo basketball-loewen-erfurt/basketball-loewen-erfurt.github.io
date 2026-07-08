@@ -332,6 +332,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .aktuelles-sidebar {
   background: var(--bg-subtle); border-radius: var(--radius-lg);
   padding: 24px; position: sticky; top: 96px;
+  /* Bündig mit der ersten Reihe der Vereinsnews-Karten statt mit dem
+     "Vereinsnews"-Label darüber. */
+  margin-top: 36px;
 }
 .insta-sidebar-block + .insta-sidebar-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
 .insta-sidebar-block h3 {
@@ -352,8 +355,32 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .insta-sidebar-item:hover span { color: var(--color-brand-orange); }
 @media (max-width: 1023px) {
   .aktuelles-layout { grid-template-columns: 1fr; }
-  .aktuelles-sidebar { position: static; }
+  .aktuelles-sidebar { position: static; margin-top: 0; }
 }
+
+/* Partner-Flipcards (Erfurt-Partner-Seite): Mouseover dreht die Karte um die
+   Y-Achse (rechts nach links) und zeigt auf der Rückseite den Web-Claim der
+   jeweiligen Firma. */
+.partner-flip-card { height: 150px; perspective: 1200px; }
+.partner-flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transition: transform .6s var(--ease-out); transform-style: preserve-3d;
+}
+.partner-flip-card:hover .partner-flip-inner { transform: rotateY(180deg); }
+.partner-flip-front, .partner-flip-back {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 20px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.partner-flip-front { background: #fff; }
+.partner-flip-back {
+  background: var(--color-brand-navy); color: #fff; transform: rotateY(180deg);
+  align-items: center; text-align: center; gap: 6px;
+}
+.partner-flip-back p {
+  font-size: 14px; font-style: italic; line-height: 1.4; color: #fff; margin: 0;
+}
+.partner-flip-back span { font-size: 11px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .06em; }
 
 /* News-Bento (Homepage) — 5 Kacheln, gemischt aus internen News + Instagram-Feeds:
    Zeile 1 = 1 breite Kachel (2 Spalten) + 1 schmale; Zeile 2 = 3 gleich breite Kacheln.
