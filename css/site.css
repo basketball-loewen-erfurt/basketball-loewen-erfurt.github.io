@@ -382,6 +382,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   color: var(--color-brand-orange); font-weight: var(--weight-extrabold);
 }
 .countdown-unit span { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+.loewenpark-countdown-hero { margin: 8px 0 0; }
+.loewenpark-countdown-hero .countdown-unit { padding: 14px 20px; min-width: 76px; }
+.loewenpark-countdown-hero .countdown-unit strong { font-size: 36px; }
 
 /* LÖWENPARK-History: eine horizontale, scrollbare Zeitleiste statt der
    vorherigen Kartenraster-Zeitleiste — ersetzt diese vollständig, damit es
