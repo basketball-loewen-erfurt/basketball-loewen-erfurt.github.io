@@ -2,9 +2,9 @@
 // echten News-Artikeln (data/news.json, nur topNews:true), dem LÖWENPARK-Feed
 // (data/instagram-loewenpark.json) und dem Hauptaccount-Feed
 // (data/instagram-loewen.json) — alle von n8n/Behold befüllt. Fehlt eine Datei
-// (404), wird sie still übersprungen. Ausgewogene Quote der 10 Startseiten-
-// Kacheln: immer die 2 aktuellsten News-Artikel (fest reserviert, unabhängig
-// von der Instagram-Aktualität), dazu max. 4 Löwen- und max. 4 LÖWENPARK-Posts.
+// (404), wird sie still übersprungen. Ausgewogene Quote der 15 Startseiten-
+// Kacheln: immer die 3 aktuellsten News-Artikel (fest reserviert, unabhängig
+// von der Instagram-Aktualität), dazu max. 6 Löwen- und max. 6 LÖWENPARK-Posts.
 document.addEventListener('DOMContentLoaded', function () {
   var desktopTrack = document.getElementById('news-slider-track-desktop');
   var mobileTrack = document.getElementById('news-slider-track-mobile');
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function byDateDesc(a, b) { return b.date - a.date; }
     function takeMax(list, max) { return list.slice().sort(byDateDesc).slice(0, max); }
 
-    // Ausgewogene Quote: max. 4 Löwen, max. 4 LÖWENPARK, max. 2 News-Artikel.
+    // Ausgewogene Quote: immer 3 News-Artikel, max. 6 Löwen, max. 6 LÖWENPARK.
     var items = []
-      .concat(takeMax(newsItems, 2))
-      .concat(takeMax(instaItems(parkFeed, 'LÖWENPARK', 'loewenpark'), 4))
-      .concat(takeMax(instaItems(hauptFeed, 'Löwen', 'loewen'), 4));
+      .concat(takeMax(newsItems, 3))
+      .concat(takeMax(instaItems(parkFeed, 'LÖWENPARK', 'loewenpark'), 6))
+      .concat(takeMax(instaItems(hauptFeed, 'Löwen', 'loewen'), 6));
 
     items.sort(byDateDesc);
     if (!items.length) return;
