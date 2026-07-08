@@ -6,9 +6,9 @@
 <title>Zahlung — Basketball Löwen Erfurt</title>
 <meta name="description" content="Zahlung für deine Bestellung bei den Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783524771" />
-<link rel="stylesheet" href="/css/site.css?v=1783524771" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1783524771" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783525021" />
+<link rel="stylesheet" href="/css/site.css?v=1783525021" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1783525021" />
 <style>
   .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
   #order-summary-card { position: sticky; top: 20px; }
@@ -93,7 +93,7 @@
         <div class="card" style="padding:24px">
           <h3 class="t-h4" style="margin-bottom:14px">Zahlungsmethode wählen</h3>
           <form id="payment-form">
-            <label class="payment-method-card">
+            <label class="payment-method-card" id="pm-paypal">
               <input type="radio" name="paymethod" value="paypal" checked>
               <span class="payment-method-icon"><i data-lucide="wallet" style="width:16px;height:16px;color:var(--color-brand-blue)"></i></span>
               <span>
@@ -107,7 +107,7 @@
               <span class="payment-method-icon"><i data-lucide="landmark" style="width:16px;height:16px;color:var(--color-brand-blue)"></i></span>
               <span>
                 <strong>SEPA-Lastschrift</strong>
-                <span class="t-caption">Bequem per Bankeinzug — für Dauerkarten verfügbar.</span>
+                <span class="t-caption" id="pm-sepa-caption">Bequem per Bankeinzug — für Dauerkarten verfügbar.</span>
               </span>
             </label>
 
@@ -140,8 +140,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783524771"></script>
-<script src="/js/include.js?v=1783524771"></script>
+<script src="/js/nav.js?v=1783525021"></script>
+<script src="/js/include.js?v=1783525021"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_cart');
@@ -168,6 +168,16 @@
 
     if (cart.productType === 'dauerkarte') {
       document.getElementById('pm-sepa').style.display = 'flex';
+    }
+
+    /* Erfurt-Partner-Pakete: ausschließlich SEPA-Lastschrift, kein PayPal —
+       passt zur B2B-Rechnungslogik statt Endkunden-Checkout. */
+    if (cart.productType === 'erfurt-partner') {
+      document.getElementById('pm-paypal').style.display = 'none';
+      document.getElementById('pm-sepa').style.display = 'flex';
+      document.getElementById('pm-sepa-caption').textContent = 'Bequem und sicher per Bankeinzug.';
+      document.querySelector('input[value="sepa"]').checked = true;
+      document.getElementById('sepa-fields').style.display = 'block';
     }
 
     var sepaFields = document.getElementById('sepa-fields');
