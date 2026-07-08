@@ -504,11 +504,15 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 12px; color: var(--text-primary);
 }
 .hero-photo p.lead { font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px; }
-.hero-back-link {
+/* Schmale Breadcrumb-Leiste oberhalb des Hero-Fotos statt Link im Hero
+   selbst — bleibt lesbar unabhängig vom Hero-Hintergrund und drängt sich
+   nicht in die Eyebrow/Headline-Hierarchie. */
+.breadcrumb-bar { background: var(--bg-subtle); border-bottom: 1px solid var(--border); padding: 10px 0; }
+.breadcrumb-bar a {
   display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: var(--weight-semibold);
-  color: var(--text-muted); text-decoration: none; margin-bottom: 10px;
+  color: var(--text-muted); text-decoration: none;
 }
-.hero-back-link:hover { color: var(--color-brand-orange); }
+.breadcrumb-bar a:hover { color: var(--color-brand-orange); }
 /* News-Artikel-Überschriften sind variabel lang (echte Meldungen statt kurzer
    Taglines) — hier immer normal umbrechen, auch auf Desktop-Breiten. */
 .hero-photo.hero-article h1 { white-space: normal; }
