@@ -360,6 +360,41 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .news-tile-featured, .news-tile-side, .news-tile-small { grid-column: span 1; grid-row: auto; }
 }
 
+/* News-Slider (Homepage) — 10 News insgesamt.
+   Desktop: 2 Seiten à 5 Kacheln (news-bento), per Pfeil/Punkt oder Swipe (Trackpad) umschaltbar.
+   Mobile: alle 10 Kacheln einzeln in einer Reihe, klassisches Wisch-Karussell. */
+.news-slider-wrap { position: relative; }
+.news-slider-track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.news-slider-track::-webkit-scrollbar { display: none; }
+.news-slider-desktop .news-slider-track > .news-bento { flex: 0 0 100%; min-width: 100%; scroll-snap-align: start; }
+.news-slider-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+  width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-primary);
+  box-shadow: 0 6px 16px rgba(0,18,45,.14); transition: opacity var(--dur-fast) var(--ease-out);
+}
+.news-slider-arrow:hover { background: var(--bg-subtle); }
+.news-slider-arrow[disabled] { opacity: .3; cursor: default; pointer-events: none; }
+.news-slider-arrow.prev { left: -22px; }
+.news-slider-arrow.next { right: -22px; }
+.news-slider-dots { display: flex; justify-content: center; gap: 6px; margin-top: 18px; }
+.news-slider-dots button {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); border: none; padding: 0; cursor: pointer;
+}
+.news-slider-dots button.active { background: var(--color-brand-orange); }
+.news-slider-mobile { display: none; }
+@media (max-width: 1023px) {
+  .news-slider-desktop { display: none; }
+  .news-slider-mobile { display: block; }
+  .news-slider-mobile .news-slider-track { gap: 14px; }
+  .news-slider-mobile .news-tile { flex: 0 0 88%; min-width: 88%; height: 320px; scroll-snap-align: start; }
+  .news-slider-mobile .news-tile-headline { font-size: 19px; }
+  .news-slider-mobile .news-tile-teaser { font-size: 14px; }
+}
+
 /* Info tiles (homepage: next game / probetraining / tickets) */
 .info-tile {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
