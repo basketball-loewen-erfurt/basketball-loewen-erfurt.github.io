@@ -325,16 +325,35 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* Dichtes Instagram-Raster auf der News-Übersichtsseite — kleinere Kacheln als
-   das Homepage-Bento, nutzt aber dieselbe .news-tile-Optik (Foto + Verlauf). */
-.insta-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-.insta-overview-grid .news-tile { aspect-ratio: 3 / 4; }
-.insta-overview-grid .news-tile-headline {
-  font-size: 13px; margin-bottom: 6px;
+/* News-Übersichtsseite: 2/3 Vereinsnews (endlos scrollend) + 1/3 fest stehende,
+   grau unterlegte Instagram-Seitenleiste — verhindert, dass die Insta-Beiträge
+   bei vielen Vereinsnews aus dem Blick geraten. */
+.aktuelles-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+.aktuelles-sidebar {
+  background: var(--bg-subtle); border-radius: var(--radius-lg);
+  padding: 24px; position: sticky; top: 96px;
+}
+.insta-sidebar-block + .insta-sidebar-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+.insta-sidebar-block h3 {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: var(--weight-semibold); color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px;
+}
+.insta-sidebar-item {
+  display: flex; gap: 12px; align-items: flex-start; padding: 10px 0;
+  border-top: 1px solid var(--border); text-decoration: none;
+}
+.insta-sidebar-block .insta-sidebar-item:first-of-type { border-top: none; }
+.insta-sidebar-item img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.insta-sidebar-item span {
+  font-size: 13px; line-height: 1.4; color: var(--text-primary);
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
 }
-@media (max-width: 1023px) { .insta-overview-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 599px) { .insta-overview-grid { grid-template-columns: repeat(2, 1fr); } }
+.insta-sidebar-item:hover span { color: var(--color-brand-orange); }
+@media (max-width: 1023px) {
+  .aktuelles-layout { grid-template-columns: 1fr; }
+  .aktuelles-sidebar { position: static; }
+}
 
 /* News-Bento (Homepage) — 5 Kacheln, gemischt aus internen News + Instagram-Feeds:
    Zeile 1 = 1 breite Kachel (2 Spalten) + 1 schmale; Zeile 2 = 3 gleich breite Kacheln.

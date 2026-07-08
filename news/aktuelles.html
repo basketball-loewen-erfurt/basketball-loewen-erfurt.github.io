@@ -6,56 +6,62 @@
 <title>Aktuelles — Basketball Löwen Erfurt</title>
 <meta name="description" content="Alle News der Basketball Löwen Erfurt." />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783522767" />
-<link rel="stylesheet" href="/css/site.css?v=1783522767" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783524153" />
+<link rel="stylesheet" href="/css/site.css?v=1783524153" />
 </head>
 <body data-nav-group="news">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <div id="site-header-placeholder"></div>
 <main id="main">
-  <section class="hero-photo">
+  <section class="hero-photo hero-news-achtelfinale">
     <div class="container">
     <span class="eyebrow">News</span>
     <h1>Aktuelles.</h1>
-    <p class="lead">Was bei den Löwen los ist.</p>
+    <p class="lead">Vereinsnews und News aus unseren Instagram-Kanälen @basketball.loewen und @loewenpark.hallenmeister.</p>
     </div>
-    <span class="photo-note">Platzhalterbild — echtes Pressefoto folgt</span>
   </section>
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <div class="head-text">
-          <span class="eyebrow">Vereinsnews</span>
-          <h2 class="t-h2">Aus dem Verein.</h2>
+      <div class="aktuelles-layout">
+        <div>
+          <div class="section-head">
+            <div class="head-text">
+              <span class="eyebrow">Vereinsnews</span>
+              <h2 class="t-h2">Aus dem Verein.</h2>
+            </div>
+          </div>
+          <div class="grid-2" id="news-grid"></div>
+          <div class="card" style="margin-top:20px;padding:28px;text-align:center">
+            <h3 class="t-h3" style="font-size:20px">Keine News mehr verpassen?</h3>
+            <p class="t-body" style="margin:10px 0 18px;color:var(--text-secondary)">Alle Neuigkeiten der Löwen direkt ins Postfach — Spielankündigungen, Ergebnisse und Vereinsnews.</p>
+            <a class="btn btn-primary" href="/news/newsletter.html">Newsletter abonnieren</a>
+          </div>
         </div>
+        <aside class="aktuelles-sidebar">
+          <div class="insta-sidebar-block">
+            <h3>Basketball Löwen</h3>
+            <div id="insta-sidebar-loewen"></div>
+            <a class="card-link" style="margin-top:12px" href="https://www.instagram.com/basketball.loewen/" target="_blank" rel="noopener">Alle Beiträge ansehen <i data-lucide="arrow-up-right" style="width:14px;height:14px"></i></a>
+          </div>
+          <div class="insta-sidebar-block">
+            <h3>LÖWENPARK</h3>
+            <div id="insta-sidebar-loewenpark"></div>
+            <a class="card-link" style="margin-top:12px" href="https://www.instagram.com/loewenpark.hallenmeister/" target="_blank" rel="noopener">Alle Beiträge ansehen <i data-lucide="arrow-up-right" style="width:14px;height:14px"></i></a>
+          </div>
+        </aside>
       </div>
-      <div class="grid-3" id="news-grid"></div>
-    </div>
-  </section>
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="section-divider">Aus den sozialen Netzwerken</div>
-      <div class="insta-overview-grid" id="insta-grid"></div>
-    </div>
-  </section>
-  <section class="section bg-subtle">
-    <div class="container" style="max-width:560px;text-align:center">
-      <h2 class="t-h3">Keine News mehr verpassen?</h2>
-      <p class="t-body" style="margin:12px 0 20px;color:var(--text-secondary)">Alle Neuigkeiten der Löwen direkt ins Postfach — Spielankündigungen, Ergebnisse und Vereinsnews.</p>
-      <a class="btn btn-primary" href="/news/newsletter.html">Newsletter abonnieren</a>
     </div>
   </section>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783522767"></script>
-<script src="/js/include.js?v=1783522767"></script>
+<script src="/js/nav.js?v=1783524153"></script>
+<script src="/js/include.js?v=1783524153"></script>
 <script>
-  // Vereinsnews (data/news.json) prominent und eigenständig, Instagram-Beiträge
-  // aus beiden Feeds (Löwen + LÖWENPARK) gesondert und dichter darunter — sichtbar
-  // getrennt durch den Divider, damit die eigenen News immer den Vortritt haben.
-  var INSTAGRAM_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>';
-
+  // Vereinsnews (data/news.json) füllen die breite linke Spalte und wachsen
+  // beliebig weiter (endlos scrollend); die schmale rechte Spalte bleibt beim
+  // Scrollen stehen (position: sticky) und zeigt je Feed die letzten 10
+  // Instagram-Beiträge, damit sie bei vielen Vereinsnews nicht untergehen.
   function parseGermanDate(str) {
     var parts = (str || '').split('.');
     if (parts.length !== 3) return new Date(0);
@@ -90,32 +96,19 @@
     if (window.lucide) { lucide.createIcons(); }
   });
 
-  Promise.all([fetchJson('/data/instagram-loewen.json'), fetchJson('/data/instagram-loewenpark.json')]).then(function (results) {
-    var feeds = [
-      { data: results[0], badge: 'Löwen', key: 'loewen' },
-      { data: results[1], badge: 'LÖWENPARK', key: 'loewenpark' }
-    ];
-    var items = [];
-    feeds.forEach(function (feed) {
-      (feed.data && feed.data.posts || []).forEach(function (p) {
-        items.push({
-          date: new Date(p.timestamp), image: p.image, badge: feed.badge,
-          headline: firstLine(p.caption, 70),
-          url: '/news/insta-post.html?feed=' + feed.key + '&id=' + encodeURIComponent(p.id)
-        });
-      });
-    });
-    items.sort(function (a, b) { return b.date - a.date; });
-    var grid = document.getElementById('insta-grid');
-    grid.innerHTML = items.map(function (item) {
-      return '<a class="news-tile news-tile-insta" href="' + item.url + '"><img src="' + item.image + '" alt="" />' +
-        '<div class="news-tile-overlay">' +
-          '<h3 class="news-tile-headline">' + item.headline + '</h3>' +
-          '<span class="news-tile-link">' + INSTAGRAM_ICON + ' ' + item.badge + '</span>' +
-        '</div></a>';
+  function renderInstaSidebar(containerId, feedKey, feedData) {
+    var posts = (feedData && feedData.posts || []).slice()
+      .sort(function (a, b) { return new Date(b.timestamp) - new Date(a.timestamp); })
+      .slice(0, 10);
+    var container = document.getElementById(containerId);
+    container.innerHTML = posts.map(function (p) {
+      var url = '/news/insta-post.html?feed=' + feedKey + '&id=' + encodeURIComponent(p.id);
+      return '<a class="insta-sidebar-item" href="' + url + '"><img src="' + p.image + '" alt="" /><span>' + firstLine(p.caption, 90) + '</span></a>';
     }).join('');
-    if (window.lucide) { lucide.createIcons(); }
-  });
+  }
+
+  fetchJson('/data/instagram-loewen.json').then(function (data) { renderInstaSidebar('insta-sidebar-loewen', 'loewen', data); });
+  fetchJson('/data/instagram-loewenpark.json').then(function (data) { renderInstaSidebar('insta-sidebar-loewenpark', 'loewenpark', data); });
 </script>
 </body>
 </html>
