@@ -330,6 +330,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .news-tile img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
 }
+/* Instagram-Postfotos sind meist hochkant mit dem Gesicht im oberen Drittel —
+   oben ausgerichtet zuschneiden, statt zentriert (schneidet sonst Köpfe ab). */
+.news-tile-insta img {
+  object-position: top;
+}
 .news-tile-overlay {
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end;
   padding: 20px; background: linear-gradient(0deg, rgba(0,18,45,.92) 0%, rgba(0,18,45,.55) 45%, rgba(0,18,45,0) 80%);

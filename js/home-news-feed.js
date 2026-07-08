@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var linkLabel = item.external
         ? INSTAGRAM_ICON + ' ' + item.badge + ' · Weiterlesen'
         : (item.dateLabel ? item.dateLabel + ' · ' : '') + 'Weiterlesen';
-      return '<a class="news-tile' + (roleClass ? ' ' + roleClass : '') + '" href="' + item.url + '"' + linkAttrs + '>' +
+      var extraClass = (roleClass ? ' ' + roleClass : '') + (item.external ? ' news-tile-insta' : '');
+      return '<a class="news-tile' + extraClass + '" href="' + item.url + '"' + linkAttrs + '>' +
         '<img src="' + item.image + '" alt="" />' +
         '<div class="news-tile-overlay">' +
           '<h3 class="news-tile-headline">' + item.headline + '</h3>' +
