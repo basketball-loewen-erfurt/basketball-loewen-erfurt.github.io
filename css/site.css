@@ -386,29 +386,41 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .loewenpark-countdown-hero .countdown-unit { padding: 14px 20px; min-width: 76px; }
 .loewenpark-countdown-hero .countdown-unit strong { font-size: 36px; }
 
-/* LÖWENPARK-History: horizontale, scrollbare Zeitleiste. Jedes Item ist nur ein
-   schmaler "Taktschlag" (Punkt + Liniensegment); der Textblock ist breiter als
-   dieser Takt, startet bündig am eigenen Punkt und ragt nach rechts in den
-   Bereich der nächsten Punkte hinein — da Etappen sich ober-/unterhalb der
-   Linie abwechseln, kollidiert der Text nie mit dem jeweils übernächsten
-   gleichseitigen Textblock. Macht die Zeitleiste deutlich kompakter als eine
-   Version, die jedem Item seine volle Textbreite als eigene Spalte gibt. */
-.history-timeline { position: relative; display: flex; overflow-x: auto; padding: 170px 4px; margin-top: 24px; }
-.history-item { position: relative; flex: 0 0 100px; }
+/* LÖWENPARK-History: vertikale Zeitleiste von unten (1971) nach oben
+   (Eröffnung) — das HTML bleibt chronologisch, column-reverse dreht die
+   Anzeige. Mittellinie mit Pfeilspitze oben als Symbol für "aufwärts";
+   die Etappen wechseln sich links (history-content-top) und rechts
+   (history-content-bottom) der Linie ab. Mobil rückt die Linie an den
+   linken Rand und alle Etappen stehen rechts davon. */
+.history-timeline { position: relative; display: flex; flex-direction: column-reverse; gap: 26px; margin-top: 40px; padding: 26px 0 8px; }
+.history-timeline::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 3px;
+  margin-left: -1.5px; background: rgba(255,255,255,.35);
+}
+.history-timeline::after {
+  content: ''; position: absolute; top: -14px; left: 50%; margin-left: -8px;
+  border-left: 8px solid transparent; border-right: 8px solid transparent;
+  border-bottom: 14px solid rgba(255,255,255,.9);
+}
+.history-item { position: relative; min-height: 14px; }
 .history-item::before {
-  content: ''; position: absolute; top: 0; left: 0; margin: -6.5px 0 0 -6.5px;
+  content: ''; position: absolute; top: 4px; left: 50%; margin-left: -6.5px;
   width: 13px; height: 13px; border-radius: 50%; background: var(--color-brand-orange);
-  border: 3px solid #fff; z-index: 3;
+  border: 3px solid #fff; z-index: 2;
 }
-.history-item::after {
-  content: ''; position: absolute; top: -1.5px; left: 0; width: 100px;
-  height: 3px; background: rgba(255,255,255,.35); z-index: 1;
-}
-.history-content { position: absolute; left: 0; width: 180px; z-index: 2; }
-.history-content-top { bottom: 14px; }
-.history-content-bottom { top: 14px; }
+.history-content { max-width: 380px; }
+.history-content-top { margin-left: auto; margin-right: calc(50% + 30px); text-align: right; }
+.history-content-bottom { margin-right: auto; margin-left: calc(50% + 30px); text-align: left; }
 .history-item h3 { font-family: var(--font-base); font-weight: var(--weight-extrabold); font-size: 15px; color: #fff; margin: 4px 0 6px; }
 .history-item p { font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,.78); margin: 0; }
+@media (max-width: 719px) {
+  .history-timeline::before { left: 6px; margin-left: 0; }
+  .history-timeline::after { left: 6px; margin-left: -6.5px; }
+  .history-item::before { left: 6px; margin-left: -5px; }
+  .history-content,
+  .history-content-top,
+  .history-content-bottom { width: auto; margin: 0 0 0 32px; text-align: left; }
+}
 
 /* Partner-Flipcards (Löwen-Unterstützer-Seite): Mouseover dreht die Karte um die
    Y-Achse (rechts nach links) und zeigt auf der Rückseite den Web-Claim der
