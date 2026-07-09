@@ -773,6 +773,24 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo.hero-profis .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
+.hero-photo.hero-damen {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/team-damen.jpg');
+  background-size: cover; background-position: center 20%;
+}
+.hero-photo.hero-damen .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+.hero-photo.hero-u19 {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
+    url('/assets/img/team-nbbl.jpg');
+  background-size: cover; background-position: center 20%;
+}
+.hero-photo.hero-u19 .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
 
 /* Hero-Varianten für einzelne News-Artikel mit echtem Pressefoto */
 .hero-photo.hero-news-saisonstart-2025 {
@@ -1271,12 +1289,9 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
    mit gestricheltem Rahmen und Fragezeichen stehen.
    ===================================================================== */
 .panini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.panini-grid-coaches { grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); }
-@media (max-width: 1023px) {
-  .panini-grid-coaches { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; }
-}
+.panini-grid-coaches { grid-template-columns: repeat(auto-fit, minmax(160px, 200px)); justify-content: center; }
 @media (max-width: 599px) {
-  .panini-grid-coaches { grid-template-columns: repeat(2, 1fr) !important; grid-template-rows: none; }
+  .panini-grid-coaches { grid-template-columns: repeat(2, 1fr) !important; justify-content: initial; }
 }
 .panini-card {
   position: relative; display: flex; flex-direction: column; aspect-ratio: 3 / 4;
