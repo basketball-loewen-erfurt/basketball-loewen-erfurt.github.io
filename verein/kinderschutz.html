@@ -7,8 +7,8 @@
 <meta name="description" content="Kinderschutz bei den Basketball Löwen — unsere Grundhaltung, das Kinderschutzkonzept und der Kontaktweg für Anliegen." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783582702" />
-<link rel="stylesheet" href="/css/site.css?v=1783582702" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783583238" />
+<link rel="stylesheet" href="/css/site.css?v=1783583238" />
 </head>
 <body data-nav-group="verein">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -26,7 +26,7 @@
   <section class="section">
     <div class="container container-narrow">
       <span class="eyebrow">Grundhaltung</span>
-      <h2 class="t-h2">Gefährdungen erkennen — und konsequent handeln</h2>
+      <h2 class="t-h2">Gefährdungen erkennen und handeln</h2>
       <p class="t-body" style="margin-top:16px">Unsere wichtigste Verantwortung in der Arbeit mit Kindern und Jugendlichen ist, Gefährdungen des Kindeswohls zu erkennen und dann konsequent nach einem festen Konzept zu handeln. Alles andere baut darauf auf.</p>
     </div>
   </section>
@@ -154,18 +154,21 @@
           </div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:28px">
+      <div style="text-align:center;margin-top:28px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
         <a href="/assets/pdf/Kinderschutzkonzept-Basketball-Loewen.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-weight:400;color:var(--text-secondary);text-decoration:underline"><i data-lucide="file-text" style="width:15px;height:15px"></i> Kinderschutzkonzept zum Nachlesen (PDF)</a>
+        <a href="#" id="ablaufplan-open" style="display:inline-flex;align-items:center;gap:6px;font-weight:400;color:var(--text-secondary);text-decoration:underline"><i data-lucide="workflow" style="width:15px;height:15px"></i> Ablaufplan im Verdachtsfall ansehen</a>
       </div>
     </div>
   </section>
 
-  <section class="section bg-subtle">
-    <div class="container container-narrow" style="text-align:center">
+  <!-- Ablaufplan-Popup: Vorgehen bei Gefährdung des Kindeswohls (aus dem
+       Kinderschutzkonzept). Bewusst nicht direkt auf der Seite, sondern als
+       Modal hinter dem transparenten Link neben dem PDF-Download. -->
+  <div class="modal-backdrop" id="ablaufplan-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="ablaufplan-title" style="max-height:90vh;overflow-y:auto;max-width:min(95vw,680px);text-align:left">
+      <button type="button" class="modal-close" data-ablaufplan-close aria-label="Schließen"><i data-lucide="x" style="width:20px;height:20px"></i></button>
       <span class="eyebrow">Ablaufplan</span>
-      <h2 class="t-h2">Vorgehen bei Gefährdung des Kindeswohls</h2>
-    </div>
-    <div class="container" style="max-width:640px;margin-top:32px">
+      <h3 class="t-h4" id="ablaufplan-title" style="margin:4px 0 20px">Vorgehen bei Gefährdung des Kindeswohls</h3>
 
       <div class="card" style="padding:20px 24px;background:var(--color-brand-orange);text-align:center">
         <h3 style="color:#fff;margin:0 0 6px">Beobachtung von Problemen</h3>
@@ -174,15 +177,15 @@
       <div style="display:flex;justify-content:center;margin:6px 0"><i data-lucide="arrow-down" style="width:20px;height:20px;color:var(--text-muted)"></i></div>
 
       <div class="grid-2" style="gap:16px">
-        <div class="card" style="padding:20px;background:var(--color-brand-navy)">
+        <div class="card" style="padding:20px;background:var(--color-brand-navy);text-align:left">
           <span class="card-label" style="color:rgba(255,255,255,.65)">Akute Gefährdung: Ja</span>
           <h3 style="color:#fff;margin:6px 0">Sofort einschreiten</h3>
           <p style="color:rgba(255,255,255,.85);margin:0">Polizei <a href="tel:110" style="color:#fff;text-decoration:underline">110</a> · Allgemeiner Sozialdienst des Jugendamts <a href="tel:+493616554742" style="color:#fff;text-decoration:underline">+49 361 6554742</a> · außerhalb der Sprechzeiten Notfallnummer des Rathauses <a href="tel:+493616550" style="color:#fff;text-decoration:underline">+49 361 6550</a></p>
         </div>
-        <div class="card" style="padding:20px">
+        <div class="card" style="padding:20px;text-align:left">
           <span class="card-label">Akute Gefährdung: Nein</span>
           <h3 style="margin:6px 0">Information an Ansprechperson</h3>
-          <p style="margin:0">Aaron Rommeley (Nachwuchsleitung) oder Constanze Sakriß (Schutzbeauftragte) informieren — Kontakt siehe unten.</p>
+          <p style="margin:0">Aaron Rommeley (Nachwuchsleitung) oder Constanze Sakriß (Schutzbeauftragte) informieren — Kontakt siehe oben.</p>
         </div>
       </div>
       <div style="display:flex;justify-content:center;margin:6px 0"><i data-lucide="arrow-down" style="width:20px;height:20px;color:var(--text-muted)"></i></div>
@@ -194,12 +197,12 @@
       <div style="display:flex;justify-content:center;margin:6px 0"><i data-lucide="arrow-down" style="width:20px;height:20px;color:var(--text-muted)"></i></div>
 
       <div class="grid-2" style="gap:16px">
-        <div class="card" style="padding:20px">
+        <div class="card" style="padding:20px;text-align:left">
           <span class="card-label">Verhärteter Verdacht: Ja</span>
           <h3 style="margin:6px 0">Vorstand &amp; Jugendamt informieren</h3>
           <p style="margin:0">Die Schutzbeauftragte informiert Vorstand und den Allgemeinen Sozialdienst des Jugendamts; gemeinsame Besprechung der nächsten Schritte.</p>
         </div>
-        <div class="card" style="padding:20px">
+        <div class="card" style="padding:20px;text-align:left">
           <span class="card-label">Verhärteter Verdacht: Nein</span>
           <h3 style="margin:6px 0">Nachbesprechung</h3>
           <p style="margin:0">Mit allen Beteiligten, um den Fall abzuschließen.</p>
@@ -211,13 +214,29 @@
         <h3 style="color:#fff;margin:0 0 6px">Weitere Beobachtung</h3>
         <p style="color:rgba(255,255,255,.85);margin:0">Verstärkte Aufmerksamkeit in den nächsten Wochen und Monaten.</p>
       </div>
-
     </div>
-  </section>
+  </div>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783582702"></script>
-<script src="/js/include.js?v=1783582702"></script>
+<script src="/js/nav.js?v=1783583238"></script>
+<script src="/js/include.js?v=1783583238"></script>
+<script>
+  (function () {
+    var modal = document.getElementById('ablaufplan-modal');
+    document.getElementById('ablaufplan-open').addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target.closest('[data-ablaufplan-close]')) {
+        modal.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { modal.classList.remove('open'); }
+    });
+  })();
+</script>
 </body>
 </html>
