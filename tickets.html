@@ -7,8 +7,8 @@
 <meta name="description" content="Tickets für Heimspiele der Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783631327" />
-<link rel="stylesheet" href="/css/site.css?v=1783631327" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783633619" />
+<link rel="stylesheet" href="/css/site.css?v=1783633619" />
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -46,7 +46,7 @@
             <button class="discount-ribbon" data-discount-ribbon>10% Rabatt</button>
             <div class="ticket-sidebar" style="position:static">
               <span class="eyebrow">Preis pro Spiel</span>
-              <h3 class="t-h4" style="margin:6px 0 14px">Einzelpreistickets</h3>
+              <h2 class="t-h4" style="margin:6px 0 14px">Einzelpreistickets</h2>
               <p class="t-body-sm" style="margin-bottom:12px">Bei Einzeltickets wählst du deine Kategorie, nicht mehr deinen festen Platz — den sicherst du dir mit der Dauerkarte.</p>
               <p class="t-caption" style="margin-bottom:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, unter 27 und Rentner*innen.</p>
               <div class="price-row"><span>Kategorie 1</span><strong>19 €</strong></div>
@@ -57,7 +57,7 @@
           </div>
           <div class="ticket-sidebar" style="position:static">
             <span class="eyebrow">Preis pro Saison</span>
-            <h3 class="t-h4" style="margin:6px 0 14px">Dauerkarten 2026/ 27</h3>
+            <h2 class="t-h4" style="margin:6px 0 14px">Dauerkarten 2026/ 27</h2>
             <p class="t-body-sm" style="margin-bottom:12px">Mit der Dauerkarte sicherst du dir deinen festen Platz für die ganze Saison — Spiel für Spiel derselbe Blick aufs Parkett.</p>
             <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
             <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
@@ -105,7 +105,7 @@
     });
     return 'https://calendar.google.com/calendar/render?' + params.toString();
   }
-  fetch('/data/heimspiele.json?v=1783631327').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/data/heimspiele.json?v=1783633619').then(function (r) { return r.json(); }).then(function (d) {
     var el = document.getElementById('heimspiele-liste');
     el.innerHTML = d.spiele.map(function (s) {
       var gameDate = parseDMY(s.datum);
@@ -128,8 +128,8 @@
   });
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783631327"></script>
-<script src="/js/include.js?v=1783631327"></script>
-<script src="/js/discount-modal.js?v=1783631327"></script>
+<script src="/js/nav.js?v=1783633619"></script>
+<script src="/js/include.js?v=1783633619"></script>
+<script src="/js/discount-modal.js?v=1783633619"></script>
 </body>
 </html>

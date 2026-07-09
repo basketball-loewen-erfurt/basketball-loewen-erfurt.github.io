@@ -25,8 +25,11 @@ function initNewsSlider(slider) {
     dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
   }
 
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function restart() {
     clearInterval(timer);
+    if (prefersReducedMotion) return; /* A11y: kein Auto-Advance, manuelle Punkte bleiben nutzbar */
     timer = setInterval(function () { goTo((current + 1) % slides.length); }, 7000);
   }
 

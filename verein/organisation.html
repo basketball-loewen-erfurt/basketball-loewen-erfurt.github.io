@@ -7,8 +7,8 @@
 <meta name="description" content="Die drei Säulen der Basketball Löwen und alle Verantwortlichen — alphabetisch, filterbar nach Organisation." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783631327" />
-<link rel="stylesheet" href="/css/site.css?v=1783631327" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783633619" />
+<link rel="stylesheet" href="/css/site.css?v=1783633619" />
 </head>
 <body data-nav-group="verein">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -80,10 +80,10 @@
         </div>
       </div>
       <div class="filter-row" role="group" aria-label="Nach Organisation filtern">
-        <button type="button" class="filter-chip is-active" data-filter="alle">Alle</button>
-        <button type="button" class="filter-chip" data-filter="gemeinnuetzig">Basketball Löwen e.V.</button>
-        <button type="button" class="filter-chip" data-filter="profiteam">XXL Baskets GmbH (Profi-Team)</button>
-        <button type="button" class="filter-chip" data-filter="foerderverein">Förderverein Basketball e.V.</button>
+        <button type="button" class="filter-chip is-active" data-filter="alle" aria-pressed="true">Alle</button>
+        <button type="button" class="filter-chip" data-filter="gemeinnuetzig" aria-pressed="false">Basketball Löwen e.V.</button>
+        <button type="button" class="filter-chip" data-filter="profiteam" aria-pressed="false">XXL Baskets GmbH (Profi-Team)</button>
+        <button type="button" class="filter-chip" data-filter="foerderverein" aria-pressed="false">Förderverein Basketball e.V.</button>
       </div>
       <div class="panini-grid panini-grid-coaches" id="responsible-grid">
         <div class="panini-wrap" data-org="profiteam gemeinnuetzig" data-step="0">
@@ -380,8 +380,8 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783631327"></script>
-<script src="/js/include.js?v=1783631327"></script>
+<script src="/js/nav.js?v=1783633619"></script>
+<script src="/js/include.js?v=1783633619"></script>
 <script>
   (function () {
     document.querySelectorAll('#responsible-grid .panini-wrap').forEach(function (wrap) {
@@ -401,8 +401,9 @@
     var cards = document.querySelectorAll('#responsible-grid .panini-wrap');
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('is-active'); });
+        chips.forEach(function (c) { c.classList.remove('is-active'); c.setAttribute('aria-pressed', 'false'); });
         chip.classList.add('is-active');
+        chip.setAttribute('aria-pressed', 'true');
         var filter = chip.getAttribute('data-filter');
         cards.forEach(function (card) {
           var orgs = card.getAttribute('data-org').split(' ');

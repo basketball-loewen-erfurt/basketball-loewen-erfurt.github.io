@@ -28,20 +28,53 @@ window.initNav = function initNav() {
     if (e.key === 'Escape') { closeAllDropdowns(); closeDrawer(); }
   });
 
-  function openDrawer() {
+  var lastFocusedBeforeDrawer = null;
+
+  function getFocusable(container) {
+    return Array.prototype.slice.call(container.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    ));
+  }
+
+  function trapDrawerFocus(e) {
+    if (e.key !== 'Tab' || !drawer) return;
+    var focusable = getFocusable(drawer);
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
+
+  function openDrawer(trigger) {
+    lastFocusedBeforeDrawer = trigger || document.activeElement;
     drawer.classList.add('open');
+    drawer.removeAttribute('inert');
+    drawer.setAttribute('aria-hidden', 'false');
     drawerBackdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (moreBtn) moreBtn.setAttribute('aria-expanded', 'true');
+    if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.addEventListener('keydown', trapDrawerFocus);
+    if (drawerClose) drawerClose.focus();
   }
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.setAttribute('inert', '');
     drawerBackdrop.classList.remove('open');
     document.body.style.overflow = '';
+    if (moreBtn) moreBtn.setAttribute('aria-expanded', 'false');
+    if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('keydown', trapDrawerFocus);
+    if (lastFocusedBeforeDrawer) lastFocusedBeforeDrawer.focus();
   }
 
-  if (moreBtn) moreBtn.addEventListener('click', function (e) { e.stopPropagation(); openDrawer(); });
-  if (hamburgerBtn) hamburgerBtn.addEventListener('click', function (e) { e.stopPropagation(); openDrawer(); });
+  if (moreBtn) moreBtn.addEventListener('click', function (e) { e.stopPropagation(); openDrawer(moreBtn); });
+  if (hamburgerBtn) hamburgerBtn.addEventListener('click', function (e) { e.stopPropagation(); openDrawer(hamburgerBtn); });
   if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
 
@@ -67,10 +100,13 @@ window.initNav = function initNav() {
   }
 
   /* Hero-Inhalt gleitet beim Runterscrollen nach oben aus und blendet aus,
-     das Hero-Bild dahinter bleibt stehen. */
+     das Hero-Bild dahinter bleibt stehen. Übersprungen bei reduced-motion,
+     da scroll-gekoppelte Bewegung für vestibulär empfindliche Nutzer:innen
+     problematisch sein kann. */
   var hero = document.querySelector('.hero-photo');
   var heroInner = hero ? hero.querySelector('.container') : null;
-  if (hero && heroInner) {
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (hero && heroInner && !prefersReducedMotion) {
     var onHeroScroll = function () {
       var progress = Math.min(window.scrollY / hero.offsetHeight, 1);
       heroInner.style.transform = 'translateY(' + (progress * -50) + 'px)';
