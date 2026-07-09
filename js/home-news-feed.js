@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
           image: p.image,
           headline: firstLine(p.caption, 70),
           teaser: firstLine(p.caption.split('\n').slice(1).join(' ').trim(), 110) || 'Jetzt ansehen.',
-          url: '/news/insta-post.html?feed=' + feedKey + '&id=' + encodeURIComponent(p.id),
+          url: p.persistedUrl || ('/news/insta-post.html?feed=' + feedKey + '&id=' + encodeURIComponent(p.id)),
           external: true,
           badge: badge
         };
