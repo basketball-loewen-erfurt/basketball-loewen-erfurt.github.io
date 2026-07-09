@@ -7,8 +7,8 @@
 <meta name="description" content="Die Basketball Löwen Erfurt in der Pro B: Kader, Trainerteam und Heimspielstätte der Profimannschaft." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783592191" />
-<link rel="stylesheet" href="/css/site.css?v=1783592191" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783595963" />
+<link rel="stylesheet" href="/css/site.css?v=1783595963" />
 </head>
 <body data-nav-group="teams-saison">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -38,8 +38,11 @@
             <a class="btn btn-outline-orange btn-sm" href="https://www.instagram.com/basketball.loewen/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px"><path d="M12 2.16c3.2 0 3.58.02 4.85.07 1.17.06 1.8.25 2.23.42.56.21.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.89 5.89 0 0 0-1.38-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg> Folge uns auf Insta</a>
           </div>
         </div>
-        <div>
-          <img src="/assets/img/team-prob.jpg" alt="Basketball Löwen Erfurt — Profimannschaft" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block" />
+        <div style="display:flex;justify-content:center">
+          <button type="button" id="teamfoto-open" class="teamfoto-placeholder" aria-label="Teamfoto vergrößern (Platzhalter, aktuelles Foto folgt)">
+            <img src="/assets/img/team-prob.jpg" alt="" />
+            <span class="teamfoto-placeholder-note"><i data-lucide="zoom-in" style="width:16px;height:16px"></i> Teamfoto folgt</span>
+          </button>
         </div>
       </div>
     </div>
@@ -53,128 +56,168 @@
         <div class="head-text">
           <span class="eyebrow">Kader</span>
           <h2 class="t-h2">Unser Team für die Pro B</h2>
-          <p class="t-body">Acht Spieler stehen aktuell fest, vier Plätze sind noch offen.</p>
+          <p class="t-body">Acht Spieler stehen aktuell fest, vier Plätze sind noch offen. Klick auf eine Kachel zeigt Actionfoto und Steckbrief.</p>
         </div>
       </div>
       <div class="panini-grid">
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><img class="photo-default" src="/assets/img/spieler/player_prob_3.jpg" alt="Léonar Fliege" /><img class="photo-hover" src="/assets/img/spieler/player_prob_3_hover.jpg" alt="" /><span class="panini-card-badge">3</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">3</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="7">–</span></li>
+                  <li>2,04 m · 87 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">3</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Léonar Fliege</div><div class="panini-card-meta">PF · 2,04 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Léonar</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="7">–</span></span>
-            <span>Größe: 2,04 m</span>
-            <span>Gewicht: 87 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><img src="/assets/img/spieler/player_prob_5.jpg" alt="Luca Förster" /><span class="panini-card-badge">5</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">5</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="7">–</span></li>
+                  <li>1,84 m · 75 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">5</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Luca Förster</div><div class="panini-card-meta">SG · 1,84 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Luca</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="7">–</span></span>
-            <span>Größe: 1,84 m</span>
-            <span>Gewicht: 75 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><img src="/assets/img/spieler/player_prob_10.jpg" alt="Oliver Jentzsch" /><span class="panini-card-badge">10</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">10</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2009" data-birth-month="7">–</span></li>
+                  <li>1,97 m · 94 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">10</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Oliver Jentzsch</div><div class="panini-card-meta">PG · 1,97 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Oliver</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2009" data-birth-month="7">–</span></span>
-            <span>Größe: 1,97 m</span>
-            <span>Gewicht: 94 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><img src="/assets/img/spieler/player_prob_13.jpg" alt="Friedrich Radefeld" /><span class="panini-card-badge">13</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">13</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2004" data-birth-month="8">–</span></li>
+                  <li>2,01 m · 87 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">13</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Friedrich Radefeld</div><div class="panini-card-meta">PF · 2,01 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Friedrich</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2004" data-birth-month="8">–</span></span>
-            <span>Größe: 2,01 m</span>
-            <span>Gewicht: 87 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><span class="panini-card-number">14</span><i data-lucide="user" style="width:30px;height:30px"></i><span class="panini-card-badge">14</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">14</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2008" data-birth-month="8">–</span></li>
+                  <li>1,80 m · 104 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">14</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Jeremie Fotso-Sighom</div><div class="panini-card-meta">SF · 1,80 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Jeremie</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2008" data-birth-month="8">–</span></span>
-            <span>Größe: 1,80 m</span>
-            <span>Gewicht: 104 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><span class="panini-card-number">21</span><i data-lucide="user" style="width:30px;height:30px"></i><span class="panini-card-badge">21</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">21</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2005" data-birth-month="4">–</span></li>
+                  <li>2,05 m · 97 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">21</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Jasper Brand</div><div class="panini-card-meta">PF · 2,05 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Jasper</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2005" data-birth-month="4">–</span></span>
-            <span>Größe: 2,05 m</span>
-            <span>Gewicht: 97 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><span class="panini-card-number">22</span><i data-lucide="user" style="width:30px;height:30px"></i><span class="panini-card-badge">22</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">22</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="5">–</span></li>
+                  <li>1,87 m · 81 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">22</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Luke-Johan Kiraly</div><div class="panini-card-meta">SF · 1,87 m</div></div>
           </div>
-          <div class="panini-tooltip">
-            <strong>Luke-Johan</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2007" data-birth-month="5">–</span></span>
-            <span>Größe: 1,87 m</span>
-            <span>Gewicht: 81 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
-          </div>
         </div>
-        <div class="panini-wrap">
+        <div class="panini-wrap" data-step="0">
           <div class="panini-card">
-            <div class="panini-card-photo"><span class="panini-card-number">44</span><i data-lucide="user" style="width:30px;height:30px"></i><span class="panini-card-badge">44</span></div>
+            <div class="panini-card-photo">
+              <span class="panini-card-number">44</span>
+              <div class="panini-photo-frame panini-photo-frame-0"><i data-lucide="user" style="width:30px;height:30px"></i></div>
+              <div class="panini-photo-frame panini-photo-frame-1"><i data-lucide="image" style="width:22px;height:22px"></i><span>Actionfoto folgt</span></div>
+              <div class="panini-photo-frame panini-photo-frame-2">
+                <ul class="panini-steckbrief">
+                  <li>Alter: <span class="panini-age" data-birth-year="2004" data-birth-month="10">–</span></li>
+                  <li>1,98 m · 100 kg</li>
+                  <li>Spannweite: ?</li>
+                  <li>Greifhöhe: ?</li>
+                  <li>Schuhgröße: ?</li>
+                </ul>
+              </div>
+              <span class="panini-card-badge">44</span>
+            </div>
             <div class="panini-card-info"><div class="panini-card-name">Samuel Elias Nellessen</div><div class="panini-card-meta">SF · 1,98 m</div></div>
-          </div>
-          <div class="panini-tooltip">
-            <strong>Samuel Elias</strong>
-            <span>Alter: <span class="panini-age" data-birth-year="2004" data-birth-month="10">–</span></span>
-            <span>Größe: 1,98 m</span>
-            <span>Gewicht: 100 kg</span>
-            <span>Spannweite: folgt</span>
-            <span>Greifhöhe: folgt</span>
-            <span>Schuhgröße: folgt</span>
           </div>
         </div>
         <div class="panini-card is-empty">
@@ -271,11 +314,50 @@
       </div>
     </div>
   </section>
+
+  <!-- Teamfoto-Popup: Platzhalter (letztjähriges Foto stark weichgezeichnet,
+       damit es nicht als solches erkennbar ist), bis ein aktuelles Teamfoto da ist. -->
+  <div class="modal-backdrop" id="teamfoto-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="teamfoto-title" style="max-width:min(90vw,640px);padding:0;overflow:hidden">
+      <button type="button" class="modal-close" data-teamfoto-close aria-label="Schließen" style="background:rgba(0,18,45,.55);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1"><i data-lucide="x" style="width:18px;height:18px"></i></button>
+      <img src="/assets/img/team-prob.jpg" alt="" style="width:100%;display:block;filter:blur(16px);transform:scale(1.06)" />
+      <p class="t-body-sm" id="teamfoto-title" style="padding:16px 20px;margin:0;color:var(--text-secondary);text-align:center">Aktuelles Teamfoto folgt in Kürze.</p>
+    </div>
+  </div>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783592191"></script>
-<script src="/js/include.js?v=1783592191"></script>
-<script src="/js/player-age.js?v=1783592191"></script>
+<script src="/js/nav.js?v=1783595963"></script>
+<script src="/js/include.js?v=1783595963"></script>
+<script src="/js/player-age.js?v=1783595963"></script>
+<script>
+  (function () {
+    document.querySelectorAll('.panini-wrap').forEach(function (wrap) {
+      wrap.setAttribute('role', 'button');
+      wrap.setAttribute('tabindex', '0');
+      function advance() {
+        var step = (parseInt(wrap.getAttribute('data-step'), 10) + 1) % 3;
+        wrap.setAttribute('data-step', String(step));
+      }
+      wrap.addEventListener('click', advance);
+      wrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); advance(); }
+      });
+    });
+
+    var modal = document.getElementById('teamfoto-modal');
+    document.getElementById('teamfoto-open').addEventListener('click', function () {
+      modal.classList.add('open');
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target.closest('[data-teamfoto-close]')) {
+        modal.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { modal.classList.remove('open'); }
+    });
+  })();
+</script>
 </body>
 </html>

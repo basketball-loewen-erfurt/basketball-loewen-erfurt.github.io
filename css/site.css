@@ -1296,10 +1296,6 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
   color: rgba(255,255,255,.16); line-height: 1;
 }
 .panini-card-photo > i { position: relative; z-index: 1; width: 30px; height: 30px; color: rgba(255,255,255,.55); }
-.panini-card-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.panini-card-photo > img.photo-hover { opacity: 0; transition: opacity var(--dur-fast) var(--ease-out); }
-.panini-card:hover .panini-card-photo > img.photo-default { opacity: 0; }
-.panini-card:hover .panini-card-photo > img.photo-hover { opacity: 1; }
 .panini-card-badge {
   position: absolute; top: 6px; left: 6px; z-index: 2; background: var(--color-brand-orange); color: #fff;
   font-weight: var(--weight-extrabold); font-size: 12px; width: 22px; height: 22px; border-radius: 50%;
@@ -1309,20 +1305,34 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
 .panini-card-name { font-weight: var(--weight-extrabold); font-size: 13px; line-height: 1.2; color: var(--color-brand-navy); }
 .panini-card-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .panini-card.is-empty .panini-card-name { color: var(--text-muted); font-weight: var(--weight-semibold); }
-.panini-wrap { position: relative; }
-.panini-tooltip {
-  position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 10; width: max-content; max-width: 180px;
-  background: var(--color-brand-navy); color: #fff; border-radius: var(--radius-md); padding: 10px 14px;
-  font-size: 12px; line-height: 1.6; text-align: left; box-shadow: 0 12px 28px rgba(0,18,45,.28);
-  opacity: 0; pointer-events: none; transform: translate(-50%, 4px);
-  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+.panini-wrap { position: relative; cursor: pointer; }
+.panini-wrap:focus-visible .panini-card { outline: 2px solid var(--color-brand-orange); outline-offset: 2px; }
+.panini-photo-frame {
+  position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 6px; padding: 10px; text-align: center; opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
 }
-.panini-tooltip strong { display: block; font-size: 13px; color: var(--color-brand-orange); margin-bottom: 4px; }
-.panini-tooltip span { display: block; }
-.panini-wrap:hover .panini-tooltip { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.panini-photo-frame > i { color: rgba(255,255,255,.55); }
+.panini-photo-frame-0 { opacity: 1; }
+.panini-photo-frame-1 span { font-size: 10px; color: rgba(255,255,255,.65); }
+.panini-steckbrief { list-style: none; margin: 0; padding: 0; font-size: 10.5px; line-height: 1.55; color: #fff; }
+.panini-wrap[data-step="1"] .panini-photo-frame-0,
+.panini-wrap[data-step="2"] .panini-photo-frame-0 { opacity: 0; }
+.panini-wrap[data-step="1"] .panini-photo-frame-1 { opacity: 1; }
+.panini-wrap[data-step="2"] .panini-photo-frame-2 { opacity: 1; }
 @media (max-width: 1023px) {
   .panini-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 599px) {
   .panini-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+.teamfoto-placeholder {
+  position: relative; display: block; width: 220px; border: none; padding: 0; cursor: pointer;
+  border-radius: var(--radius-lg); overflow: hidden; background: none;
+}
+.teamfoto-placeholder img { width: 100%; display: block; filter: blur(10px); transform: scale(1.08); }
+.teamfoto-placeholder-note {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px; background: rgba(0,18,45,.35); color: #fff; font-size: 12px; font-weight: var(--weight-semibold);
 }
