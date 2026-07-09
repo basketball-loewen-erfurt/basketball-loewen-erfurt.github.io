@@ -1,17 +1,30 @@
 {
   "account": "basketball.loewen",
-  "updatedAt": "2026-07-09T07:10:55.735+02:00",
+  "updatedAt": "2026-07-09T23:00:56.946+02:00",
   "posts": [
+    {
+      "id": "17875396281619320",
+      "permalink": "https://www.instagram.com/p/Dak_wtPiNyg/",
+      "timestamp": "2026-07-09T16:00:02+0000",
+      "mediaType": "CAROUSEL_ALBUM",
+      "isReel": false,
+      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxNzg3NTM5NjI4MTYxOTMyMCIsImgiOiJ1N2x1dHoifQ.jpg?class=originalMedium",
+      "caption": "Noch jemand Sehnsucht nach Basketball im Löwenkäfig? 🦁🥹",
+      "likeCount": 111,
+      "commentsCount": 0,
+      "persistedUrl": "/news/insta-archiv/loewen-17875396281619320.html"
+    },
     {
       "id": "18127916119726285",
       "permalink": "https://www.instagram.com/reel/DadfIlvOuQy/",
       "timestamp": "2026-07-06T18:00:10+0000",
       "mediaType": "VIDEO",
       "isReel": true,
-      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODEyNzkxNjExOTcyNjI4NSIsImgiOiIxeWViY3ZsIn0.jpg?class=originalMedium",
+      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODEyNzkxNjExOTcyNjI4NSIsImgiOiJsOWZ3M3QifQ.jpg?class=originalMedium",
       "caption": "Heute Camp - morgen Natio 🦁\nBevor es morgen für unsere beiden U20-Nationalspieler @musa.gga & @leo.fly.17 nach Frankfurt zum Abschlusslehrgang geht, haben sie heute dem diesjährigen SWE Basketballcamp einen Besuch abgestattet & die Kids begeistert. 😍\n\n👉 Alles, was ihr wissen müsst, lest ihr auf unserer Homepage!\n\n@swe_fuererfurt",
-      "likeCount": 617,
-      "commentsCount": 4
+      "likeCount": 635,
+      "commentsCount": 5,
+      "persistedUrl": "/news/insta-archiv/loewen-18127916119726285.html"
     },
     {
       "id": "18343023337247499",
@@ -19,10 +32,11 @@
       "timestamp": "2026-07-01T14:44:29+0000",
       "mediaType": "CAROUSEL_ALBUM",
       "isReel": false,
-      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODM0MzAyMzMzNzI0NzQ5OSIsImgiOiJ2eGdjdDYifQ.jpg?class=originalMedium",
+      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODM0MzAyMzMzNzI0NzQ5OSIsImgiOiIxeW94YmIifQ.jpg?class=originalMedium",
       "caption": "TERMINE, TERMINE, TERMINE 📆\n\nDer Spielplan für die Spielzeit 2026/27 steht. Wir starten am 26.09.2026 auswärts bei den @dragons_rhoendorf in die neue Saison. 🏀\n\nℹ️ Alle Infos auf der Homepage der @barmer2basketballbundesliga",
-      "likeCount": 145,
-      "commentsCount": 0
+      "likeCount": 146,
+      "commentsCount": 0,
+      "persistedUrl": "/news/insta-archiv/loewen-18343023337247499.html"
     },
     {
       "id": "18321519364273158",
@@ -30,10 +44,11 @@
       "timestamp": "2026-06-30T11:57:00+0000",
       "mediaType": "VIDEO",
       "isReel": true,
-      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODMyMTUxOTM2NDI3MzE1OCIsImgiOiIxdGpoNGg5In0.jpg?class=originalMedium",
+      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODMyMTUxOTM2NDI3MzE1OCIsImgiOiIxNGlxOHkyIn0.jpg?class=originalMedium",
       "caption": "Unsere Coaches sind bereit – bist du schon angemeldet? ☀️\nSichere dir jetzt deinen Platz & freue dich auf ein unvergessliches Sommercamp! 🏀\n\n📝 Anmeldung auf unserer Homepage!",
-      "likeCount": 188,
-      "commentsCount": 1
+      "likeCount": 190,
+      "commentsCount": 1,
+      "persistedUrl": "/news/insta-archiv/loewen-18321519364273158.html"
     },
     {
       "id": "18011434061875231",
@@ -44,7 +59,8 @@
       "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODAxMTQzNDA2MTg3NTIzMSIsImgiOiIxbGJsdHVmIn0.jpg?class=originalMedium",
       "caption": "Wetter gecheckt. Brauchen Tipps gegen Hitze 🥵",
       "likeCount": 191,
-      "commentsCount": 0
+      "commentsCount": 0,
+      "persistedUrl": "/news/insta-archiv/loewen-18011434061875231.html"
     },
     {
       "id": "18212963416337647",
@@ -55,18 +71,8 @@
       "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODIxMjk2MzQxNjMzNzY0NyIsImgiOiJiYW40eHIifQ.jpg?class=originalMedium",
       "caption": "𝗭𝘄𝗲𝗶 𝗟𝗼̈𝘄𝗲𝗻 𝗶𝗺 𝗞𝗮𝗱𝗲𝗿 𝗱𝗲𝗿 𝗨𝟮𝟬-𝗛𝗲𝗿𝗿𝗲𝗻 𝗱𝗲𝘀 @dbb_basketball 🦁\n\n@musa.gga & @leo.fly.17 wurden von Bundestrainer Mario Dugandzic für die U20-Nationalmannschaft nominiert! 💪\nVom 24. Juni bis 5. Juli geht's nach Frankfurt & Italien.\n\nℹ️ https://www.basketball-bund.de/lehrgaenge-und-4-nationen-turnier-fuer-u20-herren",
       "likeCount": 316,
-      "commentsCount": 3
-    },
-    {
-      "id": "18084767972402557",
-      "permalink": "https://www.instagram.com/p/DZ48qZiiPhY/",
-      "timestamp": "2026-06-22T13:27:06+0000",
-      "mediaType": "CAROUSEL_ALBUM",
-      "isReel": false,
-      "image": "https://behold.pictures/eyJ1IjoicU1sM1JTWFFrQVdIeXdERkZnbzNIdnFkMGFFMiIsImYiOiJXWnExd3Q4bkkzdkR6SXNIaEZ4UCIsInAiOiIxODA4NDc2Nzk3MjQwMjU1NyIsImgiOiIyYngxaWEifQ.jpg?class=originalMedium",
-      "caption": "Die Szenen vom diesjährigen 3x3 @barmer Hochschulcup 🏀\n\n📸 @shot.by.mx",
-      "likeCount": 246,
-      "commentsCount": 2
+      "commentsCount": 3,
+      "persistedUrl": "/news/insta-archiv/loewen-18212963416337647.html"
     }
   ]
 }
