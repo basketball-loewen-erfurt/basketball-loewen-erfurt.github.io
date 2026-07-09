@@ -625,12 +625,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   position: absolute; right: clamp(20px,5vw,40px); bottom: 10px; z-index: 2;
   font-size: 11px; color: rgba(0,18,45,.4);
 }
+.hero-eyebrow-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .hero-league-badge {
-  position: absolute; top: 18px; right: clamp(20px,5vw,40px); z-index: 3;
-  opacity: .5; transition: opacity var(--dur-fast) var(--ease-out);
+  display: inline-flex; flex-shrink: 0;
+  background: rgba(255,255,255,.92); padding: 8px 16px; border-radius: 10px;
+  transition: background var(--dur-fast) var(--ease-out);
 }
-.hero-league-badge:hover { opacity: .85; }
-.hero-league-badge img { height: 36px; width: auto; display: block; }
+.hero-league-badge:hover { background: #fff; }
+.hero-league-badge img { height: 38px; width: auto; display: block; }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
@@ -1166,6 +1168,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   transition: background var(--dur-fast) var(--ease-out);
 }
 a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; }
+.league-chip-light { background: #fff; border-color: var(--border); }
+a.league-chip-light:hover { background: var(--bg-subtle); }
 .footer-leagues-logos-row img { height: 26px; width: auto; display: block; }
 .footer-social { display: flex; gap: 16px; margin-top: 21px; }
 .footer-social a { display: inline-flex; align-items: center; justify-content: center; color: #fff; }
