@@ -385,6 +385,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .loewenpark-countdown-hero { margin: 8px 0 0; }
 .loewenpark-countdown-hero .countdown-unit { padding: 14px 20px; min-width: 76px; }
 .loewenpark-countdown-hero .countdown-unit strong { font-size: 36px; }
+@media (max-width: 599px) {
+  .loewenpark-countdown-hero .countdown-grid { gap: 8px; }
+  .loewenpark-countdown-hero .countdown-unit { padding: 10px 8px; min-width: 0; flex: 1; }
+  .loewenpark-countdown-hero .countdown-unit strong { font-size: 26px; }
+}
 
 /* LÖWENPARK-History: vertikale Zeitleiste von unten (1971) nach oben
    (Eröffnung) — das HTML bleibt chronologisch, column-reverse dreht die
@@ -1360,3 +1365,48 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
   position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 4px; background: rgba(0,18,45,.35); color: #fff; font-size: 12px; font-weight: var(--weight-semibold);
 }
+
+/* =====================================================================
+   ACCORDION (Klappbox) — z.B. Vision/Ziele, Soziale Sportidee auf Über-uns
+   ===================================================================== */
+.accordion { border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; overflow: hidden; }
+.accordion summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 18px 22px; font-weight: var(--weight-extrabold); font-size: 16px; color: var(--text-primary);
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::marker { content: ''; }
+.accordion-icon { transition: transform var(--dur-fast) var(--ease-out); flex-shrink: 0; color: var(--color-brand-orange); }
+.accordion[open] .accordion-icon { transform: rotate(180deg); }
+.accordion-body { padding: 0 22px 22px; }
+
+/* =====================================================================
+   FILTER CHIPS — z.B. Verantwortliche nach Organisation filtern
+   ===================================================================== */
+.filter-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 28px; }
+.filter-chip {
+  display: inline-flex; align-items: center; padding: 8px 18px; border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong); background: #fff; color: var(--text-secondary);
+  font-size: 13px; font-weight: var(--weight-semibold); cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.filter-chip:hover { border-color: var(--color-brand-orange); color: var(--color-brand-orange); }
+.filter-chip.is-active { background: var(--color-brand-orange); border-color: var(--color-brand-orange); color: #fff; }
+
+/* =====================================================================
+   FLIP-CARD — Verantwortliche: Klick zeigt Steckbrief auf der Rückseite
+   ===================================================================== */
+.flip-card { perspective: 1200px; cursor: pointer; }
+.flip-card-inner {
+  position: relative; width: 100%; min-height: 110px; transition: transform .5s var(--ease-out);
+  transform-style: preserve-3d;
+}
+.flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  position: absolute; inset: 0; backface-visibility: hidden; display: flex; align-items: center;
+}
+.flip-card-front .card-body, .flip-card-back .card-body { width: 100%; }
+.flip-card-back { transform: rotateY(180deg); background: var(--color-brand-navy); border-radius: var(--radius-lg); }
+.flip-card-back .card-body p { color: rgba(255,255,255,.85); margin: 2px 0 0; }
+.flip-card-back .card-label { color: rgba(255,255,255,.6); }
+.flip-card[hidden] { display: none; }
