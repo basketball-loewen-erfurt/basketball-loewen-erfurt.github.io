@@ -632,7 +632,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   transition: background var(--dur-fast) var(--ease-out);
 }
 .hero-league-badge:hover { background: #fff; }
-.hero-league-badge img { height: 32px; width: auto; display: block; }
+.hero-league-badge img { width: 80px; height: auto; display: block; }
 .hero-league-badge-dark { background: rgba(0,18,45,.85); }
 .hero-league-badge-dark:hover { background: rgba(0,18,45,1); }
 .hero-photo h1 {
