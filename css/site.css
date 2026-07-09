@@ -1271,15 +1271,12 @@ a.league-chip:hover { background: rgba(255,255,255,.16); text-decoration: none; 
    mit gestricheltem Rahmen und Fragezeichen stehen.
    ===================================================================== */
 .panini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.panini-grid-coaches {
-  grid-template-columns: none; grid-template-rows: repeat(2, 1fr);
-  grid-auto-flow: column; grid-auto-columns: 1fr; justify-content: center;
-}
+.panini-grid-coaches { grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); }
 @media (max-width: 1023px) {
-  .panini-grid-coaches { grid-template-rows: repeat(3, 1fr); }
+  .panini-grid-coaches { grid-template-columns: repeat(3, 1fr); grid-template-rows: none; }
 }
 @media (max-width: 599px) {
-  .panini-grid-coaches { grid-template-columns: repeat(2, 1fr) !important; grid-template-rows: none; grid-auto-flow: row; }
+  .panini-grid-coaches { grid-template-columns: repeat(2, 1fr) !important; grid-template-rows: none; }
 }
 .panini-card {
   position: relative; display: flex; flex-direction: column; aspect-ratio: 3 / 4;
