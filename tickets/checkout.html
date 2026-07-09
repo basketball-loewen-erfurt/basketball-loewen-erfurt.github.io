@@ -7,9 +7,9 @@
 <meta name="description" content="Käuferdaten für deine Bestellung bei den Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783583238" />
-<link rel="stylesheet" href="/css/site.css?v=1783583238" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1783583238" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783585563" />
+<link rel="stylesheet" href="/css/site.css?v=1783585563" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1783585563" />
 <style>
   .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
   #order-summary-card { position: sticky; top: 20px; }
@@ -68,6 +68,13 @@
   .voucher-message.success { color: #1B8A3D; }
   .voucher-message.error { color: #b3392c; }
   .seatplan-cart-item.discount { color: #1B8A3D; }
+  .voucher-rest-box {
+    margin-top: 10px; padding: 12px 14px; border: 1px solid var(--border);
+    border-radius: var(--radius-md); background: #fff; font-size: 13px;
+  }
+  .voucher-rest-box p { margin: 0 0 10px; }
+  .voucher-rest-box label { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; margin-bottom: 12px; }
+  .voucher-rest-box input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--color-brand-orange); flex-shrink: 0; margin-top: 2px; }
 </style>
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
@@ -110,6 +117,7 @@
               <button type="button" class="btn btn-ghost btn-sm" id="voucher-apply">Einlösen</button>
             </div>
             <p class="voucher-message" id="voucher-message"></p>
+            <div id="voucher-rest-prompt"></div>
           </div>
 
           <div class="seatplan-cart-total"><span>Gesamt</span><span><span id="checkout-total">0,00 €</span> <span id="checkout-vat-note" style="font-weight:400;font-size:12px;color:var(--text-muted);display:none"></span></span></div>
@@ -179,8 +187,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783583238"></script>
-<script src="/js/include.js?v=1783583238"></script>
+<script src="/js/nav.js?v=1783585563"></script>
+<script src="/js/include.js?v=1783585563"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_cart');
@@ -202,7 +210,11 @@
        schon in cart.lines) oder erst hier. */
     var MOCK_VOUCHERS = {
       'LOEWEN10': { type: 'percent', value: 10, label: 'LOEWEN10 (10 %)' },
-      'WILLKOMMEN5': { type: 'fixed', value: 5, label: 'WILLKOMMEN5 (5 €)' }
+      'WILLKOMMEN5': { type: 'fixed', value: 5, label: 'WILLKOMMEN5 (5 €)' },
+      /* Testcode für einen gekauften Geschenk-Gutschein (Fanshop verkauft 50-€-
+         Gutscheine) — damit lässt sich der Fall "Gutschein höher als Warenkorb"
+         inkl. Restbetrag-Spende durchklicken. */
+      'GESCHENK50': { type: 'fixed', value: 50, label: 'GESCHENK50 (50 €)' }
     };
 
     var linesEl = document.getElementById('checkout-lines');
@@ -244,6 +256,13 @@
             cart.total -= cart.lines[idx].lineTotal;
             cart.lines.splice(idx, 1);
           }
+          /* Eine zugehörige Restbetrag-Spende hängt am Gutschein und fliegt mit raus. */
+          var donationIdx = cart.lines.findIndex(function (l) { return l.label === 'Spende an Basketball Löwen e.V.'; });
+          if (donationIdx !== -1) {
+            cart.total -= cart.lines[donationIdx].lineTotal;
+            cart.lines.splice(donationIdx, 1);
+          }
+          cart.total = Math.round(cart.total * 100) / 100;
           voucherInput.value = '';
           voucherMsg.textContent = '';
           voucherMsg.className = 'voucher-message';
@@ -253,19 +272,62 @@
     }
     renderSummary();
 
+    /* Gutschein höher als der Warenkorbbetrag: Es wird bewusst kein Rest-
+       Gutschein ausgestellt (zu aufwendig im Backend). Stattdessen kann der
+       Käufer den Restbetrag spenden — hakt er das nicht an, ist das Einlösen
+       nicht möglich. */
+    var restPromptEl = document.getElementById('voucher-rest-prompt');
+
+    function applyVoucher(voucher, discount, donationRest) {
+      cart.lines.push({ label: 'Gutschein ' + voucher.label, qty: 1, unitPrice: -voucher.value, lineTotal: -voucher.value });
+      if (donationRest > 0) {
+        cart.lines.push({ label: 'Spende an Basketball Löwen e.V.', qty: 1, unitPrice: donationRest, lineTotal: donationRest });
+      }
+      cart.total = Math.max(0, Math.round((cart.total - discount) * 100) / 100);
+      renderSummary();
+    }
+
+    function showRestPrompt(voucher) {
+      var rest = Math.round((voucher.value - cart.total) * 100) / 100;
+      restPromptEl.innerHTML =
+        '<div class="voucher-rest-box">' +
+          '<p>Dein Gutschein (' + formatMoney(voucher.value) + ') ist höher als dein Warenkorbbetrag (' + formatMoney(cart.total) + '). Ein Restguthaben können wir leider nicht ausstellen.</p>' +
+          '<label><input type="checkbox" id="voucher-donate"> Ja, ich möchte den Restbetrag von ' + formatMoney(rest) + ' an den Basketball Löwen e.V. spenden.</label>' +
+          '<button type="button" class="btn btn-ghost btn-sm" id="voucher-rest-confirm">Bestätigen</button>' +
+        '</div>';
+      document.getElementById('voucher-rest-confirm').addEventListener('click', function () {
+        var donate = document.getElementById('voucher-donate').checked;
+        restPromptEl.innerHTML = '';
+        if (donate) {
+          applyVoucher(voucher, cart.total, rest);
+          voucherMsg.textContent = 'Gutschein eingelöst — danke für deine Spende!';
+          voucherMsg.className = 'voucher-message success';
+        } else {
+          voucherMsg.textContent = 'Nein, das Einlösen des Gutscheins ist nicht möglich. Der Warenkorbbetrag ist zu gering.';
+          voucherMsg.className = 'voucher-message error';
+        }
+        renderSummary();
+      });
+    }
+
     voucherBtn.addEventListener('click', function () {
       var code = voucherInput.value.trim().toUpperCase();
       if (!code) return;
+      restPromptEl.innerHTML = '';
       var voucher = MOCK_VOUCHERS[code];
       if (voucher) {
         var discount = voucher.type === 'percent'
           ? Math.round(cart.total * voucher.value) / 100
-          : Math.min(voucher.value, cart.total);
-        cart.lines.push({ label: 'Gutschein ' + voucher.label, qty: 1, unitPrice: -discount, lineTotal: -discount });
-        cart.total = Math.max(0, cart.total - discount);
+          : voucher.value;
+        if (voucher.type === 'fixed' && voucher.value > cart.total) {
+          voucherMsg.textContent = '';
+          voucherMsg.className = 'voucher-message';
+          showRestPrompt(voucher);
+          return;
+        }
+        applyVoucher(voucher, discount, 0);
         voucherMsg.textContent = 'Gutschein eingelöst.';
         voucherMsg.className = 'voucher-message success';
-        renderSummary();
       } else {
         voucherMsg.textContent = 'Dieser Gutschein-Code ist ungültig oder abgelaufen.';
         voucherMsg.className = 'voucher-message error';
