@@ -7,8 +7,8 @@
 <meta name="description" content="Die Partner und Sponsoren der Basketball Löwen Erfurt im Überblick — nach Kategorien filterbar." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783677682" />
-<link rel="stylesheet" href="/css/site.css?v=1783677682" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783679775" />
+<link rel="stylesheet" href="/css/site.css?v=1783679775" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -17,8 +17,8 @@
   <section class="hero-photo">
     <div class="container">
     <span class="eyebrow">Partner</span>
-    <h1>Unsere <span class="kw">Sponsoren<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
-    <p class="lead">Ohne starke Partner an unserer Seite wäre vieles bei den Basketball Löwen nicht möglich — von der Profimannschaft bis zur sozialen Sportidee.</p>
+    <h1>Unsere <span class="kw">Sponsoren &amp; Förderpartner<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+    <p class="lead">Danke, dass ihr an uns glaubt und uns Saison für Saison möglich macht — auf diese Partnerschaften sind wir richtig stolz.</p>
     </div>
     <span class="photo-note">Platzhalterbild — echtes Partnerfoto folgt</span>
   </section>
@@ -59,23 +59,14 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783677682"></script>
-<script src="/js/include.js?v=1783677682"></script>
+<script src="/js/nav.js?v=1783679775"></script>
+<script src="/js/include.js?v=1783679775"></script>
+<script src="/js/partner-tile.js?v=1783679775"></script>
 <script>
-  fetch('/data/sponsoren.json?v=1783677682').then(function (r) { return r.json(); }).then(function (data) {
+  fetch('/data/sponsoren.json?v=1783679775').then(function (r) { return r.json(); }).then(function (data) {
     var wall = document.getElementById('partner-wall');
     wall.innerHTML = data.partner.map(function (p) {
-      var front = p.logo ? '<img src="' + p.logo + '" alt="' + p.name + '" loading="lazy" />' : p.name;
-      var back = '';
-      if (p.tier === 'wirkungspartner') back += '<span class="partner-tag">Wirkungspartner</span>';
-      if (p.claim) back += '<p>„' + p.claim + '“</p>';
-      if (p.beschreibung) back += '<span class="partner-desc">' + p.beschreibung + '</span>';
-      return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' +
-        '<div class="partner-tile-inner">' +
-          '<div class="partner-tile-front">' + front + '</div>' +
-          '<div class="partner-tile-back">' + back + '</div>' +
-        '</div>' +
-      '</div>';
+      return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' + partnerTileInnerHTML(p) + '</div>';
     }).join('');
 
     document.getElementById('further-partner-list').textContent = data.weiterePartner.join(' · ');
@@ -83,9 +74,7 @@
     var chips = document.querySelectorAll('.filter-chip');
     var tiles = wall.querySelectorAll('.partner-tile');
 
-    tiles.forEach(function (tile) {
-      tile.addEventListener('click', function () { tile.classList.toggle('is-flipped'); });
-    });
+    initPartnerTileFlip(wall);
 
     function applyEnlargement() {
       var visible = Array.prototype.filter.call(tiles, function (t) { return !t.hidden; });

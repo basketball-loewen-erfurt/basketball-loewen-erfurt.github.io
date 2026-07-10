@@ -636,6 +636,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .further-partner-list { column-count: 1; }
 }
 
+/* Hauptpartner-Kacheln auf der Startseite — gleiche Flip-Kachel wie die
+   Sponsoren-Wand (identischer Inhalt/Verhalten), aber einheitlich in die
+   bestehende .grid-4-Reihe eingepasst statt nach Ebene unterschiedlich groß. */
+#hauptpartner-grid .partner-tile { height: 100px; grid-column: auto; }
+#hauptpartner-grid .partner-tile-front { padding: 16px; font-size: 15px; font-weight: var(--weight-semibold); }
+#hauptpartner-grid .partner-tile-top .partner-tile-front,
+#hauptpartner-grid .partner-tile-sponsoren .partner-tile-front { border: 2px solid var(--color-brand-orange); }
+@media (max-width: 700px) {
+  #hauptpartner-grid .partner-tile { grid-column: auto; }
+}
+
 /* Info tiles (homepage: next game / probetraining / tickets) */
 .info-tile {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
