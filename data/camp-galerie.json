@@ -1,0 +1,4 @@
+{
+  "hinweis": "Fotos von Basketballcamps. Jeder Eintrag braucht 'src' (Bildpfad), 'alt' (Bildbeschreibung) und optional 'camp' (Slug, z.B. 'sommercamp-2026' — steuert, welche Rückblick-Seite das Foto zeigt). Auf trainieren/camps.html werden alle Fotos gezeigt (max. 50), in Rückblick-Artikeln nur die mit passendem 'camp'-Slug.",
+  "bilder": []
+}

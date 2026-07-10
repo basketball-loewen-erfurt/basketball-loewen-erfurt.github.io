@@ -562,6 +562,25 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .news-slider-mobile .news-tile-teaser { font-size: 14px; }
 }
 
+/* Camp-Bildergalerie — horizontal scrollbarer Foto-Streifen, wiederverwendet
+   auf trainieren/camps.html (alle Camps, max. 50) und in Rückblick-Newsartikeln
+   (gefiltert auf ein Camp). Nutzt .news-slider-track fürs Scroll-Snap-Verhalten. */
+.camp-gallery-wrap { position: relative; }
+.camp-gallery-wrap .news-slider-track { gap: 12px; }
+.camp-gallery-photo { flex: 0 0 240px; min-width: 240px; height: 160px; border-radius: var(--radius-md); overflow: hidden; scroll-snap-align: start; }
+.camp-gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Kommende-Camps-Slider — gleiches Streifen-Prinzip, aber für ganze Karten
+   statt Fotos (aktuelle + geplante Camps nebeneinander, scrollbar). */
+.camp-slider-card { flex: 0 0 380px; min-width: 320px; scroll-snap-align: start; }
+/* Pfeile brauchen Platz neben dem Streifen (wie beim News-Slider ab 1024px) —
+   darunter reicht natives Wisch-Scrollen, sonst ragen sie über den Viewport-Rand. */
+@media (max-width: 1023px) {
+  .camp-gallery-wrap .news-slider-arrow { display: none; }
+}
+@media (max-width: 599px) {
+  .camp-gallery-photo { flex-basis: 78%; min-width: 78%; }
+}
+
 /* Info tiles (homepage: next game / probetraining / tickets) */
 .info-tile {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
