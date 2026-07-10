@@ -1,7 +1,8 @@
-/* Bildergalerie für Basketballcamps — horizontal scrollbarer Foto-Streifen.
-   initCampGallery(containerId, campSlug) rendert bis zu 50 Fotos aus
-   data/camp-galerie.json; mit campSlug werden nur Fotos dieses Camps gezeigt. */
-function initCampGallery(containerId, campSlug) {
+/* Bildergalerie für Basketballcamps und Events — horizontal scrollbarer Foto-Streifen.
+   initCampGallery(containerId, campSlug, jsonPath) rendert bis zu 50 Fotos aus
+   jsonPath (Default data/camp-galerie.json); mit campSlug werden nur Fotos mit
+   passendem 'camp'-Feld gezeigt. */
+function initCampGallery(containerId, campSlug, jsonPath) {
   var container = document.getElementById(containerId);
   if (!container) return;
   var track = container.querySelector('.news-slider-track');
@@ -9,7 +10,7 @@ function initCampGallery(containerId, campSlug) {
   var prevBtn = container.querySelector('[data-gallery-prev]');
   var nextBtn = container.querySelector('[data-gallery-next]');
 
-  fetch('/data/camp-galerie.json').then(function (r) { return r.json(); }).then(function (data) {
+  fetch(jsonPath || '/data/camp-galerie.json').then(function (r) { return r.json(); }).then(function (data) {
     var bilder = (data && data.bilder) || [];
     if (campSlug) bilder = bilder.filter(function (b) { return b.camp === campSlug; });
     bilder = bilder.slice(0, 50);

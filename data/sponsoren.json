@@ -1,0 +1,31 @@
+{
+  "hinweis": "Sponsoren-Kacheln für partner/sponsoring.html. tier: 'top' | 'sponsoren' | 'wirkungspartner' (Filter-Chip-Label: 'Förderpartner'). logo optional (Pfad zu assets/logos/Logo_...) — ohne logo wird der Name als Text-Kachel gezeigt. claim/beschreibung füllen die Flip-Rückseite; ohne claim wird nur die Beschreibung gezeigt. Quelle: BL_Liquiditaetsplanung_26-27, Tab SPONSORING, schwarz markierte (bestätigte) Zeilen, Stand 10.07.2026.",
+  "partner": [
+    { "name": "CATL", "tier": "top", "logo": "/assets/logos/Logo_CATL.png", "beschreibung": "Weltmarktführer für Batteriezellen — die europäische Gigafactory von Contemporary Amperex Technology steht am Erfurter Kreuz." },
+    { "name": "Stadtwerke Erfurt", "tier": "top", "logo": "/assets/logos/Logo_Stadtwerke-Erfurt.png", "claim": "SWE für Erfurt.", "beschreibung": "Die Stadtwerke Erfurt Gruppe versorgt die Stadt mit Energie, Nahverkehr und Freizeitangeboten — und ist Partner für Kultur, Sport und Soziales." },
+
+    { "name": "Kinnings Foundation", "tier": "wirkungspartner", "logo": "/assets/logos/Logo_Kinnings-Foundation.png", "beschreibung": "Gemeinnützige Förderstiftung, die engagierte Persönlichkeiten unterstützt, die Chancen für Kinder und Jugendliche in Ostdeutschland schaffen." },
+    { "name": "E.E.S.T. Foundation", "tier": "wirkungspartner", "logo": "/assets/logos/Logo_EEST-Foundation.png", "beschreibung": "Gemeinnützige Stiftung aus Erfurt mit den Schwerpunkten Bildung, Umwelt, Sport und Toleranz." },
+
+    { "name": "Crestcom", "tier": "sponsoren", "logo": "/assets/logos/Logo_Crestcom.svg", "beschreibung": "Internationales Trainingsunternehmen für Führungskräfteentwicklung, in Erfurt vor Ort vertreten." },
+    { "name": "FSE Fluid Systems Erfurt", "tier": "sponsoren", "logo": "/assets/logos/Logo_FSE-Fluid-Systems.jpg", "claim": "…wenn die Pumpe ausfällt!", "beschreibung": "Erfurter Fachbetrieb für Reparatur, Wartung und Vertrieb von Industriepumpen." },
+    { "name": "KoWo", "tier": "sponsoren", "logo": "/assets/logos/Logo_KoWo.png", "claim": "Wir.Leben.Erfurt.", "beschreibung": "Kommunale Wohnungsgesellschaft mbH Erfurt — einer der größten Vermieter der Stadt." },
+    { "name": "Salus BKK", "tier": "sponsoren", "logo": "/assets/logos/Logo_Salus-BKK.svg", "claim": "Mit gutem Gefühl krankenversichert.", "beschreibung": "Bundesweite gesetzliche Krankenkasse mit Sitz in Thüringen." },
+    { "name": "HKS Architekten", "tier": "sponsoren", "logo": "/assets/logos/Logo_HKS-Architekten.png", "beschreibung": "Erfurter Architekturbüro (BDA)." },
+    { "name": "FUNKE Medien", "tier": "sponsoren", "logo": "/assets/logos/Logo_FUNKE-Thueringen.svg", "beschreibung": "Verlagsgruppe hinter Thüringer Allgemeine und Thüringische Landeszeitung." },
+    { "name": "creditreform", "tier": "sponsoren", "logo": "/assets/logos/Logo_Creditreform.svg", "beschreibung": "Wirtschaftsauskunftei — Bonitätsprüfung und Forderungsmanagement, Niederlassung Erfurt." },
+    { "name": "LEG Thüringen", "tier": "sponsoren", "logo": "/assets/logos/Logo_LEG-Thueringen.jpg", "beschreibung": "Landesentwicklungsgesellschaft Thüringen — vermarktet Gewerbe- und Industrieflächen im Freistaat." },
+    { "name": "Erfurter Tourismus", "tier": "sponsoren", "beschreibung": "Tourismusorganisation der Landeshauptstadt Erfurt." },
+    { "name": "Ergo", "tier": "sponsoren", "logo": "/assets/logos/Logo_Ergo.png", "beschreibung": "Geschäftsstelle Christoph Kühn — Versicherung und Vorsorge, ERGO Beratung und Vertrieb AG." },
+    { "name": "Bietmann", "tier": "sponsoren", "logo": "/assets/logos/Logo_Bietmann.svg", "beschreibung": "Bundesweite Wirtschaftskanzlei für Rechts- und Steuerberatung, Standort Erfurt." }
+  ],
+  "weiterePartner": [
+    "Glinicke Automobile GmbH & Co. KG",
+    "Sternauto",
+    "dotflow",
+    "Kallinich Media",
+    "Radio Top 40",
+    "Antenne Thüringen",
+    "Avenida-Therme"
+  ]
+}

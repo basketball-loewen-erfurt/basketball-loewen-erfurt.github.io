@@ -1,0 +1,4 @@
+{
+  "hinweis": "Fotos von Community-Events (Saisoneröffnung, Fanstammtische u.ä.). Jeder Eintrag braucht 'src' (Bildpfad) und 'alt' (Bildbeschreibung). Wird auf fans/community-events.html gezeigt (max. 50, wächst mit jedem Event).",
+  "bilder": []
+}
