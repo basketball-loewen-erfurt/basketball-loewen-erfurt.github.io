@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Newsletter — Basketball Löwen Erfurt</title>
+<meta name="description" content="Der Newsletter der Basketball Löwen Erfurt — melde dich an und lies vergangene Ausgaben." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783667611" />
+<link rel="stylesheet" href="/css/site.css?v=1783667611" />
+</head>
+<body data-nav-group="news">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+  <section class="hero-photo">
+    <div class="container">
+    <span class="eyebrow">News</span>
+    <h1>Newsletter.</h1>
+    <p class="lead">Neuigkeiten der Basketball Löwen direkt ins Postfach — melde dich an und stöbere im Archiv.</p>
+    </div>
+    <span class="photo-note">Platzhalterbild — echtes Pressefoto folgt</span>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Anmeldung</span>
+          <h2 class="t-h2" style="margin-bottom:16px">Keine Neuigkeit mehr verpassen</h2>
+          <p class="t-body">Ergebnisse, Ticket-News, Vereinsleben und Einblicke aus dem LÖWENPARK — unregelmäßig, ca. 1× im Monat, aber immer, wenn es etwas zu erzählen gibt. Kein Spam, jederzeit mit einem Klick abbestellbar.</p>
+        </div>
+
+        <div class="card" style="padding:24px">
+          <span class="eyebrow">Jetzt anmelden</span>
+          <h3 class="t-h4" style="margin:6px 0 16px">Newsletter abonnieren</h3>
+          <form class="form-panel" id="newsletter-form">
+            <div class="field">
+              <label for="nl-vorname">Vorname (optional)</label>
+              <input type="text" id="nl-vorname" name="vorname" autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label for="nl-email">E-Mail *</label>
+              <input type="email" id="nl-email" name="email" required autocomplete="email" />
+            </div>
+            <div class="field-checkbox" style="align-items:flex-start;margin:4px 0 16px">
+              <input type="checkbox" id="nl-consent" name="consent" required style="margin-top:3px" />
+              <label for="nl-consent" class="t-body-sm">Ich möchte den Newsletter der Basketball Löwen Erfurt erhalten und akzeptiere die <a href="/datenschutz.html">Datenschutzerklärung</a>. *</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
+            <div class="form-status success" id="newsletter-status">Fast geschafft — wir haben dir eine Bestätigungs-E-Mail geschickt. Bitte klicke den Link darin an, um die Anmeldung abzuschließen.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-subtle">
+    <div class="container">
+      <span class="eyebrow">Archiv</span>
+      <h2 class="t-h2" style="margin-bottom:20px">Vergangene Ausgaben</h2>
+      <div id="newsletter-archiv-list"></div>
+      <p class="t-body" id="newsletter-archiv-empty" style="display:none">Die erste Ausgabe ist in Vorbereitung — melde dich oben an, um sie direkt zu bekommen.</p>
+    </div>
+  </section>
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js?v=1783667611"></script>
+<script src="/js/include.js?v=1783667611"></script>
+<script>
+  document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('newsletter-status').classList.add('visible');
+  });
+
+  fetch('/data/newsletter-archiv.json').then(function (r) { return r.json(); }).then(function (data) {
+    var list = document.getElementById('newsletter-archiv-list');
+    var empty = document.getElementById('newsletter-archiv-empty');
+    var ausgaben = (data && data.ausgaben) || [];
+    if (!ausgaben.length) {
+      empty.style.display = 'block';
+      return;
+    }
+    list.innerHTML = ausgaben.map(function (a) {
+      return '<a class="card hoverable" href="' + a.url + '" style="display:block;padding:20px;margin-bottom:14px">' +
+        '<span class="card-label">' + a.datum + '</span>' +
+        '<h3 style="font-size:18px">' + a.titel + '</h3>' +
+        '<p class="t-body-sm" style="margin-top:4px">' + a.teaser + '</p>' +
+      '</a>';
+    }).join('');
+    if (window.lucide) lucide.createIcons();
+  });
+</script>
+</body>
+</html>

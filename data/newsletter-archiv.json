@@ -1,0 +1,4 @@
+{
+  "hinweis": "Liste vergangener Newsletter-Ausgaben. Jeder Eintrag braucht 'datum', 'titel', 'teaser' und 'url' (Link zur jeweiligen Ausgabe, z.B. /news/newsletter/2026-08_ausgabe-1.html). Neueste Ausgabe zuerst.",
+  "ausgaben": []
+}
