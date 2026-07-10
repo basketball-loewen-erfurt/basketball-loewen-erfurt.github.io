@@ -7,8 +7,8 @@
 <meta name="description" content="Alley-Oop — die Business-Events der Basketball Löwen Erfurt für Unternehmer:innen und Geschäftspartner." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783679775" />
-<link rel="stylesheet" href="/css/site.css?v=1783679775" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783682002" />
+<link rel="stylesheet" href="/css/site.css?v=1783682002" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -54,9 +54,13 @@
         <div class="card hoverable">
           <div class="card-media tint-orange"><i data-lucide="calendar" style="width:32px;height:32px"></i></div>
           <div class="card-body">
-            <span class="card-label">Event 1</span>
-            <h3>Termin folgt</h3>
-            <p class="t-body-sm">Details und Termin werden rechtzeitig hier und im Newsletter angekündigt.</p>
+            <span class="card-label">30. September 2026 · 18:00 Uhr · 19 €</span>
+            <h3>Alley-Oop #1</h3>
+            <p class="t-body-sm">Das erste Alley-Oop-Event der Saison 2026/ 27.</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+              <button type="button" class="btn btn-primary btn-sm" id="alleyoop-ticket-btn">Ticket buchen</button>
+              <a class="btn btn-ghost btn-sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Alley-Oop+%231+%E2%80%93+Basketball+Loewen+Erfurt&dates=20260930T180000%2F20260930T210000&details=Business-Event+der+Basketball+Loewen+Erfurt.+Alle+Infos%3A+basketball-loewen.com%2Fpartner%2Fbusiness-events.html&ctz=Europe%2FBerlin" target="_blank" rel="noopener"><i data-lucide="calendar-plus" style="width:14px;height:14px"></i> Im Kalender vormerken</a>
+            </div>
           </div>
         </div>
         <div class="card hoverable">
@@ -84,8 +88,7 @@
       <div class="cta-panel">
         <span class="eyebrow badge badge-orange">Wichtiger Hinweis</span>
         <h2 class="t-h2" style="margin-top:12px">Anmeldung und Ticket erforderlich</h2>
-        <p>Der Zugang zu Alley-Oop ist nur mit Anmeldung und Ticket möglich — die Plätze sind begrenzt.</p>
-        <a class="btn btn-primary" href="mailto:andre.grenzdoerffer@basketball-loewen.com?subject=Alley-Oop%20-%20Ticket-Anfrage">Ticket buchen</a>
+        <p>Der Zugang zu Alley-Oop ist nur mit Anmeldung und Ticket möglich — die Plätze sind begrenzt. Das Ticket bucht ihr direkt über die jeweilige Event-Karte oben.</p>
       </div>
     </div>
   </section>
@@ -123,9 +126,24 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783679775"></script>
-<script src="/js/include.js?v=1783679775"></script>
-<script src="/js/camp-galerie.js?v=1783679775"></script>
+<script src="/js/nav.js?v=1783682002"></script>
+<script src="/js/include.js?v=1783682002"></script>
+<script src="/js/camp-galerie.js?v=1783682002"></script>
 <script>initCampGallery('business-events-gallery', null, '/data/business-events-galerie.json');</script>
+<script>
+  /* Alley-Oop Event 1 — 30.09.2026, 19 €, führt in den normalen Warenkorb-Flow
+     wie Einzeltickets. Event 2+3 bekommen erst einen Button/Kalender-Link,
+     sobald auch sie einen Termin haben. */
+  document.getElementById('alleyoop-ticket-btn').addEventListener('click', function () {
+    sessionStorage.setItem('bl_cart', JSON.stringify({
+      productType: 'einzelticket',
+      eventLabel: 'Alley-Oop #1 – Basketball Löwen Erfurt, 30. September 2026',
+      lines: [{ label: 'Alley-Oop Ticket', qty: 1, unitPrice: 19, lineTotal: 19 }],
+      total: 19,
+      voucher: null
+    }));
+    window.location.href = '/tickets/checkout.html';
+  });
+</script>
 </body>
 </html>
