@@ -6,7 +6,8 @@
   var grid = document.getElementById('hauptpartner-grid');
   if (!grid) return;
 
-  fetch('/data/sponsoren.json').then(function (r) { return r.json(); }).then(function (data) {
+  var v = (document.currentScript && document.currentScript.src.split('?v=')[1]) || '';
+  fetch('/data/sponsoren.json' + (v ? '?v=' + v : '')).then(function (r) { return r.json(); }).then(function (data) {
     var hauptpartner = data.partner
       .filter(function (p) { return p.logo && (p.betrag >= MIN_BETRAG || p.hauptpartner); })
       .sort(function (a, b) { return a.name.localeCompare(b.name, 'de'); });

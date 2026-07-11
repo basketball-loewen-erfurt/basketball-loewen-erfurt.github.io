@@ -7,8 +7,8 @@
 <meta name="description" content="Die Partner und Sponsoren der Basketball Löwen Erfurt im Überblick — nach Kategorien filterbar." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783770736" />
-<link rel="stylesheet" href="/css/site.css?v=1783770736" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783772861" />
+<link rel="stylesheet" href="/css/site.css?v=1783772861" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -30,13 +30,12 @@
         <button type="button" class="filter-chip" data-filter="top" aria-pressed="false">Top-Partner</button>
         <button type="button" class="filter-chip" data-filter="sponsoren" aria-pressed="false">Sponsoren</button>
         <button type="button" class="filter-chip" data-filter="wirkungspartner" aria-pressed="false">Förderpartner</button>
-        <button type="button" class="filter-chip" data-filter="weitere" aria-pressed="false">Weitere Partner</button>
       </div>
 
       <div class="partner-wall" id="partner-wall"></div>
 
-      <span class="eyebrow" style="display:block;margin-top:40px">Weitere wichtige Partner</span>
-      <p class="further-partner-list" id="further-partner-list" style="margin-top:12px"></p>
+      <span class="eyebrow" style="display:block;margin-top:40px">Weitere Partner</span>
+      <div class="partner-wall partner-wall-weitere" id="partner-wall-weitere" style="margin-top:12px"></div>
     </div>
   </section>
 
@@ -60,17 +59,23 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783770736"></script>
-<script src="/js/include.js?v=1783770736"></script>
-<script src="/js/partner-tile.js?v=1783770736"></script>
+<script src="/js/nav.js?v=1783772861"></script>
+<script src="/js/include.js?v=1783772861"></script>
+<script src="/js/partner-tile.js?v=1783772861"></script>
 <script>
-  fetch('/data/sponsoren.json?v=1783770736').then(function (r) { return r.json(); }).then(function (data) {
+  fetch('/data/sponsoren.json?v=1783772861').then(function (r) { return r.json(); }).then(function (data) {
     var wall = document.getElementById('partner-wall');
-    wall.innerHTML = data.partner.map(function (p) {
+    var hauptPartner = data.partner.filter(function (p) { return p.tier !== 'weitere'; });
+    wall.innerHTML = hauptPartner.map(function (p) {
       return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' + partnerTileInnerHTML(p) + '</div>';
     }).join('');
 
-    document.getElementById('further-partner-list').textContent = data.weiterePartner.join(' · ');
+    var wallWeitere = document.getElementById('partner-wall-weitere');
+    var weiterePartner = data.partner.filter(function (p) { return p.tier === 'weitere'; });
+    wallWeitere.innerHTML = weiterePartner.map(function (p) {
+      return '<div class="partner-tile partner-tile-weitere">' + partnerTileInnerHTML(p) + '</div>';
+    }).join('');
+    initPartnerTileFlip(wallWeitere);
 
     var chips = document.querySelectorAll('.filter-chip');
     var tiles = wall.querySelectorAll('.partner-tile');

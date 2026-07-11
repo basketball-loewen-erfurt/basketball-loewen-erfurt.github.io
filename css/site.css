@@ -639,7 +639,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .partner-tile-top .partner-tile-front, .partner-tile.is-enlarged .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-brand-orange); }
 .partner-tile-wirkungspartner .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-success); }
 .partner-tile-sponsoren .partner-tile-front { padding: 8px; font-size: 18px; font-weight: var(--weight-semibold); border: 2px solid var(--color-brand-orange); }
-.partner-tile-weitere .partner-tile-front { padding: 26px; font-size: 13px; font-weight: var(--weight-medium); border: 2px solid var(--color-brand-orange); }
+.partner-tile-weitere .partner-tile-front { padding: 26px; font-size: 13px; font-weight: var(--weight-medium); }
+.partner-wall-weitere { grid-auto-rows: 80px; }
 .partner-tile-back {
   background: var(--color-brand-navy); color: #fff; transform: rotateY(180deg);
   flex-direction: column; gap: 6px;
@@ -647,11 +648,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .partner-tile-back p { font-size: 13px; font-style: italic; line-height: 1.4; color: #fff; margin: 0; }
 .partner-tile-back .partner-tag { font-size: 10px; font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: .06em; color: var(--color-orange-200); }
 .partner-tile-back .partner-desc { font-size: 12px; color: rgba(255,255,255,.8); line-height: 1.35; }
-.further-partner-list { font-family: var(--font-base); font-size: 14px; color: var(--text-secondary); line-height: 2; column-count: 2; column-gap: 40px; }
 @media (max-width: 700px) {
   .partner-wall { grid-template-columns: repeat(2, 1fr); }
   .partner-tile-top, .partner-tile-wirkungspartner, .partner-tile.is-enlarged { grid-column: span 2; }
-  .further-partner-list { column-count: 1; }
 }
 
 /* Hauptpartner-Kacheln auf der Startseite — gleiche Flip-Kachel wie die
