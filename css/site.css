@@ -625,6 +625,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .partner-tile {
   perspective: 1200px; cursor: pointer; display: block; text-decoration: none; color: inherit;
 }
+.partner-tile[hidden] { display: none; }
 .partner-tile-top, .partner-tile-wirkungspartner, .partner-tile.is-enlarged { grid-column: span 2; }
 .partner-tile-inner {
   position: relative; width: 100%; height: 100%;
