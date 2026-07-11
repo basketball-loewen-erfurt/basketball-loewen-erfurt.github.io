@@ -7,8 +7,8 @@
 <meta name="description" content="Die Partner und Sponsoren der Basketball Löwen Erfurt im Überblick — nach Kategorien filterbar." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783759748" />
-<link rel="stylesheet" href="/css/site.css?v=1783759748" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783769558" />
+<link rel="stylesheet" href="/css/site.css?v=1783769558" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -59,11 +59,11 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783759748"></script>
-<script src="/js/include.js?v=1783759748"></script>
-<script src="/js/partner-tile.js?v=1783759748"></script>
+<script src="/js/nav.js?v=1783769558"></script>
+<script src="/js/include.js?v=1783769558"></script>
+<script src="/js/partner-tile.js?v=1783769558"></script>
 <script>
-  fetch('/data/sponsoren.json?v=1783759748').then(function (r) { return r.json(); }).then(function (data) {
+  fetch('/data/sponsoren.json?v=1783769558').then(function (r) { return r.json(); }).then(function (data) {
     var wall = document.getElementById('partner-wall');
     wall.innerHTML = data.partner.map(function (p) {
       return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' + partnerTileInnerHTML(p) + '</div>';

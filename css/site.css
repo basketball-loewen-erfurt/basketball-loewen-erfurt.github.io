@@ -636,9 +636,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-family: var(--font-base); color: var(--text-primary);
 }
 .partner-tile-front img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.partner-tile-top .partner-tile-front, .partner-tile.is-enlarged .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); }
-.partner-tile-wirkungspartner .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); background: var(--color-success-bg); border: 2px solid var(--color-success); }
-.partner-tile-sponsoren .partner-tile-front { padding: 8px; font-size: 18px; font-weight: var(--weight-semibold); }
+.partner-tile-top .partner-tile-front, .partner-tile.is-enlarged .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-brand-orange); }
+.partner-tile-wirkungspartner .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-success); }
+.partner-tile-sponsoren .partner-tile-front { padding: 8px; font-size: 18px; font-weight: var(--weight-semibold); border: 2px solid var(--color-brand-orange); }
 .partner-tile-back {
   background: var(--color-brand-navy); color: #fff; transform: rotateY(180deg);
   flex-direction: column; gap: 6px;
@@ -658,8 +658,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    bestehende .grid-4-Reihe eingepasst statt nach Ebene unterschiedlich groß. */
 #hauptpartner-grid .partner-tile { height: 100px; grid-column: auto; }
 #hauptpartner-grid .partner-tile-front { padding: 16px; font-size: 15px; font-weight: var(--weight-semibold); }
-#hauptpartner-grid .partner-tile-top .partner-tile-front,
-#hauptpartner-grid .partner-tile-sponsoren .partner-tile-front { border: 2px solid var(--color-brand-orange); }
 @media (max-width: 700px) {
   #hauptpartner-grid .partner-tile { grid-column: auto; }
 }
