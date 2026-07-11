@@ -12,11 +12,8 @@
       .filter(function (p) { return p.logo && (p.betrag >= MIN_BETRAG || p.hauptpartner); })
       .sort(function (a, b) { return a.name.localeCompare(b.name, 'de'); });
 
-    grid.innerHTML = hauptpartner.map(function (p) {
-      return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' + partnerTileInnerHTML(p) + '</div>';
-    }).join('');
+    grid.innerHTML = hauptpartner.map(partnerTileHTML).join('');
 
-    initPartnerTileFlip(grid);
     if (window.lucide) window.lucide.createIcons();
   });
 })();

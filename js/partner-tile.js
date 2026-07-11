@@ -1,21 +1,24 @@
 /* Gemeinsame Flip-Kachel für Partner-/Sponsoren-Logos — Inhalt und Verhalten
-   (Logo vorne, Claim + Kurzbeschreibung hinten, Klick dreht um) sind auf allen
-   Seiten identisch. Nur die Größe variiert je Seite über CSS (siehe
-   .partner-tile-* Größenklassen in site.css, ggf. mit Scoping-Overrides). */
-function partnerTileInnerHTML(p) {
+   sind auf allen Seiten identisch, nur die Größe variiert je Seite über CSS
+   (siehe .partner-tile-* Größenklassen in site.css). Die Kachel selbst ist ein
+   echter Link zur Partner-Website (neuer Tab) — der Flip mit Claim/Kurz-
+   beschreibung läuft daher per Hover (Desktop), nicht per Klick, damit Klick
+   immer zuverlässig zur Website führt. Ohne p.website bleibt es eine <div>
+   ohne Verlinkung (z.B. falls eine Partner-URL mal fehlt). */
+function partnerTileHTML(p) {
+  var tier = p.tier || '';
   var front = p.logo ? '<img src="' + p.logo + '" alt="' + p.name + '" loading="lazy" />' : p.name;
   var back = '';
-  if (p.tier === 'wirkungspartner') back += '<span class="partner-tag">Wirkungspartner</span>';
+  if (tier === 'wirkungspartner') back += '<span class="partner-tag">Wirkungspartner</span>';
   if (p.claim) back += '<p>„' + p.claim + '“</p>';
   if (p.beschreibung) back += '<span class="partner-desc">' + p.beschreibung + '</span>';
-  return '<div class="partner-tile-inner">' +
+  var inner = '<div class="partner-tile-inner">' +
     '<div class="partner-tile-front">' + front + '</div>' +
     '<div class="partner-tile-back">' + back + '</div>' +
   '</div>';
-}
-
-function initPartnerTileFlip(container) {
-  container.querySelectorAll('.partner-tile').forEach(function (tile) {
-    tile.addEventListener('click', function () { tile.classList.toggle('is-flipped'); });
-  });
+  var cls = 'partner-tile partner-tile-' + tier;
+  if (p.website) {
+    return '<a class="' + cls + '" data-tier="' + tier + '" href="' + p.website + '" target="_blank" rel="noopener">' + inner + '</a>';
+  }
+  return '<div class="' + cls + '" data-tier="' + tier + '">' + inner + '</div>';
 }

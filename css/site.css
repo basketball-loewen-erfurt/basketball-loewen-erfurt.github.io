@@ -615,18 +615,22 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    Sponsoren), ohne dass die Ebenen-Namen innerhalb der Wand wiederholt werden
    (die stehen nur in den Filter-Chips — dort heißt die Ebene "Förderpartner",
    auf der Kachel selbst steht bei Bedarf "Wirkungspartner" als Tag, siehe
-   .partner-tag). Klick dreht die Kachel um (Claim + Kurzbeschreibung),
-   analog zu den Löwen-Unterstützer-Flip-Cards, aber klick- statt hover-basiert
-   (Touch-tauglich). Bleiben bei einem Filter nur 2 Kacheln übrig, bekommen sie
-   automatisch die "groß"-Größe (.is-enlarged, per JS gesetzt). */
+   .partner-tag). Die Kachel ist ein echter Link zur Partner-Website (neuer
+   Tab) — Klick muss dafür reserviert bleiben, daher dreht sich die Kachel nur
+   per Hover/Tastaturfokus (Claim + Kurzbeschreibung), analog zu den
+   Löwen-Unterstützer-Flip-Cards. Bleiben bei einem Filter nur 2 Kacheln
+   übrig, bekommen sie automatisch die "groß"-Größe (.is-enlarged, per JS
+   gesetzt). */
 .partner-wall { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 110px; gap: 16px; }
-.partner-tile { perspective: 1200px; cursor: pointer; }
+.partner-tile {
+  perspective: 1200px; cursor: pointer; display: block; text-decoration: none; color: inherit;
+}
 .partner-tile-top, .partner-tile-wirkungspartner, .partner-tile.is-enlarged { grid-column: span 2; }
 .partner-tile-inner {
   position: relative; width: 100%; height: 100%;
   transition: transform .6s var(--ease-out); transform-style: preserve-3d;
 }
-.partner-tile.is-flipped .partner-tile-inner { transform: rotateY(180deg); }
+.partner-tile:hover .partner-tile-inner, .partner-tile:focus-visible .partner-tile-inner { transform: rotateY(180deg); }
 .partner-tile-front, .partner-tile-back {
   position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-lg);
   display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px;
