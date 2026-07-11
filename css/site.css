@@ -398,6 +398,23 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .loewenpark-countdown-hero .countdown-unit strong { font-size: 26px; }
 }
 
+/* Impact-Stats — Reichweiten-Zahlen der Sozialprojekte (SPORT VERNETZT,
+   BasKIDball, Schulprogramm/Schultour), einzeln auf den jeweiligen Seiten und
+   gesammelt bei "Soziale Sportidee" (verein/ueber-uns.html). Große Zahl +
+   Label, analog zur Countdown-Kachel; alle Werte sind Hochrechnungen, daher
+   immer mit .impact-stat-note kennzeichnen statt als exakten Fakt zu zeigen. */
+.impact-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+.impact-stat {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 20px; text-align: center;
+}
+.impact-stat strong {
+  display: block; font-size: 36px; line-height: 1.1; font-variant-numeric: tabular-nums;
+  color: var(--color-brand-orange-text); font-weight: var(--weight-extrabold);
+}
+.impact-stat span { display: block; margin-top: 4px; font-size: 13px; color: var(--text-secondary); }
+.impact-stat .impact-stat-note { margin-top: 2px; font-size: 11px; color: var(--text-muted); }
+
 /* LÖWENPARK-History: vertikale Zeitleiste von unten (1971) nach oben
    (Eröffnung) — das HTML bleibt chronologisch, column-reverse dreht die
    Anzeige. Mittellinie mit Pfeilspitze oben als Symbol für "aufwärts";
