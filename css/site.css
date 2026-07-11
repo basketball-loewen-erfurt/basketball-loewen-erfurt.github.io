@@ -1323,17 +1323,18 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; align-items: start;
 }
 .footer-bottom-col { display: flex; flex-direction: column; gap: 10px; }
-.footer-bottom-legal { grid-column: 1 / 3; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+.footer-bottom-legal { grid-column: 1; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
 .footer-bottom-legal a, .footer-bottom-legal span { display: block; }
-.footer-bottom-account { grid-column: 3 / 4; }
-.footer-bottom-donate-btn { grid-column: 4 / 5; align-items: flex-start; }
+.footer-bottom-badge { grid-column: 2; }
+.footer-bottom-account { grid-column: 3; }
+.footer-bottom-donate-btn { grid-column: 4; align-items: flex-start; }
 .footer-donate-lines {
   display: flex; flex-direction: column; gap: 4px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
 }
-.footer-nachwuchs-badge { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
-.footer-nachwuchs-badge span { font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); white-space: nowrap; }
-.footer-nachwuchs-badge img { height: 56px; width: auto; border-radius: var(--radius-sm); }
+.footer-badge-btn { background: none; border: none; padding: 0; cursor: pointer; display: block; line-height: 0; }
+.footer-badge-btn img { height: 72px; width: auto; border-radius: var(--radius-sm); display: block; transition: transform .2s var(--ease-out); }
+.footer-badge-btn:hover img, .footer-badge-btn:focus-visible img { transform: scale(1.06); }
 
 /* =====================================================================
    RESPONSIVE — 3 breakpoints (Laptop >=1024 / Tablet 600-1023 / Mobile <=599)
@@ -1350,6 +1351,7 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
   .footer-leagues-left, .footer-leagues-right { grid-column: auto; justify-content: center; }
   .footer-bottom { grid-template-columns: 1fr 1fr; }
   .footer-bottom-legal { grid-column: 1; }
+  .footer-bottom-badge { grid-column: 1; }
   .footer-bottom-account { grid-column: 2; }
   .footer-bottom-donate-btn { grid-column: 2; margin-top: 16px; }
   .form-row { grid-template-columns: 1fr; }
@@ -1371,6 +1373,7 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
      dritte Spalte, statt unter das Spendenkonto zu rutschen, und schrumpft dafür
      auf ein quadratisches Herz-Icon ohne Text. */
   .footer-bottom { grid-template-columns: 1.3fr 1fr auto; }
+  .footer-bottom-badge { grid-column: 1; }
   .footer-bottom-account { grid-column: 2; }
   .footer-bottom-donate-btn { grid-column: 3; margin-top: 0; align-self: center; }
   .footer-donate-btn { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: var(--radius-full); }
@@ -1402,6 +1405,7 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
   .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 28px; }
   .footer-bottom-col { align-items: center; }
   .footer-bottom-legal { grid-column: 1; }
+  .footer-bottom-badge { grid-column: 1; display: flex; justify-content: center; }
   .footer-bottom-account { grid-column: 1; }
   .footer-bottom-donate-btn { grid-column: 1; margin-top: 6px; }
   .footer-donate-lines { text-align: center; }

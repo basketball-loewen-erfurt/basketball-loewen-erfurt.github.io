@@ -115,4 +115,22 @@ window.initNav = function initNav() {
     window.addEventListener('scroll', onHeroScroll, { passive: true });
     onHeroScroll();
   }
+
+  /* Footer-Badge (Zertifizierter Nachwuchsstandort): Klick vergrößert das Logo
+     in einem Popup, analog zum Teamfoto-Popup auf den Team-Seiten. */
+  var footerBadgeOpen = document.getElementById('footer-badge-open');
+  var footerBadgeModal = document.getElementById('footer-badge-modal');
+  if (footerBadgeOpen && footerBadgeModal) {
+    footerBadgeOpen.addEventListener('click', function () {
+      footerBadgeModal.classList.add('open');
+    });
+    footerBadgeModal.addEventListener('click', function (e) {
+      if (e.target === footerBadgeModal || e.target.closest('[data-footer-badge-close]')) {
+        footerBadgeModal.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') footerBadgeModal.classList.remove('open');
+    });
+  }
 };
