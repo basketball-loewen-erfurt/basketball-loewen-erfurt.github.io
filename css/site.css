@@ -1331,6 +1331,9 @@ a.league-chip-light:hover { background: var(--bg-subtle); }
   display: flex; flex-direction: column; gap: 4px; text-align: left;
   font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); line-height: 1.5;
 }
+.footer-nachwuchs-badge { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.footer-nachwuchs-badge span { font-size: 13px; color: rgba(255,255,255,.55); font-weight: var(--weight-light); white-space: nowrap; }
+.footer-nachwuchs-badge img { height: 56px; width: auto; border-radius: var(--radius-sm); }
 
 /* =====================================================================
    RESPONSIVE — 3 breakpoints (Laptop >=1024 / Tablet 600-1023 / Mobile <=599)
