@@ -611,7 +611,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .contact-person-photo span { font-size: 10px; text-align: center; line-height: 1.2; }
 
 /* Sponsoren-Wand (partner/sponsoring.html) — Filter-Chips + eine Kachel-Wand,
-   Kachelgröße markiert die Ebene (Toppartner/Wirkungspartner größer als
+   Kachelgröße markiert die Ebene (Top-Partner/Wirkungspartner größer als
    Sponsoren), ohne dass die Ebenen-Namen innerhalb der Wand wiederholt werden
    (die stehen nur in den Filter-Chips — dort heißt die Ebene "Förderpartner",
    auf der Kachel selbst steht bei Bedarf "Wirkungspartner" als Tag, siehe
@@ -639,6 +639,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .partner-tile-top .partner-tile-front, .partner-tile.is-enlarged .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-brand-orange); }
 .partner-tile-wirkungspartner .partner-tile-front { padding: 22px; font-size: 20px; font-weight: var(--weight-extrabold); border: 2px solid var(--color-success); }
 .partner-tile-sponsoren .partner-tile-front { padding: 8px; font-size: 18px; font-weight: var(--weight-semibold); border: 2px solid var(--color-brand-orange); }
+.partner-tile-weitere .partner-tile-front { padding: 26px; font-size: 13px; font-weight: var(--weight-medium); border: 2px solid var(--color-brand-orange); }
 .partner-tile-back {
   background: var(--color-brand-navy); color: #fff; transform: rotateY(180deg);
   flex-direction: column; gap: 6px;

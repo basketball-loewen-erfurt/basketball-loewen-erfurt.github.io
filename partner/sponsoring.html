@@ -7,8 +7,8 @@
 <meta name="description" content="Die Partner und Sponsoren der Basketball Löwen Erfurt im Überblick — nach Kategorien filterbar." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1783769558" />
-<link rel="stylesheet" href="/css/site.css?v=1783769558" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1783770736" />
+<link rel="stylesheet" href="/css/site.css?v=1783770736" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -27,9 +27,10 @@
     <div class="container">
       <div class="filter-row" role="group" aria-label="Nach Kategorie filtern">
         <button type="button" class="filter-chip is-active" data-filter="alle" aria-pressed="true">Alle</button>
-        <button type="button" class="filter-chip" data-filter="top" aria-pressed="false">Toppartner</button>
+        <button type="button" class="filter-chip" data-filter="top" aria-pressed="false">Top-Partner</button>
         <button type="button" class="filter-chip" data-filter="sponsoren" aria-pressed="false">Sponsoren</button>
         <button type="button" class="filter-chip" data-filter="wirkungspartner" aria-pressed="false">Förderpartner</button>
+        <button type="button" class="filter-chip" data-filter="weitere" aria-pressed="false">Weitere Partner</button>
       </div>
 
       <div class="partner-wall" id="partner-wall"></div>
@@ -59,11 +60,11 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1783769558"></script>
-<script src="/js/include.js?v=1783769558"></script>
-<script src="/js/partner-tile.js?v=1783769558"></script>
+<script src="/js/nav.js?v=1783770736"></script>
+<script src="/js/include.js?v=1783770736"></script>
+<script src="/js/partner-tile.js?v=1783770736"></script>
 <script>
-  fetch('/data/sponsoren.json?v=1783769558').then(function (r) { return r.json(); }).then(function (data) {
+  fetch('/data/sponsoren.json?v=1783770736').then(function (r) { return r.json(); }).then(function (data) {
     var wall = document.getElementById('partner-wall');
     wall.innerHTML = data.partner.map(function (p) {
       return '<div class="partner-tile partner-tile-' + p.tier + '" data-tier="' + p.tier + '">' + partnerTileInnerHTML(p) + '</div>';

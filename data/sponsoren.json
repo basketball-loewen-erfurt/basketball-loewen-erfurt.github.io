@@ -1,5 +1,5 @@
 {
-  "hinweis": "Sponsoren-Kacheln für partner/sponsoring.html. tier: 'top' | 'sponsoren' | 'wirkungspartner' (Filter-Chip-Label: 'Förderpartner'). logo optional (Pfad zu assets/logos/Logo_...) — ohne logo wird der Name als Text-Kachel gezeigt. claim/beschreibung füllen die Flip-Rückseite; ohne claim wird nur die Beschreibung gezeigt. betrag = bestätigtes Cash-Sponsoring pro Jahr in Euro laut Sheet (intern, nirgends auf der Website angezeigt). hauptpartner: true = manuelles Override für die Hauptpartner-Sektion auf index.html, wenn der Gesamtwert der Partnerschaft (Cash + Sachleistung o.ä.) über dem Schwellenwert liegt, aber nicht 1:1 in der Cash-Sponsoring-Spalte des Sheets steht (z.B. KoWo, Kinnings, E.E.S.T. — Stand 10.07.2026 von Marko bestätigt). Homepage-Filter: betrag>=10.000€ ODER hauptpartner:true. Quelle: BL_Liquiditaetsplanung_26-27, Tab SPONSORING, schwarz markierte (bestätigte) Zeilen, Stand 10.07.2026.",
+  "hinweis": "Sponsoren-Kacheln für partner/sponsoring.html. tier: 'top' | 'sponsoren' | 'wirkungspartner' (Filter-Chip-Label: 'Förderpartner') | 'weitere' (Filter-Chip-Label: 'Weitere Partner', kleinere Kachelgröße als 'sponsoren'). logo optional (Pfad zu assets/logos/Logo_...) — ohne logo wird der Name als Text-Kachel gezeigt. claim/beschreibung füllen die Flip-Rückseite; ohne claim wird nur die Beschreibung gezeigt. betrag = bestätigtes Cash-Sponsoring pro Jahr in Euro laut Sheet (intern, nirgends auf der Website angezeigt). hauptpartner: true = manuelles Override für die Hauptpartner-Sektion auf index.html, wenn der Gesamtwert der Partnerschaft (Cash + Sachleistung o.ä.) über dem Schwellenwert liegt, aber nicht 1:1 in der Cash-Sponsoring-Spalte des Sheets steht (z.B. KoWo, Kinnings, E.E.S.T. — Stand 10.07.2026 von Marko bestätigt). Homepage-Filter: betrag>=10.000€ ODER hauptpartner:true. Quelle: BL_Liquiditaetsplanung_26-27, Tab SPONSORING, schwarz markierte (bestätigte) Zeilen, Stand 10.07.2026. LEG Thüringen und Erfurter Tourismus am 11.07.2026 entfernt (kein Sponsor bzw. noch keine Unterschrift).",
   "partner": [
     { "name": "CATL", "tier": "top", "betrag": 120000, "logo": "/assets/logos/Logo_CATL.png", "beschreibung": "Weltmarktführer für Batteriezellen — die europäische Gigafactory von Contemporary Amperex Technology steht am Erfurter Kreuz." },
     { "name": "Stadtwerke Erfurt", "tier": "top", "betrag": 60000, "logo": "/assets/logos/Logo_Stadtwerke-Erfurt.png", "claim": "SWE für Erfurt.", "beschreibung": "Die Stadtwerke Erfurt Gruppe versorgt die Stadt mit Energie, Nahverkehr und Freizeitangeboten — und ist Partner für Kultur, Sport und Soziales." },
@@ -14,18 +14,23 @@
     { "name": "HKS Architekten", "tier": "sponsoren", "betrag": 10000, "logo": "/assets/logos/Logo_HKS-Architekten.png", "beschreibung": "Erfurter Architekturbüro (BDA)." },
     { "name": "FUNKE Medien", "tier": "sponsoren", "betrag": 6500, "logo": "/assets/logos/Logo_FUNKE-Thueringen.svg", "beschreibung": "Verlagsgruppe hinter Thüringer Allgemeine und Thüringische Landeszeitung." },
     { "name": "creditreform", "tier": "sponsoren", "betrag": 4500, "logo": "/assets/logos/Logo_Creditreform.svg", "beschreibung": "Wirtschaftsauskunftei — Bonitätsprüfung und Forderungsmanagement, Niederlassung Erfurt." },
-    { "name": "LEG Thüringen", "tier": "sponsoren", "betrag": 5000, "logo": "/assets/logos/Logo_LEG-Thueringen.jpg", "beschreibung": "Landesentwicklungsgesellschaft Thüringen — vermarktet Gewerbe- und Industrieflächen im Freistaat." },
-    { "name": "Erfurter Tourismus", "tier": "sponsoren", "betrag": 2500, "beschreibung": "Tourismusorganisation der Landeshauptstadt Erfurt." },
     { "name": "Ergo", "tier": "sponsoren", "betrag": 2000, "logo": "/assets/logos/Logo_Ergo.png", "beschreibung": "Geschäftsstelle Christoph Kühn — Versicherung und Vorsorge, ERGO Beratung und Vertrieb AG." },
-    { "name": "Bietmann", "tier": "sponsoren", "betrag": 2500, "logo": "/assets/logos/Logo_Bietmann.svg", "beschreibung": "Bundesweite Wirtschaftskanzlei für Rechts- und Steuerberatung, Standort Erfurt." }
+    { "name": "Bietmann", "tier": "sponsoren", "betrag": 2500, "logo": "/assets/logos/Logo_Bietmann.svg", "beschreibung": "Bundesweite Wirtschaftskanzlei für Rechts- und Steuerberatung, Standort Erfurt." },
+    { "name": "Ferchau", "tier": "sponsoren", "betrag": 8500, "logo": "/assets/logos/Logo_Ferchau.svg", "beschreibung": "Ingenieur- und IT-Dienstleister mit Standort in Erfurt." },
+    { "name": "Sparkasse Mittelthüringen", "tier": "sponsoren", "betrag": 15100, "logo": "/assets/logos/Logo_Sparkasse-Mittelthueringen.png", "beschreibung": "Sparkasse Mittelthüringen — Vertrag in Vorbereitung, noch nicht unterschrieben (Stand 11.07.2026)." },
+
+    { "name": "Glinicke Automobile", "tier": "weitere", "logo": "/assets/logos/Logo_Glinicke.svg", "beschreibung": "Autohaus in Erfurt." },
+    { "name": "Kallinich Media", "tier": "weitere", "logo": "/assets/logos/Logo_Kallinich-Media.svg", "beschreibung": "Werbeagentur aus Erfurt." },
+    { "name": "Avenida-Therme", "tier": "weitere", "logo": "/assets/logos/Logo_Avenida-Therme.png", "beschreibung": "Therme in Hohenfelden bei Erfurt." },
+    { "name": "DenkMahl Rösterei", "tier": "weitere", "logo": "/assets/logos/Logo_DenkMahl-Roesterei.png", "beschreibung": "Kaffeerösterei aus Erfurt." },
+    { "name": "IBA University", "tier": "weitere", "logo": "/assets/logos/Logo_IBA-University.svg", "beschreibung": "Internationale Berufsakademie, Campus Erfurt." },
+    { "name": "Erfurt Mitte", "tier": "weitere", "logo": "/assets/logos/Logo_Erfurt-Mitte.svg", "beschreibung": "Werbegemeinschaft der Erfurter Innenstadt." },
+    { "name": "Brand Gastronomie Service", "tier": "weitere", "logo": "/assets/logos/Logo_Brand-Gastronomie.svg", "beschreibung": "Gastronomietechnik aus Erfurt." }
   ],
   "weiterePartner": [
-    "Glinicke Automobile GmbH & Co. KG",
     "Sternauto",
     "dotflow",
-    "Kallinich Media",
     "Radio Top 40",
-    "Antenne Thüringen",
-    "Avenida-Therme"
+    "Antenne Thüringen"
   ]
 }
