@@ -83,11 +83,13 @@
   </div>
 </footer>
 
-<!-- Nachwuchsstandort-Badge-Popup: vergrößert das Zertifikat auf Klick, Erklärung dazu steht auf /teams-saison/nachwuchs.html -->
+<!-- Nachwuchsstandort-Badge-Popup: vergrößert das Zertifikat auf Klick, Erklärung dazu steht auf /teams-saison/nachwuchs.html.
+     Kein weißer Modal-Hintergrund: Das Zertifikat-PNG hat transparente runde Ecken, die sonst gegen die
+     weiße Modal-Box sichtbar würden statt gegen den dunklen Overlay-Hintergrund zu verschwinden. -->
 <div class="modal-backdrop" id="footer-badge-modal">
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="footer-badge-title" style="max-width:min(90vw,360px);padding:0;overflow:hidden">
-    <button type="button" class="modal-close" data-footer-badge-close aria-label="Schließen" style="background:rgba(0,18,45,.55);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1"><i data-lucide="x" style="width:18px;height:18px"></i></button>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="footer-badge-title" style="max-width:min(90vw,340px);padding:0;background:transparent;box-shadow:none">
+    <button type="button" class="modal-close" data-footer-badge-close aria-label="Schließen" style="position:absolute;top:-14px;right:-14px;background:rgba(0,18,45,.7);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1"><i data-lucide="x" style="width:18px;height:18px"></i></button>
     <img src="/assets/img/nachwuchsstandort-zertifikat-2022-23.png" alt="Zertifizierter Nachwuchsstandort 2022/2023 — Deutscher Basketball Ausbildungsfonds e.V." style="width:100%;display:block" />
-    <p class="t-body-sm" id="footer-badge-title" style="padding:12px 16px;margin:0;color:var(--text-secondary);text-align:center">Zertifizierter Nachwuchsstandort seit 2022 — mehr dazu auf unserer <a href="/teams-saison/nachwuchs.html">Nachwuchsseite</a>.</p>
+    <p class="t-body-sm" id="footer-badge-title" style="margin:14px 0 0;color:rgba(255,255,255,.85);text-align:center">Zertifizierter Nachwuchsstandort seit 2022 — mehr dazu auf unserer <a href="/teams-saison/nachwuchs.html" style="color:#fff;text-decoration:underline">Nachwuchsseite</a>.</p>
   </div>
 </div>

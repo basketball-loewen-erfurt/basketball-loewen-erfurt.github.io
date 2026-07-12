@@ -631,7 +631,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   position: relative; width: 100%; height: 100%;
   transition: transform .6s var(--ease-out); transform-style: preserve-3d;
 }
-.partner-tile:hover .partner-tile-inner, .partner-tile:focus-visible .partner-tile-inner { transform: rotateY(180deg); }
+/* Hover-Flip nur bei echten Zeigegeräten (Maus) — auf Touch/iPad hat :hover
+   keinen zuverlässigen "nur ansehen"-Zustand, ein Tap löst Flip UND sofortige
+   Navigation gleichzeitig aus. Per Tastatur bleibt der Flip über :focus-visible
+   erhalten, da Tab+Enter ein bewusster Zwei-Schritt-Vorgang ist. */
+@media (hover: hover) and (pointer: fine) {
+  .partner-tile:hover .partner-tile-inner { transform: rotateY(180deg); }
+}
+.partner-tile:focus-visible .partner-tile-inner { transform: rotateY(180deg); }
 .partner-tile-front, .partner-tile-back {
   position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-lg);
   display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px;
