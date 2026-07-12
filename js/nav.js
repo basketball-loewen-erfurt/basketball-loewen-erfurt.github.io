@@ -133,4 +133,45 @@ window.initNav = function initNav() {
       if (e.key === 'Escape') footerBadgeModal.classList.remove('open');
     });
   }
+
+  /* Feedback-Widget (nur Launch-Phase — siehe Kommentar in footer.html):
+     Klick öffnet das Panel, Absenden schickt an den n8n-Webhook, der das
+     Feedback als Seite in der Notion-Datenbank "Website-Feedback" anlegt. */
+  var feedbackWidget = document.getElementById('feedback-widget');
+  var feedbackToggle = document.getElementById('feedback-widget-toggle');
+  var feedbackClose = document.getElementById('feedback-widget-close');
+  var feedbackForm = document.getElementById('feedback-widget-form');
+  if (feedbackWidget && feedbackToggle && feedbackForm) {
+    feedbackToggle.addEventListener('click', function () {
+      feedbackWidget.classList.add('open');
+    });
+    if (feedbackClose) {
+      feedbackClose.addEventListener('click', function () {
+        feedbackWidget.classList.remove('open');
+      });
+    }
+    feedbackForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var message = feedbackForm.querySelector('[name="message"]').value.trim();
+      if (!message) return;
+      var contact = feedbackForm.querySelector('[name="contact"]').value.trim();
+      var submitBtn = feedbackForm.querySelector('.feedback-widget-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet …';
+      fetch('https://blev.app.n8n.cloud/webhook/website-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message, contact: contact, page: window.location.href })
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Feedback-Webhook antwortete mit Fehler');
+        feedbackForm.hidden = true;
+        feedbackWidget.querySelector('.feedback-widget-success').hidden = false;
+        setTimeout(function () { feedbackWidget.classList.remove('open'); }, 2500);
+      }).catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Absenden';
+        alert('Senden hat leider nicht geklappt — bitte später noch einmal versuchen.');
+      });
+    });
+  }
 };

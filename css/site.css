@@ -1217,6 +1217,53 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .discount-corner-fixed .ribbon-inner { bottom: 28px; right: -34px; width: 150px; font-size: 12px; padding: 7px 0; }
 }
 
+/* =====================================================================
+   FEEDBACK-WIDGET — schwebender Button unten links, nur für die
+   Launch-Phase gedacht. Kompletter Block (HTML in footer.html, JS in
+   nav.js) kann später rückstandslos entfernt werden.
+   ===================================================================== */
+.feedback-widget { position: fixed; left: 20px; bottom: 20px; z-index: 200; }
+.feedback-widget-btn {
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  background: var(--color-brand-orange-text); color: #fff; border: none;
+  border-radius: var(--radius-full); padding: 12px 18px;
+  font-family: var(--font-base); font-size: 14px; font-weight: var(--weight-semibold);
+  box-shadow: var(--shadow-lg); cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.feedback-widget-btn:hover { background: var(--action-primary-hover); transform: translateY(-1px); }
+.feedback-widget.open .feedback-widget-btn { display: none; }
+.feedback-widget-panel {
+  display: none; position: absolute; bottom: 0; left: 0;
+  width: min(340px, calc(100vw - 40px)); background: #fff;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 20px;
+}
+.feedback-widget.open .feedback-widget-panel { display: block; }
+.feedback-widget-panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.feedback-widget-panel-head h3 { font-size: 15px; font-weight: var(--weight-bold); color: var(--text-primary); margin: 0; }
+.feedback-widget-close { background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 4px; display: flex; }
+.feedback-widget-hint { font-size: 12px; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px; }
+.feedback-widget-hint a { color: inherit; }
+.feedback-widget textarea, .feedback-widget input[type="text"] {
+  width: 100%; border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 9px 12px; font-family: var(--font-base); font-size: 14px; color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.feedback-widget textarea { min-height: 90px; resize: vertical; }
+.feedback-widget-submit {
+  width: 100%; background: var(--color-brand-orange-text); color: #fff; border: none;
+  border-radius: var(--radius-md); padding: 10px; font-family: var(--font-base);
+  font-size: 14px; font-weight: var(--weight-semibold); cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.feedback-widget-submit:hover { background: var(--action-primary-hover); }
+.feedback-widget-submit:disabled { opacity: .6; cursor: default; }
+.feedback-widget-success { text-align: center; padding: 10px 0; font-size: 14px; color: var(--text-primary); }
+@media (max-width: 599px) {
+  .feedback-widget { left: 12px; bottom: 12px; }
+  .feedback-widget-btn { padding: 10px 14px; font-size: 13px; }
+}
+
 /* Variante: Banderole oben an einer einzelnen Box (z.B. Einzelpreise-Karte) */
 .discount-corner-wrap { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
 .discount-ribbon {
