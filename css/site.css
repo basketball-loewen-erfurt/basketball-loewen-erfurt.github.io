@@ -760,6 +760,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-league-badge img { width: 80px; height: auto; display: block; }
 .hero-league-badge-dark { background: rgba(0,18,45,.85); }
 .hero-league-badge-dark:hover { background: rgba(0,18,45,1); }
+.hero-badge-plain {
+  display: inline-flex; flex-shrink: 0; border: none; background: none; padding: 0; cursor: pointer;
+}
+.hero-badge-plain img {
+  width: 108px; height: auto; display: block; border-radius: 8px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.hero-badge-plain:hover img, .hero-badge-plain:focus-visible img { transform: scale(1.05); }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
