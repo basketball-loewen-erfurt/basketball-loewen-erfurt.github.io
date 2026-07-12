@@ -116,13 +116,16 @@ window.initNav = function initNav() {
     onHeroScroll();
   }
 
-  /* Footer-Badge (Zertifizierter Nachwuchsstandort): Klick vergrößert das Logo
-     in einem Popup, analog zum Teamfoto-Popup auf den Team-Seiten. */
-  var footerBadgeOpen = document.getElementById('footer-badge-open');
+  /* Nachwuchsstandort-Badge (Footer + ggf. weitere Seiten wie U19-Hero): Klick
+     vergrößert das Logo im selben Popup, analog zum Teamfoto-Popup auf den
+     Team-Seiten. Jedes Element mit [data-footer-badge-open] öffnet es. */
+  var footerBadgeOpeners = document.querySelectorAll('[data-footer-badge-open]');
   var footerBadgeModal = document.getElementById('footer-badge-modal');
-  if (footerBadgeOpen && footerBadgeModal) {
-    footerBadgeOpen.addEventListener('click', function () {
-      footerBadgeModal.classList.add('open');
+  if (footerBadgeOpeners.length && footerBadgeModal) {
+    footerBadgeOpeners.forEach(function (opener) {
+      opener.addEventListener('click', function () {
+        footerBadgeModal.classList.add('open');
+      });
     });
     footerBadgeModal.addEventListener('click', function (e) {
       if (e.target === footerBadgeModal || e.target.closest('[data-footer-badge-close]')) {
@@ -141,7 +144,17 @@ window.initNav = function initNav() {
   var feedbackToggle = document.getElementById('feedback-widget-toggle');
   var feedbackClose = document.getElementById('feedback-widget-close');
   var feedbackForm = document.getElementById('feedback-widget-form');
+  var feedbackContext = document.getElementById('feedback-widget-context');
   if (feedbackWidget && feedbackToggle && feedbackForm) {
+    if (feedbackContext) {
+      /* Seitenname aus dem Tab-Titel ableiten (Muster site-weit: "<Seite> — Basketball Löwen Erfurt"),
+         vorausgewählt, mit "Allgemeines Feedback" als Alternative für seitenübergreifende Anmerkungen. */
+      var isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+      var pageLabel = isHome ? 'Startseite' : (document.title.split(' — ')[0].trim() || 'Diese Seite');
+      feedbackContext.innerHTML =
+        '<option value="' + pageLabel + '">' + pageLabel + '</option>' +
+        '<option value="Allgemeines Feedback">Allgemeines Feedback</option>';
+    }
     feedbackToggle.addEventListener('click', function () {
       feedbackWidget.classList.add('open');
     });
@@ -155,13 +168,14 @@ window.initNav = function initNav() {
       var message = feedbackForm.querySelector('[name="message"]').value.trim();
       if (!message) return;
       var contact = feedbackForm.querySelector('[name="contact"]').value.trim();
+      var context = feedbackContext ? feedbackContext.value : '';
       var submitBtn = feedbackForm.querySelector('.feedback-widget-submit');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Wird gesendet …';
       fetch('https://blev.app.n8n.cloud/webhook/website-feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: message, contact: contact, page: window.location.href })
+        body: JSON.stringify({ message: message, contact: contact, context: context, page: window.location.href })
       }).then(function (res) {
         if (!res.ok) throw new Error('Feedback-Webhook antwortete mit Fehler');
         feedbackForm.hidden = true;

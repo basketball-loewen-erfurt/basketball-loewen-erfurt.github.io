@@ -750,8 +750,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-size: 11px; color: rgba(0,18,45,.4);
 }
 .hero-eyebrow-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.hero-badge-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
 .hero-league-badge {
-  display: inline-flex; flex-shrink: 0;
+  display: inline-flex; flex-shrink: 0; border: none; cursor: pointer; font: inherit;
   background: rgba(255,255,255,.92); padding: 6px 14px; border-radius: 10px;
   transition: background var(--dur-fast) var(--ease-out);
 }
@@ -1218,11 +1219,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 
 /* =====================================================================
-   FEEDBACK-WIDGET — schwebender Button unten links, nur für die
+   FEEDBACK-WIDGET — schwebender Button unten rechts, nur für die
    Launch-Phase gedacht. Kompletter Block (HTML in footer.html, JS in
    nav.js) kann später rückstandslos entfernt werden.
    ===================================================================== */
-.feedback-widget { position: fixed; left: 20px; bottom: 20px; z-index: 200; }
+.feedback-widget { position: fixed; right: 20px; bottom: 20px; z-index: 200; }
 .feedback-widget-btn {
   display: flex; align-items: center; gap: 8px; white-space: nowrap;
   background: var(--color-brand-orange-text); color: #fff; border: none;
@@ -1234,34 +1235,37 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .feedback-widget-btn:hover { background: var(--action-primary-hover); transform: translateY(-1px); }
 .feedback-widget.open .feedback-widget-btn { display: none; }
 .feedback-widget-panel {
-  display: none; position: absolute; bottom: 0; left: 0;
-  width: min(340px, calc(100vw - 40px)); background: #fff;
-  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 20px;
+  display: none; position: absolute; bottom: 0; right: 0;
+  width: min(420px, calc(100vw - 40px)); background: #fff;
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 28px;
 }
 .feedback-widget.open .feedback-widget-panel { display: block; }
-.feedback-widget-panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.feedback-widget-panel-head h3 { font-size: 15px; font-weight: var(--weight-bold); color: var(--text-primary); margin: 0; }
+.feedback-widget-panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.feedback-widget-panel-head h3 { font-size: 18px; font-weight: var(--weight-bold); color: var(--text-primary); margin: 0; }
 .feedback-widget-close { background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 4px; display: flex; }
-.feedback-widget-hint { font-size: 12px; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px; }
+.feedback-widget-hint { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px; }
 .feedback-widget-hint a { color: inherit; }
-.feedback-widget textarea, .feedback-widget input[type="text"] {
+.feedback-widget-label { display: block; font-size: 12px; font-weight: var(--weight-semibold); color: var(--text-secondary); margin-bottom: 6px; }
+.feedback-widget select, .feedback-widget textarea, .feedback-widget input[type="text"] {
   width: 100%; border: 1px solid var(--border); border-radius: var(--radius-md);
-  padding: 9px 12px; font-family: var(--font-base); font-size: 14px; color: var(--text-primary);
-  margin-bottom: 10px;
+  padding: 10px 12px; font-family: var(--font-base); font-size: 14px; color: var(--text-primary);
+  margin-bottom: 14px;
 }
-.feedback-widget textarea { min-height: 90px; resize: vertical; }
+.feedback-widget select { background: #fff; cursor: pointer; }
+.feedback-widget textarea { min-height: 130px; resize: vertical; }
 .feedback-widget-submit {
   width: 100%; background: var(--color-brand-orange-text); color: #fff; border: none;
-  border-radius: var(--radius-md); padding: 10px; font-family: var(--font-base);
-  font-size: 14px; font-weight: var(--weight-semibold); cursor: pointer;
+  border-radius: var(--radius-md); padding: 12px; font-family: var(--font-base);
+  font-size: 15px; font-weight: var(--weight-semibold); cursor: pointer;
   transition: background var(--dur-fast) var(--ease-out);
 }
 .feedback-widget-submit:hover { background: var(--action-primary-hover); }
 .feedback-widget-submit:disabled { opacity: .6; cursor: default; }
-.feedback-widget-success { text-align: center; padding: 10px 0; font-size: 14px; color: var(--text-primary); }
+.feedback-widget-success { text-align: center; padding: 16px 0; font-size: 15px; color: var(--text-primary); }
 @media (max-width: 599px) {
-  .feedback-widget { left: 12px; bottom: 12px; }
+  .feedback-widget { right: 12px; bottom: 12px; }
   .feedback-widget-btn { padding: 10px 14px; font-size: 13px; }
+  .feedback-widget-panel { padding: 22px; }
 }
 
 /* Variante: Banderole oben an einer einzelnen Box (z.B. Einzelpreise-Karte) */

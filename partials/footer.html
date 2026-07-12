@@ -60,7 +60,7 @@
       </div>
 
       <div class="footer-bottom-col footer-bottom-badge">
-        <button type="button" class="footer-badge-btn" id="footer-badge-open" aria-label="Zertifizierter Nachwuchsstandort 2022/2023 — Logo vergrößern">
+        <button type="button" class="footer-badge-btn" data-footer-badge-open aria-label="Zertifizierter Nachwuchsstandort 2022/2023 — Logo vergrößern">
           <img src="/assets/img/nachwuchsstandort-zertifikat-2022-23.png" alt="Zertifizierter Nachwuchsstandort 2022/2023 — Deutscher Basketball Ausbildungsfonds e.V." />
         </button>
       </div>
@@ -108,6 +108,8 @@
     </div>
     <p class="feedback-widget-hint">Bitte hier nur Fehler zur Webseite und Verbesserungsvorschläge melden. Für alle anderen Anliegen nutze bitte unser <a href="/kontakt.html">Kontaktformular</a>.</p>
     <form id="feedback-widget-form">
+      <span class="feedback-widget-label">Worauf bezieht sich dein Feedback?</span>
+      <select name="context" id="feedback-widget-context"></select>
       <textarea name="message" required placeholder="Was ist dir aufgefallen?"></textarea>
       <input type="text" name="contact" placeholder="Kontakt (optional, falls wir nachfragen dürfen)" />
       <button type="submit" class="feedback-widget-submit">Absenden</button>
