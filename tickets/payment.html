@@ -7,9 +7,9 @@
 <meta name="description" content="Zahlung für deine Bestellung bei den Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784498814" />
-<link rel="stylesheet" href="/css/site.css?v=1784498814" />
-<link rel="stylesheet" href="/css/seat-picker.css?v=1784498814" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784499662" />
+<link rel="stylesheet" href="/css/site.css?v=1784499662" />
+<link rel="stylesheet" href="/css/seat-picker.css?v=1784499662" />
 <style>
   .checkout-grid { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
   #order-summary-card { position: sticky; top: 20px; }
@@ -141,8 +141,8 @@
 <div id="site-footer-placeholder"></div>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784498814"></script>
-<script src="/js/include.js?v=1784498814"></script>
+<script src="/js/nav.js?v=1784499662"></script>
+<script src="/js/include.js?v=1784499662"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var raw = sessionStorage.getItem('bl_cart');
@@ -176,9 +176,9 @@
       document.getElementById('pm-sepa').style.display = 'flex';
     }
 
-    /* Löwen-Unterstützer-Pakete: ausschließlich SEPA-Lastschrift, kein PayPal —
+    /* Löwen Business Club-Pakete: ausschließlich SEPA-Lastschrift, kein PayPal —
        passt zur B2B-Rechnungslogik statt Endkunden-Checkout. */
-    if (cart.productType === 'loewen-unterstuetzer') {
+    if (cart.productType === 'loewen-business-club') {
       document.getElementById('pm-paypal').style.display = 'none';
       document.getElementById('pm-sepa').style.display = 'flex';
       document.getElementById('pm-sepa-caption').textContent = 'Bequem und sicher per Bankeinzug.';
