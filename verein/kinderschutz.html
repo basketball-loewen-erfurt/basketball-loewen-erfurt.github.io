@@ -7,8 +7,8 @@
 <meta name="description" content="Kinderschutz bei den Basketball Löwen — unsere Grundhaltung, das Kinderschutzkonzept und der Kontaktweg für Anliegen." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784492231" />
-<link rel="stylesheet" href="/css/site.css?v=1784492231" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784492731" />
+<link rel="stylesheet" href="/css/site.css?v=1784492731" />
 </head>
 <body data-nav-group="verein">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -154,21 +154,18 @@
           </div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:28px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center;margin-top:28px">
         <a href="/assets/pdf/Kinderschutzkonzept-Basketball-Loewen.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-weight:400;color:var(--text-secondary);text-decoration:underline"><i data-lucide="file-text" style="width:15px;height:15px"></i> Kinderschutzkonzept zum Nachlesen (PDF)</a>
-        <a href="#" id="ablaufplan-open" style="display:inline-flex;align-items:center;gap:6px;font-weight:400;color:var(--text-secondary);text-decoration:underline"><i data-lucide="workflow" style="width:15px;height:15px"></i> Ablaufplan im Verdachtsfall ansehen</a>
       </div>
     </div>
   </section>
 
-  <!-- Ablaufplan-Popup: Vorgehen bei Gefährdung des Kindeswohls (aus dem
-       Kinderschutzkonzept). Bewusst nicht direkt auf der Seite, sondern als
-       Modal hinter dem transparenten Link neben dem PDF-Download. -->
-  <div class="modal-backdrop" id="ablaufplan-modal">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="ablaufplan-title" style="max-height:90vh;overflow-y:auto;max-width:min(95vw,680px);text-align:left">
-      <button type="button" class="modal-close" data-ablaufplan-close aria-label="Schließen"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+  <!-- Ablaufplan direkt auf der Seite (nicht mehr hinter einem Popup versteckt —
+       Valentin-Feedback: soll im Ernstfall ohne Klick auffindbar sein). -->
+  <section class="section bg-subtle">
+    <div class="container container-narrow">
       <span class="eyebrow">Ablaufplan</span>
-      <h3 class="t-h4" id="ablaufplan-title" style="margin:4px 0 20px">Vorgehen bei Gefährdung des Kindeswohls</h3>
+      <h2 class="t-h2" style="margin-bottom:20px">Vorgehen bei Gefährdung des Kindeswohls</h2>
 
       <div class="card" style="padding:20px 24px;background:var(--color-brand-orange);text-align:center">
         <h3 style="color:#fff;margin:0 0 6px">Beobachtung von Problemen</h3>
@@ -190,7 +187,7 @@
       </div>
       <div style="display:flex;justify-content:center;margin:6px 0"><i data-lucide="arrow-down" style="width:20px;height:20px;color:var(--text-muted)"></i></div>
 
-      <div class="card" style="padding:20px 24px;background:var(--bg-subtle);text-align:center">
+      <div class="card" style="padding:20px 24px;background:#fff;text-align:center">
         <h3 style="margin:0 0 6px">Gemeinsame Besprechung</h3>
         <p style="margin:0">Nachwuchsleitung, Schutzbeauftragte und Fachkraft bewerten gemeinsam und dokumentieren den Fall.</p>
       </div>
@@ -215,28 +212,11 @@
         <p style="color:rgba(255,255,255,.85);margin:0">Verstärkte Aufmerksamkeit in den nächsten Wochen und Monaten.</p>
       </div>
     </div>
-  </div>
+  </section>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784492231"></script>
-<script src="/js/include.js?v=1784492231"></script>
-<script>
-  (function () {
-    var modal = document.getElementById('ablaufplan-modal');
-    document.getElementById('ablaufplan-open').addEventListener('click', function (e) {
-      e.preventDefault();
-      modal.classList.add('open');
-    });
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal || e.target.closest('[data-ablaufplan-close]')) {
-        modal.classList.remove('open');
-      }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { modal.classList.remove('open'); }
-    });
-  })();
-</script>
+<script src="/js/nav.js?v=1784492731"></script>
+<script src="/js/include.js?v=1784492731"></script>
 </body>
 </html>
