@@ -19,7 +19,7 @@
         '<span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="clock" style="width:14px;height:14px"></i>' + g.s.zeit + ' Uhr · Riethsporthalle</span>' +
       '</p>' +
       '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
-        '<a class="btn btn-outline-orange btn-sm" href="' + (g.s.ticketUrl || '/tickets.html') + '">Tickets sichern <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
+        '<a class="btn btn-outline-orange btn-sm" href="' + (g.s.ticketUrl || '/tickets.html') + '">Tickets kaufen <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>' +
         '<a class="btn btn-ghost btn-sm" href="/teams-saison/spielplan.html">Zum Spielplan</a>' +
       '</div>' +
     '</div>';
