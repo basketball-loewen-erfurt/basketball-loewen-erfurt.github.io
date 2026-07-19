@@ -412,6 +412,10 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   display: block; font-size: 36px; line-height: 1.1; font-variant-numeric: tabular-nums;
   color: var(--color-brand-orange-text); font-weight: var(--weight-extrabold);
 }
+.impact-stat-icon {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--color-brand-navy);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
+}
 .impact-stat span { display: block; margin-top: 4px; font-size: 13px; color: var(--text-secondary); }
 .impact-stat .impact-stat-note { margin-top: 2px; font-size: 11px; color: var(--text-muted); }
 
