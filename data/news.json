@@ -1,5 +1,5 @@
 {
-  "hinweis": "Zentrale Liste aller News-Beiträge. Inhalte stammen von der bisherigen Vereinswebsite (basketball-loewen.com) und wurden hierher übernommen. 'topNews': true steuert, ob ein Beitrag im Top-News-Bereich der Startseite erscheint — Beiträge ohne dieses Flag (oder mit false) werden nur auf der Aktuelles-Seite gelistet, nicht im Startseiten-Slider. 'bild' wird für die Foto-Kacheln im Startseiten-Newsfeed verwendet.",
+  "hinweis": "Zentrale Liste aller News-Beiträge. Inhalte stammen von der bisherigen Vereinswebsite (basketball-loewen.com) und wurden hierher übernommen. 'topNews': true steuert, ob ein Beitrag im Top-News-Bereich der Startseite erscheint — Beiträge ohne dieses Flag (oder mit false) werden nur auf der Aktuelles-Seite gelistet, nicht im Startseiten-Slider. 'bild' wird für die Foto-Kacheln im Startseiten-Newsfeed verwendet. 'team' (optional: 'profis' | 'damen' | 'nbbl') ordnet einen Artikel einem Team zu, für die 'Aktuelles zu ...'-Sektionen auf den Teamseiten (js/team-news.js) — Artikel ohne 'team' gelten als allgemein und füllen bei Bedarf auf.",
   "artikel": [
     {
       "datum": "06.07.2026",
@@ -32,7 +32,8 @@
       "kurztext": "Die Profis verpassen die Playoffs — Coach Florian Gut zieht Bilanz und blickt nach vorn.",
       "url": "/news/artikel/2026-03-31_verein_spielbericht-saisonrueckblick-2025-26.html",
       "bild": "/assets/img/team-prob.jpg",
-      "topNews": true
+      "topNews": true,
+      "team": "profis"
     },
     {
       "datum": "04.03.2026",
@@ -43,7 +44,8 @@
       "kurztext": "Vor der entscheidenden Schlussphase verlässt Mike Mitchell das Team aus persönlichen Gründen.",
       "url": "/news/artikel/2026-03-04_verein_mitchell-abgang.html",
       "bild": "/assets/img/news/mitchell-abgang.jpg",
-      "topNews": true
+      "topNews": true,
+      "team": "profis"
     },
     {
       "datum": "25.09.2025",
@@ -54,7 +56,8 @@
       "kurztext": "Nach dem Testspiel startet die Saison zu Hause gegen die BBC Coburg.",
       "url": "/news/artikel/2025-09-25_verein_saisonstart-dauerkarten.html",
       "bild": "/assets/img/news/saisonstart-2025.jpg",
-      "topNews": true
+      "topNews": true,
+      "team": "profis"
     },
     {
       "datum": "26.08.2025",
@@ -65,7 +68,8 @@
       "kurztext": "Der Batteriezellen-Hersteller bleibt Namenssponsor der Profimannschaft — schon die vierte gemeinsame Saison.",
       "url": "/news/artikel/2025-08-26_verein_catl-verlaengert.html",
       "bild": "/assets/img/hero-basketball.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "profis"
     },
     {
       "datum": "08.08.2025",
@@ -87,7 +91,8 @@
       "kurztext": "Florian Gut über langfristige Vereinsziele und den Start der Löwinnen in der Regionalliga.",
       "url": "/news/artikel/2025-08-01_verein_sommerinterview-teil2.html",
       "bild": "/assets/img/news/damen-regionalliga.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "damen"
     },
     {
       "datum": "21.07.2025",
@@ -98,7 +103,8 @@
       "kurztext": "Florian Gut über Abgänge, gesuchte Neuzugänge und einen starken Sommer für Musa Abra.",
       "url": "/news/artikel/2025-07-21_verein_sommerinterview-teil1.html",
       "bild": "/assets/img/team-prob.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "profis"
     },
     {
       "datum": "07.07.2025",
@@ -120,7 +126,8 @@
       "kurztext": "Vier langjährige Spieler verlassen den Verein — Florian Gut über die Hintergründe.",
       "url": "/news/artikel/2025-05-19_verein_kaderplanung-naechste-saison.html",
       "bild": "/assets/img/team-prob.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "profis"
     },
     {
       "datum": "29.04.2025",
@@ -131,7 +138,8 @@
       "kurztext": "Knappe 82:84-Heimniederlage gegen Paderborn beendet die Playoff-Saison.",
       "url": "/news/artikel/2025-04-29_verein_achtelfinale-aus.html",
       "bild": "/assets/img/news/achtelfinale.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "profis"
     },
     {
       "datum": "22.04.2025",
@@ -142,7 +150,8 @@
       "kurztext": "Nach knapper Auswärtsniederlage geht die Serie gegen Paderborn in der Riethsporthalle weiter.",
       "url": "/news/artikel/2025-04-22_verein_playoff-heimspiel-freitag.html",
       "bild": "/assets/img/news/playoff-heimspiel.jpg",
-      "topNews": false
+      "topNews": false,
+      "team": "profis"
     }
   ]
 }
