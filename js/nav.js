@@ -88,12 +88,17 @@ window.initNav = function initNav() {
   });
 
   /* Großes Logo über Utility- + Hauptnav-Leiste im Ruhezustand; beim Scrollen
-     verschwindet die Utility-Leiste und das Logo schrumpft in die Nav-Zeile. */
+     verschwindet die Utility-Leiste und das Logo schrumpft in die Nav-Zeile.
+     Ein einzelner Schwellenwert (vorher: scrollY > 16) kippt bei langsamem
+     Scrollen (Trackpad, Rückfeder-Effekt am oberen Rand) ständig hin und her,
+     sobald die Position genau um die 16px pendelt — das Logo "zittert" dann
+     sichtbar zwischen groß und klein. Hysterese (an erst ab 40px, aus erst
+     unter 12px) schafft eine Pufferzone, in der die Klasse stabil bleibt. */
   var header = document.querySelector('.site-header');
   if (header) {
     var onScroll = function () {
-      if (window.scrollY > 16) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else if (window.scrollY < 12) header.classList.remove('scrolled');
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
