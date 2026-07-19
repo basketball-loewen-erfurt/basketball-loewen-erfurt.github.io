@@ -73,11 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
       var post = data && (data.posts || []).find(function (p) { return p.id === postId; });
       if (!post) { showNotFound(); return; }
 
-      heroEl.style.backgroundImage =
-        "linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%), url('" + post.image + "')";
-      heroEl.style.backgroundSize = 'cover';
-      heroEl.style.backgroundPosition = 'center top';
-
       eyebrowEl.textContent = 'Aktuelles · ' + feedConfig.badge + ' · Instagram';
       titleEl.textContent = firstLine(post.caption, 90);
 
