@@ -1053,13 +1053,21 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   position: absolute; top: 24px; right: 16px; bottom: 24px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
 }
+/* Sichtbarer Punkt bleibt bei 9px, die klickbare Fläche des Buttons ist mit
+   24x24px deutlich großzügiger — sonst muss man exakt den winzigen Punkt
+   treffen (Feedback: "muss man gezielt draufklicken"). */
 .news-dot {
-  width: 9px; height: 9px; border-radius: 50%;
-  border: 1.5px solid var(--color-brand-orange); background: transparent; padding: 0; cursor: pointer;
+  width: 24px; height: 24px; border-radius: 50%;
+  border: none; background: transparent; padding: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.news-dot::before {
+  content: ''; width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid var(--color-brand-orange); background: transparent;
   transition: background var(--dur-fast) var(--ease-out);
 }
-.news-dot:hover { background: var(--color-orange-100); }
-.news-dot.is-active { background: var(--color-brand-orange); }
+.news-dot:hover::before { background: var(--color-orange-100); }
+.news-dot.is-active::before { background: var(--color-brand-orange); }
 /* Nächstes-Heimspiel-Widget: einfacher Klick-Umschalter (kein Auto-Wechsel), nutzt
    dieselben Punkte (.news-dot) wie der Top-News-Slider. */
 .next-game-slide { display: none; }
