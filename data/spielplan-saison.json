@@ -1,0 +1,9 @@
+{
+  "hinweis": "Ergänzende Saisondaten 2026/2027 für die Spielplan-Übersicht (teams-saison/spielplan.html). Profis-Heimspiele kommen aus data/heimspiele.json (echte, von der Liga terminierte Spiele). Hier stehen zusätzlich die Profis-Auswärtstermine sowie Damen/NBBL — beides noch nicht final terminiert, daher bewusst als Platzhalter/leer, bis Marko echte Spieltermine liefert.",
+  "profisAuswaerts": [
+    { "datum": "26.09.2026", "zeit": "19:00", "gegner": "Dragons Rhöndorf", "spielnummer": 1 }
+  ],
+  "profisAuswaertsHinweis": "Weitere Auswärtstermine folgen, sobald die Liga den vollständigen Spielplan veröffentlicht.",
+  "damen": { "spiele": [], "hinweis": "Die Termine für die Saison 2026/2027 stehen noch nicht fest." },
+  "nbbl": { "spiele": [], "hinweis": "Die Termine für die Saison 2026/2027 stehen noch nicht fest." }
+}
