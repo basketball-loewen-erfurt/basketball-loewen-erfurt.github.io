@@ -126,8 +126,17 @@ window.initNav = function initNav() {
     heroWrap.className = 'hero-sticky-wrap';
     hero.parentElement.insertBefore(heroWrap, hero);
     heroWrap.appendChild(hero);
+    /* Der Wrapper reserviert 2x Hero-Höhe (siehe oben), das sichtbare Hero-Bild
+       füllt aber nur die erste Hälfte davon — die zweite Hälfte ist reiner
+       Scroll-Puffer für den Sticky-Effekt und bliebe sonst als sichtbare leere
+       Lücke stehen, bevor die nächste Section beginnt (Feedback: "riesiger
+       Platz" zwischen Hero und erstem Text). Ein negativer margin-bottom in
+       Höhe dieses Puffers zieht die nächste Section direkt an das sichtbare
+       Hero-Bild heran; die Section deckt den weiterhin sticky-gepinnten Hero
+       dahinter ab (siehe .section/.section-sm-Kommentar in site.css). */
     var setHeroWrapHeight = function () {
       heroWrap.style.height = (hero.offsetHeight * 2) + 'px';
+      heroWrap.style.marginBottom = '-' + hero.offsetHeight + 'px';
     };
     setHeroWrapHeight();
     window.addEventListener('resize', setHeroWrapHeight);
