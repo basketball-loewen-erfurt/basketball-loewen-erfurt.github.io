@@ -719,7 +719,11 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    WICHTIG: kein overflow:hidden auf diesem Element — Safari/WebKit (v.a. iOS) hebt
    position:sticky komplett auf, wenn dasselbe Element auch overflow:hidden trägt. Die
    abgerundeten Ecken kommen daher rein über border-radius (clippt den CSS-Background
-   auch ohne overflow:hidden); .hero-media (künftige Video-Heros) clippt sich selbst. */
+   auch ohne overflow:hidden); .hero-media (künftige Video-Heros) clippt sich selbst.
+   .hero-sticky-wrap wird von nav.js zur Laufzeit um .hero-photo gelegt (2×Hero-Höhe) —
+   begrenzt den Containing Block des Sticky-Elements, damit es sich löst statt für den
+   Rest der Seite angeheftet zu bleiben (sonst blitzt es bei kurzen Sections durch). */
+.hero-sticky-wrap { position: relative; }
 .hero-photo {
   position: sticky; top: 74px; z-index: 0;
   border-radius: 0 0 28px 28px;

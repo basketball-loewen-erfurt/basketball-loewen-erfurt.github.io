@@ -106,6 +106,28 @@ window.initNav = function initNav() {
   var hero = document.querySelector('.hero-photo');
   var heroInner = hero ? hero.querySelector('.container') : null;
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* .hero-photo ist sticky, aber ohne eigenen Wrapper wäre <main> (nahezu
+     seitenlang) der Containing Block — der Hero bliebe dann für den Rest der
+     ganzen Seite angeheftet und nur die z-index-Deckung der Sections darunter
+     würde ihn verdecken. Bei Sections, die kürzer als der Viewport sind,
+     reißt diese Deckung kurzzeitig ab und das Bild scheint über dem Text zu
+     liegen. Der hier eingefügte Wrapper begrenzt den Containing Block auf
+     2×Hero-Höhe, sodass der Hero exakt dann natürlich losgelöst wird
+     (kein Sticky mehr), wenn der Ausblend-Effekt unten fertig ist. Das ist ein
+     Layout-Fix, kein Animationseffekt — gilt daher auch bei reduced-motion. */
+  if (hero && hero.parentElement) {
+    var heroWrap = document.createElement('div');
+    heroWrap.className = 'hero-sticky-wrap';
+    hero.parentElement.insertBefore(heroWrap, hero);
+    heroWrap.appendChild(hero);
+    var setHeroWrapHeight = function () {
+      heroWrap.style.height = (hero.offsetHeight * 2) + 'px';
+    };
+    setHeroWrapHeight();
+    window.addEventListener('resize', setHeroWrapHeight);
+  }
+
   if (hero && heroInner && !prefersReducedMotion) {
     var onHeroScroll = function () {
       var progress = Math.min(window.scrollY / hero.offsetHeight, 1);
