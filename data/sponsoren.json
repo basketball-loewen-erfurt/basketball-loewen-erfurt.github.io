@@ -17,7 +17,7 @@
     { "name": "Ergo", "tier": "sponsoren", "betrag": 2000, "logo": "/assets/logos/Logo_Ergo.png", "website": "https://christoph-kuehn.ergo.de/", "beschreibung": "Geschäftsstelle Christoph Kühn — Versicherung und Vorsorge, ERGO Beratung und Vertrieb AG." },
     { "name": "Bietmann", "tier": "sponsoren", "betrag": 2500, "logo": "/assets/logos/Logo_Bietmann.svg", "website": "https://www.bietmann.eu/standorte/rechtsanwalt-erfurt", "beschreibung": "Bundesweite Wirtschaftskanzlei für Rechts- und Steuerberatung, Standort Erfurt." },
     { "name": "Ferchau", "tier": "sponsoren", "betrag": 8500, "logo": "/assets/logos/Logo_Ferchau.svg", "website": "https://www.ferchau.com/de/de", "beschreibung": "Ingenieur- und IT-Dienstleister mit Standort in Erfurt." },
-    { "name": "Sparkasse Mittelthüringen", "tier": "sponsoren", "betrag": 15100, "logo": "/assets/logos/Logo_Sparkasse-Mittelthueringen.png", "website": "https://www.sparkasse-mittelthueringen.de/de/home.html", "beschreibung": "Sparkasse Mittelthüringen — Vertrag in Vorbereitung, noch nicht unterschrieben (Stand 11.07.2026)." },
+    { "name": "Sparkasse Mittelthüringen", "tier": "sponsoren", "betrag": 15100, "logo": "/assets/logos/Logo_Sparkasse-Mittelthueringen.png", "website": "https://www.sparkasse-mittelthueringen.de/de/home.html", "beschreibung": "Die beste Sparkasse in der Region." },
 
     { "name": "Glinicke Automobile", "tier": "weitere", "logo": "/assets/logos/Logo_Glinicke.svg", "website": "https://www.glinicke.de/autohaus/erfurt/hyundai/", "beschreibung": "Autohaus in Erfurt." },
     { "name": "Kallinich Media", "tier": "weitere", "logo": "/assets/logos/Logo_Kallinich-Media.svg", "website": "https://www.kallinich-media.de/", "beschreibung": "Werbeagentur aus Erfurt." },
