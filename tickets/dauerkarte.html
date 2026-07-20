@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dauerkarte 2026/ 27 — Basketball Löwen Erfurt</title>
+<title>Dauerkarte 2026/2027 — Basketball Löwen Erfurt</title>
 <meta name="description" content="Dauerkarte für die Heimspiele der Basketball Löwen Erfurt — deinen festen Sitzplatz für die ganze Saison sichern." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
@@ -34,9 +34,9 @@
       <div class="card" style="padding:24px">
         <div class="buy-grid">
           <div class="buy-prices-col">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+            <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;flex-wrap:wrap">
               <h3 class="t-h4" style="margin-bottom:0">Preise</h3>
-              <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+              <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;margin-left:auto">
                 <button type="button" class="badge badge-orange" id="dk-member-badge" style="border:none;cursor:pointer;font-family:inherit">
                   <i data-lucide="percent" style="width:12px;height:12px"></i> -30 % Vereinsmitglieder
                 </button>
@@ -50,7 +50,7 @@
             <div class="price-row"><span>Kategorie 2</span><strong>156,00 €</strong></div>
             <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>110,50 €</strong></div>
             <div class="price-row"><span>VIP</span><strong>1.000,00 €</strong></div>
-            <p class="t-caption" style="margin-top:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, Menschen mit Behinderung, Rentner*innen und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis beim Einlass).</p>
+            <p class="t-caption" style="margin-top:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, Menschen mit Behinderung, Rentner*innen und Mitglieder von Kooperationsvereinen.</p>
           </div>
           <div class="buy-thumb-col">
             <button type="button" class="buy-thumb-btn" id="seatplan-modal-trigger" aria-label="Sitzplatzwahl öffnen">
@@ -117,7 +117,7 @@
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start">
             <i data-lucide="percent" style="width:18px;height:18px;color:var(--color-brand-orange);flex-shrink:0;margin-top:2px"></i>
-            <p class="t-body-sm">Ermäßigt für Studierende, Azubis, Menschen mit Behinderung, Rentner*innen und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis beim Einlass).</p>
+            <p class="t-body-sm">Ermäßigt für Studierende, Azubis, Menschen mit Behinderung, Rentner*innen und Mitglieder von Kooperationsvereinen.</p>
           </div>
         </div>
       </div>
@@ -175,7 +175,7 @@
       var summary = picker.getSummary();
       sessionStorage.setItem('bl_cart', JSON.stringify({
         productType: 'dauerkarte',
-        eventLabel: 'Dauerkarte 2026/ 27 — alle Heimspiele der Hin- und Rückrunde, außer Playoffs',
+        eventLabel: 'Dauerkarte 2026/2027 — alle Heimspiele der Hin- und Rückrunde, außer Playoffs',
         lines: summary.lines,
         total: summary.total,
         voucher: summary.voucher
