@@ -803,25 +803,30 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .article-back-link:hover { color: var(--color-brand-orange); }
 /* Vorheriger/Nächster-Artikel + zurück-zur-Übersicht-Navigation (js/article-nav.js) —
-   drei Kreis-Buttons direkt unter dem Hero (statt am Artikelende), damit sie ohne
-   Scrollen erreichbar sind: links/rechts Pfeil zum Nachbarartikel, mittig Pfeil nach
-   oben zurück zu "Alle News". Leeres <span> als Platzhalter, falls kein Vorgänger/
-   Nachfolger existiert, damit die mittlere Spalte zentriert bleibt. */
-.article-nav {
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  margin: 4px 0 28px;
-}
+   alle drei Kreis-Buttons sind absolut positioniert (also ohne eigene Flusshöhe),
+   damit sie keinen zusätzlichen Abstand zwischen Hero und Artikeltext erzeugen: der
+   Auf-Pfeil sitzt mittig genau auf der Nahtstelle Hero/Content (überlappt beide zur
+   Hälfte), Vorheriger/Nächster sitzen etwas tiefer am Rand der Textspalte, leicht
+   transparent, damit sie den Artikeltext nur dezent überlagern. Leeres <span> als
+   Platzhalter, falls kein Vorgänger/Nachfolger existiert. */
+.article-nav { position: relative; }
 .article-nav-arrow {
+  position: absolute; z-index: 6;
   width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text-primary);
-  box-shadow: 0 6px 16px rgba(0,18,45,.14); transition: background var(--dur-fast) var(--ease-out);
-  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(0,18,45,.14);
+  transition: background var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
 }
 .article-nav-arrow:hover { background: var(--bg-subtle); }
 .article-nav-arrow i { color: var(--color-brand-orange); }
-.article-nav-prev { justify-self: start; }
-.article-nav-up { justify-self: center; }
-.article-nav-next { justify-self: end; }
+.article-nav-up { top: -94px; left: 50%; transform: translateX(-50%); }
+.article-nav-prev, .article-nav-next { top: 36px; opacity: .55; }
+.article-nav-prev:hover, .article-nav-next:hover { opacity: 1; }
+.article-nav-prev { left: -14px; }
+.article-nav-next { right: -14px; }
+@media (max-width: 599px) {
+  .article-nav-up { top: -70px; }
+}
 /* News-Artikel-Überschriften sind variabel lang (echte Meldungen statt kurzer
    Taglines) — hier immer normal umbrechen, auch auf Desktop-Breiten. */
 .hero-photo.hero-article h1 { white-space: normal; }
