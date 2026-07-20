@@ -1,7 +1,7 @@
-/* Vorheriger/Nächster-Artikel-Navigation für News-Artikelseiten. Sortiert data/news.json
-   nach Datum absteigend (gleiche Reihenfolge wie news/aktuelles.html), findet den aktuellen
-   Artikel anhand der URL und rendert Links zum chronologisch vorherigen (älteren) und
-   nächsten (neueren) Artikel in ein Element mit id="article-nav". */
+/* Vorheriger/Nächster-Artikel + Zurück-zur-Übersicht-Navigation für News-Artikelseiten.
+   Sortiert data/news.json nach Datum absteigend (gleiche Reihenfolge wie
+   news/aktuelles.html), findet den aktuellen Artikel anhand der URL und rendert drei
+   Kreis-Buttons (Vorheriger/Alle News/Nächster) in ein Element mit id="article-nav". */
 (function () {
   function parseGermanDate(str) {
     var parts = (str || '').split('.');
@@ -23,14 +23,14 @@
 
       var newer = idx > 0 ? items[idx - 1] : null;
       var older = idx < items.length - 1 ? items[idx + 1] : null;
-      if (!newer && !older) return;
 
       var html = '';
       html += older
-        ? '<a class="article-nav-link article-nav-prev" href="' + older.url + '"><i data-lucide="arrow-left" style="width:16px;height:16px"></i><span><span class="article-nav-label">Vorheriger Artikel</span><span class="article-nav-title">' + older.titel + '</span></span></a>'
+        ? '<a class="article-nav-arrow article-nav-prev" href="' + older.url + '" aria-label="Vorheriger Artikel: ' + older.titel + '"><i data-lucide="chevron-left" style="width:20px;height:20px"></i></a>'
         : '<span></span>';
+      html += '<a class="article-nav-arrow article-nav-up" href="/news/aktuelles.html" aria-label="Zur Newsübersicht"><i data-lucide="chevron-up" style="width:20px;height:20px"></i></a>';
       html += newer
-        ? '<a class="article-nav-link article-nav-next" href="' + newer.url + '"><span><span class="article-nav-label">Nächster Artikel</span><span class="article-nav-title">' + newer.titel + '</span></span><i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>'
+        ? '<a class="article-nav-arrow article-nav-next" href="' + newer.url + '" aria-label="Nächster Artikel: ' + newer.titel + '"><i data-lucide="chevron-right" style="width:20px;height:20px"></i></a>'
         : '<span></span>';
       el.innerHTML = html;
       if (window.lucide) window.lucide.createIcons();
