@@ -36,14 +36,20 @@
           <div class="buy-prices-col">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap">
               <h3 class="t-h4" style="margin-bottom:0">Preise</h3>
-              <button type="button" class="badge badge-orange" id="dk-discount-badge" style="border:none;cursor:pointer;font-family:inherit">
-                <i data-lucide="percent" style="width:12px;height:12px"></i> -20 % bis 31.07.
-              </button>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button type="button" class="badge badge-orange" id="dk-discount-badge" style="border:none;cursor:pointer;font-family:inherit">
+                  <i data-lucide="percent" style="width:12px;height:12px"></i> -20 % Frühbucher bis 31.08.
+                </button>
+                <button type="button" class="badge badge-orange" id="dk-member-badge" style="border:none;cursor:pointer;font-family:inherit">
+                  <i data-lucide="percent" style="width:12px;height:12px"></i> -30 % Vereinsmitglieder
+                </button>
+              </div>
             </div>
-            <div class="price-row"><span>Kategorie 1</span><strong>228 €</strong></div>
-            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>114 €</strong></div>
-            <div class="price-row"><span>Kategorie 2</span><strong>180 €</strong></div>
-            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>90 €</strong></div>
+            <div class="price-row"><span>Kategorie 1</span><strong>208 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>182 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>156 €</strong></div>
+            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>110,50 €</strong></div>
+            <div class="price-row"><span>VIP</span><strong>1.000 €</strong></div>
           </div>
           <div class="buy-thumb-col">
             <button type="button" class="buy-thumb-btn" id="seatplan-modal-trigger" aria-label="Sitzplatzwahl öffnen">
@@ -80,8 +86,20 @@
           <div class="modal-icon"><i data-lucide="percent"></i></div>
           <span class="eyebrow" id="dk-discount-modal-title">Frühbucherrabatt</span>
           <h3 class="t-h3" style="margin:8px 0 12px">Je früher, desto günstiger.</h3>
-          <p class="t-body-sm">Bestellst du bis zum 31.07.2026, sparst du 20&nbsp;%. Bestellst du danach bis zum 30.08.2026, sparst du noch 10&nbsp;%. Ab dem 31.08.2026 gilt der reguläre Preis.</p>
-          <p class="t-body-sm" style="margin-top:10px">Die hier angezeigten Preise enthalten den Rabatt noch nicht — er wird automatisch bei der Bestellung bis zum jeweiligen Stichtag abgezogen.</p>
+          <p class="t-body-sm">Bestellst du bis zum 31.08.2026, sparst du 20&nbsp;%. Ab dem 01.09.2026 gilt der reguläre Preis.</p>
+          <p class="t-body-sm" style="margin-top:10px">Die hier angezeigten Preise enthalten den Rabatt noch nicht — er wird automatisch bei der Bestellung bis zum Stichtag abgezogen.</p>
+        </div>
+      </div>
+
+      <div class="modal-backdrop" id="dk-member-modal-backdrop">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dk-member-modal-title">
+          <button class="modal-close" aria-label="Schließen" id="dk-member-modal-close"><i data-lucide="x"></i></button>
+          <div class="modal-icon"><i data-lucide="percent"></i></div>
+          <span class="eyebrow" id="dk-member-modal-title">Vereinsmitgliedsrabatt</span>
+          <h3 class="t-h3" style="margin:8px 0 12px">Dauerhaft 30 % für Vereinsmitglieder.</h3>
+          <p class="t-body-sm">Mitglieder von BC Erfurt, USV Erfurt, BIG Gotha und der Basketball Löwen Erfurt erhalten dauerhaft 30&nbsp;% Rabatt auf die Dauerkarte.</p>
+          <p class="t-body-sm" style="margin-top:10px">Bis zum 31.08.2026 lässt sich dieser Rabatt mit dem Frühbucherrabatt kombinieren — macht zusammen 50&nbsp;% Rabatt. Ab dem 01.09.2026 gilt nur noch der Vereinsmitgliedsrabatt von 30&nbsp;%.</p>
+          <p class="t-body-sm" style="margin-top:10px">Nachweis der Mitgliedschaft beim Kauf erforderlich.</p>
         </div>
       </div>
 
@@ -145,8 +163,8 @@
       northZones: ['D', 'E', 'F'],
       southZones: ['A', 'B', 'C'],
       prices: {
-        'Kategorie I': { normal: 228, ermaessigt: 114 },
-        'Kategorie II': { normal: 180, ermaessigt: 90 }
+        'Kategorie I': { normal: 208, ermaessigt: 182 },
+        'Kategorie II': { normal: 156, ermaessigt: 110.5 }
       },
       cartEl: document.getElementById('seatplan-cart'),
       totalEl: document.getElementById('seatplan-total'),
@@ -181,6 +199,14 @@
     document.getElementById('dk-discount-modal-close').addEventListener('click', closeDiscountModal);
     discountBackdrop.addEventListener('click', function (e) { if (e.target === discountBackdrop) closeDiscountModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDiscountModal(); });
+
+    var memberBackdrop = document.getElementById('dk-member-modal-backdrop');
+    function openMemberModal() { memberBackdrop.classList.add('open'); }
+    function closeMemberModal() { memberBackdrop.classList.remove('open'); }
+    document.getElementById('dk-member-badge').addEventListener('click', openMemberModal);
+    document.getElementById('dk-member-modal-close').addEventListener('click', closeMemberModal);
+    memberBackdrop.addEventListener('click', function (e) { if (e.target === memberBackdrop) closeMemberModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMemberModal(); });
   });
 </script>
 </body>

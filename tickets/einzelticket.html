@@ -36,16 +36,11 @@
       <div class="card" style="padding:24px">
         <div class="buy-grid">
           <div class="buy-prices-col">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
-              <h3 class="t-h4" style="margin-bottom:0">Preise</h3>
-              <button type="button" class="badge badge-orange" data-discount-ribbon style="border:none;cursor:pointer;font-family:inherit">
-                <i data-lucide="percent" style="width:12px;height:12px"></i> 10 % für Mitglieder
-              </button>
-            </div>
-            <div class="price-row"><span>Kategorie 1</span><strong>19 €</strong></div>
-            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>12 €</strong></div>
-            <div class="price-row"><span>Kategorie 2</span><strong>15 €</strong></div>
-            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>9 €</strong></div>
+            <h3 class="t-h4" style="margin-bottom:12px">Preise</h3>
+            <div class="price-row"><span>Kategorie 1</span><strong>16 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>14 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>12 €</strong></div>
+            <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>8,50 €</strong></div>
           </div>
           <div class="buy-thumb-col">
             <button type="button" class="buy-thumb-btn" id="seatplan-modal-trigger" aria-label="Blockwahl öffnen">
@@ -141,9 +136,7 @@
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1784499662"></script>
-<script src="/js/include.js?v=1784499662"></script>
-<script src="/js/discount-modal.js?v=1784499662"></script>
-<script src="/js/seat-picker.js?v=1784499662"></script>
+<script src="/js/include.js?v=1784499662"></script><script src="/js/seat-picker.js?v=1784499662"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var picker = new SeatPicker(document.getElementById('seatplan-root'), {
@@ -154,8 +147,8 @@
       northZones: ['D', 'E', 'F'],
       southZones: ['A', 'B', 'C'],
       prices: {
-        'Kategorie I': { normal: 19, ermaessigt: 12 },
-        'Kategorie II': { normal: 15, ermaessigt: 9 }
+        'Kategorie I': { normal: 16, ermaessigt: 14 },
+        'Kategorie II': { normal: 12, ermaessigt: 8.5 }
       },
       cartEl: document.getElementById('seatplan-cart'),
       totalEl: document.getElementById('seatplan-total'),
