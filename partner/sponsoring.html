@@ -64,12 +64,19 @@
 <script src="/js/partner-tile.js?v=1784499662"></script>
 <script>
   fetch('/data/sponsoren.json?v=1784499662').then(function (r) { return r.json(); }).then(function (data) {
+    var tierRang = { top: 0, wirkungspartner: 1, sponsoren: 2 };
+    function byTierUndName(a, b) {
+      var diff = tierRang[a.tier] - tierRang[b.tier];
+      return diff !== 0 ? diff : a.name.localeCompare(b.name, 'de');
+    }
+    function byName(a, b) { return a.name.localeCompare(b.name, 'de'); }
+
     var wall = document.getElementById('partner-wall');
-    var hauptPartner = data.partner.filter(function (p) { return p.tier !== 'weitere'; });
+    var hauptPartner = data.partner.filter(function (p) { return p.tier !== 'weitere'; }).sort(byTierUndName);
     wall.innerHTML = hauptPartner.map(partnerTileHTML).join('');
 
     var wallWeitere = document.getElementById('partner-wall-weitere');
-    var weiterePartner = data.partner.filter(function (p) { return p.tier === 'weitere'; });
+    var weiterePartner = data.partner.filter(function (p) { return p.tier === 'weitere'; }).sort(byName);
     wallWeitere.innerHTML = weiterePartner.map(partnerTileHTML).join('');
 
     var chips = document.querySelectorAll('.filter-chip');
