@@ -7,8 +7,8 @@
 <meta name="description" content="Der LÖWENPARK: neuer Trainingsstandort für den Basketball-Nachwuchs, Programm, Baufortschritt, Zeiten anfragen und die ganze Geschichte der Halle am Südpark." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784573086" />
-<link rel="stylesheet" href="/css/site.css?v=1784573086" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784574474" />
+<link rel="stylesheet" href="/css/site.css?v=1784574474" />
 </head>
 <body data-nav-group="trainieren">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -142,6 +142,7 @@
         <aside class="loewenpark-sidebar">
           <div class="insta-sidebar-block">
             <h3>Hallenmeister News</h3>
+            <p class="t-body-sm" id="loewenpark-insta-followers" style="color:var(--text-muted);margin:2px 0 12px"></p>
             <div id="loewenpark-insta-list"></div>
             <a class="card-link" style="margin-top:12px" href="https://www.instagram.com/loewenpark.hallenmeister/" target="_blank" rel="noopener">Alle Beiträge ansehen <i data-lucide="arrow-up-right" style="width:14px;height:14px"></i></a>
           </div>
@@ -213,8 +214,8 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784573086"></script>
-<script src="/js/include.js?v=1784573086"></script>
+<script src="/js/nav.js?v=1784574474"></script>
+<script src="/js/include.js?v=1784574474"></script>
 <script>
   (function () {
     var target = new Date('2026-10-24T23:59:59+02:00').getTime();
@@ -248,6 +249,16 @@
         return '<a class="insta-sidebar-item" href="' + url + '"><img src="' + p.image + '" alt="" /><span>' + line + '</span></a>';
       }).join('');
       if (window.lucide) { lucide.createIcons(); }
+    })
+    .catch(function () {});
+
+  fetch('/data/instagram-followers.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var loewenpark = data && data['loewenpark.hallenmeister'];
+      if (!loewenpark) return;
+      var el = document.getElementById('loewenpark-insta-followers');
+      if (el) el.textContent = '@loewenpark.hallenmeister · ' + loewenpark.followerCount.toLocaleString('de-DE') + ' Follower';
     })
     .catch(function () {});
 </script>

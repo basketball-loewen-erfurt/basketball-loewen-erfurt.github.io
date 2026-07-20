@@ -7,8 +7,8 @@
 <meta name="description" content="Alle News der Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784573086" />
-<link rel="stylesheet" href="/css/site.css?v=1784573086" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784574474" />
+<link rel="stylesheet" href="/css/site.css?v=1784574474" />
 </head>
 <body data-nav-group="news">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -36,11 +36,13 @@
         <aside class="aktuelles-sidebar">
           <div class="insta-sidebar-block">
             <h3>Basketball Löwen</h3>
+            <p class="t-body-sm" id="insta-followers-loewen" style="color:var(--text-muted);margin:2px 0 12px"></p>
             <div id="insta-sidebar-loewen"></div>
             <a class="card-link" style="margin-top:12px" href="https://www.instagram.com/basketball.loewen/" target="_blank" rel="noopener">Alle Beiträge ansehen <i data-lucide="arrow-up-right" style="width:14px;height:14px"></i></a>
           </div>
           <div class="insta-sidebar-block">
             <h3>LÖWENPARK</h3>
+            <p class="t-body-sm" id="insta-followers-loewenpark" style="color:var(--text-muted);margin:2px 0 12px"></p>
             <div id="insta-sidebar-loewenpark"></div>
             <a class="card-link" style="margin-top:12px" href="https://www.instagram.com/loewenpark.hallenmeister/" target="_blank" rel="noopener">Alle Beiträge ansehen <i data-lucide="arrow-up-right" style="width:14px;height:14px"></i></a>
           </div>
@@ -51,8 +53,8 @@
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784573086"></script>
-<script src="/js/include.js?v=1784573086"></script>
+<script src="/js/nav.js?v=1784574474"></script>
+<script src="/js/include.js?v=1784574474"></script>
 <script>
   // Vereinsnews (data/news.json) füllen die breite linke Spalte und wachsen
   // beliebig weiter (endlos scrollend); die schmale rechte Spalte bleibt beim
@@ -105,6 +107,18 @@
 
   fetchJson('/data/instagram-loewen.json').then(function (data) { renderInstaSidebar('insta-sidebar-loewen', 'loewen', data); });
   fetchJson('/data/instagram-loewenpark.json').then(function (data) { renderInstaSidebar('insta-sidebar-loewenpark', 'loewenpark', data); });
+
+  fetchJson('/data/instagram-followers.json').then(function (data) {
+    if (!data) return;
+    var loewen = data['basketball.loewen'];
+    var loewenpark = data['loewenpark.hallenmeister'];
+    if (loewen) {
+      document.getElementById('insta-followers-loewen').textContent = '@basketball.loewen · ' + loewen.followerCount.toLocaleString('de-DE') + ' Follower';
+    }
+    if (loewenpark) {
+      document.getElementById('insta-followers-loewenpark').textContent = '@loewenpark.hallenmeister · ' + loewenpark.followerCount.toLocaleString('de-DE') + ' Follower';
+    }
+  });
 </script>
 </body>
 </html>
