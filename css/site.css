@@ -802,34 +802,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   color: var(--text-muted); text-decoration: none;
 }
 .article-back-link:hover { color: var(--color-brand-orange); }
-/* Vorheriger/Nächster-Artikel + zurück-zur-Übersicht-Navigation (js/article-nav.js) —
-   der Auf-Pfeil ("Alle News") ist absolut positioniert und überlappt mittig die
-   Nahtstelle Hero/Content, bleibt beim Scrollen an dieser Stelle (kein zusätzlicher
-   Abstand zum Hero). Vorheriger/Nächster sind dagegen "position: fixed" und bleiben
-   während des gesamten Scrollens durch den Artikel sichtbar am Rand der Textspalte,
-   leicht transparent. Die Navigation ist zirkulär (js berechnet mit Modulo statt
-   null): am neuesten Artikel springt "Nächster" zum ältesten und umgekehrt, damit
-   auf jeder Artikelseite immer beide Pfeile sichtbar sind. */
-.article-nav { position: relative; }
+/* Vorheriger/Nächster-Artikel-Pfeile (js/article-nav.js) — zwei statische Kreis-
+   Buttons unten neben dem "Newsletter abonnieren"-Button (nicht mehr oben/schwebend
+   über dem Hero), symmetrisch links/rechts davon. Zirkulär: am neuesten Artikel
+   springt der rechte Pfeil zum ältesten und umgekehrt, damit auf jeder Artikelseite
+   immer beide Pfeile sichtbar sind. */
 .article-nav-arrow {
-  z-index: 6;
-  width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--border);
+  width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text-primary);
-  box-shadow: 0 6px 16px rgba(0,18,45,.14);
-  transition: background var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-out);
+  flex-shrink: 0;
 }
 .article-nav-arrow:hover { background: var(--bg-subtle); }
 .article-nav-arrow i { color: var(--color-brand-orange); }
-.article-nav-up { position: absolute; top: -94px; left: 50%; transform: translateX(-50%); }
-.article-nav-prev, .article-nav-next {
-  position: fixed; top: 50%; transform: translateY(-50%); opacity: .55;
-}
-.article-nav-prev:hover, .article-nav-next:hover { opacity: 1; }
-.article-nav-prev { left: max(6px, calc(50vw - 464px)); }
-.article-nav-next { right: max(6px, calc(50vw - 464px)); }
-@media (max-width: 599px) {
-  .article-nav-up { top: -70px; }
-}
 /* News-Artikel-Überschriften sind variabel lang (echte Meldungen statt kurzer
    Taglines) — hier immer normal umbrechen, auch auf Desktop-Breiten. */
 .hero-photo.hero-article h1 { white-space: normal; }
