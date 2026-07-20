@@ -1,7 +1,9 @@
 /* Vorheriger/Nächster-Artikel + Zurück-zur-Übersicht-Navigation für News-Artikelseiten.
    Sortiert data/news.json nach Datum absteigend (gleiche Reihenfolge wie
    news/aktuelles.html), findet den aktuellen Artikel anhand der URL und rendert drei
-   Kreis-Buttons (Vorheriger/Alle News/Nächster) in ein Element mit id="article-nav". */
+   Kreis-Buttons (Vorheriger/Alle News/Nächster) in ein Element mit id="article-nav".
+   Vorheriger/Nächster sind zirkulär (Modulo statt null) — am neuesten Artikel springt
+   "Nächster" zum ältesten und umgekehrt, damit man endlos durchklicken kann. */
 (function () {
   function parseGermanDate(str) {
     var parts = (str || '').split('.');
@@ -21,8 +23,8 @@
       var idx = items.findIndex(function (a) { return a.url === path; });
       if (idx === -1) return;
 
-      var newer = idx > 0 ? items[idx - 1] : null;
-      var older = idx < items.length - 1 ? items[idx + 1] : null;
+      var newer = items.length > 1 ? items[(idx - 1 + items.length) % items.length] : null;
+      var older = items.length > 1 ? items[(idx + 1) % items.length] : null;
 
       var html = '';
       html += older
