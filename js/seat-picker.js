@@ -16,6 +16,8 @@
     return x - Math.floor(x);
   }
 
+  function fmtEUR(n) { return n.toFixed(2).replace('.', ','); }
+
   /* Gutschein-Codes sind noch nicht an pretix angebunden — feste Testcodes,
      damit sich der Ablauf schon jetzt echt durchklicken lässt. Dieselben Codes
      wie auf der Checkout-Seite (tickets/checkout.html). */
@@ -176,7 +178,7 @@
 
     var catEl = document.createElement('div');
     catEl.className = 'seatplan-block-cat';
-    catEl.textContent = category + ' · ab ' + priceInfo.normal + ' €';
+    catEl.textContent = category + ' · ab ' + fmtEUR(priceInfo.normal) + ' €';
     wrap.appendChild(catEl);
 
     var cols = zone.rows[0].seats.length;
@@ -226,7 +228,7 @@
       var row = document.createElement('div');
       row.className = 'seatplan-stepper-row';
       row.innerHTML =
-        '<span>' + tarifLabel + ' <strong>' + price + ' €</strong></span>' +
+        '<span>' + tarifLabel + ' <strong>' + fmtEUR(price) + ' €</strong></span>' +
         '<span class="seatplan-stepper">' +
           '<button type="button" data-step="-1" data-zone="' + zoneId + '" data-tarif="' + tarif + '" aria-label="weniger ' + tarifLabel + '">−</button>' +
           '<input type="number" inputmode="numeric" min="0" max="' + freeCount + '" value="0" ' +
@@ -309,7 +311,7 @@
     nwRow.innerHTML =
       '<input type="checkbox" id="seatplan-nachwuchs-checkbox"' + (this.nachwuchsChecked ? ' checked' : '') + '>' +
       '<span>Unterstützung für den Nachwuchs</span>' +
-      '<strong>' + (this.nachwuchsChecked ? this.nachwuchsAmount : 0) + ' €</strong>';
+      '<strong>' + fmtEUR(this.nachwuchsChecked ? this.nachwuchsAmount : 0) + ' €</strong>';
     this.cartEl.appendChild(nwRow);
     nwRow.querySelector('input').addEventListener('change', function () {
       self.nachwuchsChecked = this.checked;
@@ -382,13 +384,13 @@
         var hasErmaessigt = s.priceInfo.ermaessigt !== undefined;
         row.innerHTML =
           '<div>' + s.zoneLabel + ' · Reihe ' + s.rowLabel + ', Platz ' + s.seatNumber +
-          '<br><span class="t-caption">' + s.price + ' € je Ticket</span>' +
+          '<br><span class="t-caption">' + fmtEUR(s.price) + ' € je Ticket</span>' +
           (hasErmaessigt ? '<br><select data-tarif="' + guid + '" class="seatplan-tarif-select">' +
             '<option value="normal"' + (s.tarif === 'normal' ? ' selected' : '') + '>Normalpreis</option>' +
             '<option value="ermaessigt"' + (s.tarif === 'ermaessigt' ? ' selected' : '') + '>Ermäßigt</option>' +
             '</select>' : '') +
           '</div>' +
-          '<div class="seatplan-cart-item-right"><span>' + s.price + ' €</span>' +
+          '<div class="seatplan-cart-item-right"><span>' + fmtEUR(s.price) + ' €</span>' +
           '<button type="button" data-remove="' + guid + '">entfernen</button></div>';
         self.cartEl.appendChild(row);
       });
@@ -420,7 +422,7 @@
     var total = guids.reduce(function (sum, guid) { return sum + self.selected[guid].price; }, 0);
     if (this.nachwuchsBeitrag && this.nachwuchsChecked && guids.length > 0) total += this.nachwuchsAmount;
     total -= this._voucherDiscount(total);
-    this.totalEl.textContent = total + ' €';
+    this.totalEl.textContent = fmtEUR(total) + ' €';
   };
 
   SeatPicker.prototype._renderCartBlocks = function () {
@@ -444,13 +446,13 @@
         var hasErmaessigt = l.zoneId && self.blockCounts[l.zoneId].priceInfo.ermaessigt !== undefined;
         row.innerHTML =
           '<div>' + l.count + '× ' + l.zoneLabel +
-          '<br><span class="t-caption">' + l.price + ' € je Ticket</span>' +
+          '<br><span class="t-caption">' + fmtEUR(l.price) + ' € je Ticket</span>' +
           (hasErmaessigt ? '<br><select class="seatplan-tarif-select" data-block-tarif-select data-zone="' + l.zoneId + '" data-tarif="' + l.tarif + '">' +
             '<option value="normal"' + (l.tarif === 'normal' ? ' selected' : '') + '>Normalpreis</option>' +
             '<option value="ermaessigt"' + (l.tarif === 'ermaessigt' ? ' selected' : '') + '>Ermäßigt</option>' +
             '</select>' : '<br><span class="t-caption">' + l.label + '</span>') +
           '</div>' +
-          '<div class="seatplan-cart-item-right"><span>' + (l.count * l.price) + ' €</span>' +
+          '<div class="seatplan-cart-item-right"><span>' + fmtEUR(l.count * l.price) + ' €</span>' +
           '<button type="button" data-block-remove="' + l.zoneId + '" data-block-tarif="' + l.tarif + '">entfernen</button></div>';
         self.cartEl.appendChild(row);
       });
@@ -491,7 +493,7 @@
     var total = lines.reduce(function (sum, l) { return sum + l.count * l.price; }, 0);
     if (this.nachwuchsBeitrag && this.nachwuchsChecked && ticketCount > 0) total += this.nachwuchsAmount;
     total -= this._voucherDiscount(total);
-    this.totalEl.textContent = total + ' €';
+    this.totalEl.textContent = fmtEUR(total) + ' €';
   };
 
   SeatPicker.prototype.getSelection = function () {

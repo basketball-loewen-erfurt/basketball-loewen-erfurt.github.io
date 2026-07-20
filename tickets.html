@@ -7,8 +7,8 @@
 <meta name="description" content="Tickets für Heimspiele der Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784499662" />
-<link rel="stylesheet" href="/css/site.css?v=1784499662" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784569530" />
+<link rel="stylesheet" href="/css/site.css?v=1784569530" />
 </head>
 <body data-nav-group="" class="hide-mobile-cta">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -46,25 +46,59 @@
             <span class="eyebrow">Preis pro Spiel</span>
             <h2 class="t-h4" style="margin:6px 0 14px">Einzelpreistickets</h2>
             <p class="t-body-sm" style="margin-bottom:12px">Bei Einzeltickets wählst du deine Kategorie, nicht mehr deinen festen Platz — den sicherst du dir mit der Dauerkarte.</p>
-            <p class="t-caption" style="margin-bottom:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, unter 27 und Rentner*innen.</p>
-            <div class="price-row"><span>Kategorie 1</span><strong>16 €</strong></div>
-            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>14 €</strong></div>
-            <div class="price-row"><span>Kategorie 2</span><strong>12 €</strong></div>
+            <p class="t-caption" style="margin-bottom:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, Menschen mit Behinderung, Rentner*innen und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis beim Einlass).</p>
+            <div class="price-row"><span>Kategorie 1</span><strong>16,00 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>14,00 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>12,00 €</strong></div>
             <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>8,50 €</strong></div>
           </div>
           <div class="ticket-sidebar" style="position:static">
-            <span class="eyebrow">Preis pro Saison</span>
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap">
+              <span class="eyebrow">Preis pro Saison</span>
+              <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+                <button type="button" class="badge badge-orange" id="overview-member-badge" style="border:none;cursor:pointer;font-family:inherit">
+                  <i data-lucide="percent" style="width:12px;height:12px"></i> -30 % Vereinsmitglieder
+                </button>
+                <button type="button" class="badge badge-orange" id="overview-discount-badge" style="border:none;cursor:pointer;font-family:inherit">
+                  <i data-lucide="percent" style="width:12px;height:12px"></i> -20 % Frühbucher bis 31.08.
+                </button>
+              </div>
+            </div>
             <h2 class="t-h4" style="margin:6px 0 14px">Dauerkarten 2026/ 27</h2>
             <p class="t-body-sm" style="margin-bottom:12px">Mit der Dauerkarte sicherst du dir deinen festen Platz für die ganze Saison — Spiel für Spiel derselbe Blick aufs Parkett.</p>
-            <div class="price-row"><span>Kategorie 1</span><strong>208 €</strong></div>
-            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>182 €</strong></div>
-            <div class="price-row"><span>Kategorie 2</span><strong>156 €</strong></div>
+            <div class="price-row"><span>Kategorie 1</span><strong>208,00 €</strong></div>
+            <div class="price-row"><span>Kategorie 1 (ermäßigt)</span><strong>182,00 €</strong></div>
+            <div class="price-row"><span>Kategorie 2</span><strong>156,00 €</strong></div>
             <div class="price-row"><span>Kategorie 2 (ermäßigt)</span><strong>110,50 €</strong></div>
-            <div class="price-row"><span>VIP</span><strong>1.000 €</strong></div>
+            <div class="price-row"><span>VIP</span><strong>1.000,00 €</strong></div>
+            <p class="t-caption" style="margin-top:12px;color:var(--text-muted)">Ermäßigt gilt für Studierende, Azubis, FSJ, Menschen mit Behinderung, Rentner*innen und Nachwuchsspieler*innen angeschlossener Vereine (jeweils mit Nachweis beim Einlass).</p>
             <a class="btn btn-primary btn-sm" style="margin-top:12px;width:100%;justify-content:center" href="/tickets/dauerkarte.html">Dauerkarte kaufen</a>
           </div>
         </aside>
 
+      </div>
+
+      <div class="modal-backdrop" id="overview-discount-modal-backdrop">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="overview-discount-modal-title">
+          <button class="modal-close" aria-label="Schließen" id="overview-discount-modal-close"><i data-lucide="x"></i></button>
+          <div class="modal-icon"><i data-lucide="percent"></i></div>
+          <span class="eyebrow" id="overview-discount-modal-title">Frühbucherrabatt</span>
+          <h3 class="t-h3" style="margin:8px 0 12px">Je früher, desto günstiger.</h3>
+          <p class="t-body-sm">Bestellst du bis zum 31.08.2026, sparst du 20&nbsp;%. Ab dem 01.09.2026 gilt der reguläre Preis.</p>
+          <p class="t-body-sm" style="margin-top:10px">Die hier angezeigten Preise enthalten den Rabatt noch nicht — er wird automatisch bei der Bestellung bis zum Stichtag abgezogen.</p>
+        </div>
+      </div>
+
+      <div class="modal-backdrop" id="overview-member-modal-backdrop">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="overview-member-modal-title">
+          <button class="modal-close" aria-label="Schließen" id="overview-member-modal-close"><i data-lucide="x"></i></button>
+          <div class="modal-icon"><i data-lucide="percent"></i></div>
+          <span class="eyebrow" id="overview-member-modal-title">Vereinsmitgliedsrabatt</span>
+          <h3 class="t-h3" style="margin:8px 0 12px">Dauerhaft 30 % für Vereinsmitglieder.</h3>
+          <p class="t-body-sm">Mitglieder von BC Erfurt, USV Erfurt, BIG Gotha und der Basketball Löwen Erfurt erhalten dauerhaft 30&nbsp;% Rabatt auf die Dauerkarte.</p>
+          <p class="t-body-sm" style="margin-top:10px">Bis zum 31.08.2026 lässt sich dieser Rabatt mit dem Frühbucherrabatt kombinieren — macht zusammen 50&nbsp;% Rabatt. Ab dem 01.09.2026 gilt nur noch der Vereinsmitgliedsrabatt von 30&nbsp;%.</p>
+          <p class="t-body-sm" style="margin-top:10px">Nachweis der Mitgliedschaft beim Kauf erforderlich.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -103,7 +137,7 @@
     });
     return 'https://calendar.google.com/calendar/render?' + params.toString();
   }
-  fetch('/data/heimspiele.json?v=1784499662').then(function (r) { return r.json(); }).then(function (d) {
+  fetch('/data/heimspiele.json?v=1784569530').then(function (r) { return r.json(); }).then(function (d) {
     var el = document.getElementById('heimspiele-liste');
     el.innerHTML = d.spiele.map(function (s) {
       var gameDate = parseDMY(s.datum);
@@ -124,9 +158,24 @@
     }).join('');
     if (window.lucide) window.lucide.createIcons();
   });
+
+  function wireBadgeModal(badgeId, backdropId, closeId) {
+    var backdrop = document.getElementById(backdropId);
+    document.getElementById(badgeId).addEventListener('click', function () { backdrop.classList.add('open'); });
+    document.getElementById(closeId).addEventListener('click', function () { backdrop.classList.remove('open'); });
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) backdrop.classList.remove('open'); });
+  }
+  wireBadgeModal('overview-discount-badge', 'overview-discount-modal-backdrop', 'overview-discount-modal-close');
+  wireBadgeModal('overview-member-badge', 'overview-member-modal-backdrop', 'overview-member-modal-close');
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    ['overview-discount-modal-backdrop', 'overview-member-modal-backdrop'].forEach(function (id) {
+      document.getElementById(id).classList.remove('open');
+    });
+  });
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784499662"></script>
-<script src="/js/include.js?v=1784499662"></script>
+<script src="/js/nav.js?v=1784569530"></script>
+<script src="/js/include.js?v=1784569530"></script>
 </body>
 </html>
