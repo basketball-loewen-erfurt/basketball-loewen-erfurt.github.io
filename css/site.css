@@ -291,6 +291,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+/* Bleibt in einer 4er-Reihe ein einzelnes letztes Element allein übrig (z.B. Hauptpartner-Grid), wird es zentriert statt linksbündig. */
+#hauptpartner-grid > *:last-child:nth-child(4n+1) { grid-column: 2 / 4; }
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
 
 .card {
