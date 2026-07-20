@@ -27,6 +27,6 @@
     { "name": "IBA University", "tier": "weitere", "logo": "/assets/logos/Logo_IBA-University.svg", "website": "https://www.ibadual.com/Erfurt", "beschreibung": "Internationale Berufsakademie, Campus Erfurt." },
     { "name": "Erfurt Mitte", "tier": "weitere", "logo": "/assets/logos/Logo_Erfurt-Mitte.svg", "website": "https://erfurt-mitte.de/", "beschreibung": "Werbegemeinschaft der Erfurter Innenstadt." },
     { "name": "Brand Gastronomie Service", "tier": "weitere", "logo": "/assets/logos/Logo_Brand-Gastronomie.svg", "website": "https://www.gastrotechnik-brand.de/", "beschreibung": "Gastronomietechnik." },
-    { "name": "dotflow", "tier": "weitere", "logo": "/assets/logos/Logo_dotflow.png", "website": "https://dotflow.com/", "beschreibung": "B2B-Digitalagentur aus Erfurt." }
+    { "name": "dotflow", "tier": "weitere", "logo": "/assets/logos/Logo_dotflow.svg", "website": "https://dotflow.com/", "beschreibung": "B2B-Digitalagentur aus Erfurt." }
   ]
 }
