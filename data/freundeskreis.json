@@ -1,0 +1,11 @@
+{
+  "hinweis": "Manueller Schnappschuss aus der Notion-Kontakte-DB (View 'Freundeskreis', gefiltert auf Mitgliedschaften enthält 'Freundeskreis'). 'gold' = verknüpfte Firma in der Unternehmen-DB hat Status 'Vertrag unterschrieben' (aktiver Sponsor) -- Marko/HK vor jedem Update kurz gegenprüfen. Kein Foto-Feld in Notion vorhanden -- 'initialen' bis echte Fotos vorliegen. Format je Eintrag: vorname, initialen, gold (bool).",
+  "updatedAt": "21.07.2026",
+  "mitglieder": [
+    { "vorname": "Simon", "initialen": "SW", "gold": false },
+    { "vorname": "Matthias", "initialen": "MH", "gold": false },
+    { "vorname": "Marko", "initialen": "MF", "gold": false },
+    { "vorname": "Patrick", "initialen": "PC", "gold": true },
+    { "vorname": "Wolfgang", "initialen": "WS", "gold": false }
+  ]
+}

@@ -1141,6 +1141,37 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .cta-panel p { max-width: 52ch; margin: 0 auto 24px; color: var(--text-secondary); }
 
 /* =====================================================================
+   FREUNDESKREIS-GALERIE (js liest data/freundeskreis.json) — Kachel je
+   Mitglied: Initialen-Avatar (bis echte Fotos vorliegen) + kleiner
+   Stern-Badge oben rechts. Grün = jedes Freundeskreis-Mitglied, Gold =
+   zusätzlich aktiver Sponsor (verknüpfte Firma mit unterschriebenem
+   Vertrag). Nur Vorname wird gezeigt.
+   ===================================================================== */
+.freundeskreis-gallery {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px;
+}
+.freundeskreis-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.freundeskreis-avatar {
+  position: relative; width: 88px; height: 88px;
+}
+.freundeskreis-avatar-circle {
+  width: 88px; height: 88px; border-radius: 50%; background: var(--bg-subtle); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-weight: var(--weight-bold); font-size: 22px; color: var(--text-muted);
+}
+.freundeskreis-star {
+  position: absolute; top: -2px; right: -2px; width: 26px; height: 26px; border-radius: 50%;
+  background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+}
+.freundeskreis-star svg { width: 15px; height: 15px; }
+.freundeskreis-star-green svg { color: var(--color-green-600, #2e7d32); }
+.freundeskreis-star-gold svg { color: var(--color-brand-orange); }
+.freundeskreis-card-name { font-size: 14px; font-weight: var(--weight-semibold); margin: 0; }
+.freundeskreis-legend {
+  display: flex; gap: 20px; justify-content: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);
+}
+.freundeskreis-legend i { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }
+
+/* =====================================================================
    FORMS
    ===================================================================== */
 .form-panel { background: var(--bg-subtle); padding: clamp(24px, 4vw, 40px); border-radius: var(--radius-xl); }

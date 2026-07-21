@@ -7,8 +7,8 @@
 <meta name="description" content="Der Freundeskreis der Basketball Löwen Erfurt." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
-<link rel="stylesheet" href="/css/colors_and_type.css?v=1784577016" />
-<link rel="stylesheet" href="/css/site.css?v=1784577016" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784667836" />
+<link rel="stylesheet" href="/css/site.css?v=1784667836" />
 </head>
 <body data-nav-group="partner">
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -18,24 +18,73 @@
     <div class="container">
     <span class="eyebrow">Partner</span>
     <h1>Freundeskreis.</h1>
-    <p class="lead">Menschen, die den Löwen verbunden sind und den Verein begleiten — diese Seite ist in Vorbereitung.</p>
+    <p class="lead">Menschen, die den Löwen verbunden sind und den Verein regelmäßig unterstützen.</p>
     </div>
     <span class="photo-note">Platzhalterbild — echtes Partnerfoto folgt</span>
   </section>
   <section class="section">
+    <div class="container container-narrow">
+      <span class="eyebrow" style="display:block;margin-bottom:16px">Was du unterstützt</span>
+      <h2 class="t-h2" style="margin-bottom:20px;max-width:20ch">Eine planbare Spende für die soziale Sportidee der Löwen</h2>
+      <p class="t-body" style="font-size:18px;line-height:1.7">Mit unserer sozialen Sportidee erreichen wir wöchentlich tausende Kinder und Jugendliche aus den unterschiedlichsten gesellschaftlichen Milieus in Erfurt und der Region — mit kostenlosen, niedrigschwelligen und zugleich hochwertigen Bewegungsangeboten. Basketballprofis sind dabei nahbare Vorbilder, die die motorische, soziale und persönliche Entwicklung der Kinder fördern und ihnen Zukunftsperspektiven aufzeigen.</p>
+      <p class="pull-quote">Als Freundeskreis-Mitglied gibst du den Löwen mit einer regelmäßigen, planbaren Unterstützung die Grundlage, in unser pädagogisches Personal zu investieren und die Basketball-Community weiter zu stärken — für echte Chancengerechtigkeit von Kindern und Jugendlichen.</p>
+      <p class="t-body">Deine Unterstützung fließt ausschließlich in die Aufgaben und Ziele des Vereins. Als Dankeschön darfst du dich öffentlich als Unterstützer des Förder- und Freundeskreises nennen, und wir erwähnen dich auf Wunsch mit Namen und Logo — etwa auf der Webseite oder im Spieltagsheft.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="container container-narrow">
+      <span class="eyebrow" style="display:block;margin-bottom:16px">Unsere Mitglieder</span>
+      <div class="freundeskreis-gallery" id="freundeskreis-gallery"></div>
+      <div class="freundeskreis-legend">
+        <span><i data-lucide="star" style="color:var(--color-green-600,#2e7d32)"></i>Freundeskreis-Mitglied</span>
+        <span><i data-lucide="star" style="color:var(--color-brand-orange)"></i>Auch Sponsor</span>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-panel">
+        <span class="eyebrow">Mitmachen</span>
+        <h2 class="t-h2">Freundeskreis-Mitglied werden</h2>
+        <p>1.200 € pro Saison, gezahlt in zwei Raten à 600 € im Juli und Januar per SEPA-Lastschrift. Damit unterstützt du direkt die soziale Sportidee der Löwen — mit Spendenbescheinigung.</p>
+        <a class="btn btn-primary" href="/partner/freundeskreis-mitglied-werden.html">Jetzt Mitglied werden</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
     <div class="container">
       <div class="cta-panel">
         <span class="eyebrow">Ansprechpartner</span>
         <h2 class="t-h2">André Grenzdörffer</h2>
         <p>Vertriebsleitung — berät dich gerne individuell zur Mitgliedschaft im Freundeskreis.</p>
-        <a class="btn btn-primary" href="mailto:andre.grenzdoerffer@basketball-loewen.com">E-Mail schreiben</a>
+        <a class="btn btn-outline-orange" href="mailto:andre.grenzdoerffer@basketball-loewen.com">E-Mail schreiben</a>
       </div>
     </div>
   </section>
 </main>
 <div id="site-footer-placeholder"></div>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="/js/nav.js?v=1784577016"></script>
-<script src="/js/include.js?v=1784577016"></script>
+<script src="/js/nav.js?v=1784667836"></script>
+<script src="/js/include.js?v=1784667836"></script>
+<script>
+  fetch('/data/freundeskreis.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var mitglieder = (data && data.mitglieder) || [];
+      var gallery = document.getElementById('freundeskreis-gallery');
+      gallery.innerHTML = mitglieder.map(function (m) {
+        var starHtml = '<div class="freundeskreis-star ' + (m.gold ? 'freundeskreis-star-gold' : 'freundeskreis-star-green') + '"><i data-lucide="star"></i></div>';
+        return '<div class="freundeskreis-card">' +
+          '<div class="freundeskreis-avatar">' +
+            '<div class="freundeskreis-avatar-circle">' + m.initialen + '</div>' +
+            starHtml +
+          '</div>' +
+          '<p class="freundeskreis-card-name">' + m.vorname + '</p>' +
+        '</div>';
+      }).join('');
+      if (window.lucide) window.lucide.createIcons();
+    })
+    .catch(function () {});
+</script>
 </body>
 </html>
