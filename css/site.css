@@ -925,6 +925,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   text-shadow: 0 1px 16px rgba(253,246,238,.85), 0 1px 4px rgba(253,246,238,.9);
 }
 
+/* Hero-Variante für die Freundeskreis-Seite — echtes Fan-/Jubelfoto (Sebastian Dühring) */
+.hero-photo.hero-freundeskreis {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 40%, rgba(253,246,238,.1) 70%, rgba(253,246,238,0) 90%),
+    url('/assets/img/hero-freundeskreis.jpg');
+  background-size: cover; background-position: center 40%;
+}
+.hero-photo.hero-freundeskreis .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 40%, rgba(253,246,238,.1) 70%, rgba(253,246,238,0) 90%);
+}
+
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
 .hero-photo.hero-profis {
   background:
@@ -1143,24 +1154,28 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* =====================================================================
    FREUNDESKREIS-GALERIE (js liest data/freundeskreis.json) — Kachel je
    Freund: Initialen-Avatar (bis echte Fotos vorliegen) + additive
-   Stern-Reihe darunter. Grün = Freundeskreis (alle), Orange = Sponsor,
-   Gold = Gesellschafter — jemand kann mehrere/alle drei gleichzeitig
-   haben. Nur Vorname wird gezeigt. */
+   Stern-Badges direkt am Kreisrand (Slot 1 = ca. 2 Uhr, Slot 2 = 12 Uhr,
+   Slot 3 = ca. 10 Uhr). Grün = Freundeskreis (alle, immer Slot 1), Orange
+   = Sponsor, Gold = Gesellschafter — jemand kann mehrere/alle drei
+   gleichzeitig haben. Nur Vorname wird gezeigt. */
 .freundeskreis-gallery {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px;
 }
-.freundeskreis-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.freundeskreis-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.freundeskreis-avatar { position: relative; width: 88px; height: 88px; }
 .freundeskreis-avatar-circle {
   width: 88px; height: 88px; border-radius: 50%; background: var(--bg-subtle); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; font-weight: var(--weight-bold); font-size: 22px; color: var(--text-muted);
 }
-.freundeskreis-stars { display: flex; gap: 4px; }
 .freundeskreis-star {
-  position: relative; width: 22px; height: 22px; border-radius: 50%;
+  position: absolute; width: 24px; height: 24px; border-radius: 50%;
   background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
   cursor: default;
 }
-.freundeskreis-star svg { width: 13px; height: 13px; }
+.freundeskreis-star-slot-1 { top: 4px; left: 60px; z-index: 3; }
+.freundeskreis-star-slot-2 { top: -6px; left: 38px; z-index: 2; }
+.freundeskreis-star-slot-3 { top: -2px; left: 16px; z-index: 1; }
+.freundeskreis-star svg { width: 14px; height: 14px; }
 .freundeskreis-star::after {
   content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
   background: var(--text-primary); color: #fff; font-size: 11px; font-weight: var(--weight-semibold);
