@@ -1,11 +1,11 @@
 {
-  "hinweis": "Manueller Schnappschuss aus der Notion-Kontakte-DB (View 'Freundeskreis', gefiltert auf Mitgliedschaften enthält 'Freundeskreis'). 'gold' = verknüpfte Firma in der Unternehmen-DB hat Status 'Vertrag unterschrieben' (aktiver Sponsor) -- Marko/HK vor jedem Update kurz gegenprüfen. Kein Foto-Feld in Notion vorhanden -- 'initialen' bis echte Fotos vorliegen. Format je Eintrag: vorname, initialen, gold (bool).",
+  "hinweis": "Manueller Schnappschuss aus der Notion-Kontakte-DB (View 'Freundeskreis'). Sterne sind additiv: gruen = Freundeskreis (alle), sponsor = Sponsor-Stern (orange), gesellschafter = Gesellschafter-Stern (gold) -- jemand kann mehrere/alle drei gleichzeitig haben. Zuordnung von Marko direkt bestaetigt am 21.07.2026 (nicht automatisch aus dem Unternehmen-Status abgeleitet -- vor jedem Update kurz mit Marko gegenpruefen). Kein Foto-Feld in Notion vorhanden -- 'initialen' bis echte Fotos vorliegen.",
   "updatedAt": "21.07.2026",
   "mitglieder": [
-    { "vorname": "Simon", "initialen": "SW", "gold": false },
-    { "vorname": "Matthias", "initialen": "MH", "gold": false },
-    { "vorname": "Marko", "initialen": "MF", "gold": false },
-    { "vorname": "Patrick", "initialen": "PC", "gold": true },
-    { "vorname": "Wolfgang", "initialen": "WS", "gold": false }
+    { "vorname": "Simon", "initialen": "SW", "sponsor": false, "gesellschafter": false },
+    { "vorname": "Matthias", "initialen": "MH", "sponsor": false, "gesellschafter": false },
+    { "vorname": "Marko", "initialen": "MF", "sponsor": false, "gesellschafter": true },
+    { "vorname": "Patrick", "initialen": "PC", "sponsor": true, "gesellschafter": false },
+    { "vorname": "Wolfgang", "initialen": "WS", "sponsor": true, "gesellschafter": true }
   ]
 }

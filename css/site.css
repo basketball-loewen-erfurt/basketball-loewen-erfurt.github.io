@@ -1142,29 +1142,35 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* =====================================================================
    FREUNDESKREIS-GALERIE (js liest data/freundeskreis.json) — Kachel je
-   Mitglied: Initialen-Avatar (bis echte Fotos vorliegen) + kleiner
-   Stern-Badge oben rechts. Grün = jedes Freundeskreis-Mitglied, Gold =
-   zusätzlich aktiver Sponsor (verknüpfte Firma mit unterschriebenem
-   Vertrag). Nur Vorname wird gezeigt.
-   ===================================================================== */
+   Freund: Initialen-Avatar (bis echte Fotos vorliegen) + additive
+   Stern-Reihe darunter. Grün = Freundeskreis (alle), Orange = Sponsor,
+   Gold = Gesellschafter — jemand kann mehrere/alle drei gleichzeitig
+   haben. Nur Vorname wird gezeigt. */
 .freundeskreis-gallery {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px;
 }
-.freundeskreis-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.freundeskreis-avatar {
-  position: relative; width: 88px; height: 88px;
-}
+.freundeskreis-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .freundeskreis-avatar-circle {
   width: 88px; height: 88px; border-radius: 50%; background: var(--bg-subtle); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; font-weight: var(--weight-bold); font-size: 22px; color: var(--text-muted);
 }
+.freundeskreis-stars { display: flex; gap: 4px; }
 .freundeskreis-star {
-  position: absolute; top: -2px; right: -2px; width: 26px; height: 26px; border-radius: 50%;
+  position: relative; width: 22px; height: 22px; border-radius: 50%;
   background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+  cursor: default;
 }
-.freundeskreis-star svg { width: 15px; height: 15px; }
+.freundeskreis-star svg { width: 13px; height: 13px; }
+.freundeskreis-star::after {
+  content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: var(--text-primary); color: #fff; font-size: 11px; font-weight: var(--weight-semibold);
+  padding: 4px 9px; border-radius: 6px; white-space: nowrap; opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-fast) var(--ease-out); pointer-events: none; z-index: 5;
+}
+.freundeskreis-star:hover::after, .freundeskreis-star:focus-visible::after { opacity: 1; visibility: visible; }
 .freundeskreis-star-green svg { color: var(--color-green-600, #2e7d32); }
-.freundeskreis-star-gold svg { color: var(--color-brand-orange); }
+.freundeskreis-star-orange svg { color: var(--color-brand-orange); }
+.freundeskreis-star-gold svg { color: #b8860b; }
 .freundeskreis-card-name { font-size: 14px; font-weight: var(--weight-semibold); margin: 0; }
 .freundeskreis-legend {
   display: flex; gap: 20px; justify-content: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);

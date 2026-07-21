@@ -22,22 +22,23 @@
     </div>
     <span class="photo-note">Platzhalterbild — echtes Partnerfoto folgt</span>
   </section>
-  <section class="section">
-    <div class="container container-narrow">
-      <span class="eyebrow" style="display:block;margin-bottom:16px">Was du unterstützt</span>
-      <h2 class="t-h2" style="margin-bottom:20px;max-width:20ch">Eine planbare Spende für die soziale Sportidee der Löwen</h2>
-      <p class="t-body" style="font-size:18px;line-height:1.7">Mit unserer sozialen Sportidee erreichen wir wöchentlich tausende Kinder und Jugendliche aus den unterschiedlichsten gesellschaftlichen Milieus in Erfurt und der Region — mit kostenlosen, niedrigschwelligen und zugleich hochwertigen Bewegungsangeboten. Basketballprofis sind dabei nahbare Vorbilder, die die motorische, soziale und persönliche Entwicklung der Kinder fördern und ihnen Zukunftsperspektiven aufzeigen.</p>
-      <p class="pull-quote">Als Freundeskreis-Mitglied gibst du den Löwen mit einer regelmäßigen, planbaren Unterstützung die Grundlage, in unser pädagogisches Personal zu investieren und die Basketball-Community weiter zu stärken — für echte Chancengerechtigkeit von Kindern und Jugendlichen.</p>
-      <p class="t-body">Deine Unterstützung fließt ausschließlich in die Aufgaben und Ziele des Vereins. Als Dankeschön darfst du dich öffentlich als Unterstützer des Förder- und Freundeskreises nennen, und wir erwähnen dich auf Wunsch mit Namen und Logo — etwa auf der Webseite oder im Spieltagsheft.</p>
+  <section class="section bg-subtle">
+    <div class="container container-mid" style="text-align:center">
+      <div style="max-width:640px;margin:0 auto">
+        <span class="card-label">Warum regelmäßig?</span>
+        <h2 class="t-h3" style="margin:8px 0 12px">Mehr als eine einmalige Spende</h2>
+        <p class="t-body">Eine einmalige Spende hilft kurzfristig — deine regelmäßige Unterstützung gibt uns Planungssicherheit. Damit können wir echtes Personal im sozialen Bereich fest einstellen, statt nur einzelne Aktionen zu finanzieren, und unsere soziale Sportidee für Kinder und Jugendliche in Erfurt nachhaltig ausbauen.</p>
+      </div>
     </div>
   </section>
   <section class="section" style="padding-top:0">
     <div class="container container-narrow">
-      <span class="eyebrow" style="display:block;margin-bottom:16px">Unsere Mitglieder</span>
+      <span class="eyebrow" style="display:block;margin-bottom:16px">Unsere Freunde</span>
       <div class="freundeskreis-gallery" id="freundeskreis-gallery"></div>
       <div class="freundeskreis-legend">
-        <span><i data-lucide="star" style="color:var(--color-green-600,#2e7d32)"></i>Freundeskreis-Mitglied</span>
-        <span><i data-lucide="star" style="color:var(--color-brand-orange)"></i>Auch Sponsor</span>
+        <span><i data-lucide="star" style="color:var(--color-green-600,#2e7d32)"></i>Freundeskreis</span>
+        <span><i data-lucide="star" style="color:var(--color-brand-orange)"></i>Sponsor</span>
+        <span><i data-lucide="star" style="color:#b8860b"></i>Gesellschafter</span>
       </div>
     </div>
   </section>
@@ -45,9 +46,9 @@
     <div class="container">
       <div class="cta-panel">
         <span class="eyebrow">Mitmachen</span>
-        <h2 class="t-h2">Freundeskreis-Mitglied werden</h2>
+        <h2 class="t-h2">Teil unseres Freundeskreises werden</h2>
         <p>1.200 € pro Saison, gezahlt in zwei Raten à 600 € im Juli und Januar per SEPA-Lastschrift. Damit unterstützt du direkt die soziale Sportidee der Löwen — mit Spendenbescheinigung.</p>
-        <a class="btn btn-primary" href="/partner/freundeskreis-mitglied-werden.html">Jetzt Mitglied werden</a>
+        <a class="btn btn-primary" href="/partner/freundeskreis-mitglied-werden.html">Jetzt anmelden</a>
       </div>
     </div>
   </section>
@@ -55,9 +56,9 @@
     <div class="container">
       <div class="cta-panel">
         <span class="eyebrow">Ansprechpartner</span>
-        <h2 class="t-h2">André Grenzdörffer</h2>
-        <p>Vertriebsleitung — berät dich gerne individuell zur Mitgliedschaft im Freundeskreis.</p>
-        <a class="btn btn-outline-orange" href="mailto:andre.grenzdoerffer@basketball-loewen.com">E-Mail schreiben</a>
+        <h2 class="t-h2">Marko Fliege</h2>
+        <p>Ansprechpartner für den Freundeskreis — meldet sich gerne bei Fragen.</p>
+        <a class="btn btn-outline-orange" href="mailto:marko.fliege@basketball-loewen.com">E-Mail schreiben</a>
       </div>
     </div>
   </section>
@@ -73,12 +74,12 @@
       var mitglieder = (data && data.mitglieder) || [];
       var gallery = document.getElementById('freundeskreis-gallery');
       gallery.innerHTML = mitglieder.map(function (m) {
-        var starHtml = '<div class="freundeskreis-star ' + (m.gold ? 'freundeskreis-star-gold' : 'freundeskreis-star-green') + '"><i data-lucide="star"></i></div>';
+        var stars = '<div class="freundeskreis-star freundeskreis-star-green" data-tooltip="Freundeskreis" aria-label="Freundeskreis" tabindex="0"><i data-lucide="star"></i></div>';
+        if (m.sponsor) { stars += '<div class="freundeskreis-star freundeskreis-star-orange" data-tooltip="Sponsor" aria-label="Sponsor" tabindex="0"><i data-lucide="star"></i></div>'; }
+        if (m.gesellschafter) { stars += '<div class="freundeskreis-star freundeskreis-star-gold" data-tooltip="Gesellschafter" aria-label="Gesellschafter" tabindex="0"><i data-lucide="star"></i></div>'; }
         return '<div class="freundeskreis-card">' +
-          '<div class="freundeskreis-avatar">' +
-            '<div class="freundeskreis-avatar-circle">' + m.initialen + '</div>' +
-            starHtml +
-          '</div>' +
+          '<div class="freundeskreis-avatar-circle">' + m.initialen + '</div>' +
+          '<div class="freundeskreis-stars">' + stars + '</div>' +
           '<p class="freundeskreis-card-name">' + m.vorname + '</p>' +
         '</div>';
       }).join('');
