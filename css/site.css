@@ -1189,7 +1189,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .freundeskreis-star-slot-1 { top: 4px; left: 60px; z-index: 3; }
 .freundeskreis-star-slot-2 { top: -6px; left: 38px; z-index: 2; }
 .freundeskreis-star-slot-3 { top: -2px; left: 16px; z-index: 1; }
-.freundeskreis-star svg { width: 14px; height: 14px; }
+.freundeskreis-star img { width: 14px; height: 14px; display: block; }
 .freundeskreis-star::after {
   content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
   background: var(--text-primary); color: #fff; font-size: 11px; font-weight: var(--weight-semibold);
@@ -1197,15 +1197,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   transition: opacity var(--dur-fast) var(--ease-out); pointer-events: none; z-index: 5;
 }
 .freundeskreis-star:hover::after, .freundeskreis-star:focus-visible::after { opacity: 1; visibility: visible; }
-.freundeskreis-star-green svg { color: var(--color-green-600, #2e7d32); }
-.freundeskreis-star-orange svg { color: var(--color-brand-orange); }
-.freundeskreis-star-gold svg { color: #b8860b; }
 .freundeskreis-card-name { font-size: 14px; font-weight: var(--weight-semibold); margin: 0; }
 .freundeskreis-legend {
   display: flex; gap: 20px; justify-content: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);
 }
 .freundeskreis-legend span { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.freundeskreis-legend i { width: 14px; height: 14px; }
+.freundeskreis-legend img { width: 14px; height: 14px; display: block; }
 
 /* =====================================================================
    FORMS
