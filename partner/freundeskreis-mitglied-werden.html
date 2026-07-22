@@ -105,6 +105,7 @@
 
             <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
             <div class="form-status success" id="freundeskreis-status">Vielen Dank! Wir haben deine Anmeldung erhalten und melden uns in Kürze bei dir.</div>
+            <div class="form-status error" id="freundeskreis-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:marko.fliege@basketball-loewen.com">marko.fliege@basketball-loewen.com</a>.</div>
           </form>
         </div>
       </div>
@@ -118,7 +119,42 @@
 <script>
   document.getElementById('freundeskreis-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    document.getElementById('freundeskreis-status').classList.add('visible');
+    var form = e.target;
+    var statusOk = document.getElementById('freundeskreis-status');
+    var statusError = document.getElementById('freundeskreis-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    statusOk.classList.remove('visible');
+    statusError.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+    var payload = {
+      anrede: form.anrede.value,
+      vorname: form.vorname.value,
+      nachname: form.nachname.value,
+      firma: form.firma.value,
+      strasse: form.strasse.value,
+      plzOrt: form.plzOrt.value,
+      email: form.email.value,
+      telefon: form.telefon.value,
+      kontoinhaber: form.kontoinhaber.value,
+      kontoAnschrift: form.kontoAnschrift.value,
+      iban: form.iban.value
+    };
+    fetch('https://blev.app.n8n.cloud/webhook/freundeskreis-anmeldung', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook antwortete mit Fehler');
+      form.reset();
+      statusOk.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    }).catch(function () {
+      statusError.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    });
   });
 </script>
 </body>
