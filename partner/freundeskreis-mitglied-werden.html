@@ -59,11 +59,11 @@
             </div>
             <div class="field">
               <label class="sr-only" for="fk-strasse">Straße und Hausnummer</label>
-              <input type="text" id="fk-strasse" name="strasse" required autocomplete="street-address" placeholder="Straße und Hausnummer *" />
+              <input type="text" id="fk-strasse" name="strasse" autocomplete="street-address" placeholder="Straße und Hausnummer" />
             </div>
             <div class="field">
               <label class="sr-only" for="fk-plz-ort">PLZ und Ort</label>
-              <input type="text" id="fk-plz-ort" name="plzOrt" required autocomplete="postal-code" placeholder="PLZ und Ort *" />
+              <input type="text" id="fk-plz-ort" name="plzOrt" autocomplete="postal-code" placeholder="PLZ und Ort" />
             </div>
             <div class="field">
               <label class="sr-only" for="fk-email">E-Mail</label>
@@ -82,25 +82,21 @@
               <input type="text" id="fk-kontoinhaber" name="kontoinhaber" required placeholder="Name des Kontoinhabers *" />
             </div>
             <div class="field">
-              <label class="sr-only" for="fk-konto-anschrift">Anschrift des Kontoinhabers (falls abweichend)</label>
-              <input type="text" id="fk-konto-anschrift" name="kontoAnschrift" placeholder="Anschrift des Kontoinhabers (falls abweichend)" />
-            </div>
-            <div class="field">
               <label class="sr-only" for="fk-iban">IBAN</label>
               <input type="text" id="fk-iban" name="iban" required autocomplete="off" placeholder="IBAN *" />
             </div>
 
             <div class="field-checkbox" style="align-items:flex-start;margin:16px 0 8px">
               <input type="checkbox" id="fk-consent-unterstuetzung" name="consentUnterstuetzung" required style="margin-top:3px" />
-              <label for="fk-consent-unterstuetzung" class="t-body-sm">Ich möchte Teil des Freundeskreises werden und unterstütze die Löwen mit 1.200 € pro Saison, in zwei Raten à 600 € (Juli und Januar). *</label>
+              <label for="fk-consent-unterstuetzung" class="t-body-sm">Ich möchte Teil des Freundeskreises werden und unterstütze die Löwen mit 1.200 € pro Saison, in zwei Raten à 600 € (Juli und Januar).</label>
             </div>
             <div class="field-checkbox" style="align-items:flex-start;margin:0 0 8px">
               <input type="checkbox" id="fk-consent-sepa" name="consentSepa" required style="margin-top:3px" />
-              <label for="fk-consent-sepa" class="t-body-sm">Ich ermächtige die Basketball Löwen Erfurt e.V. (Gläubiger-ID DE46ZZZ00002312785), Zahlungen von meinem Konto mittels SEPA-Lastschrift einzuziehen, und weise mein Kreditinstitut an, diese Lastschriften einzulösen. *</label>
+              <label for="fk-consent-sepa" class="t-body-sm">Ich ermächtige die Basketball Löwen Erfurt e.V. (Gläubiger-ID DE46ZZZ00002312785), Zahlungen von meinem Konto mittels SEPA-Lastschrift einzuziehen, und weise mein Kreditinstitut an, diese Lastschriften einzulösen.</label>
             </div>
             <div class="field-checkbox" style="align-items:flex-start;margin:0 0 16px">
               <input type="checkbox" id="fk-consent-daten" name="consentDaten" required style="margin-top:3px" />
-              <label for="fk-consent-daten" class="t-body-sm">Ich willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html">Datenschutzerklärung</a> ein. Diese Einwilligung kann ich jederzeit widerrufen. *</label>
+              <label for="fk-consent-daten" class="t-body-sm">Ich willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html">Datenschutzerklärung</a> ein. Diese Einwilligung kann ich jederzeit widerrufen.</label>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
@@ -137,7 +133,6 @@
       email: form.email.value,
       telefon: form.telefon.value,
       kontoinhaber: form.kontoinhaber.value,
-      kontoAnschrift: form.kontoAnschrift.value,
       iban: form.iban.value
     };
     fetch('https://blev.app.n8n.cloud/webhook/freundeskreis-anmeldung', {
