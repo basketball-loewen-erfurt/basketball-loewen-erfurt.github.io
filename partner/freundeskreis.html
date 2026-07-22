@@ -35,8 +35,8 @@
       <span class="eyebrow" style="display:block;margin-bottom:16px">Unsere Freunde</span>
       <div class="freundeskreis-gallery" id="freundeskreis-gallery"></div>
       <div class="freundeskreis-legend">
+        <span><img src="/assets/icons/basketball-gold.png" alt="" width="14" height="14" />Sponsor</span>
         <span><img src="/assets/icons/basketball-gruen.png" alt="" width="14" height="14" />Freundeskreis</span>
-        <span><img src="/assets/icons/basketball-orange.png" alt="" width="14" height="14" />Sponsor</span>
         <span><img src="/assets/icons/basketball-blau.png" alt="" width="14" height="14" />Gesellschafter</span>
       </div>
     </div>
@@ -65,7 +65,7 @@
       var mitglieder = (data && data.mitglieder) || [];
       var gallery = document.getElementById('freundeskreis-gallery');
       gallery.innerHTML = mitglieder.map(function (m) {
-        var ICON_SRC = { green: '/assets/icons/basketball-gruen.png', orange: '/assets/icons/basketball-orange.png', blue: '/assets/icons/basketball-blau.png' };
+        var ICON_SRC = { green: '/assets/icons/basketball-gruen.png', gold: '/assets/icons/basketball-gold.png', blue: '/assets/icons/basketball-blau.png' };
         var slot = 1;
         function addStar(colorClass, label) {
           var html = '<div class="freundeskreis-star freundeskreis-star-' + colorClass + ' freundeskreis-star-slot-' + slot + '" data-tooltip="' + label + '" aria-label="' + label + '" tabindex="0"><img src="' + ICON_SRC[colorClass] + '" alt="" width="14" height="14" /></div>';
@@ -73,7 +73,7 @@
           return html;
         }
         var stars = addStar('green', 'Freundeskreis');
-        if (m.sponsor) { stars += addStar('orange', 'Sponsor'); }
+        if (m.sponsor) { stars += addStar('gold', 'Sponsor'); }
         if (m.gesellschafter) { stars += addStar('blue', 'Gesellschafter'); }
         return '<div class="freundeskreis-card">' +
           '<div class="freundeskreis-avatar">' +
