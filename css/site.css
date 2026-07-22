@@ -1201,7 +1201,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .freundeskreis-legend {
   display: flex; gap: 20px; justify-content: center; margin-top: 20px; font-size: 13px; color: var(--text-muted);
 }
-.freundeskreis-legend span { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.freundeskreis-legend span { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 110px; }
 .freundeskreis-legend img { width: 18px; height: 18px; display: block; }
 
 /* =====================================================================
