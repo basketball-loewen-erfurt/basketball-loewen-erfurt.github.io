@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Löwen Business Club — Basketball Löwen Erfurt</title>
-<meta name="description" content="Regionale Unternehmen aus Erfurt und der Region zeigen mit uns Präsenz und werden Teil des wachsenden Löwen Business Club der Basketball Löwen." />
+<title>Löwen-Club der 100 — Basketball Löwen Erfurt</title>
+<meta name="description" content="Regionale Unternehmen aus Erfurt und der Region zeigen mit uns Präsenz und werden Teil des wachsenden Löwen-Clubs der 100 der Basketball Löwen." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css?v=1784667836" />
@@ -17,7 +17,7 @@
   <section class="hero-photo hero-loewen-unterstuetzer">
     <div class="container">
     <span class="eyebrow">Partner · Netzwerk</span>
-    <h1>Löwen Business <span class="kw">Club<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
+    <h1>Löwen-Club der <span class="kw">100<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
     <p class="lead" style="max-width:820px">Unternehmen aus Erfurt und der Region zeigen mit uns Präsenz, unterstützen den Club und werden Teil eines wachsenden Netzwerks aus Basketball und Wirtschaft.</p>
     </div>
     <span class="photo-note">Stockfoto, niedrige Auflösung — höher aufgelöste Lizenz folgt</span>
@@ -33,12 +33,12 @@
     <div class="container">
       <div class="cta-panel">
         <span class="eyebrow">Mitmachen</span>
-        <h2 class="t-h2">Teil des Löwen Business Club werden</h2>
+        <h2 class="t-h2">Teil des Löwen-Clubs der 100 werden</h2>
         <p class="t-h3" style="margin:4px 0 4px;color:var(--text-primary)">49 € (zzgl. MwSt.) / Monat*</p>
         <p class="t-caption" style="color:var(--text-muted);margin-bottom:20px">*Bei jährlicher Zahlung, 588 € (zzgl. MwSt.) pro Jahr.</p>
-        <p class="t-body-sm" style="max-width:52ch;margin:0 auto 24px;color:var(--text-secondary)">Dazu gehören ein Logo auf der Löwen Business Club-Seite, eine Verlinkung zur eigenen Website und die Möglichkeit, unser Logo und unseren Namen auf der eigenen Webseite zu benutzen.</p>
+        <p class="t-body-sm" style="max-width:52ch;margin:0 auto 24px;color:var(--text-secondary)">Dazu gehören ein Logo auf der Löwen-Club der 100-Seite, eine Verlinkung zur eigenen Website und die Möglichkeit, unser Logo und unseren Namen auf der eigenen Webseite zu benutzen.</p>
         <div>
-          <button class="btn btn-primary" data-package="Löwen Business Club" data-price="588">Paket buchen</button>
+          <button class="btn btn-primary" data-package="Löwen-Club der 100" data-price="588">Paket buchen</button>
         </div>
         <p class="t-caption" style="margin-top:16px;color:var(--text-muted)">Individuelles Paket gewünscht? <a href="mailto:andre.grenzdoerffer@basketball-loewen.com">Sprechen Sie uns an</a>.</p>
       </div>
@@ -64,10 +64,10 @@
   document.querySelectorAll('[data-package]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var price = parseFloat(this.dataset.price);
-      var label = 'Löwen Business Club-Paket (pro Jahr)';
+      var label = 'Löwen-Club der 100-Paket (pro Jahr)';
       sessionStorage.setItem('bl_cart', JSON.stringify({
         productType: 'loewen-business-club',
-        eventLabel: 'Löwen Business Club-Paket',
+        eventLabel: 'Löwen-Club der 100-Paket',
         vatNote: 'zzgl. MwSt.',
         lines: [{ label: label, qty: 1, unitPrice: price, lineTotal: price }],
         total: price,
