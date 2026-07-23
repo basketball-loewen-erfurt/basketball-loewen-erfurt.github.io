@@ -979,6 +979,37 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   }
 }
 
+/* Hero-Variante für die Sponsoren-Seite — Maskottchen klatscht mit Fans in der Kurve,
+   Motiv sitzt rechts im Bild, links freie Wand für den Text. */
+.hero-photo.hero-sponsoring {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.65) 42%, rgba(253,246,238,.15) 65%, rgba(253,246,238,0) 85%),
+    url('/assets/img/hero-sponsoring.jpg');
+  background-size: cover; background-position: 68% 38%;
+}
+.hero-photo.hero-sponsoring .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.65) 42%, rgba(253,246,238,.15) 65%, rgba(253,246,238,0) 85%);
+}
+@media (max-width: 599px) {
+  /* Gleiches Prinzip wie beim Freundeskreis-Hero: Verlauf-Stops sind % der
+     Container-Breite, auf schmalen Viewports reicht die Textbox sonst schon
+     in den transparenten Bereich hinein und läuft übers Maskottchen-Foto. */
+  .hero-photo.hero-sponsoring {
+    background:
+      linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.92) 60%, rgba(253,246,238,.55) 82%, rgba(253,246,238,0) 98%),
+      url('/assets/img/hero-sponsoring.jpg');
+    background-size: cover; background-position: 82% 38%;
+  }
+  .hero-photo.hero-sponsoring .hero-media::after {
+    background: linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.92) 60%, rgba(253,246,238,.55) 82%, rgba(253,246,238,0) 98%);
+  }
+  /* Überschrift ist lang ("Unsere Sponsoren & Förderpartner.") — ohne
+     Breitenbegrenzung würde jede umgebrochene Zeile die volle Containerbreite
+     nutzen und dabei übers Foto rechts laufen. */
+  .hero-photo.hero-sponsoring h1,
+  .hero-photo.hero-sponsoring p.lead { max-width: 21ch; }
+}
+
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
 .hero-photo.hero-profis {
   background:
