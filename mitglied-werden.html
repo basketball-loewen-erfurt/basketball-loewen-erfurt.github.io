@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mitglied werden — Basketball Löwen Erfurt</title>
-<meta name="description" content="Werde Mitglied bei den Basketball Löwen Erfurt — wähle deine Mitgliedschaftsart und stelle deinen Aufnahmeantrag direkt online." />
+<meta name="description" content="Werde Mitglied bei den Basketball Löwen Erfurt — wähle deine Mitgliedschaftsart und melde dich direkt online an." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
 <link rel="stylesheet" href="/css/colors_and_type.css?v=1784667836" />
@@ -33,6 +33,7 @@
           <p class="t-h3" style="margin:8px 0 2px;color:var(--text-primary)">6,00 €<span style="font-size:13px;font-weight:400"> /Monat</span></p>
           <p class="t-caption" style="color:var(--text-muted);margin-bottom:12px">ermäßigt 4,00 € — bis 18 Jahre, Schwerbehinderte, Azubis, Studierende, Rentner</p>
           <p class="t-body-sm" style="flex:1">Für alle, die die Löwen im Herzen tragen und den Verein als Fan unterstützen möchten — ganz ohne eigenen Spielbetrieb.</p>
+          <p class="t-caption" style="color:var(--text-muted);margin-top:8px">Kinder von Mitgliedern zahlen 1,00 € im Monat. Einmalige Aufnahmegebühr 20,00 €.</p>
           <a class="card-link" href="/assets/docs/satzung.pdf" target="_blank" rel="noopener">Satzung ansehen →</a>
           <button type="button" class="btn btn-primary btn-block" style="margin-top:16px" data-mitgliedschaft="fan">Jetzt Mitglied werden</button>
         </div>
@@ -67,13 +68,12 @@
           <h3 class="t-h4">Mitgliedschaft für stimmberechtigte Mitglieder</h3>
           <p class="t-h3" style="margin:8px 0 2px;color:var(--text-primary)">12,50 €<span style="font-size:13px;font-weight:400"> /Monat</span></p>
           <p class="t-body-sm" style="flex:1;margin-top:8px">Die ordentliche Mitgliedschaft mit vollem Stimmrecht in der Mitgliederversammlung.</p>
-          <p class="t-caption" style="color:var(--text-muted);margin-top:10px">Mit dem Absenden des Formulars stellst du zunächst nur einen Aufnahmeantrag — über deine Aufnahme als stimmberechtigtes Mitglied entscheidet die Mitgliederversammlung.</p>
           <a class="card-link" href="/assets/docs/satzung.pdf" target="_blank" rel="noopener">Satzung ansehen →</a>
           <button type="button" class="btn btn-primary btn-block" style="margin-top:16px" data-mitgliedschaft="ordentlich">Jetzt Mitglied werden</button>
         </div>
       </div>
 
-      <p class="t-body-sm" style="margin-top:24px;color:var(--text-secondary)">Kinder von Mitgliedern zahlen unabhängig von der Mitgliedschaftsart 1,00 € im Monat. Einmalige Aufnahmegebühr 20,00 €. <a href="/assets/docs/satzung.pdf" target="_blank" rel="noopener">Satzung</a> &amp; <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a> als Download.</p>
+      <p class="t-body-sm" style="margin-top:24px;color:var(--text-secondary)"><a href="/assets/docs/satzung.pdf" target="_blank" rel="noopener">Satzung</a> &amp; <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a> als Download.</p>
     </div>
   </section>
 
@@ -81,14 +81,14 @@
     <div class="container">
       <div class="grid-2">
         <div>
-          <span class="eyebrow">Aufnahmeantrag</span>
+          <span class="eyebrow">Anmeldung</span>
           <h2 class="t-h2" style="margin-bottom:16px">So wirst du Mitglied</h2>
-          <p class="t-body">Wähle deine Mitgliedschaftsart und trag deine Daten ein — mit dem Absenden stellst du deinen Aufnahmeantrag, über den der Vorstand entscheidet. Der Mitgliedsbeitrag wird jährlich per SEPA-Lastschrift eingezogen, dazu kommt einmalig eine Aufnahmegebühr von 20 €. Sobald deine Mitgliedschaft bestätigt ist, melden wir uns bei dir.</p>
+          <p class="t-body">Wähle deine Mitgliedschaftsart und trag deine Daten ein. Der Mitgliedsbeitrag wird jährlich per SEPA-Lastschrift eingezogen. Sobald deine Mitgliedschaft bestätigt ist, melden wir uns bei dir.</p>
         </div>
 
         <div class="card" style="padding:24px">
           <span class="eyebrow">Deine Daten</span>
-          <h3 class="t-h4" style="margin:6px 0 16px">Aufnahmeantrag stellen</h3>
+          <h3 class="t-h4" style="margin:6px 0 16px">Jetzt anmelden</h3>
           <form class="form-panel" id="mitglied-form">
             <div class="field">
               <label for="mw-typ">Mitgliedschaftsart *</label>
@@ -100,7 +100,6 @@
                 <option value="foerder">Förder-Mitgliedschaft — 50,00 € / Monat</option>
                 <option value="ordentlich">Mitgliedschaft für stimmberechtigte Mitglieder — 12,50 € / Monat</option>
               </select>
-              <p class="hint" id="mw-typ-hint" style="display:none">Mit dem Absenden stellst du zunächst nur einen Antrag — über deine Aufnahme als stimmberechtigtes Mitglied entscheidet die Mitgliederversammlung.</p>
             </div>
             <div class="field">
               <label class="sr-only" for="mw-anrede">Anrede</label>
@@ -122,7 +121,7 @@
             <div class="field">
               <label class="sr-only" for="mw-geburtsdatum">Geburtsdatum</label>
               <input type="date" id="mw-geburtsdatum" name="geburtsdatum" required placeholder="Geburtsdatum *" />
-              <p class="hint">Bei minderjährigen Antragstellenden ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
+              <p class="hint">Bei minderjährigen Mitgliedern ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
             </div>
             <div class="field">
               <label class="sr-only" for="mw-strasse">Straße und Hausnummer</label>
@@ -155,7 +154,7 @@
 
             <div class="field-checkbox" style="align-items:flex-start;margin:16px 0 8px">
               <input type="checkbox" id="mw-consent-beitrag" name="consentBeitrag" required style="margin-top:3px" />
-              <label for="mw-consent-beitrag" class="t-body-sm">Ich beantrage die gewählte Mitgliedschaft und akzeptiere den damit verbundenen Mitgliedsbeitrag sowie die einmalige Aufnahmegebühr von 20 € gemäß <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>.</label>
+              <label for="mw-consent-beitrag" class="t-body-sm">Ich melde mich für die gewählte Mitgliedschaft an und akzeptiere den damit verbundenen Mitgliedsbeitrag gemäß <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>.</label>
             </div>
             <div class="field-checkbox" style="align-items:flex-start;margin:0 0 8px">
               <input type="checkbox" id="mw-consent-sepa" name="consentSepa" required style="margin-top:3px" />
@@ -166,8 +165,8 @@
               <label for="mw-consent-daten" class="t-body-sm">Ich willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html">Datenschutzerklärung</a> ein. Diese Einwilligung kann ich jederzeit widerrufen.</label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Aufnahmeantrag senden</button>
-            <div class="form-status success" id="mitglied-status">Vielen Dank! Wir haben deinen Aufnahmeantrag erhalten und melden uns in Kürze bei dir.</div>
+            <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
+            <div class="form-status success" id="mitglied-status">Vielen Dank! Wir haben deine Anmeldung erhalten und melden uns in Kürze bei dir.</div>
             <div class="form-status error" id="mitglied-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:info@basketball-loewen.com">info@basketball-loewen.com</a>.</div>
           </form>
         </div>
@@ -218,23 +217,16 @@
 <script src="/js/include.js?v=1784667836"></script>
 <script>
   var mwTypSelect = document.getElementById('mw-typ');
-  var mwTypHint = document.getElementById('mw-typ-hint');
 
   function mwSelectTyp(typ) {
     if (!typ) return;
     mwTypSelect.value = typ;
-    mwUpdateHint();
     document.getElementById('mitglied-formular').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function mwUpdateHint() {
-    mwTypHint.style.display = mwTypSelect.value === 'ordentlich' ? 'block' : 'none';
   }
 
   document.querySelectorAll('[data-mitgliedschaft]').forEach(function (btn) {
     btn.addEventListener('click', function () { mwSelectTyp(this.dataset.mitgliedschaft); });
   });
-  mwTypSelect.addEventListener('change', mwUpdateHint);
 
   var praeselektion = new URLSearchParams(window.location.search).get('typ');
   if (praeselektion) mwSelectTyp(praeselektion);
@@ -271,11 +263,11 @@
       form.reset();
       statusOk.classList.add('visible');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Aufnahmeantrag senden';
+      submitBtn.textContent = 'Jetzt anmelden';
     }).catch(function () {
       statusError.classList.add('visible');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Aufnahmeantrag senden';
+      submitBtn.textContent = 'Jetzt anmelden';
     });
   });
 
