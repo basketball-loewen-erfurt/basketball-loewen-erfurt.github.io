@@ -50,6 +50,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
             <div class="form-status success" id="newsletter-status">Fast geschafft — wir haben dir eine Bestätigungs-E-Mail geschickt. Bitte klicke den Link darin an, um die Anmeldung abzuschließen.</div>
+            <div class="form-status error" id="newsletter-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:marko.fliege@basketball-loewen.com">marko.fliege@basketball-loewen.com</a>.</div>
           </form>
         </div>
       </div>
@@ -72,7 +73,30 @@
 <script>
   document.getElementById('newsletter-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    document.getElementById('newsletter-status').classList.add('visible');
+    var form = e.target;
+    var statusOk = document.getElementById('newsletter-status');
+    var statusError = document.getElementById('newsletter-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    statusOk.classList.remove('visible');
+    statusError.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+    var payload = { vorname: form.vorname.value, email: form.email.value };
+    fetch('https://blev.app.n8n.cloud/webhook/newsletter-anmeldung', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook antwortete mit Fehler');
+      form.reset();
+      statusOk.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    }).catch(function () {
+      statusError.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    });
   });
 
   fetch('/data/newsletter-archiv.json').then(function (r) { return r.json(); }).then(function (data) {

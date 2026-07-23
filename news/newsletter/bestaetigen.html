@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Newsletter-Anmeldung bestätigen — Basketball Löwen Erfurt</title>
+<meta name="description" content="Bestätige deine Newsletter-Anmeldung bei den Basketball Löwen Erfurt." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784667836" />
+<link rel="stylesheet" href="/css/site.css?v=1784667836" />
+</head>
+<body data-nav-group="news">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+  <section class="section">
+    <div class="container container-narrow" style="text-align:center;padding-top:48px;padding-bottom:48px">
+      <span class="eyebrow">Newsletter</span>
+      <h1 class="t-h2" style="margin:8px 0 20px" id="bestaetigen-heading">Wird bestätigt …</h1>
+      <p class="t-body" id="bestaetigen-text">Einen Moment bitte.</p>
+      <a class="btn btn-primary" href="/news/newsletter/" style="margin-top:24px;display:none" id="bestaetigen-link">Zurück zur Newsletter-Seite</a>
+    </div>
+  </section>
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js?v=1784667836"></script>
+<script src="/js/include.js?v=1784667836"></script>
+<script>
+  var heading = document.getElementById('bestaetigen-heading');
+  var text = document.getElementById('bestaetigen-text');
+  var link = document.getElementById('bestaetigen-link');
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('token');
+
+  function showResult(ok, message) {
+    heading.textContent = ok ? 'Bestätigt!' : 'Das hat nicht geklappt';
+    text.textContent = message;
+    link.style.display = 'inline-flex';
+  }
+
+  if (!token) {
+    showResult(false, 'Es fehlt ein Bestätigungs-Code in diesem Link. Bitte nutze den Link direkt aus der E-Mail.');
+  } else {
+    fetch('https://blev.app.n8n.cloud/webhook/newsletter-bestaetigen', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token })
+    }).then(function (res) { return res.json(); }).then(function (data) {
+      showResult(!!(data && data.ok), (data && data.message) || 'Unbekannter Fehler.');
+    }).catch(function () {
+      showResult(false, 'Verbindung zum Server ist fehlgeschlagen. Bitte versuche es später noch einmal.');
+    });
+  }
+</script>
+</body>
+</html>
