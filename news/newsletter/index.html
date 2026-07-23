@@ -25,30 +25,23 @@
 
   <section class="section">
     <div class="container">
-      <div class="grid-2">
-        <div>
-          <span class="eyebrow">Anmeldung</span>
-          <h2 class="t-h2" style="margin-bottom:16px">Keine Neuigkeit mehr verpassen</h2>
-          <p class="t-body">Ergebnisse, Ticket-News, Vereinsleben und Einblicke aus dem LÖWENPARK — unregelmäßig, ca. 1× im Monat, aber immer, wenn es etwas zu erzählen gibt. Kein Spam, jederzeit mit einem Klick abbestellbar.</p>
-        </div>
-
-        <div class="card" style="padding:24px">
-          <span class="eyebrow">Jetzt anmelden</span>
-          <h3 class="t-h4" style="margin:6px 0 16px">Newsletter abonnieren</h3>
-          <form class="form-panel" id="newsletter-form">
-            <div class="field">
-              <label for="nl-vorname">Vorname (optional)</label>
-              <input type="text" id="nl-vorname" name="vorname" autocomplete="given-name" />
-            </div>
-            <div class="field">
-              <label for="nl-email">E-Mail *</label>
-              <input type="email" id="nl-email" name="email" required autocomplete="email" />
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
-            <div class="form-status success" id="newsletter-status">Fast geschafft — wir haben dir eine Bestätigungs-E-Mail geschickt. Bitte klicke den Link darin an, um die Anmeldung abzuschließen.</div>
-            <div class="form-status error" id="newsletter-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:marko.fliege@basketball-loewen.com">marko.fliege@basketball-loewen.com</a>.</div>
-          </form>
-        </div>
+      <div class="cta-panel">
+        <span class="eyebrow">Anmeldung</span>
+        <h2 class="t-h2">Newsletter abonnieren</h2>
+        <form class="form-panel" id="newsletter-form" style="max-width:420px;margin:0 auto;text-align:left">
+          <div class="field">
+            <label for="nl-vorname">Vorname (optional)</label>
+            <input type="text" id="nl-vorname" name="vorname" autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="nl-email">E-Mail *</label>
+            <input type="email" id="nl-email" name="email" required autocomplete="email" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
+          <p class="t-caption" style="margin-top:16px;color:var(--text-muted)">Du bist erst endgültig zum Newsletter angemeldet und bekommst die nächste Ausgabe, sobald du deine E-Mail-Adresse über den Bestätigungslink bestätigst, den wir dir direkt nach der Anmeldung schicken.</p>
+          <div class="form-status success" id="newsletter-status">Fast geschafft — wir haben dir eine Bestätigungs-E-Mail geschickt. Bitte klicke den Link darin an, um die Anmeldung abzuschließen.</div>
+          <div class="form-status error" id="newsletter-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:marko.fliege@basketball-loewen.com">marko.fliege@basketball-loewen.com</a>.</div>
+        </form>
       </div>
     </div>
   </section>
