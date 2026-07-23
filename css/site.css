@@ -950,6 +950,14 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo.hero-freundeskreis .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 40%, rgba(253,246,238,.1) 70%, rgba(253,246,238,0) 90%);
 }
+/* Lead-Text auf dieser Seite ist kurz genug, um im Desktop-Format in eine Zeile
+   zu passen (siehe Kommentar oben) — auf Mobil aber wieder normal umbrechen
+   lassen, sonst läuft die feste Zeile über den Viewport-Rand hinaus und über
+   das Foto (Lesbarkeitsproblem, gemeldet 23.07.2026). */
+.hero-photo.hero-freundeskreis p.lead { max-width: 640px; white-space: nowrap; }
+@media (max-width: 899px) {
+  .hero-photo.hero-freundeskreis p.lead { white-space: normal; max-width: 46ch; }
+}
 
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
 .hero-photo.hero-profis {
@@ -1181,7 +1189,10 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .freundeskreis-avatar-circle {
   width: 88px; height: 88px; border-radius: 50%; background: var(--bg-subtle); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; font-weight: var(--weight-bold); font-size: 22px; color: var(--text-muted);
+  overflow: hidden;
 }
+.freundeskreis-avatar-circle.has-photo { padding: 0; }
+.freundeskreis-avatar-photo { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; }
 .freundeskreis-star {
   position: absolute; width: 28px; height: 28px;
   display: flex; align-items: center; justify-content: center;

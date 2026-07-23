@@ -19,7 +19,7 @@
   <section class="hero-photo hero-freundeskreis">
     <div class="container">
     <span class="eyebrow">Partner</span>
-    <h1>Löwen-Freundeskreis.</h1>
+    <h1>Löwen-<span class="kw">Freundeskreis<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg></span>.</h1>
     <p class="lead">Menschen, die den Löwen verbunden sind, unterstützen unseren Club regelmäßig.</p>
     </div>
   </section>
@@ -77,9 +77,12 @@
         var stars = addStar('green', 'Freundeskreis');
         if (m.sponsor) { stars += addStar('gold', 'Sponsor'); }
         if (m.gesellschafter) { stars += addStar('blue', 'Gesellschafter'); }
+        var avatarInner = m.foto
+          ? '<img class="freundeskreis-avatar-photo" src="' + m.foto + '" alt="" width="88" height="88" />'
+          : m.initialen;
         return '<div class="freundeskreis-card">' +
           '<div class="freundeskreis-avatar">' +
-            '<div class="freundeskreis-avatar-circle">' + m.initialen + '</div>' +
+            '<div class="freundeskreis-avatar-circle' + (m.foto ? ' has-photo' : '') + '">' + avatarInner + '</div>' +
             stars +
           '</div>' +
           '<p class="freundeskreis-card-name">' + m.vorname + '</p>' +
