@@ -963,6 +963,20 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
      Bereich des Verlaufs, statt auf das Foto rechts überzulaufen (Kontrast-
      Problem, gemeldet 23.07.2026). */
   .hero-photo.hero-freundeskreis p.lead { max-width: 27ch; }
+  /* Die Verlauf-Stops oben sind in % der Container-Breite definiert — auf
+     schmalen Mobil-Viewports liegt "70%" schon fast am Textrand, das Foto
+     scheint dort also trotz kürzerer Zeilen fast ungedämpft durch. Deckender
+     Bereich deshalb auf Mobil nach rechts verschoben, statt den Text noch
+     weiter zu verschmälern. */
+  .hero-photo.hero-freundeskreis {
+    background:
+      linear-gradient(90deg, rgba(253,246,238,.96) 0%, rgba(253,246,238,.85) 55%, rgba(253,246,238,.4) 80%, rgba(253,246,238,0) 98%),
+      url('/assets/img/hero-freundeskreis.jpg');
+    background-size: cover; background-position: 85% 42%;
+  }
+  .hero-photo.hero-freundeskreis .hero-media::after {
+    background: linear-gradient(90deg, rgba(253,246,238,.96) 0%, rgba(253,246,238,.85) 55%, rgba(253,246,238,.4) 80%, rgba(253,246,238,0) 98%);
+  }
 }
 
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
