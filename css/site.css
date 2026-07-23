@@ -939,12 +939,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   text-shadow: 0 1px 16px rgba(253,246,238,.85), 0 1px 4px rgba(253,246,238,.9);
 }
 
-/* Hero-Variante für die Freundeskreis-Seite — echtes Fan-/Jubelfoto (Sebastian Dühring) */
+/* Hero-Variante für die Freundeskreis-Seite — Kinder mit Maskottchen beim BasKIDball,
+   Motiv sitzt rechts im Bild, deshalb Bildausschnitt nach rechts verschoben. */
 .hero-photo.hero-freundeskreis {
   background:
     linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 40%, rgba(253,246,238,.1) 70%, rgba(253,246,238,0) 90%),
     url('/assets/img/hero-freundeskreis.jpg');
-  background-size: cover; background-position: center 40%;
+  background-size: cover; background-position: 80% 42%;
 }
 .hero-photo.hero-freundeskreis .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 40%, rgba(253,246,238,.1) 70%, rgba(253,246,238,0) 90%);
