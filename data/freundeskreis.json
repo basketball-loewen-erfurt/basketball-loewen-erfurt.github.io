@@ -4,7 +4,7 @@
   "mitglieder": [
     { "vorname": "Simon", "initialen": "SW", "foto": "/assets/img/freundeskreis-sw.jpg", "sponsor": false, "gesellschafter": false },
     { "vorname": "Matthias", "initialen": "MH", "foto": "/assets/img/freundeskreis-mh.jpg", "sponsor": false, "gesellschafter": false },
-    { "vorname": "Marko", "initialen": "MF", "sponsor": false, "gesellschafter": true },
+    { "vorname": "Marko", "initialen": "MF", "foto": "/assets/img/freundeskreis-mf.jpg", "sponsor": false, "gesellschafter": true },
     { "vorname": "Patrick", "initialen": "PC", "foto": "/assets/img/freundeskreis-pc.jpg", "sponsor": true, "gesellschafter": false },
     { "vorname": "Wolfgang", "initialen": "WS", "foto": "/assets/img/freundeskreis-ws.jpg", "sponsor": true, "gesellschafter": true }
   ]
