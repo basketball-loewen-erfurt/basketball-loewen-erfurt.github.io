@@ -985,12 +985,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background:
     linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.65) 42%, rgba(253,246,238,.15) 65%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-sponsoring.jpg');
-  background-size: cover; background-position: 68% 36%;
+  background-size: cover; background-position: 68% 40%;
   /* Etwas höher als der Standard-Hero: Das Foto ist im Verhältnis zur üblichen
      Hero-Breite/-Höhe recht schmal (1248px), der Container erzwingt daher
      ohnehin ein leichtes Hochskalieren — mehr Boxhöhe zeigt mehr vom Maskottchen
      bei gleichem Zoomfaktor, statt ihn noch enger anzuschneiden (23.07.2026). */
-  min-height: 320px;
+  min-height: 380px;
 }
 .hero-photo.hero-sponsoring .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.65) 42%, rgba(253,246,238,.15) 65%, rgba(253,246,238,0) 85%);
