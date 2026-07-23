@@ -958,6 +958,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 @media (max-width: 899px) {
   .hero-photo.hero-freundeskreis p.lead { white-space: normal; max-width: 46ch; }
 }
+@media (max-width: 599px) {
+  /* Schmalerer Umbruch (3 statt 2 Zeilen) hält den Text im deckenden linken
+     Bereich des Verlaufs, statt auf das Foto rechts überzulaufen (Kontrast-
+     Problem, gemeldet 23.07.2026). */
+  .hero-photo.hero-freundeskreis p.lead { max-width: 27ch; }
+}
 
 /* Hero-Variante für die Profi-Team-Seite — echtes Mannschaftsfoto */
 .hero-photo.hero-profis {
