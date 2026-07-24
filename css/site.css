@@ -654,7 +654,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* Ansprechperson-Karte — Foto/Platzhalter + Name/Rolle/E-Mail, nach Vorbild der
    Sponsor-werden-Seite der alten Website. Wiederverwendet auf Camps-,
-   Business-Events- und Community-Events-Seiten. */
+   Netzwerk-Treffen- und Community-Events-Seiten. */
 .contact-person-card { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .contact-person-photo {
   width: 88px; height: 88px; border-radius: 50%; flex: 0 0 88px; overflow: hidden;
@@ -1120,6 +1120,18 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .hero-photo.hero-community-events .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
+}
+
+/* Hero-Variante für die Netzwerk-Treffen-Seite — Bühnenmoment beim
+   Alley-Oop 2025, Basketball-Löwen/CATL-Wandlogo links, Publikum unten. */
+.hero-photo.hero-netzwerktreffen {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.6) 35%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 82%),
+    url('/assets/img/hero-netzwerktreffen.jpg');
+  background-size: cover; background-position: center 22%;
+}
+.hero-photo.hero-netzwerktreffen .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.6) 35%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 82%);
 }
 
 /* Hero-Variante für die Media-Kit-Seite — gestaltete Grafik "Medienportal"
