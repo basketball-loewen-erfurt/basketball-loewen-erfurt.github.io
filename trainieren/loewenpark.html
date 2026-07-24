@@ -71,24 +71,14 @@
             </div>
           </div>
 
-          <span class="eyebrow" style="display:block;margin-top:48px">Fotos</span>
-          <h2 class="t-h2">Baufortschritt in Bildern</h2>
-          <div class="grid-3" style="margin-top:20px">
-            <div class="card">
-              <div class="card-media-photo" style="height:180px"><img src="/assets/img/news/loewenpark-dach.jpg" alt="" /></div>
-            </div>
-            <div class="card">
-              <div class="card-media tint-neutral" style="height:180px"><i data-lucide="image" style="width:28px;height:28px"></i></div>
-              <div class="card-body" style="text-align:center;padding:14px">
-                <p class="t-body-sm" style="color:var(--text-muted);margin:0">Weitere Fotos folgen</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-media tint-neutral" style="height:180px"><i data-lucide="image" style="width:28px;height:28px"></i></div>
-              <div class="card-body" style="text-align:center;padding:14px">
-                <p class="t-body-sm" style="color:var(--text-muted);margin:0">Weitere Fotos folgen</p>
-              </div>
-            </div>
+          <span class="eyebrow" style="display:block;margin-top:48px;margin-bottom:16px">Fotos</span>
+          <h2 class="t-h2" style="margin-bottom:20px">Baufortschritt in Bildern</h2>
+          <div class="camp-gallery-wrap" id="loewenpark-gallery">
+            <span class="swipe-hint" aria-hidden="true"><i data-lucide="chevron-right" style="width:16px;height:16px"></i></span>
+            <div class="news-slider-track"></div>
+            <button class="news-slider-arrow prev" data-gallery-prev aria-label="Vorheriges Bild"><i data-lucide="chevron-left" style="width:18px;height:18px"></i></button>
+            <button class="news-slider-arrow next" data-gallery-next aria-label="Nächstes Bild"><i data-lucide="chevron-right" style="width:18px;height:18px"></i></button>
+            <p class="t-body camp-gallery-empty" style="display:none">Fotos folgen in Kürze.</p>
           </div>
 
           <div class="card" style="margin-top:48px;padding:28px;text-align:center;background:var(--bg-subtle)">
@@ -218,6 +208,8 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1784667836"></script>
 <script src="/js/include.js?v=1784667836"></script>
+<script src="/js/camp-galerie.js?v=1784667836"></script>
+<script>initCampGallery('loewenpark-gallery', null, '/data/loewenpark-galerie.json');</script>
 <script>
   (function () {
     var target = new Date('2026-10-24T23:59:59+02:00').getTime();
