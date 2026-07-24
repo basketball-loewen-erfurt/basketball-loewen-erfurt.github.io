@@ -1292,6 +1292,15 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   font-size: 14px; color: var(--text-primary); background: #fff;
   transition: all var(--dur-fast) var(--ease-out);
 }
+.field select:required:invalid { color: var(--text-muted); }
+.field select option { color: var(--text-primary); }
+/* iOS/Safari rendert type="date" sonst mit eigener Intrinsic-Höhe/-Breite größer als Geschwister-Felder */
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 0;
+}
+.field input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(0,40,170,.15);
 }

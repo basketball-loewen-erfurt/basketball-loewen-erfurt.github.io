@@ -153,6 +153,40 @@
   var praeselektion = new URLSearchParams(window.location.search).get('typ') || 'fan';
   mwSelectTyp(praeselektion);
 
+  var vornameInput = document.getElementById('mw-vorname');
+  var nachnameInput = document.getElementById('mw-nachname');
+  var geburtsdatumInput = document.getElementById('mw-geburtsdatum');
+  var kontoinhaberInput = document.getElementById('mw-kontoinhaber');
+  var kontoinhaberTouched = false;
+  kontoinhaberInput.addEventListener('input', function () { kontoinhaberTouched = true; });
+
+  function istMinderjaehrig(geburtsdatum) {
+    if (!geburtsdatum) return false;
+    var bday = new Date(geburtsdatum);
+    var today = new Date();
+    var alter = today.getFullYear() - bday.getFullYear();
+    var m = today.getMonth() - bday.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < bday.getDate())) alter--;
+    return alter < 18;
+  }
+
+  function updateKontoinhaberVorschlag() {
+    if (istMinderjaehrig(geburtsdatumInput.value)) {
+      kontoinhaberInput.placeholder = 'Name des Kontoinhabers, z. B. Erziehungsberechtigte:r *';
+      if (!kontoinhaberTouched) kontoinhaberInput.value = '';
+      return;
+    }
+    kontoinhaberInput.placeholder = 'Name des Kontoinhabers *';
+    if (kontoinhaberTouched) return;
+    var name = (vornameInput.value.trim() + ' ' + nachnameInput.value.trim()).trim();
+    kontoinhaberInput.value = name;
+  }
+
+  vornameInput.addEventListener('input', updateKontoinhaberVorschlag);
+  nachnameInput.addEventListener('input', updateKontoinhaberVorschlag);
+  geburtsdatumInput.addEventListener('input', updateKontoinhaberVorschlag);
+  geburtsdatumInput.addEventListener('change', updateKontoinhaberVorschlag);
+
   document.getElementById('mitglied-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var form = e.target;
