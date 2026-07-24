@@ -951,9 +951,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 60%);
 }
 
-/* Hero-Variante für die Newsletter-Seite. Überschrift ist länger als die
-   üblichen kurzen Taglines, deshalb wie beim Artikel-Hero normal umbrechen
-   statt in einer Zeile zu erzwingen. */
+/* Hero-Variante für die Newsletter-Seite. */
 .hero-photo.hero-newsletter {
   background:
     linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
@@ -963,7 +961,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo.hero-newsletter .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
-.hero-photo.hero-newsletter h1 { white-space: normal; max-width: 18ch; }
 
 /* Hero-Variante für die Freundeskreis-Seite — Kinder mit Maskottchen beim BasKIDball,
    Motiv sitzt rechts im Bild, deshalb Bildausschnitt nach rechts verschoben. */
