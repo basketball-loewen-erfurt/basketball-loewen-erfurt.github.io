@@ -731,6 +731,37 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 @media (max-width: 900px) {
   .partner-wall-businessclub { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Investoren-Wand: große Hochformat-Fotos statt kleiner Logo-Kacheln, Flip
+   zeigt den Namen auf strahlendem Blauton (wie im Footer-Verlauf) statt der
+   neutralen Navy-Rückseite bei den Partner-Kacheln. */
+.investor-wall { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.investor-tile { perspective: 1200px; }
+.investor-tile-inner {
+  position: relative; width: 100%; padding-top: 125%;
+  transition: transform .6s var(--ease-out); transform-style: preserve-3d;
+}
+@media (hover: hover) and (pointer: fine) {
+  .investor-tile:hover .investor-tile-inner { transform: rotateY(180deg); }
+}
+.investor-tile:focus-visible .investor-tile-inner { transform: rotateY(180deg); }
+.investor-tile-front, .investor-tile-back {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+}
+.investor-tile-front {
+  background: var(--bg-subtle); border: 1px solid var(--border); color: var(--text-muted);
+  flex-direction: column; gap: 8px; font-size: 13px;
+}
+.investor-tile-front img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.investor-tile-back {
+  background: var(--gradient-blue); color: #fff; transform: rotateY(180deg);
+  font-family: var(--font-display); font-weight: var(--weight-extrabold);
+  font-size: clamp(15px, 1.6vw, 19px); padding: 12px;
+}
+@media (max-width: 700px) {
+  .investor-wall { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 700px) {
   .partner-wall-businessclub { grid-template-columns: repeat(2, 1fr); }
 }
