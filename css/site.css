@@ -964,7 +964,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background:
     linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-loewenrudel.jpg');
-  background-size: cover; background-position: center 25%;
+  background-size: cover; background-position: center 55%;
   min-height: 480px;
 }
 .hero-photo.hero-loewenrudel .hero-media::after {
