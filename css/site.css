@@ -298,12 +298,18 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* =====================================================================
    CARDS — tiles (team / news / info)
    ===================================================================== */
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+/* minmax(0, 1fr) statt 1fr — 1fr allein hat eine implizite Mindestgröße von
+   "auto" (Inhaltsbreite), wodurch ein breites Kind (z.B. eine Bildergalerie
+   mit vielen Fotos) die Spalte und damit die ganze Seite aufreißen kann,
+   statt sauber per overflow-x zu scrollen. minmax(0, 1fr) erlaubt der Spalte,
+   unter die Inhaltsbreite zu schrumpfen — ohne Effekt, wenn der Inhalt
+   ohnehin passt. */
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 /* Bleibt in einer 4er-Reihe ein einzelnes letztes Element allein übrig (z.B. Hauptpartner-Grid), wird es zentriert statt linksbündig — gleiche Breite wie die anderen Kacheln, nur die Position wird zentriert. */
 #hauptpartner-grid > *:last-child:nth-child(4n+1) { grid-column: 1 / -1; justify-self: center; width: calc(25% - 15px); }
-.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
 
 .card {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -359,7 +365,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* News-Übersichtsseite: 2/3 Vereinsnews (endlos scrollend) + 1/3 fest stehende,
    grau unterlegte Instagram-Seitenleiste — verhindert, dass die Insta-Beiträge
    bei vielen Vereinsnews aus dem Blick geraten. */
-.aktuelles-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+.aktuelles-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .aktuelles-sidebar {
   background: var(--bg-subtle); border-radius: var(--radius-lg);
   padding: 24px; position: sticky; top: 96px;
@@ -391,7 +397,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* LÖWENPARK-Seite: 2/3 Hauptspalte + 1/3 fest stehende Buchungs-Sidebar,
    gleiches Prinzip wie die Aktuelles-Seite. */
-.loewenpark-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+.loewenpark-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .loewenpark-sidebar {
   background: var(--bg-subtle); border-radius: var(--radius-lg);
   padding: 24px; position: sticky; top: 96px;
@@ -610,7 +616,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* Camp-Bildergalerie — horizontal scrollbarer Foto-Streifen, wiederverwendet
    auf trainieren/camps.html (alle Camps, max. 50) und in Rückblick-Newsartikeln
    (gefiltert auf ein Camp). Nutzt .news-slider-track fürs Scroll-Snap-Verhalten. */
-.camp-gallery-wrap { position: relative; }
+/* min-width:0 ist hier nötig, weil die LÖWENPARK-Seite die Galerie in ein
+   Grid-Item (.grid-2) legt — Grid-/Flex-Items schrumpfen sonst nicht unter
+   ihre Inhaltsbreite, wodurch der 23-Foto-Streifen die ganze Seite aufreißt
+   statt sauber per overflow-x zu scrollen. Ohne Effekt in normalen Block-
+   Kontexten (dort schrumpft der Container ohnehin schon auf die Spalte). */
+.camp-gallery-wrap { position: relative; min-width: 0; }
 .camp-gallery-wrap .news-slider-track { gap: 12px; }
 .camp-gallery-photo { flex: 0 0 240px; min-width: 240px; height: 160px; border-radius: var(--radius-md); overflow: hidden; scroll-snap-align: start; }
 .camp-gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
