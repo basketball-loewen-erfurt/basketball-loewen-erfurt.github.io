@@ -745,6 +745,10 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .investor-tile:hover .investor-tile-inner { transform: rotateY(180deg); }
 }
 .investor-tile:focus-visible .investor-tile-inner { transform: rotateY(180deg); }
+/* Investoren-Kacheln haben (anders als Partner-Kacheln) keinen Link, daher
+   kann Tap auf Touch-Geräten gefahrlos zum Flip-Trigger werden — kein
+   Navigations-Konflikt. Klasse wird per JS auf Touch-Tap umgeschaltet. */
+.investor-tile.is-flipped .investor-tile-inner { transform: rotateY(180deg); }
 .investor-tile-front, .investor-tile-back {
   position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-lg);
   display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;

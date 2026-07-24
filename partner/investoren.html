@@ -126,5 +126,12 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1784667836"></script>
 <script src="/js/include.js?v=1784667836"></script>
+<script>
+  document.querySelectorAll('.investor-tile').forEach(function (tile) {
+    tile.addEventListener('click', function () {
+      tile.classList.toggle('is-flipped');
+    });
+  });
+</script>
 </body>
 </html>
