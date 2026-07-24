@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mitgliedschaft abschließen — Basketball Löwen Erfurt</title>
+<meta name="description" content="Schließe deine Mitgliedschaft bei den Basketball Löwen Erfurt direkt online ab." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="/assets/logo/loewen-logo-4c.svg" />
+<link rel="stylesheet" href="/css/colors_and_type.css?v=1784667836" />
+<link rel="stylesheet" href="/css/site.css?v=1784667836" />
+<script data-goatcounter="https://goatcounter-production-5d8c.up.railway.app/count"
+        async src="//goatcounter-production-5d8c.up.railway.app/count.js"></script>
+</head>
+<body data-nav-group="">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div id="site-header-placeholder"></div>
+<main id="main">
+  <section class="hero-photo hero-mitglied-werden">
+    <div class="container">
+    <span class="eyebrow">Mitmachen</span>
+    <h1 id="mw-hero-heading">Mitgliedschaft abschließen.</h1>
+    </div>
+  </section>
+
+  <section class="section bg-subtle" id="mitglied-formular">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Anmeldung</span>
+          <h2 class="t-h2" style="margin-bottom:16px">So wirst du Mitglied</h2>
+          <p class="t-body">Wähle deine Mitgliedschaftsart und trag deine Daten ein. Der Mitgliedsbeitrag wird jährlich per SEPA-Lastschrift eingezogen. Sobald deine Mitgliedschaft bestätigt ist, melden wir uns bei dir.</p>
+        </div>
+
+        <div class="card" style="padding:24px">
+          <span class="eyebrow">Deine Daten</span>
+          <h3 class="t-h4" style="margin:6px 0 16px">Jetzt anmelden</h3>
+          <form class="form-panel" id="mitglied-form">
+            <div class="field">
+              <label for="mw-typ">Mitgliedschaftsart *</label>
+              <select id="mw-typ" name="mitgliedschaftsart" required>
+                <option value="">Bitte wählen *</option>
+                <option value="fan">Fan-Mitgliedschaft — 6,00 € / Monat</option>
+                <option value="spieler">Spieler:innen-Mitgliedschaft — 6,00 € / Monat</option>
+                <option value="schul">Schul-Mitgliedschaft — 3,00 € / Monat</option>
+                <option value="foerder">Förder-Mitgliedschaft — 50,00 € / Monat</option>
+                <option value="ordentlich">Mitgliedschaft für stimmberechtigte Mitglieder — 12,50 € / Monat</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-anrede">Anrede</label>
+              <select id="mw-anrede" name="anrede" required>
+                <option value="">Anrede *</option>
+                <option value="Frau">Frau</option>
+                <option value="Herr">Herr</option>
+                <option value="ohne">Ohne Anrede</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-vorname">Vorname</label>
+              <input type="text" id="mw-vorname" name="vorname" required autocomplete="given-name" placeholder="Vorname *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-nachname">Nachname</label>
+              <input type="text" id="mw-nachname" name="nachname" required autocomplete="family-name" placeholder="Nachname *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-geburtsdatum">Geburtsdatum</label>
+              <input type="date" id="mw-geburtsdatum" name="geburtsdatum" required placeholder="Geburtsdatum *" />
+              <p class="hint">Bei minderjährigen Mitgliedern ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-strasse">Straße und Hausnummer</label>
+              <input type="text" id="mw-strasse" name="strasse" required autocomplete="street-address" placeholder="Straße und Hausnummer *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-plz-ort">PLZ und Ort</label>
+              <input type="text" id="mw-plz-ort" name="plzOrt" required autocomplete="postal-code" placeholder="PLZ und Ort *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-email">E-Mail</label>
+              <input type="email" id="mw-email" name="email" required autocomplete="email" placeholder="E-Mail *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-telefon">Telefon (optional)</label>
+              <input type="tel" id="mw-telefon" name="telefon" autocomplete="tel" placeholder="Telefon (optional)" />
+            </div>
+
+            <div class="field" style="margin-top:8px">
+              <span style="display:block;font-weight:var(--weight-semibold);margin-bottom:8px">Deine Bankverbindung</span>
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-kontoinhaber">Name des Kontoinhabers</label>
+              <input type="text" id="mw-kontoinhaber" name="kontoinhaber" required placeholder="Name des Kontoinhabers *" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-iban">IBAN</label>
+              <input type="text" id="mw-iban" name="iban" required autocomplete="off" placeholder="IBAN *" />
+            </div>
+
+            <div class="field-checkbox" style="align-items:flex-start;margin:16px 0 8px">
+              <input type="checkbox" id="mw-consent-beitrag" name="consentBeitrag" required style="margin-top:3px" />
+              <label for="mw-consent-beitrag" class="t-body-sm">Ich melde mich für die gewählte Mitgliedschaft an und akzeptiere den damit verbundenen Mitgliedsbeitrag gemäß <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>.</label>
+            </div>
+            <div class="field-checkbox" style="align-items:flex-start;margin:0 0 8px">
+              <input type="checkbox" id="mw-consent-sepa" name="consentSepa" required style="margin-top:3px" />
+              <label for="mw-consent-sepa" class="t-body-sm">Ich ermächtige die Basketball Löwen e.V. (Gläubiger-ID DE46ZZZ00002312785), Zahlungen von meinem Konto mittels SEPA-Lastschrift einzuziehen, und weise mein Kreditinstitut an, diese Lastschriften einzulösen.</label>
+            </div>
+            <div class="field-checkbox" style="align-items:flex-start;margin:0 0 16px">
+              <input type="checkbox" id="mw-consent-daten" name="consentDaten" required style="margin-top:3px" />
+              <label for="mw-consent-daten" class="t-body-sm">Ich willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html">Datenschutzerklärung</a> ein. Diese Einwilligung kann ich jederzeit widerrufen.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
+            <div class="form-status success" id="mitglied-status">Vielen Dank! Wir haben deine Anmeldung erhalten und melden uns in Kürze bei dir.</div>
+            <div class="form-status error" id="mitglied-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:info@basketball-loewen.com">info@basketball-loewen.com</a>.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer-placeholder"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/js/nav.js?v=1784667836"></script>
+<script src="/js/include.js?v=1784667836"></script>
+<script>
+  var TYP_HERO = {
+    fan: 'Fan-Mitgliedschaft',
+    spieler: 'Spieler:innen-Mitgliedschaft',
+    schul: 'Schul-Mitgliedschaft',
+    foerder: 'Förder-Mitgliedschaft',
+    ordentlich: 'Mitgliedschaft für stimmberechtigte Mitglieder'
+  };
+  var SWOOSH = '<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg>';
+
+  var mwTypSelect = document.getElementById('mw-typ');
+  var heroHeading = document.getElementById('mw-hero-heading');
+
+  function mwSelectTyp(typ) {
+    if (!typ) return;
+    mwTypSelect.value = typ;
+    var label = TYP_HERO[typ];
+    if (label) {
+      heroHeading.innerHTML = '<span class="kw">' + label + SWOOSH + '</span> abschließen.';
+    }
+  }
+
+  var praeselektion = new URLSearchParams(window.location.search).get('typ');
+  if (praeselektion) mwSelectTyp(praeselektion);
+
+  document.getElementById('mitglied-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var statusOk = document.getElementById('mitglied-status');
+    var statusError = document.getElementById('mitglied-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    statusOk.classList.remove('visible');
+    statusError.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+    var payload = {
+      mitgliedschaftsart: form.mitgliedschaftsart.value,
+      anrede: form.anrede.value,
+      vorname: form.vorname.value,
+      nachname: form.nachname.value,
+      geburtsdatum: form.geburtsdatum.value,
+      strasse: form.strasse.value,
+      plzOrt: form.plzOrt.value,
+      email: form.email.value,
+      telefon: form.telefon.value,
+      kontoinhaber: form.kontoinhaber.value,
+      iban: form.iban.value
+    };
+    fetch('https://blev.app.n8n.cloud/webhook/mitglied-werden-antrag', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Webhook antwortete mit Fehler');
+      form.reset();
+      statusOk.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    }).catch(function () {
+      statusError.classList.add('visible');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Jetzt anmelden';
+    });
+  });
+</script>
+</body>
+</html>
