@@ -24,17 +24,10 @@
   </section>
 
   <section class="section bg-subtle" id="mitglied-formular">
-    <div class="container">
-      <div class="grid-2">
-        <div>
-          <span class="eyebrow">Anmeldung</span>
-          <h2 class="t-h2" style="margin-bottom:16px">So wirst du Mitglied</h2>
-          <p class="t-body">Wähle deine Mitgliedschaftsart und trag deine Daten ein. Der Mitgliedsbeitrag wird jährlich per SEPA-Lastschrift eingezogen. Sobald deine Mitgliedschaft bestätigt ist, melden wir uns bei dir.</p>
-        </div>
-
+    <div class="container container-narrow">
         <div class="card" style="padding:24px">
-          <span class="eyebrow">Deine Daten</span>
-          <h3 class="t-h4" style="margin:6px 0 16px">Jetzt anmelden</h3>
+          <span class="eyebrow" style="display:block;text-align:center">Deine Daten für die Anmeldung</span>
+          <h3 class="t-h4" style="margin:6px 0 16px;text-align:center">Mitgliedschaftstyp</h3>
           <form class="form-panel" id="mitglied-form">
             <div class="field">
               <label for="mw-typ">Mitgliedschaftsart *</label>
@@ -111,12 +104,11 @@
               <label for="mw-consent-daten" class="t-body-sm">Ich willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz.html">Datenschutzerklärung</a> ein. Diese Einwilligung kann ich jederzeit widerrufen.</label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Jetzt anmelden</button>
+            <button type="submit" class="btn btn-primary btn-block" id="mw-submit-btn">Jetzt anmelden</button>
             <div class="form-status success" id="mitglied-status">Vielen Dank! Wir haben deine Anmeldung erhalten und melden uns in Kürze bei dir.</div>
             <div class="form-status error" id="mitglied-error">Senden hat leider nicht geklappt — bitte versuche es später noch einmal oder schreib uns direkt an <a href="mailto:info@basketball-loewen.com">info@basketball-loewen.com</a>.</div>
           </form>
         </div>
-      </div>
     </div>
   </section>
 </main>
@@ -136,15 +128,25 @@
 
   var mwTypSelect = document.getElementById('mw-typ');
   var heroHeading = document.getElementById('mw-hero-heading');
+  var submitBtnDefault = document.getElementById('mw-submit-btn');
+
+  function mwUpdateForTyp(typ) {
+    var label = TYP_HERO[typ];
+    if (label) {
+      heroHeading.innerHTML = '<span class="kw">' + label + SWOOSH + '</span>.';
+      submitBtnDefault.textContent = label;
+    } else {
+      submitBtnDefault.textContent = 'Jetzt anmelden';
+    }
+  }
 
   function mwSelectTyp(typ) {
     if (!typ) return;
     mwTypSelect.value = typ;
-    var label = TYP_HERO[typ];
-    if (label) {
-      heroHeading.innerHTML = '<span class="kw">' + label + SWOOSH + '</span>.';
-    }
+    mwUpdateForTyp(typ);
   }
+
+  mwTypSelect.addEventListener('change', function () { mwUpdateForTyp(this.value); });
 
   var praeselektion = new URLSearchParams(window.location.search).get('typ');
   if (praeselektion) mwSelectTyp(praeselektion);
@@ -155,6 +157,7 @@
     var statusOk = document.getElementById('mitglied-status');
     var statusError = document.getElementById('mitglied-error');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var currentLabel = TYP_HERO[form.mitgliedschaftsart.value] || 'Jetzt anmelden';
     statusOk.classList.remove('visible');
     statusError.classList.remove('visible');
     submitBtn.disabled = true;
@@ -181,11 +184,11 @@
       form.reset();
       statusOk.classList.add('visible');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Jetzt anmelden';
+      submitBtn.textContent = currentLabel;
     }).catch(function () {
       statusError.classList.add('visible');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Jetzt anmelden';
+      submitBtn.textContent = currentLabel;
     });
   });
 </script>
