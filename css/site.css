@@ -868,20 +868,25 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
-  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 20px; color: var(--text-primary);
+  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 40px; color: var(--text-primary);
 }
-/* Heller Halo-Schatten hinter dem Lead-Text, damit er auch über dunkleren
-   Bildbereichen lesbar bleibt, unabhängig vom jeweiligen Hero-Foto. Mehrere
-   eng gestaffelte Schichten statt eines einzelnen weichen Blurs, damit der
-   Effekt auch auf kleinen Mobil-Schriftgrößen deutlich sichtbar bleibt. */
+/* margin-bottom extra groß, damit der Swoosh (hängt bis zu .8em unter die
+   Grundlinie des gehighlighteten Worts) nicht in den Lead-Text hineinragt. */
+/* Heller Halo-Schatten hinter dem Lead-Text, damit er auch über dunkleren/
+   detailreichen Bildbereichen lesbar bleibt, unabhängig vom jeweiligen
+   Hero-Foto. Mehrere eng gestaffelte Schichten statt eines einzelnen
+   weichen Blurs, damit der Effekt auch auf kleinen Mobil-Schriftgrößen
+   deutlich sichtbar bleibt — bewusst kräftig, da manche Hero-Fotos direkt
+   hinter dem Text sehr kontrastreiche Details zeigen (Gesichter, Trikotdruck). */
 .hero-photo p.lead {
   font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px;
   text-shadow:
     0 0 2px rgba(253,246,238,1),
-    0 0 5px rgba(253,246,238,1),
-    0 0 10px rgba(253,246,238,.95),
-    0 0 18px rgba(253,246,238,.9),
-    0 0 26px rgba(253,246,238,.75);
+    0 0 6px rgba(253,246,238,1),
+    0 0 12px rgba(253,246,238,1),
+    0 0 20px rgba(253,246,238,.95),
+    0 0 30px rgba(253,246,238,.85),
+    0 0 42px rgba(253,246,238,.65);
 }
 /* Schmale Breadcrumb-Leiste oberhalb des Hero-Fotos statt Link im Hero
    selbst — bleibt lesbar unabhängig vom Hero-Hintergrund und drängt sich
