@@ -650,6 +650,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 @media (max-width: 599px) {
   .camp-gallery-photo { flex-basis: 78%; min-width: 78%; }
+  .camp-slider-card { flex-basis: 86%; min-width: 86%; }
+}
+/* Swipe-Hinweis für Kachel-Slider (Termine u.ä.) auf Mobil/Tablet — ohne
+   Pfeile (s.o.) erschließt sich das Wischen nicht von selbst. Rein visuell,
+   nicht klickbar; verschwindet ab 1024px wieder, wo die echten Pfeile greifen. */
+.swipe-hint { display: none; }
+@media (max-width: 1023px) {
+  .swipe-hint {
+    display: flex; position: absolute; top: 50%; right: 8px; transform: translateY(-50%);
+    width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.92);
+    box-shadow: 0 4px 12px rgba(0,18,45,.18); align-items: center; justify-content: center;
+    color: var(--text-primary); pointer-events: none; z-index: 4;
+  }
 }
 
 /* Ansprechperson-Karte — Foto/Platzhalter + Name/Rolle/E-Mail, nach Vorbild der
