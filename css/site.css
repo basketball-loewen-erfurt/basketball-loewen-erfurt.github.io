@@ -1261,8 +1261,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo.hero-lg {
   background:
     linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
-    url('/assets/img/hero-einlaufkind.jpg');
-  background-size: cover; background-position: center 30%;
+    url('/assets/img/hero-startseite-alt.jpg');
+  background-size: cover; background-position: center 20%;
 }
 .hero-photo.hero-lg .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
