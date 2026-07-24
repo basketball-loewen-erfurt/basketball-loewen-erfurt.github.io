@@ -602,6 +602,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .camp-gallery-wrap .news-slider-track { gap: 12px; }
 .camp-gallery-photo { flex: 0 0 240px; min-width: 240px; height: 160px; border-radius: var(--radius-md); overflow: hidden; scroll-snap-align: start; }
 .camp-gallery-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Immer letzte Kachel im Streifen, wenn (noch) nicht alle Fotos vorliegen —
+   gestrichelter Platzhalter statt echtem Foto, bleibt aber Teil des Sliders. */
+.camp-gallery-photo-soon {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--bg-subtle); border: 1px dashed var(--border); color: var(--text-muted);
+  font-size: 13px; line-height: 1.4; padding: 12px;
+}
 /* Kommende-Camps-Slider — gleiches Streifen-Prinzip, aber für ganze Karten
    statt Fotos (aktuelle + geplante Camps nebeneinander, scrollbar). */
 .camp-slider-card { flex: 0 0 380px; min-width: 320px; scroll-snap-align: start; }
@@ -978,12 +985,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    auf dem Spielfeld, Logo mittig unten im Bild. */
 .hero-photo.hero-ehrenamt {
   background:
-    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 34%, rgba(253,246,238,0) 58%),
+    linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.85) 32%, rgba(253,246,238,.4) 58%, rgba(253,246,238,0) 82%),
     url('/assets/img/hero-ehrenamt.jpg');
-  background-size: cover; background-position: center 25%;
+  background-size: cover; background-position: center 45%;
+  min-height: 480px;
 }
 .hero-photo.hero-ehrenamt .hero-media::after {
-  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 34%, rgba(253,246,238,0) 58%);
+  background: linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.85) 32%, rgba(253,246,238,.4) 58%, rgba(253,246,238,0) 82%);
+}
+/* Überschrift ist länger als die üblichen kurzen Taglines — normal umbrechen
+   und auf den geschützten (helleren) linken Bildbereich begrenzen. */
+.hero-photo.hero-ehrenamt h1 { white-space: normal; max-width: 15ch; }
+@media (max-width: 599px) {
+  .hero-photo.hero-ehrenamt { min-height: 340px; }
 }
 
 /* Hero-Variante für die Mitglied-werden-Seite — illustrierte Kinder-Basketballszene,

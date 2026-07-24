@@ -18,9 +18,9 @@
 <main id="main">
   <section class="hero-photo hero-ehrenamt">
     <div class="container">
-    <span class="eyebrow">Fans &amp; Ehrenamt</span>
-    <h1>Werde Teil vom <span class="kw">Team<span class="swoosh" aria-hidden="true"></span></span> hinter dem Team.</h1>
-    <p class="lead">Du möchtest bei den Heimspielen der Basketball Löwen nicht nur auf der Tribüne sitzen, sondern sie aktiv mitgestalten? Als Ehrenamtliche:r bist du mittendrin statt nur dabei.</p>
+    <span class="eyebrow">Ehrenamt</span>
+    <h1>Ehrenamtler – Die wichtige <span class="kw">Stütze<span class="swoosh" aria-hidden="true"></span></span> unseres Teams.</h1>
+    <p class="lead">Unsere Ehrenamtler sind einer der wichtigsten Stützen unserer Organisation. Sie unterstützen uns bei den Herausforderungen rund um unsere Spieltagsorganisation.</p>
     </div>
   </section>
 
@@ -35,7 +35,7 @@
       </div>
       <div class="grid-3">
         <div class="card hoverable">
-          <div class="card-media tint-blue"><i data-lucide="hammer" style="width:32px;height:32px"></i></div>
+          <div class="card-media card-media-photo"><img src="/assets/img/ehrenamt-hallenaufbau.jpg" alt="" loading="lazy" /></div>
           <div class="card-body">
             <h3>Hallenauf- und -abbau</h3>
             <p>Vor dem Anpfiff und nach dem Schlusspfiff sorgst du dafür, dass in der Halle alles an seinem Platz ist.</p>
@@ -70,21 +70,21 @@
           </div>
         </div>
         <div class="card hoverable">
-          <div class="card-media tint-orange"><i data-lucide="shopping-bag" style="width:32px;height:32px"></i></div>
+          <div class="card-media card-media-photo"><img src="/assets/img/ehrenamt-imbiss.jpg" alt="" loading="lazy" /></div>
           <div class="card-body">
             <h3>Verkaufsstände &amp; Merchandise</h3>
             <p>Du stehst am Stand, verkaufst Fanartikel und bist Ansprechpartner:in für alle Fans.</p>
           </div>
         </div>
         <div class="card hoverable">
-          <div class="card-media tint-violet"><i data-lucide="clipboard-list" style="width:32px;height:32px"></i></div>
+          <div class="card-media card-media-photo"><img src="/assets/img/ehrenamt-anschreiber.jpg" alt="" loading="lazy" /></div>
           <div class="card-body">
             <h3>Anschreiber &amp; Scouting</h3>
             <p>Du hältst das Spielgeschehen fest — am Anschreibetisch oder bei der Spielanalyse.</p>
           </div>
         </div>
         <div class="card hoverable">
-          <div class="card-media tint-neutral"><i data-lucide="party-popper" style="width:32px;height:32px"></i></div>
+          <div class="card-media card-media-photo"><img src="/assets/img/ehrenamt-maskottchen.jpg" alt="" loading="lazy" /></div>
           <div class="card-body">
             <h3>Maskottchen</h3>
             <p>Du sorgst im Kostüm für gute Stimmung und bringst Fans und Kinder zum Lachen.</p>
@@ -103,6 +103,18 @@
 
   <section class="section bg-subtle">
     <div class="container">
+      <span class="eyebrow" style="display:block;margin-bottom:16px">Impressionen</span>
+      <div class="camp-gallery-wrap" id="ehrenamt-gallery">
+        <div class="news-slider-track"></div>
+        <button class="news-slider-arrow prev" data-gallery-prev aria-label="Vorheriges Bild"><i data-lucide="chevron-left" style="width:18px;height:18px"></i></button>
+        <button class="news-slider-arrow next" data-gallery-next aria-label="Nächstes Bild"><i data-lucide="chevron-right" style="width:18px;height:18px"></i></button>
+        <p class="t-body camp-gallery-empty" style="display:none">Fotos folgen in Kürze.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
       <div class="cta-panel">
         <span class="eyebrow">Interesse geweckt?</span>
         <h2 class="t-h2">Melde dich bei uns.</h2>
@@ -116,5 +128,7 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="/js/nav.js?v=1784667836"></script>
 <script src="/js/include.js?v=1784667836"></script>
+<script src="/js/camp-galerie.js?v=1784667836"></script>
+<script>initCampGallery('ehrenamt-gallery', null, '/data/ehrenamt-galerie.json', true);</script>
 </body>
 </html>
