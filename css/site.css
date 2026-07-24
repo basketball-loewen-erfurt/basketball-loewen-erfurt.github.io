@@ -957,15 +957,21 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 
 /* Hero-Variante für die Löwenrudel/Fanclub-Seite — Gruppenfoto mit "Ich bin
-   ein Löwe"-T-Shirts vor dem Petersberg, Motiv über die ganze Breite verteilt. */
+   ein Löwe"-T-Shirts vor dem Petersberg, Motiv über die ganze Breite verteilt.
+   Deutlich höher als der Standard-Hero, damit auch der Rollstuhlfahrer in der
+   vorderen Reihe der Gruppe sichtbar bleibt statt unten abgeschnitten zu werden. */
 .hero-photo.hero-loewenrudel {
   background:
     linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-loewenrudel.jpg');
-  background-size: cover; background-position: center 30%;
+  background-size: cover; background-position: center 25%;
+  min-height: 480px;
 }
 .hero-photo.hero-loewenrudel .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%);
+}
+@media (max-width: 599px) {
+  .hero-photo.hero-loewenrudel { min-height: 340px; }
 }
 
 /* Hero-Variante für die Ehrenamt-Seite — Team- und Helfer:innen-Gruppenfoto
