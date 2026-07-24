@@ -1101,10 +1101,28 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background:
     linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-loewenrudel.jpg');
-  background-size: cover; background-position: center 48%;
+  background-size: cover; background-position: center 68%;
 }
 .hero-photo.hero-loewenrudel .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%);
+}
+/* Auf schmalen Screens bricht die Überschrift auf volle Breite um (statt der
+   linken Spalte bei breiten Screens) — der links-rechts-Verlauf reicht dann
+   nicht mehr über die ganze Textzeile. Zusätzlicher Verlauf von oben deckt
+   den Kopfbereich der Gruppe unabhängig von der Zeilenbreite ab. */
+@media (max-width: 599px) {
+  .hero-photo.hero-loewenrudel {
+    background:
+      linear-gradient(180deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.75) 45%, rgba(253,246,238,.25) 75%, rgba(253,246,238,0) 100%),
+      linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
+      url('/assets/img/hero-loewenrudel.jpg');
+    background-size: cover, cover, cover; background-position: center 68%;
+  }
+  .hero-photo.hero-loewenrudel .hero-media::after {
+    background:
+      linear-gradient(180deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.75) 45%, rgba(253,246,238,.25) 75%, rgba(253,246,238,0) 100%),
+      linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%);
+  }
 }
 
 /* Hero-Variante für die Ehrenamt-Seite — Team- und Helfer:innen-Gruppenfoto
