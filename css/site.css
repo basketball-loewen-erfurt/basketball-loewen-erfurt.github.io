@@ -755,7 +755,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .investor-tile-front img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .investor-tile-back {
-  background: var(--gradient-blue); color: #fff; transform: rotateY(180deg);
+  background: radial-gradient(130% 130% at 30% 15%, var(--color-blue-300) 0%, var(--color-blue-500) 55%, var(--color-blue-700) 100%);
+  color: #fff; transform: rotateY(180deg);
   flex-direction: column; gap: 4px; padding: 12px;
 }
 .investor-tile-back .investor-name {
