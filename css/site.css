@@ -968,6 +968,18 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%);
 }
 
+/* Hero-Variante für die Ehrenamt-Seite — Team- und Helfer:innen-Gruppenfoto
+   auf dem Spielfeld, Logo mittig unten im Bild. */
+.hero-photo.hero-ehrenamt {
+  background:
+    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 34%, rgba(253,246,238,0) 58%),
+    url('/assets/img/hero-ehrenamt.jpg');
+  background-size: cover; background-position: center 25%;
+}
+.hero-photo.hero-ehrenamt .hero-media::after {
+  background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 34%, rgba(253,246,238,0) 58%);
+}
+
 /* Hero-Variante für die Mitglied-werden-Seite — illustrierte Kinder-Basketballszene,
    Motiv sitzt rechts im Bild, links freie Wiese für den Text. */
 .hero-photo.hero-mitglied-werden {
