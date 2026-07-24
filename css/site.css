@@ -272,11 +272,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .eyebrow.on-dark { color: #fff; }
 
 .kw { position: relative; display: inline-block; color: var(--color-brand-orange); }
-.kw svg.swoosh {
-  position: absolute; left: -1%; bottom: -0.4em; width: 106%; height: .4em;
-  overflow: visible;
+/* Handgemalter Pinselstrich-Swoosh (384x41 Rasterbild) statt Vektorform —
+   feste em-Breite statt Prozent-Streckung auf die Keyword-Breite, sonst
+   verzerrt sich die Pinseltextur bei langen/kurzen Wörtern sichtbar. */
+.kw .swoosh {
+  position: absolute; left: 0; bottom: -0.36em; width: 3.6em; height: auto;
+  max-width: 60%;
 }
-.kw svg.swoosh path { fill: var(--color-brand-orange); }
 
 .section-head {
   display: flex; align-items: flex-end; justify-content: space-between;
