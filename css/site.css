@@ -273,11 +273,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 .kw { position: relative; display: inline-block; color: var(--color-brand-orange); }
 /* Handgemalter Pinselstrich-Swoosh (384x41 Rasterbild) statt Vektorform —
-   feste em-Breite statt Prozent-Streckung auf die Keyword-Breite, sonst
-   verzerrt sich die Pinseltextur bei langen/kurzen Wörtern sichtbar. */
+   per CSS-Maske statt <img> eingebunden, damit die Form exakt im Marken-
+   Orange (--color-brand-orange) erscheint statt im etwas abweichenden
+   Orangeton aus der PNG-Datei selbst. Streckt wie zuvor beim Vektor-Swoosh
+   auf die volle Breite des gehighlighteten Worts. */
 .kw .swoosh {
-  position: absolute; left: 0; bottom: -0.36em; width: 3.6em; height: auto;
-  max-width: 60%;
+  position: absolute; left: -1%; bottom: -0.4em; width: 106%; height: .4em;
+  background-color: var(--color-brand-orange);
+  -webkit-mask-image: url('/assets/icons/loewen-swoosh.png');
+  mask-image: url('/assets/icons/loewen-swoosh.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .section-head {
