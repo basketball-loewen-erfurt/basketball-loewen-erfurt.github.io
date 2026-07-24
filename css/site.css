@@ -990,7 +990,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background:
     linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-loewenrudel.jpg');
-  background-size: cover; background-position: center 55%;
+  background-size: cover; background-position: center 48%;
   min-height: 480px;
 }
 .hero-photo.hero-loewenrudel .hero-media::after {
@@ -998,6 +998,16 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 @media (max-width: 599px) {
   .hero-photo.hero-loewenrudel { min-height: 340px; }
+}
+/* Bei sehr breiten Viewports zoomt background-size:cover stärker rein
+   (Höhe bleibt fix, Breite wächst) — dadurch verschwinden Himmel und
+   Kopfbereich aus dem sichtbaren Ausschnitt. Größere Mindesthöhe hält
+   auf breiten Bildschirmen wieder genug vom Foto sichtbar. */
+@media (min-width: 1440px) {
+  .hero-photo.hero-loewenrudel { min-height: 620px; }
+}
+@media (min-width: 2000px) {
+  .hero-photo.hero-loewenrudel { min-height: 760px; }
 }
 
 /* Hero-Variante für die Ehrenamt-Seite — Team- und Helfer:innen-Gruppenfoto
@@ -1014,7 +1024,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 /* Überschrift ist länger als die üblichen kurzen Taglines — normal umbrechen
    und auf den geschützten (helleren) linken Bildbereich begrenzen. */
-.hero-photo.hero-ehrenamt h1 { white-space: normal; max-width: 15ch; }
+.hero-photo.hero-ehrenamt h1 { white-space: normal; max-width: 23ch; }
 @media (max-width: 599px) {
   .hero-photo.hero-ehrenamt { min-height: 340px; }
 }
