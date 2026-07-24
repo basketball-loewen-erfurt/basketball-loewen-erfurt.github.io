@@ -335,6 +335,18 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    z.B. auf der News-Übersichtsseite. */
 .card-media-photo { height: 180px; padding: 0; }
 .card-media-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Icon-Liste für Vorteile-/Feature-Aufzählungen — kleine runde Icon-Badge statt
+   Standard-Bullet, macht die Liste auf den ersten Blick als Liste erkennbar. */
+.benefit-list { list-style: none; }
+.benefit-list li { display: flex; align-items: center; gap: 14px; }
+.benefit-list .benefit-icon {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.benefit-list .benefit-icon.tint-orange { background: linear-gradient(135deg, #FDF1E6, #F6BE86); color: var(--color-orange-700); }
+.benefit-list .benefit-icon.tint-blue { background: var(--gradient-blue); }
+.benefit-list .benefit-icon.tint-violet { background: var(--gradient-violet); }
+.benefit-list .benefit-icon.tint-neutral { background: linear-gradient(135deg, #ECEEF2, #C2C8D5); color: var(--color-neutral-700); }
 
 /* Abschnitts-Trenner mit Label — trennt z.B. Vereinsnews optisch von Social-Content. */
 .section-divider {
@@ -790,7 +802,17 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
     linear-gradient(120deg, rgba(253,241,230,.85) 0%, rgba(246,190,134,.6) 45%, rgba(236,238,242,.78) 100%),
     url('/assets/img/hero-basketball.jpg');
   background-size: cover; background-position: center;
-  min-height: 220px; display: flex; align-items: center;
+  min-height: 480px; display: flex; align-items: center;
+}
+/* Bei sehr breiten Viewports zoomt background-size:cover stärker rein
+   (Höhe bleibt fix, Breite wächst) — dadurch verschwinden Himmel/Kopfbereich
+   aus dem sichtbaren Ausschnitt. Größere Mindesthöhe hält auf breiten
+   Bildschirmen wieder genug vom Foto sichtbar (site-weit, alle Hero-Fotos). */
+@media (min-width: 1440px) {
+  .hero-photo { min-height: 620px; }
+}
+@media (min-width: 2000px) {
+  .hero-photo { min-height: 760px; }
 }
 /* Vorbereitet für künftige Video-Heros: .hero-media als erstes Kind von .hero-photo
    einfügen (z.B. <div class="hero-media"><video autoplay muted loop playsinline ...>
@@ -933,7 +955,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-location:hover { color: var(--color-brand-orange); text-decoration: underline; }
 @media (max-width: 599px) {
   .hero-photo h1 { white-space: normal; }
-  .hero-photo { min-height: 170px; }
+  .hero-photo { min-height: 340px; }
 }
 
 /* Hero-Variante für die Ticketseiten — Foto der vollen Halle */
@@ -984,40 +1006,25 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 
 /* Hero-Variante für die Löwenrudel/Fanclub-Seite — Gruppenfoto mit "Ich bin
    ein Löwe"-T-Shirts vor dem Petersberg, Motiv über die ganze Breite verteilt.
-   Deutlich höher als der Standard-Hero, damit auch der Rollstuhlfahrer in der
-   vorderen Reihe der Gruppe sichtbar bleibt statt unten abgeschnitten zu werden. */
+   Höhe kommt jetzt vom vereinheitlichten .hero-photo-Basiswert. */
 .hero-photo.hero-loewenrudel {
   background:
     linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%),
     url('/assets/img/hero-loewenrudel.jpg');
   background-size: cover; background-position: center 48%;
-  min-height: 480px;
 }
 .hero-photo.hero-loewenrudel .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.9) 0%, rgba(253,246,238,.5) 30%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 85%);
 }
-@media (max-width: 599px) {
-  .hero-photo.hero-loewenrudel { min-height: 340px; }
-}
-/* Bei sehr breiten Viewports zoomt background-size:cover stärker rein
-   (Höhe bleibt fix, Breite wächst) — dadurch verschwinden Himmel und
-   Kopfbereich aus dem sichtbaren Ausschnitt. Größere Mindesthöhe hält
-   auf breiten Bildschirmen wieder genug vom Foto sichtbar. */
-@media (min-width: 1440px) {
-  .hero-photo.hero-loewenrudel { min-height: 620px; }
-}
-@media (min-width: 2000px) {
-  .hero-photo.hero-loewenrudel { min-height: 760px; }
-}
 
 /* Hero-Variante für die Ehrenamt-Seite — Team- und Helfer:innen-Gruppenfoto
-   auf dem Spielfeld, Logo mittig unten im Bild. */
+   auf dem Spielfeld, Logo mittig unten im Bild. Höhe kommt vom
+   vereinheitlichten .hero-photo-Basiswert. */
 .hero-photo.hero-ehrenamt {
   background:
     linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.85) 32%, rgba(253,246,238,.4) 58%, rgba(253,246,238,0) 82%),
     url('/assets/img/hero-ehrenamt.jpg');
   background-size: cover; background-position: center 45%;
-  min-height: 480px;
 }
 .hero-photo.hero-ehrenamt .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.97) 0%, rgba(253,246,238,.85) 32%, rgba(253,246,238,.4) 58%, rgba(253,246,238,0) 82%);
@@ -1025,9 +1032,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 /* Überschrift ist länger als die üblichen kurzen Taglines — normal umbrechen
    und auf den geschützten (helleren) linken Bildbereich begrenzen. */
 .hero-photo.hero-ehrenamt h1 { white-space: normal; max-width: 23ch; }
-@media (max-width: 599px) {
-  .hero-photo.hero-ehrenamt { min-height: 340px; }
-}
 
 /* Hero-Variante für die Mitglied-werden-Seite — illustrierte Kinder-Basketballszene,
    Motiv sitzt rechts im Bild, links freie Wiese für den Text. */
