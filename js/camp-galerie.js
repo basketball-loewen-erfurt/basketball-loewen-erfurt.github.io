@@ -33,8 +33,16 @@ function initCampGallery(containerId, campSlug, jsonPath, showComingSoon) {
     }
     track.innerHTML = html;
 
-    if (prevBtn) prevBtn.addEventListener('click', function () { track.scrollBy({ left: -260, behavior: 'smooth' }); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { track.scrollBy({ left: 260, behavior: 'smooth' }); });
+    if (prevBtn) prevBtn.addEventListener('click', function () {
+      var atStart = track.scrollLeft <= 4;
+      if (atStart) track.scrollTo({ left: track.scrollWidth - track.clientWidth, behavior: 'smooth' });
+      else track.scrollBy({ left: -260, behavior: 'smooth' });
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else track.scrollBy({ left: 260, behavior: 'smooth' });
+    });
 
     track.addEventListener('click', function (e) {
       var tile = e.target.closest('.camp-gallery-photo[data-lightbox-src]');

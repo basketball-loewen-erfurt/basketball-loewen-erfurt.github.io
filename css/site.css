@@ -814,6 +814,19 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 @media (min-width: 2000px) {
   .hero-photo { min-height: 760px; }
 }
+/* Modifier für bewusst niedrigere Heros auf zweitrangigen Seiten (halbe
+   Standardhöhe) — Klasse zusätzlich zur jeweiligen Hintergrund-Variante auf
+   das .hero-photo-Element setzen. */
+.hero-photo.hero-half { min-height: 240px; }
+@media (max-width: 599px) {
+  .hero-photo.hero-half { min-height: 170px; }
+}
+@media (min-width: 1440px) {
+  .hero-photo.hero-half { min-height: 310px; }
+}
+@media (min-width: 2000px) {
+  .hero-photo.hero-half { min-height: 380px; }
+}
 /* Vorbereitet für künftige Video-Heros: .hero-media als erstes Kind von .hero-photo
    einfügen (z.B. <div class="hero-media"><video autoplay muted loop playsinline ...>
    ...</video></div>) — ersetzt dann optisch das CSS-background-image, der Verlauf
@@ -1243,9 +1256,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%);
 }
 
-/* Größere Hero-Variante nur für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel) */
+/* Hero-Variante für die Startseite — Platz für eine Seiten-Box (Top-News/Heimspiel).
+   Höhe kommt vom vereinheitlichten .hero-photo-Basiswert, hier nur noch Layout/Typo. */
 .hero-photo.hero-lg {
-  min-height: 460px;
   background:
     linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 62%),
     url('/assets/img/hero-einlaufkind.jpg');
@@ -1312,9 +1325,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .hero-lg-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 599px) {
-  .hero-photo.hero-lg { min-height: 320px; }
-  /* Hero + Widget sollen auf dem Handy möglichst komplett ohne Scrollen passen —
-     Innenabstände hier gezielt gestaucht, Inhalt/Größen bleiben unverändert. */
+  /* Höhe kommt vom vereinheitlichten .hero-photo-Basiswert (340px); Innenabstände
+     hier weiterhin gestaucht, damit Hero + Widget möglichst ohne Scrollen passen. */
   .hero-photo.hero-lg .container { padding-top: 28px; padding-bottom: 28px; }
   .hero-lg-grid { gap: 20px; }
   .hero-photo.hero-lg h1 { margin: 8px 0 10px; }
