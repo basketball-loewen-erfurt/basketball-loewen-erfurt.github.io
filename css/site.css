@@ -1046,13 +1046,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    und auf den geschützten (helleren) linken Bildbereich begrenzen. */
 .hero-photo.hero-ehrenamt h1 { white-space: normal; max-width: 23ch; }
 
-/* Hero-Variante für die Media-Kit-Seite — Action-Foto eines Löwen-Spielers im
-   Nationaldress (U-Länderspiel Deutschland–Italien). */
+/* Hero-Variante für die Media-Kit-Seite — gestaltete Grafik "Medienportal"
+   mit Download-Icons für Pressematerial/Vereinsprofile/Fotos. */
 .hero-photo.hero-mediakit {
   background:
     linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 35%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 80%),
     url('/assets/img/hero-mediakit.jpg');
-  background-size: cover; background-position: center 25%;
+  background-size: cover; background-position: center;
 }
 .hero-photo.hero-mediakit .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.62) 35%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 80%);
