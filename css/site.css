@@ -841,10 +841,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
     linear-gradient(120deg, rgba(253,241,230,.85) 0%, rgba(246,190,134,.6) 45%, rgba(236,238,242,.78) 100%);
 }
 .hero-photo .container { position: relative; z-index: 2; width: 100%; padding-top: 24px; padding-bottom: 24px; }
-.hero-photo .eyebrow { color: var(--color-brand-navy); }
+/* Standard: weiße Schrift ohne Halo, da Hero-Fotos meist dunkel/kontrastreich
+   sind — .hero-text-dark kehrt das für einzelne Seiten mit hellem Foto um
+   (dann dunkle Schrift wie zuvor site-weit). */
+.hero-photo .eyebrow { color: #fff; }
 .hero-photo .photo-note {
   position: absolute; right: clamp(20px,5vw,40px); bottom: 10px; z-index: 2;
-  font-size: 11px; color: rgba(0,18,45,.4);
+  font-size: 11px; color: rgba(255,255,255,.6);
 }
 .hero-eyebrow-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .hero-badge-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
@@ -868,25 +871,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
-  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 40px; color: var(--text-primary);
+  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 30px; color: #fff;
 }
-/* margin-bottom extra groß, damit der Swoosh (hängt bis zu .8em unter die
-   Grundlinie des gehighlighteten Worts) nicht in den Lead-Text hineinragt. */
-/* Heller Halo-Schatten hinter dem Lead-Text, damit er auch über dunkleren/
-   detailreichen Bildbereichen lesbar bleibt, unabhängig vom jeweiligen
-   Hero-Foto. Mehrere eng gestaffelte Schichten statt eines einzelnen
-   weichen Blurs, damit der Effekt auch auf kleinen Mobil-Schriftgrößen
-   deutlich sichtbar bleibt — bewusst kräftig, da manche Hero-Fotos direkt
-   hinter dem Text sehr kontrastreiche Details zeigen (Gesichter, Trikotdruck). */
+/* Kein Halo mehr nötig — weiße Schrift auf dunklem/kontrastreichem Hero-Foto
+   ist von sich aus lesbar. Auf hellen Fotos übernimmt .hero-text-dark. */
 .hero-photo p.lead {
-  font-size: 15px; color: var(--text-secondary); max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px;
-  text-shadow:
-    0 0 2px rgba(253,246,238,1),
-    0 0 6px rgba(253,246,238,1),
-    0 0 12px rgba(253,246,238,1),
-    0 0 20px rgba(253,246,238,.95),
-    0 0 30px rgba(253,246,238,.85),
-    0 0 42px rgba(253,246,238,.65);
+  font-size: 15px; color: #fff; max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px;
 }
 /* Schmale Breadcrumb-Leiste oberhalb des Hero-Fotos statt Link im Hero
    selbst — bleibt lesbar unabhängig vom Hero-Hintergrund und drängt sich
@@ -967,7 +957,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .hero-location {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 15px; color: var(--text-secondary); text-decoration: none;
+  font-size: 15px; color: #fff; text-decoration: none;
   transition: color var(--dur-fast) var(--ease-out);
 }
 .hero-location:hover { color: var(--color-brand-orange); text-decoration: underline; }
@@ -975,6 +965,24 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   .hero-photo h1 { white-space: normal; }
   .hero-photo { min-height: 340px; }
 }
+
+/* Opt-in für Seiten mit hellem Hero-Foto — dunkle Schrift wie im
+   ursprünglichen Schema, pro Seite auf .hero-photo zusätzlich setzen
+   (z.B. class="hero-photo hero-sponsoring hero-text-dark"). */
+.hero-photo.hero-text-dark .eyebrow { color: var(--color-brand-navy); }
+.hero-photo.hero-text-dark .photo-note { color: rgba(0,18,45,.4); }
+.hero-photo.hero-text-dark h1 { color: var(--text-primary); }
+.hero-photo.hero-text-dark p.lead {
+  color: var(--text-secondary);
+  text-shadow:
+    0 0 2px rgba(253,246,238,1),
+    0 0 6px rgba(253,246,238,1),
+    0 0 12px rgba(253,246,238,1),
+    0 0 20px rgba(253,246,238,.95),
+    0 0 30px rgba(253,246,238,.85),
+    0 0 42px rgba(253,246,238,.65);
+}
+.hero-photo.hero-text-dark .hero-location { color: var(--text-secondary); }
 
 /* Hero-Variante für die Ticketseiten — Foto der vollen Halle */
 .hero-photo.hero-tickets {
@@ -1281,6 +1289,9 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
   overflow: hidden;
 }
+/* Sitzt auf eigenem hellem Karten-Hintergrund, unabhängig vom Hero-Farbschema
+   dahinter — Eyebrow hier immer dunkel, auch wenn der Hero-Text weiß ist. */
+.hero-side-card .eyebrow { color: var(--color-brand-navy); }
 .hero-side-card { position: relative; padding-right: 40px; }
 .hero-side-card h3 { margin: 8px 0 10px; }
 .hero-side-card .btn { margin-top: 14px; }
