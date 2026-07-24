@@ -40,11 +40,6 @@
               <input type="text" id="mw-nachname" name="nachname" required autocomplete="family-name" placeholder="Nachname *" />
             </div>
             <div class="field">
-              <label class="sr-only" for="mw-geburtsdatum">Geburtsdatum</label>
-              <input type="date" id="mw-geburtsdatum" name="geburtsdatum" required placeholder="Geburtsdatum *" />
-              <p class="hint">Bei minderjährigen Mitgliedern ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
-            </div>
-            <div class="field">
               <label class="sr-only" for="mw-geschlecht">Geschlecht</label>
               <select id="mw-geschlecht" name="geschlecht" required>
                 <option value="">Geschlecht *</option>
@@ -54,12 +49,39 @@
               </select>
             </div>
             <div class="field">
-              <label class="sr-only" for="mw-strasse">Straße und Hausnummer</label>
-              <input type="text" id="mw-strasse" name="strasse" required autocomplete="street-address" placeholder="Straße und Hausnummer *" />
+              <label class="sr-only" for="mw-geburtsdatum">Geburtsdatum</label>
+              <input type="date" id="mw-geburtsdatum" name="geburtsdatum" required placeholder="Geburtsdatum *" />
+              <p class="hint">Bei minderjährigen Mitgliedern ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
+            </div>
+            <div class="field" id="mw-erm-field" style="display:none">
+              <label class="sr-only" for="mw-ermaessigung">Ermäßigungskategorie</label>
+              <select id="mw-ermaessigung" name="ermaessigungKategorie">
+                <option value="">– keine Ermäßigung –</option>
+                <option value="student">Student:in</option>
+                <option value="auszubildende">Auszubildende/r</option>
+                <option value="rentner">Rentner:in</option>
+                <option value="schwerbehindert">Schwerbehinderung</option>
+              </select>
+            </div>
+            <div class="field" id="mw-erzieh-vorname-field" style="display:none">
+              <label class="sr-only" for="mw-erzieh-vorname">Vorname Erziehungsberechtigte:r</label>
+              <input type="text" id="mw-erzieh-vorname" name="erziehVorname" placeholder="Vorname Erziehungsberechtigte:r *" />
+            </div>
+            <div class="field" id="mw-erzieh-nachname-field" style="display:none">
+              <label class="sr-only" for="mw-erzieh-nachname">Nachname Erziehungsberechtigte:r</label>
+              <input type="text" id="mw-erzieh-nachname" name="erziehNachname" placeholder="Nachname Erziehungsberechtigte:r *" />
             </div>
             <div class="field">
-              <label class="sr-only" for="mw-plz-ort">PLZ und Ort</label>
-              <input type="text" id="mw-plz-ort" name="plzOrt" required autocomplete="postal-code" placeholder="PLZ und Ort *" />
+              <label class="sr-only" for="mw-strasse">Straße und Hausnummer (optional)</label>
+              <input type="text" id="mw-strasse" name="strasse" autocomplete="street-address" placeholder="Straße und Hausnummer (optional)" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-plz">PLZ (optional)</label>
+              <input type="text" id="mw-plz" name="plz" autocomplete="postal-code" placeholder="PLZ (optional)" />
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-ort">Ort</label>
+              <input type="text" id="mw-ort" name="ort" required autocomplete="address-level2" value="Erfurt" placeholder="Ort *" />
             </div>
             <div class="field">
               <label class="sr-only" for="mw-email">E-Mail</label>
@@ -68,6 +90,12 @@
             <div class="field">
               <label class="sr-only" for="mw-telefon">Telefon (optional)</label>
               <input type="tel" id="mw-telefon" name="telefon" autocomplete="tel" placeholder="Telefon (optional)" />
+            </div>
+
+            <div class="field" id="mw-family-section" style="display:none;margin-top:8px">
+              <span style="display:block;font-weight:var(--weight-semibold);margin-bottom:8px">Weitere Familienmitglieder (optional)</span>
+              <div id="mw-family-cards"></div>
+              <button type="button" class="btn btn-ghost btn-block" id="mw-family-add-btn">+ Familienmitglied hinzufügen</button>
             </div>
 
             <div class="field" style="margin-top:8px">
@@ -130,6 +158,18 @@
   var typPreis = document.getElementById('mw-typ-preis');
   var submitBtnDefault = document.getElementById('mw-submit-btn');
 
+  var ERM_TYPEN = ['fan'];
+  var FAMILY_TYPEN = ['fan'];
+  var ERZIEH_TOGGLE_TYPEN = ['fan', 'spieler'];
+  var ERZIEH_ALWAYS_TYPEN = ['schul'];
+
+  var ermField = document.getElementById('mw-erm-field');
+  var familySection = document.getElementById('mw-family-section');
+  var erziehVornameField = document.getElementById('mw-erzieh-vorname-field');
+  var erziehNachnameField = document.getElementById('mw-erzieh-nachname-field');
+  var erziehVornameInput = document.getElementById('mw-erzieh-vorname');
+  var erziehNachnameInput = document.getElementById('mw-erzieh-nachname');
+
   function mwUpdateForTyp(typ) {
     var label = TYP_HERO[typ];
     if (label) {
@@ -142,6 +182,9 @@
       typPreis.innerHTML = '';
       submitBtnDefault.textContent = 'Jetzt anmelden';
     }
+    ermField.style.display = ERM_TYPEN.indexOf(typ) > -1 ? 'block' : 'none';
+    familySection.style.display = FAMILY_TYPEN.indexOf(typ) > -1 ? 'block' : 'none';
+    updateErziehVisibility();
   }
 
   function mwSelectTyp(typ) {
@@ -150,15 +193,15 @@
     mwUpdateForTyp(typ);
   }
 
-  var praeselektion = new URLSearchParams(window.location.search).get('typ') || 'fan';
-  mwSelectTyp(praeselektion);
-
   var vornameInput = document.getElementById('mw-vorname');
   var nachnameInput = document.getElementById('mw-nachname');
   var geburtsdatumInput = document.getElementById('mw-geburtsdatum');
   var kontoinhaberInput = document.getElementById('mw-kontoinhaber');
   var kontoinhaberTouched = false;
   kontoinhaberInput.addEventListener('input', function () { kontoinhaberTouched = true; });
+
+  var praeselektion = new URLSearchParams(window.location.search).get('typ') || 'fan';
+  mwSelectTyp(praeselektion);
 
   function istMinderjaehrig(geburtsdatum) {
     if (!geburtsdatum) return false;
@@ -170,10 +213,27 @@
     return alter < 18;
   }
 
+  function updateErziehVisibility() {
+    var typ = mwTypInput.value;
+    var zeigen;
+    if (ERZIEH_ALWAYS_TYPEN.indexOf(typ) > -1) {
+      zeigen = true;
+    } else if (ERZIEH_TOGGLE_TYPEN.indexOf(typ) > -1) {
+      zeigen = istMinderjaehrig(geburtsdatumInput.value);
+    } else {
+      zeigen = false;
+    }
+    erziehVornameField.style.display = zeigen ? 'block' : 'none';
+    erziehNachnameField.style.display = zeigen ? 'block' : 'none';
+    erziehVornameInput.required = zeigen;
+    erziehNachnameInput.required = zeigen;
+  }
+
   function updateKontoinhaberVorschlag() {
     if (istMinderjaehrig(geburtsdatumInput.value)) {
+      var erziehName = (erziehVornameInput.value.trim() + ' ' + erziehNachnameInput.value.trim()).trim();
       kontoinhaberInput.placeholder = 'Name des Kontoinhabers, z. B. Erziehungsberechtigte:r *';
-      if (!kontoinhaberTouched) kontoinhaberInput.value = '';
+      if (!kontoinhaberTouched) kontoinhaberInput.value = erziehName;
       return;
     }
     kontoinhaberInput.placeholder = 'Name des Kontoinhabers *';
@@ -184,8 +244,59 @@
 
   vornameInput.addEventListener('input', updateKontoinhaberVorschlag);
   nachnameInput.addEventListener('input', updateKontoinhaberVorschlag);
-  geburtsdatumInput.addEventListener('input', updateKontoinhaberVorschlag);
-  geburtsdatumInput.addEventListener('change', updateKontoinhaberVorschlag);
+  erziehVornameInput.addEventListener('input', updateKontoinhaberVorschlag);
+  erziehNachnameInput.addEventListener('input', updateKontoinhaberVorschlag);
+  geburtsdatumInput.addEventListener('input', function () { updateErziehVisibility(); updateKontoinhaberVorschlag(); });
+  geburtsdatumInput.addEventListener('change', function () { updateErziehVisibility(); updateKontoinhaberVorschlag(); });
+
+  // ===== Familienmitglieder (nur Fan-Mitgliedschaft) =====
+  var MAX_FAMILY = 3;
+  var familyCount = 0;
+  var familyCardsEl = document.getElementById('mw-family-cards');
+  var familyAddBtn = document.getElementById('mw-family-add-btn');
+
+  function familyActiveCount() {
+    return familyCardsEl.querySelectorAll('.family-card').length;
+  }
+
+  function updateFamilyAddBtn() {
+    familyAddBtn.style.display = familyActiveCount() >= MAX_FAMILY ? 'none' : 'inline-flex';
+  }
+
+  function addFamilyMember() {
+    if (familyActiveCount() >= MAX_FAMILY) return;
+    familyCount++;
+    var idx = familyCount;
+    var card = document.createElement('div');
+    card.className = 'family-card';
+    card.id = 'mw-fam-' + idx;
+    card.innerHTML =
+      '<button type="button" class="remove-btn" data-remove-fam="' + idx + '" title="Entfernen">&times;</button>' +
+      '<div class="field"><label class="sr-only">Vorname</label><input type="text" data-fam="' + idx + '" data-field="vorname" placeholder="Vorname *" /></div>' +
+      '<div class="field"><label class="sr-only">Nachname</label><input type="text" data-fam="' + idx + '" data-field="nachname" placeholder="Nachname *" /></div>' +
+      '<div class="field"><label class="sr-only">Geburtsdatum</label><input type="date" data-fam="' + idx + '" data-field="geburtsdatum" placeholder="Geburtsdatum *" /></div>' +
+      '<div class="field" style="margin-bottom:0"><label class="sr-only">Geschlecht</label><select data-fam="' + idx + '" data-field="geschlecht"><option value="">Geschlecht (optional)</option><option value="weiblich">Weiblich</option><option value="maennlich">Männlich</option><option value="keine_angabe">Keine Angabe</option></select></div>';
+    familyCardsEl.appendChild(card);
+    card.querySelector('[data-remove-fam="' + idx + '"]').addEventListener('click', function () {
+      card.remove();
+      updateFamilyAddBtn();
+    });
+    updateFamilyAddBtn();
+  }
+
+  familyAddBtn.addEventListener('click', addFamilyMember);
+
+  function collectFamilyMembers() {
+    var members = [];
+    familyCardsEl.querySelectorAll('.family-card').forEach(function (card) {
+      function get(field) {
+        var el = card.querySelector('[data-field="' + field + '"]');
+        return el ? el.value.trim() : '';
+      }
+      members.push({ vorname: get('vorname'), nachname: get('nachname'), geburtsdatum: get('geburtsdatum'), geschlecht: get('geschlecht') });
+    });
+    return members;
+  }
 
   document.getElementById('mitglied-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -205,12 +316,17 @@
       vorname: form.vorname.value,
       nachname: form.nachname.value,
       geburtsdatum: form.geburtsdatum.value,
+      ermaessigungKategorie: form.ermaessigungKategorie ? form.ermaessigungKategorie.value : '',
+      erziehVorname: form.erziehVorname.value,
+      erziehNachname: form.erziehNachname.value,
       strasse: form.strasse.value,
-      plzOrt: form.plzOrt.value,
+      plz: form.plz.value,
+      ort: form.ort.value,
       email: form.email.value,
       telefon: form.telefon.value,
       kontoinhaber: form.kontoinhaber.value,
-      iban: form.iban.value
+      iban: form.iban.value,
+      familyMembers: collectFamilyMembers()
     };
     fetch('https://blev.app.n8n.cloud/webhook/mitglied-werden-antrag', {
       method: 'POST',
@@ -220,6 +336,11 @@
       if (!res.ok) throw new Error('Webhook antwortete mit Fehler');
       form.reset();
       mwTypInput.value = praeselektion;
+      familyCardsEl.innerHTML = '';
+      familyCount = 0;
+      updateFamilyAddBtn();
+      document.getElementById('mw-ort').value = 'Erfurt';
+      mwUpdateForTyp(praeselektion);
       statusOk.classList.add('visible');
       submitBtn.disabled = false;
       submitBtn.textContent = currentLabel;

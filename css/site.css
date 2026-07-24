@@ -1289,7 +1289,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .field input, .field select, .field textarea {
   width: 100%; padding: 11px 13px; border-radius: var(--radius-md);
   border: 1.5px solid var(--border-strong); font-family: var(--font-base);
-  font-size: 14px; color: var(--text-primary); background: #fff;
+  font-size: 14px; line-height: 20px; color: var(--text-primary); background: #fff;
   transition: all var(--dur-fast) var(--ease-out);
 }
 .field select:required:invalid { color: var(--text-muted); }
@@ -1299,8 +1299,12 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
   -webkit-appearance: none;
   appearance: none;
   min-height: 0;
+  text-align: left;
 }
 .field input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+.family-card { position: relative; border: 1.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 16px 40px 4px 16px; margin-bottom: 12px; background: #fff; }
+.family-card .remove-btn { position: absolute; top: 8px; right: 10px; background: none; border: none; color: var(--text-muted); font-size: 20px; line-height: 1; cursor: pointer; padding: 2px 6px; }
+.family-card .remove-btn:hover { color: var(--color-error); }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(0,40,170,.15);
 }
