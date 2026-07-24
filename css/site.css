@@ -573,7 +573,7 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
    Mobile: alle 10 Kacheln einzeln in einer Reihe, klassisches Wisch-Karussell. */
 .news-slider-wrap { position: relative; }
 .news-slider-track {
-  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  display: flex; overflow-x: auto; scroll-snap-type: x proximity; scroll-behavior: smooth;
   scrollbar-width: none; -ms-overflow-style: none;
 }
 .news-slider-track::-webkit-scrollbar { display: none; }
@@ -1160,13 +1160,13 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .hero-photo.hero-mediakit h1 { white-space: normal; max-width: 28ch; }
 
-/* Hero-Variante für die Mitglied-werden-Seite — illustrierte Kinder-Basketballszene,
-   Motiv sitzt rechts im Bild, links freie Wiese für den Text. */
+/* Hero-Variante für die Mitgliedschafts-Seiten (Übersicht + Fan-Formular) —
+   feiernde Fans mit Maskottchen im Bus auf dem Weg zum Auswärtsspiel. */
 .hero-photo.hero-mitglied-werden {
   background:
-    linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 60%),
+    linear-gradient(90deg, rgba(253,246,238,.94) 0%, rgba(253,246,238,.6) 35%, rgba(253,246,238,.15) 60%, rgba(253,246,238,0) 82%),
     url('/assets/img/hero-mitglied-werden.jpg');
-  background-size: cover; background-position: center 45%;
+  background-size: cover; background-position: center 40%;
 }
 .hero-photo.hero-mitglied-werden .hero-media::after {
   background: linear-gradient(90deg, rgba(253,246,238,.92) 0%, rgba(253,246,238,.55) 38%, rgba(253,246,238,0) 60%);
