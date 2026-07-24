@@ -27,31 +27,13 @@
     <div class="container container-narrow">
         <div class="card" style="padding:24px">
           <span class="eyebrow" style="display:block;text-align:center">Deine Daten für die Anmeldung</span>
-          <h3 class="t-h4" style="margin:6px 0 16px;text-align:center">Mitgliedschaftstyp</h3>
+          <h3 class="t-h4" id="mw-typ-heading" style="margin:6px 0 4px;text-align:center">Mitgliedschaftstyp</h3>
+          <p class="t-caption" id="mw-typ-preis" style="text-align:center;margin:0 0 16px"></p>
           <form class="form-panel" id="mitglied-form">
-            <div class="field">
-              <label for="mw-typ">Mitgliedschaftsart *</label>
-              <select id="mw-typ" name="mitgliedschaftsart" required>
-                <option value="">Bitte wählen *</option>
-                <option value="fan">Fan-Mitgliedschaft — 6,00 € / Monat</option>
-                <option value="spieler">Spieler:innen-Mitgliedschaft — 6,00 € / Monat</option>
-                <option value="schul">Schul-Mitgliedschaft — 3,00 € / Monat</option>
-                <option value="foerder">Förder-Mitgliedschaft — 50,00 € / Monat</option>
-                <option value="ordentlich">Mitgliedschaft für stimmberechtigte Mitglieder — 12,50 € / Monat</option>
-              </select>
-            </div>
-            <div class="field">
-              <label class="sr-only" for="mw-anrede">Anrede</label>
-              <select id="mw-anrede" name="anrede" required>
-                <option value="">Anrede *</option>
-                <option value="Frau">Frau</option>
-                <option value="Herr">Herr</option>
-                <option value="ohne">Ohne Anrede</option>
-              </select>
-            </div>
+            <input type="hidden" id="mw-typ" name="mitgliedschaftsart" value="" />
             <div class="field">
               <label class="sr-only" for="mw-vorname">Vorname</label>
-              <input type="text" id="mw-vorname" name="vorname" required autocomplete="given-name" placeholder="Vorname *" />
+              <input type="text" id="mw-vorname" name="vorname" required autocomplete="given-name" placeholder="Vorname *" autofocus />
             </div>
             <div class="field">
               <label class="sr-only" for="mw-nachname">Nachname</label>
@@ -61,6 +43,15 @@
               <label class="sr-only" for="mw-geburtsdatum">Geburtsdatum</label>
               <input type="date" id="mw-geburtsdatum" name="geburtsdatum" required placeholder="Geburtsdatum *" />
               <p class="hint">Bei minderjährigen Mitgliedern ist zusätzlich die Unterschrift der gesetzlichen Vertreter nötig — wir melden uns dazu bei dir.</p>
+            </div>
+            <div class="field">
+              <label class="sr-only" for="mw-geschlecht">Geschlecht</label>
+              <select id="mw-geschlecht" name="geschlecht" required>
+                <option value="">Geschlecht *</option>
+                <option value="weiblich">Weiblich</option>
+                <option value="maennlich">Männlich</option>
+                <option value="keine_angabe">Keine Angabe</option>
+              </select>
             </div>
             <div class="field">
               <label class="sr-only" for="mw-strasse">Straße und Hausnummer</label>
@@ -93,7 +84,7 @@
 
             <div class="field-checkbox" style="align-items:flex-start;margin:16px 0 8px">
               <input type="checkbox" id="mw-consent-beitrag" name="consentBeitrag" required style="margin-top:3px" />
-              <label for="mw-consent-beitrag" class="t-body-sm">Ich melde mich für die gewählte Mitgliedschaft an und akzeptiere den damit verbundenen Mitgliedsbeitrag gemäß <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>.</label>
+              <label for="mw-consent-beitrag" class="t-body-sm">Ich melde mich für die gewählte Mitgliedschaft an und akzeptiere die <a href="/assets/docs/satzung.pdf" target="_blank" rel="noopener">Satzung</a> sowie den damit verbundenen Mitgliedsbeitrag gemäß <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>.</label>
             </div>
             <div class="field-checkbox" style="align-items:flex-start;margin:0 0 8px">
               <input type="checkbox" id="mw-consent-sepa" name="consentSepa" required style="margin-top:3px" />
@@ -124,32 +115,43 @@
     foerder: 'Förder-Mitgliedschaft',
     ordentlich: 'Mitgliedschaft für stimmberechtigte Mitglieder'
   };
+  var TYP_PREIS = {
+    fan: '6,00',
+    spieler: '6,00',
+    schul: '3,00',
+    foerder: '50,00',
+    ordentlich: '12,50'
+  };
   var SWOOSH = '<svg class="swoosh" viewBox="10 7 292 55" preserveAspectRatio="none"><path d="M14,44 C82,22 202,7 302,12 C206,19 94,38 14,44 Z"/><path d="M10,62 C74,44 188,30 284,32 C194,37 84,56 10,62 Z"/></svg>';
 
-  var mwTypSelect = document.getElementById('mw-typ');
+  var mwTypInput = document.getElementById('mw-typ');
   var heroHeading = document.getElementById('mw-hero-heading');
+  var typHeading = document.getElementById('mw-typ-heading');
+  var typPreis = document.getElementById('mw-typ-preis');
   var submitBtnDefault = document.getElementById('mw-submit-btn');
 
   function mwUpdateForTyp(typ) {
     var label = TYP_HERO[typ];
     if (label) {
       heroHeading.innerHTML = '<span class="kw">' + label + SWOOSH + '</span>.';
-      submitBtnDefault.textContent = label;
+      typHeading.textContent = label;
+      typPreis.innerHTML = TYP_PREIS[typ] + ' € / Monat · <a href="/assets/docs/beitragsordnung.pdf" target="_blank" rel="noopener">Beitragsordnung</a>';
+      submitBtnDefault.textContent = label + ' anmelden';
     } else {
+      typHeading.textContent = 'Mitgliedschaftstyp';
+      typPreis.innerHTML = '';
       submitBtnDefault.textContent = 'Jetzt anmelden';
     }
   }
 
   function mwSelectTyp(typ) {
     if (!typ) return;
-    mwTypSelect.value = typ;
+    mwTypInput.value = typ;
     mwUpdateForTyp(typ);
   }
 
-  mwTypSelect.addEventListener('change', function () { mwUpdateForTyp(this.value); });
-
-  var praeselektion = new URLSearchParams(window.location.search).get('typ');
-  if (praeselektion) mwSelectTyp(praeselektion);
+  var praeselektion = new URLSearchParams(window.location.search).get('typ') || 'fan';
+  mwSelectTyp(praeselektion);
 
   document.getElementById('mitglied-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -157,14 +159,15 @@
     var statusOk = document.getElementById('mitglied-status');
     var statusError = document.getElementById('mitglied-error');
     var submitBtn = form.querySelector('button[type="submit"]');
-    var currentLabel = TYP_HERO[form.mitgliedschaftsart.value] || 'Jetzt anmelden';
+    var currentTypLabel = TYP_HERO[form.mitgliedschaftsart.value];
+    var currentLabel = currentTypLabel ? (currentTypLabel + ' anmelden') : 'Jetzt anmelden';
     statusOk.classList.remove('visible');
     statusError.classList.remove('visible');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wird gesendet …';
     var payload = {
       mitgliedschaftsart: form.mitgliedschaftsart.value,
-      anrede: form.anrede.value,
+      geschlecht: form.geschlecht.value,
       vorname: form.vorname.value,
       nachname: form.nachname.value,
       geburtsdatum: form.geburtsdatum.value,
@@ -182,6 +185,7 @@
     }).then(function (res) {
       if (!res.ok) throw new Error('Webhook antwortete mit Fehler');
       form.reset();
+      mwTypInput.value = praeselektion;
       statusOk.classList.add('visible');
       submitBtn.disabled = false;
       submitBtn.textContent = currentLabel;
