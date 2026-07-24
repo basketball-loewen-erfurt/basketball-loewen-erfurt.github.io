@@ -868,13 +868,16 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 .hero-photo h1 {
   font-family: var(--font-display); font-weight: var(--weight-black);
   letter-spacing: var(--tracking-display); line-height: 1.02; white-space: nowrap;
-  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 34px; color: var(--text-primary);
+  font-size: clamp(24px, 3.6vw, 42px); margin: 8px 0 0.9em; color: var(--text-primary);
 }
+/* margin-bottom in em statt px, damit der Abstand zum Swoosh (ebenfalls in
+   em) bei jeder Hero-Variante gleich proportioniert bleibt, auch bei
+   deutlich größerer Schrift wie bei .hero-lg. */
 /* Nur der Lead-Text (nicht Eyebrow/Überschrift) wechselt zwischen Hero-Fotos:
    Standard weiß ohne Halo (dunkle/kontrastreiche Fotos), .hero-text-dark
    kehrt für einzelne Seiten mit hellem Foto auf dunkel + Halo um. */
 .hero-photo p.lead {
-  font-size: 15px; color: #fff; max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px;
+  font-size: 16px; color: #fff; max-width: 46ch; font-weight: var(--weight-light); margin-bottom: 6px;
 }
 /* Schmale Breadcrumb-Leiste oberhalb des Hero-Fotos statt Link im Hero
    selbst — bleibt lesbar unabhängig vom Hero-Hintergrund und drängt sich
@@ -1290,8 +1293,8 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
 }
 .hero-photo.hero-lg .container { padding-top: 56px; padding-bottom: 56px; }
 .hero-lg-grid { display: grid; grid-template-columns: 1.3fr .8fr; gap: 40px; align-items: center; }
-.hero-photo.hero-lg h1 { white-space: normal; font-size: clamp(32px, 5vw, 60px); margin: 12px 0 16px; }
-.hero-photo.hero-lg p.lead { font-size: 17px; margin-bottom: 22px; }
+.hero-photo.hero-lg h1 { white-space: normal; font-size: clamp(32px, 5vw, 60px); }
+.hero-photo.hero-lg p.lead { font-size: 18px; margin-bottom: 22px; }
 .hero-side-card {
   background: rgba(255,255,255,.85); border: 1px solid rgba(0,18,45,.08);
   border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(3px);
@@ -1350,7 +1353,6 @@ body.hide-mobile-cta .nav-actions .mobile-cta { display: none; }
      hier weiterhin gestaucht, damit Hero + Widget möglichst ohne Scrollen passen. */
   .hero-photo.hero-lg .container { padding-top: 28px; padding-bottom: 28px; }
   .hero-lg-grid { gap: 20px; }
-  .hero-photo.hero-lg h1 { margin: 8px 0 10px; }
   .hero-photo.hero-lg p.lead { margin-bottom: 14px; }
   .hero-side-card { padding: 18px; }
 }
